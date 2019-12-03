@@ -1,0 +1,16 @@
+User-agent: *
+Allow: /
+Allow: /archives/
+Allow: /categories/
+Allow: /tags/ 
+Allow: /resources/ 
+Disallow: /vendors/
+Disallow: /fonts/
+Disallow: /vendors/
+Disallow: /fancybox/
+Disallow: /about/
+
+Sitemap: https://www.wevg.org/sitemap.xml
+Sitemap: https://www.wevg.org/baidusitemap.xml
+Sitemap: https://www.wevg.org/page-sitemap.xml
+Sitemap: https://www.wevg.org/post-sitemap.xml

@@ -1,0 +1,640 @@
+<!DOCTYPE html>
+
+<html lang="zh-CN">
+    <head>
+    <meta charset="utf-8">
+    <!--
+        hexo-theme-suka © SukkaW
+        GitHub: https://github.com/SukkaW/hexo-theme-suka
+    -->
+
+    <!-- ### Resource Hint ### -->
+
+    <!-- ## DNS Prefetch ## -->
+    <meta http-equiv="x-dns-prefetch-control" content="on">
+
+<!-- busuanzi -->
+
+
+<!-- comment -->
+
+
+
+
+
+
+
+<!-- analytics -->
+
+
+
+
+
+
+
+    <!-- ## Preload ## -->
+    
+
+
+
+
+    <!-- ### Meta & Title & Info ### -->
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, minimum-scale=1, initial-scale=1, maximum-scale=5, viewport-fit=cover">
+    <meta name="renderer" content="webkit">
+
+    <!-- Title -->
+    <title>为 SSH 连接添加两步认证 | Vigorous Pro</title>
+
+    <!-- Favicons -->
+    <link rel="icon" type="image&#x2F;ico" href="/favicon.ico"><link rel="apple-touch-icon" sizes="180x180" href="/source/favicon/apple-touch-icon.png"><link rel="icon" typt="image&#x2F;png" sizes="192x192" href="/source/favicon/android-chrome-192x192.png"><link rel="icon" typt="image&#x2F;png" sizes="32x32" href="/source/favicon/favicon-32x32.png"><link rel="icon" typt="image&#x2F;png" sizes="16x16" href="/source/favicon/favicon-16x16.png"><link rel="mask-icon" href="/safari-pinned-tab.svg" color="">
+
+    <!-- ### Import File ### -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/spectre.css@0.5.3"><style>
+    body {
+        background-color: #f8f9fa;
+    }
+
+    a, a:visited {
+        color: #0070ff;
+    }
+
+    a:active, a:focus, a:hover {
+        color: #0070ff;
+        opacity: .75;
+    }
+
+    #post-content a,
+    #post-content a:hover,
+    #post-content a:focus,
+    #post-content a:visited {
+        color: #005eb9;
+        opacity: 1;
+    }
+
+    
+
+    .post-entry .card-body a {
+        color: #0070ff;
+    }
+
+    .avatar {
+        background: #444;
+    }
+
+    .navbar-link,
+    .navbar-link:visited,
+    .timeline .timeline-item .timeline-icon.icon-lg {
+        color: #0070ff;
+    }
+
+    .navbar-link:hover {
+        color: #0070ff;
+        opacity: .8;
+    }
+
+    #search-input .btn,
+    #disqus_click_btn,
+    #disqus-switch-to-direct,
+    #disqus-loadmore-button {
+        background: #727e96;
+        border-color: #727e96;
+        color: #fff;
+    }
+
+    #post-toc a.post-toc-link,
+    #post-toc a.post-toc-link:visited,
+    .share-menu.menu .menu-item>a {
+        color: #727e96;
+    }
+
+    .share-menu.menu .menu-item>a:hover,
+    .share-menu.menu .menu-item>a:focus,
+    .share-menu.menu .menu-item>a:visited {
+        color: #50596c;
+        background: #f8f9fa;
+        opacity: .85;
+    }
+</style><link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/sukkaw/hexo-theme-suka@latest/source/css/style.min.css">
+
+
+    
+        <!-- Import DisqusJS Default Theme -->
+        <link rel="preload" href="https://cdn.jsdelivr.net/npm/disqusjs@1.2.5/dist/disqusjs.css" as="style" onload="this.onload=null;this.rel='stylesheet'"><noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/disqusjs@1.2.5/dist/disqusjs.css"></noscript>
+
+    
+
+
+
+
+
+
+
+    <!-- Prettify Theme -->
+    
+    <link rel="preload" href="/css/highlight/vs2015.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'"><noscript><link rel="stylesheet" href="/css/highlight/vs2015.min.css"></noscript>
+
+
+
+
+
+<script>
+/*! loadCSS. [c]2017 Filament Group, Inc. MIT License */
+!function(t){"use strict";t.loadCSS||(t.loadCSS=function(){});var e=loadCSS.relpreload={};if(e.support=function(){var e;try{e=t.document.createElement("link").relList.supports("preload")}catch(t){e=!1}return function(){return e}}(),e.bindMediaToggle=function(t){var e=t.media||"all";function a(){t.addEventListener?t.removeEventListener("load",a):t.attachEvent&&t.detachEvent("onload",a),t.setAttribute("onload",null),t.media=e}t.addEventListener?t.addEventListener("load",a):t.attachEvent&&t.attachEvent("onload",a),setTimeout(function(){t.rel="stylesheet",t.media="only x"}),setTimeout(a,3e3)},e.poly=function(){if(!e.support())for(var a=t.document.getElementsByTagName("link"),n=0;n<a.length;n++){var o=a[n];"preload"!==o.rel||"style"!==o.getAttribute("as")||o.getAttribute("data-loadcss")||(o.setAttribute("data-loadcss",!0),e.bindMediaToggle(o))}},!e.support()){e.poly();var a=t.setInterval(e.poly,500);t.addEventListener?t.addEventListener("load",function(){e.poly(),t.clearInterval(a)}):t.attachEvent&&t.attachEvent("onload",function(){e.poly(),t.clearInterval(a)})}"undefined"!=typeof exports?exports.loadCSS=loadCSS:t.loadCSS=loadCSS}("undefined"!=typeof global?global:this);
+</script>
+
+    <!-- ### Site Verification ### -->
+    
+
+
+    <meta name="mobile-web-app-capable" content="yes"><meta name="application-name" content="Vigorous Pro"><meta name="msapplication-starturl" content="https://www.wevg.org"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-title" content="Vigorous Pro"><meta name="apple-mobile-web-app-status-bar-style" content="black-translucent"><link rel="manifest" href="/manifest.json"><link rel="search" type="application/opensearchdescription+xml" href="/opensearch.xml" title="Vigorous Pro">
+
+    <!-- ### The Open Graph & Twitter Card Protocol ### -->
+    <meta property="og:title" content="为 SSH 连接添加两步认证 | Vigorous Pro"><meta property="og:site_name" content="Vigorous Pro"><meta property="og:type" content="article"><meta property="og:url" content="https:&#x2F;&#x2F;www.wevg.org&#x2F;archives&#x2F;ssh-add-mfa&#x2F;"><meta property="og:locale" content="zh-CN"><meta name="description" content="Google 两步认证，是 Google 公司提供的，一种增强账户安全性的方式。 它使用 TOTP 算法（基于时间的一次性密码算法）。 - Edison Jwa - Vigorous Pro"><meta name="keywords" content="Secure, Google, Linux, Debian, SSH, MFA, edisonjwa,game,blog,Web,Html,edison"><meta property="og:image" content="https:&#x2F;&#x2F;i.yecdn.com&#x2F;images&#x2F;2019&#x2F;01&#x2F;05&#x2F;05eae849eaaf79215712c263c029d368.png"><meta property="article:published_time" content="2018-12-05T07:16:39.000Z"><meta property="article:modified_time" content="2019-03-12T15:00:00.000Z"><meta property="og:updated_time" content="2019-03-12T15:00:00.000Z"><meta property="article:author" content="Edison Jwa"><meta property="article:tag" content="Secure, Google, Linux, Debian, SSH, MFA, edisonjwa,game,blog,Web,Html,edison"><meta name="twitter:card" content="summary_large_image"><meta name="twitter:image" content="https:&#x2F;&#x2F;i.yecdn.com&#x2F;images&#x2F;2019&#x2F;01&#x2F;05&#x2F;05eae849eaaf79215712c263c029d368.png">
+
+    
+
+    <!-- ### Canonical link ### -->
+    <link rel="canonical" href="https://www.wevg.org/archives/ssh-add-mfa/">
+
+    <meta name="generator" content="Hexo 4.0.0">
+
+    <!-- ### Analytics ### -->
+    
+
+
+
+
+
+
+
+    <!-- ### Structured Data ### -->
+    
+
+
+
+<script type="application/ld+json">
+{
+    "@context": "http://schema.org",
+    "url": "https://www.wevg.org/archives/ssh-add-mfa/",
+    "@type": "BlogPosting",
+    "logo": "https://www.wevg.org/source/favicon/android-chrome-192x192.png",
+    "mainEntityOfPage": {
+        "@type": "WebPage",
+        "@id": "https://www.wevg.org/archives/ssh-add-mfa/"
+    },
+    "headline": "为 SSH 连接添加两步认证 | Vigorous Pro",
+    
+    "image": {
+        "@type": "ImageObject",
+        "url": "https://i.yecdn.com/images/2019/01/05/05eae849eaaf79215712c263c029d368.png"
+    },
+    
+    "datePublished": "2018-12-05T07:16:39.000Z",
+    "dateModified": "2019-03-12T15:00:00.000Z",
+    "author": {
+        "@type": "Person",
+        "name": "Edison Jwa",
+        "image": {
+            "@type": "ImageObject",
+            "url": "https://cdn.jsdelivr.net/gh/EdisonJwa/Blog/source/image/avatar.jpg"
+        },
+        "description": "The world can always use more heroes."
+    },
+    "publisher": {
+        "@type": "Organization",
+        "name": "Vigorous Pro",
+        "logo": {
+            "@type": "ImageObject",
+            "url": "https://www.wevg.org/source/favicon/android-chrome-192x192.png"
+        }
+    },
+    
+    "potentialAction": {
+        "@type": "SearchAction",
+        "target": "https://www.wevg.org/search?s={search_term_string}",
+        "query-input": "required name=search_term_string"
+    },
+    
+    "keywords": "Secure, Google, Linux, Debian, SSH, MFA, edisonjwa,game,blog,Web,Html,edison",
+    "description": "Google 两步认证，是 Google 公司提供的，一种增强账户安全性的方式。 它使用 TOTP 算法（基于时间的一次性密码算法）。 - Edison Jwa - Vigorous Pro"
+}
+</script>
+
+
+
+    <!-- ### Custom Head ### -->
+    <!-- 一行自定义代码 --><!-- 多行自定义代码 --><!-- 第二行 --><!-- 第三行 --><link rel="stylesheet" href="/css/darkmode.css"><script src="/js/edison-main.js"></script><script type="module" async="" src="https://cdn.jsdelivr.net/npm/instant.page@3.0.0/instantpage.min.js"></script><link rel="manifest" href="/site.webmanifest"><meta name="msapplication-TileColor" content="#d43d3d"><meta name="msapplication-TileImage" content="/source/favicon/mstile-144x144.png"><meta name="theme-color" content="#ffffff"><script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script><script> (adsbygoogle = window.adsbygoogle || []).push({ google_ad_client: "ca-pub-2345785306567671", enable_page_level_ads: true });</script>
+<link rel="alternate" href="/atom.xml" title="Vigorous Pro" type="application/atom+xml">
+</head>
+
+    <body>
+            
+
+            <!-- ### Main content ### -->
+            <!-- ## Header ##-->
+<header>
+    <h1 class="header-title text-center"><a href="/">Vigorous Pro</a></h1>
+
+    <p class="text-center header-slogan">
+        
+            
+                The world can always use more heroes.
+            
+        
+    </p>
+
+    <nav class="navbar-section text-center">
+    
+        <a href="/" class="navbar-link">首页</a>
+    
+    
+        <a href="/archives/" class="navbar-link">归档</a>
+    
+    
+        <a href="/search" class="navbar-link">搜索</a>
+    
+    
+        <a href="/about/" class="navbar-link">关于</a>
+    
+        <a href="/friends/" class="navbar-link">友链</a>
+    
+    
+    
+</nav>
+</header>
+
+            
+    <!-- ## Post ## -->
+    <div class="post-container">
+    <div id="post-card" class="card">
+        
+            <div class="card-image lazyload" data-bg="url('https://i.yecdn.com/images/2019/01/05/05eae849eaaf79215712c263c029d368.png')"></div>
+        
+        <div class="card-item-container">
+            <div class="card-inner-cell">
+                <!-- # Post Header Info # -->
+                <div class="card-header">
+                    
+    <h1 class="card-title h3 mb-2">为 SSH 连接添加两步认证</h1>
+
+
+
+
+<div class="post-header-info">
+    <p class="post-header-info-left text-gray">
+        <img class="author-thumb lazyload" data-src="https://cdn.jsdelivr.net/gh/EdisonJwa/Blog/source/image/avatar.jpg" src="/img/suka-lazyload.gif" alt="Edison Jwa's Avatar">
+        <span>2018-12-05</span>
+        
+            <span class="suka-devide-dot"></span>
+            <a class="category-link" href="/categories/Tech/">Tech</a><span class="suka-devide-dot"></span><a class="category-link" href="/categories/Tech/Linux/">Linux</a>
+        
+        
+        
+    </p>
+    <div class="post-header-info-right">
+        
+            <div class="dropdown dropdown-right">
+<a class="dropdown-toggle" tabindex="0">分享本文</a>
+<ul class="menu share-menu">
+    <!-- Share Weibo -->
+    
+    <li class="menu-item">
+        <a href="http://service.weibo.com/share/share.php?appkey=&title=为 SSH 连接添加两步认证&url=https://www.wevg.org/archives/ssh-add-mfa/&pic=https://i.yecdn.com/images/2019/01/05/05eae849eaaf79215712c263c029d368.png&searchPic=false&style=simple" target="_blank" rel="external noopener noreferrer nofollow">分享到微博</a>
+    </li>
+    
+
+    <!-- Share Twitter -->
+    
+    <li class="menu-item">
+        <a href="https://twitter.com/intent/tweet?text=为 SSH 连接添加两步认证&url=https://www.wevg.org/archives/ssh-add-mfa/&via=Edison Jwa" target="_blank" rel="external noopener noreferrer nofollow">分享到 Twitter</a>
+    </li>
+    
+
+    <!-- Share Facebook -->
+    
+    <li class="menu-item">
+        <a href="https://www.facebook.com/sharer/sharer.php?u=https://www.wevg.org/archives/ssh-add-mfa/" target="_blank" rel="external noopener noreferrer nofollow">分享到 Facebook</a>
+    </li>
+    
+
+    <!-- Share Google+ -->
+    
+    <li class="menu-item">
+        <a href="https://plus.google.com/share?url=https://www.wevg.org/archives/ssh-add-mfa/" target="_blank" rel="external noopener noreferrer nofollow">分享到 Google+</a>
+    </li>
+    
+
+    <!-- Share LinkedIn -->
+    
+    <li class="menu-item">
+        <a href="https://www.linkedin.com/shareArticle?mini=true&url=https://www.wevg.org/archives/ssh-add-mfa/&title=Vigorous Pro" target="_blank" rel="external noopener noreferrer nofollow">分享到 LinkedIn</a>
+    </li>
+    
+
+    <!-- Share QQ -->
+    
+    <li class="menu-item">
+        <a href="http://connect.qq.com/widget/shareqq/index.html?site=Vigorous Pro&title=Vigorous Pro&summary=The world can always use more heroes.&pics=https://i.yecdn.com/images/2019/01/05/05eae849eaaf79215712c263c029d368.png&url=https://www.wevg.org/archives/ssh-add-mfa/" target="_blank" rel="external noopener noreferrer nofollow"> 分享到 QQ</a>
+    </li>
+    
+
+    <!-- Share Telegram -->
+    
+    <li class="menu-item">
+        <a href="https://t.me/share/url?url=https://www.wevg.org/archives/ssh-add-mfa/&text=Vigorous Pro" target="_blank" rel="external noopener noreferrer nofollow">分享到 Telegram</a>
+    </li>
+    
+
+    <!-- QRCode -->
+    
+    <li class="menu-item">
+        <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAIQAAACECAAAAAB0L9x7AAABjUlEQVR42u3aQW7DMAxEUd//0sk2CETOUAnssfG9Kdo68ivAiqTM4xVwHSBAgLgF4miu73uWCxX3WeuCiEVMFu8e+Pk5a10Q0YjvwFktpiCrh1XrgngGYhKEIJ6NWCW03c+DuA/CCaxVUnMD+qcsCuJ0RFeQ/vL1b9U2iFMRsmkVzU2V3P7alYM4FdEFkmp2VFHcrQciF1EFodrMqt+vfi4TGIgoRLeI2sQmxczoMBXEpYhJ0doFXvV921yDiESowHQP4J0g3v7vAHEqomqCVWC6SW47i4K4FFEVtU6RowoiOzBBxCCqDap7YIfvNqk2gYGIQ0wO1p0D963ABBGH6F6w7h6stcUyiGiESmBOA+QEqdwxQcQgdgoVp9gdJzAQUYiqkOkaG2for/wjQUQipi/inOLYOZQDkYuYDgpP7pPNNYhYxGSwRw39tQdlu8PjIC5BqAG+qhGeDIGBeA5i0tQ4L25APAcxGfJTSRFEPsI5PFcJalwEg4hFTAaFu0TmNj0gshFXXiBAgIhGvAHsJnm5+b1t9gAAAABJRU5ErkJggg==" alt="QRCode">
+    </li>
+    
+
+</ul>
+</div>
+        
+    </div>
+</div>
+                </div>
+                <div class="card-body">
+                    
+                        
+                        
+                            <div id="post-toc"><ol class="post-toc"><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#安装-google-pam"><span class="post-toc-number">1.</span> <span class="post-toc-text">安装 Google PAM</span></a></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#配置-openssh"><span class="post-toc-number">2.</span> <span class="post-toc-text">配置 OpenSSH</span></a></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#配置两步认证"><span class="post-toc-number">3.</span> <span class="post-toc-text">配置两步认证</span></a></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#添加三次认证-可选"><span class="post-toc-number">4.</span> <span class="post-toc-text">添加三次认证 (可选)</span></a></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#恢复访问权限"><span class="post-toc-number">5.</span> <span class="post-toc-text">恢复访问权限</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#同时丢失-ssh-key-和-mfa-认证"><span class="post-toc-number">5.1.</span> <span class="post-toc-text">同时丢失 SSH key 和 MFA 认证</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#仅丢失-otp"><span class="post-toc-number">5.2.</span> <span class="post-toc-text">仅丢失 OTP</span></a></li></ol></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#参考文章"><span class="post-toc-number">6.</span> <span class="post-toc-text">参考文章</span></a></li></ol></div>
+                        
+                    
+                    <article id="post-content">
+                        <p>Google 两步认证，是 Google 公司提供的，一种增强账户安全性的方式。 它使用 TOTP 算法（基于时间的一次性密码算法）。<a id="more"></a>本文尤其感谢</p>
+<h1 id="安装-google-pam">安装 Google PAM</h1>
+<p>PAM(<em>Pluggable Authentication Module</em>) 是 Linux 系统上用于对用户进行身份验证的身份验证基础结构。由于 Google 制作了一个OATH-TOTP应用程序，他们还制作了一个生成 TOTP 的 PAM，并且与任何 OATH-TOTP应用程序（如 Google Authenticator 或 <a href="https://www.authy.com/" target="_blank" rel="noopener">Authy</a> ）完全兼容。<br>
+首先，更新 Debian 仓库缓存</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">apt update</span><br></pre></td></tr></table></figure>
+<p>并安装 PAM</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">apt install libpam-google-authenticator</span><br></pre></td></tr></table></figure>
+<p>运行应用程序</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">google-authenticator</span><br></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Do you want authentication tokens to be time-based (y/n) y</span><br></pre></td></tr></table></figure>
+<p>您希望身份验证令牌是基于时间的吗？ 回复 <code>y</code></p>
+<p>⚠️<strong>此处将会显示二维码，请保证 Shell 窗口足够大，否则会显示错误</strong></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Your new secret key is: ABCDEFG</span><br></pre></td></tr></table></figure>
+<p>无法扫码的话，可以通过手动输入此处显示的密钥来添加</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">Your verification code is 123456</span><br><span class="line">Your emergency scratch codes are:</span><br><span class="line">  12345678</span><br><span class="line">  12345678</span><br><span class="line">  12345678</span><br><span class="line">  12345678</span><br><span class="line">  12345678</span><br></pre></td></tr></table></figure>
+<p>请保存好此处提供的5组应急恢复密钥，您可以在必要时使用</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Do you want me to update your <span class="string">"/root/.google_authenticator"</span> file (y/n) y</span><br></pre></td></tr></table></figure>
+<p>是否更新验证文件？ 回复 <code>y</code></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">Do you want to disallow multiple uses of the same authentication</span><br><span class="line">token? This restricts you to one login about every 30s, but it increases</span><br><span class="line">your chances to notice or even prevent man-in-the-middle attacks (y/n) y</span><br></pre></td></tr></table></figure>
+<p>禁止同一时间使用同一个验证码登陆服务器，回复 <code>y</code></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">By default, tokens are good <span class="keyword">for</span> 30 seconds. In order to compensate <span class="keyword">for</span></span><br><span class="line">possible time-skew between the client and the server, we allow an extra</span><br><span class="line">token before and after the current time. If you experience problems with</span><br><span class="line">poor time synchronization, you can increase the window from its default</span><br><span class="line">size of +-1min (window size of 3) to about +-4min (window size of</span><br><span class="line">17 acceptable tokens).</span><br><span class="line">Do you want to <span class="keyword">do</span> so? (y/n) n</span><br></pre></td></tr></table></figure>
+<p>默认情况下，验证码有效期为30秒。因为时间可能不同步，可以将时间延长至4分钟 建议选择 <code>n</code> (默认30秒)</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">If the computer that you are logging into isn<span class="string">'t hardened against brute-force</span></span><br><span class="line"><span class="string">login attempts, you can enable rate-limiting for the authentication module.</span></span><br><span class="line"><span class="string">By default, this limits attackers to no more than 3 login attempts every 30s.</span></span><br><span class="line"><span class="string">Do you want to enable rate-limiting (y/n)</span></span><br></pre></td></tr></table></figure>
+<p>限制尝试次数，每30秒最大可尝试3次，回复 <code>y</code> 启用</p>
+<h1 id="配置-openssh">配置 OpenSSH</h1>
+<p>编辑 sshd 文件</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">nano /etc/pam.d/sshd</span><br></pre></td></tr></table></figure>
+<p>在文件底部添加以下内容</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"># Standard Un*x password updating.</span><br><span class="line">@include common-password</span><br><span class="line">auth required pam_google_authenticator.so nullok</span><br></pre></td></tr></table></figure>
+<p><code>nullok</code> 最后一行末尾的单词告诉 PAM 这种身份验证方法是可选的。这允许没有 OATH-TOTP 令牌的用户仍然使用他们的 SSH 密钥登录。一旦所有用户都拥有 OATH-TOTP 令牌，您就可以 <code>nullok</code> 从此行中删除以强制使用MFA。</p>
+<p>保存并关闭文件</p>
+<p>接下来，配置 SSH 来支持两步认证。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">nano /etc/ssh/sshd_config</span><br></pre></td></tr></table></figure>
+<p>找到 <code>ChallengeResponseAuthentication</code> 并设置为 <code>yes</code>。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"># Change to yes to enable challenge-response passwords (beware issues with</span><br><span class="line"># some PAM modules and threads)</span><br><span class="line">ChallengeResponseAuthentication yes</span><br></pre></td></tr></table></figure>
+<p>保存并关闭文件，重新启动 SSH 来重新加载配置文件，<strong>不要关闭当前的连接，否则如果配置出现错误，您将无法连接到服务器</strong></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">systemctl restart sshd.service</span><br></pre></td></tr></table></figure>
+<p>此时新建一个 SSH 连接, 如果您之前已创建 SSH 密钥并正在使用它，则会注意到您无需输入用户密码或MFA验证码。这是因为默认情况下 SSH 密钥会覆盖所有其他身份验证选项。否则，您应该已经获得密码和验证码提示。</p>
+<h1 id="配置两步认证">配置两步认证</h1>
+<p>重新打开 <code>sshd</code> 配置文件</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">nano /etc/ssh/sshd_config</span><br></pre></td></tr></table></figure>
+<p>在配置文件最下方添加如下内容，添加后连接服务器时需要有SSH key + 密码 或 SSH key + 验证码 (或者同时输入三项)</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">UsePAM yes</span><br><span class="line">AuthenticationMethods publickey,password publickey,keyboard-interactive</span><br></pre></td></tr></table></figure>
+<p>保存并关闭文件，再次打开 PAM <code>sshd</code> 配置文件</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">nano /etc/pam.d/sshd</span><br></pre></td></tr></table></figure>
+<p>找到 <code>@include common-auth</code> 在句首添加 # ，此举告诉服务器不要提示输入密码</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"># Standard Un*x authentication.</span><br><span class="line">#@include common-auth</span><br></pre></td></tr></table></figure>
+<p>保存并关闭文件，重新启动 SSH 来重新加载配置文件，<strong>不要关闭当前的连接，否则如果配置出现错误，您将无法连接到服务器</strong></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">systemctl restart sshd.service</span><br></pre></td></tr></table></figure>
+<p>此时再次新建一个SSH连接, 与上次不同，SSH会要求您输入验证码。输入后，您将成功连接到服务器。即使您没有看到任何使用SSH密钥的迹象，您的登录尝试也会使用两个认证方式。如果要验证，可以在SSH命令后添加<code>-v</code> (for verbose)</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"># Example SSH output\. . .</span><br><span class="line">debug1: Authentications that can continue: publickey</span><br><span class="line">debug1: Next authentication method: publickey</span><br><span class="line">debug1: Offering RSA public key: /Users/sammy/.ssh/id_rsa</span><br><span class="line">debug1: Server accepts key: pkalg rsa-sha2-512 blen 279</span><br><span class="line">Authenticated with partial success.</span><br><span class="line">debug1: Authentications that can continue: password,keyboard-interactive</span><br><span class="line">debug1: Next authentication method: keyboard-interactive</span><br><span class="line">Verification code:</span><br></pre></td></tr></table></figure>
+<h1 id="添加三次认证-可选">添加三次认证 (可选)</h1>
+<p>现在我们已经成功在 sshd_config 文件中添加并允许了以下认证方式：</p>
+<ul>
+<li>SSH key</li>
+<li>密码</li>
+<li>MFA 两步认证</li>
+</ul>
+<p>尽管我们允许了这三项，但是现在只能通过 SSH key 和 MFA 两步认证来连接到服务器，如果您希望同时启用上面的三种认证方式，修改 PAM 目录下的 <code>sshd</code> 配置文件，将我们之前在<code>@include common-auth</code> 前面添加的 <code>#</code> 删掉，并保存再重新加载 SSH 配置文件即可</p>
+<p>到此，本文已经讲述了如何使用 SSH 密钥并同时启用基于时间的 MFA 一次性密码。下面会讲述如何恢复访问权限等内容</p>
+<h1 id="恢复访问权限">恢复访问权限</h1>
+<h2 id="同时丢失-ssh-key-和-mfa-认证">同时丢失 SSH key 和 MFA 认证</h2>
+<p><strong>此情况下恢复访问权限，基于您能使用 VNC 或某些厂商提供的恢复模式的情况下</strong>，否则请直接去重装系统吧，或者回想一下是否有其他 sudo 账户</p>
+<p>上文提到过的密钥和应急恢复代码保存在 <code>~/.google-authenticator</code> 文件中，第一行即为密钥，重新添加至 OTP 应用程序中即可，您也可以删除此文件(不再使用现有密钥)，此时您可以使用单一认证方式登录，登陆后重新运行 <code>google-authenticator</code> 生成新的密钥</p>
+<h2 id="仅丢失-otp">仅丢失 OTP</h2>
+<p>您可以使用初次创建时，系统自动生成的应急恢复代码登录至服务器，每一个恢复代码仅可使用一次</p>
+<h1 id="参考文章">参考文章</h1>
+<p><a href="http://sam.xnet.tk/2014/09/ubuntu-2-factor-login-public-key-google-authenticator/" target="_blank" rel="noopener">Ubuntu Two-Factor Login (public key + Google Authenticator)</a><br>
+<a href="https://www.digitalocean.com/community/tutorials/how-to-set-up-multi-factor-authentication-for-ssh-on-ubuntu-16-04" target="_blank" rel="noopener">How To Set Up Multi-Factor Authentication for SSH on Ubuntu 16.04</a><br>
+<a href="https://iluoy.com/articles/263" target="_blank" rel="noopener">使用Google身份验证进行ssh二次验证</a><br>
+<a href="http://blog.51cto.com/liumissyou/1716727" target="_blank" rel="noopener">Google Authenticator安全配置ssh二次验证登录</a></p>
+
+                    </article>
+                    
+    <blockquote class="post-license">
+        <p>
+            <strong>本文作者&nbsp;:&nbsp;Edison Jwa</strong>
+            <br>
+            <strong>
+            
+                本文使用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">署名-非商业性使用-相同方式共享 4.0 国际 (CC BY-NC-SA 4.0)</a> 协议
+            </strong>
+            <br>
+            <strong>本文链接&nbsp;:&nbsp;</strong><a href="https://www.wevg.org/archives/ssh-add-mfa/">https://www.wevg.org/archives/ssh-add-mfa/</a>
+        </p>
+    </blockquote>
+
+
+
+    <blockquote id="date-expire-notification" class="post-expired-notify">本文最后更新于 <span id="date-expire-num"></span> 天前，文中所描述的信息可能已发生改变</blockquote>
+    <script>
+    (function() {
+        var dateUpdate = Date.parse("2019-03-13");
+        var nowDate = new Date();
+        var a = nowDate.getTime();
+        var b = a - dateUpdate;
+        var daysUpdateExpire = Math.floor(b/(24*3600*1000));
+        if (daysUpdateExpire >= 120) {
+            document.getElementById('date-expire-num').innerHTML = daysUpdateExpire;
+        } else {
+            document.getElementById('date-expire-notification').style.display = 'none';
+        }
+    })();
+    </script>
+
+
+<p class="post-footer-info mb-0 pt-0">本文发表于&nbsp;<time datetime="2018-12-05T07:16:39.000Z" itemprop="datePublished">2018-12-05</time>
+
+    , 最后修改于&nbsp;<time datetime="2019-03-12T15:00:00.000Z" itemprop="dateModified">2019-03-13</time>
+
+</p>
+<p class="post-footer-info mb-0 pt-2">
+
+<span class="post-categories-list mt-2">
+
+<a class="post-categories-list-item" href='/categories/Tech/'>Tech</a>
+
+<a class="post-categories-list-item" href='/categories/Tech/Linux/'>Linux</a>
+
+</span>
+
+
+
+<span class="post-tags-list mt-2">
+
+<a class="post-tags-list-item" href="/tags/Secure/" rel="tag">#&nbsp;Secure</a>
+
+<a class="post-tags-list-item" href="/tags/Google/" rel="tag">#&nbsp;Google</a>
+
+<a class="post-tags-list-item" href="/tags/Linux/" rel="tag">#&nbsp;Linux</a>
+
+<a class="post-tags-list-item" href="/tags/Debian/" rel="tag">#&nbsp;Debian</a>
+
+<a class="post-tags-list-item" href="/tags/SSH/" rel="tag">#&nbsp;SSH</a>
+
+<a class="post-tags-list-item" href="/tags/MFA/" rel="tag">#&nbsp;MFA</a>
+
+</span>
+
+
+</p>
+
+                </div>
+                <div class="post-nav px-2 bg-gray">
+<ul class="pagination">
+    <!-- Prev Nav -->
+    
+        <li class="page-item page-prev">
+            <a href="/archives/nginx-mutli-rtmp/" rel="prev">
+                <div class="page-item-title"><i class="icon icon-back" aria-hidden="true"></i></div>
+                <div class="page-item-subtitle">使用 Nginx 多平台同步直播</div>
+            </a>
+        </li>
+    
+
+    <!-- Next Nav -->
+    
+        <li class="page-item page-next">
+            <a href="/archives/csgo-fps-optimized/" rel="next">
+                <div class="page-item-title"><i class="icon icon-forward" aria-hidden="true"></i></div>
+                <div class="page-item-subtitle">CSGO FPS 终极优化指南</div>
+            </a>
+        </li>
+    
+</ul>
+</div>
+
+                
+                    <!-- # Comment # -->
+                    
+                        <div class="card-footer post-comment">
+                            <div id="disqus_thread"></div>
+
+<script id="js-disqusjs" src="https://cdn.jsdelivr.net/npm/disqusjs@1.2.5/dist/disqus.js" async></script>
+<script>
+document.getElementById('js-disqusjs').addEventListener('load', function () {
+    function loadDisqusJS() {
+        new DisqusJS({
+            shortname: 'edisonj',
+            
+            siteName: 'Vigorous Pro',
+            
+            identifier: 'https://www.wevg.org/archives/ssh-add-mfa/',
+            url: 'https://www.wevg.org/archives/ssh-add-mfa/',
+            api: 'https://disqus.api.opt.ninja/api/',
+            apikey: 'vBTqc5gYirQfuj9STIAANtQCArVi9MN8UZ72UUucwnhus4AhpgpbVJMIn3Ojl4O7',
+            
+            
+        })
+    }
+    if (document.readyState === 'complete') {
+        loadDisqusJS();
+    } else {
+        window.addEventListener('load', loadDisqusJS);
+    }
+});
+</script>
+
+                        </div>
+                    
+                
+            </div>
+        </div>
+    </div>
+</div>
+
+            <!-- ### Footer ### -->
+            <footer class="text-center">
+    <!-- footer copyright -->
+    
+        <p class="footer-copyright mb-0">Copyright&nbsp;©&nbsp;<span id="copyright-year"></span>
+            <a class="footer-copyright-a" href="https://www.wevg.org">Vigorous Pro</a>
+        </p>
+
+    <!-- footer custom text -->
+    <p class="footer-text mb-0">
+    <a href="/atom.xml" target="_blank" class="footer-develop-a" rel="nofollow noopener noreferrer">RSS</a><span class="footer-develop-divider"></span><a href="/donate" target="_blank" class="footer-develop-a" rel="nofollow noopener noreferrer">Donate</a><span class="footer-develop-divider"></span><a href="/privacy-policy" target="_blank" class="footer-develop-a" rel="nofollow noopener noreferrer">Privacy Policy</a>
+    </p>
+    <!-- footer develop info -->
+    <p class="footer-develop mb-0">
+        
+
+        
+        Powered by&nbsp;<!--
+         --><a href="https://hexo.io" target="_blank" class="footer-develop-a" rel="external nofollow noopener noreferrer">Hexo</a><span class="footer-develop-divider"></span>Theme&nbsp;-&nbsp;<!--
+         --><a href="https://github.com/SukkaW/hexo-theme-suka" target="_blank" class="footer-develop-a" rel="external noopener">Suka</a>
+    </p>
+</footer>
+
+
+        <!-- ### Import File ### -->
+        <!-- ### Footer JS Import ### -->
+
+<script>
+
+    
+window.lazyLoadOptions = {
+    elements_selector: ".lazyload",
+    threshold: 50
+};
+
+(function() {
+    var copyrightNow = new Date().getFullYear();
+    var copyrightContent = document.getElementById('copyright-year');
+    var copyrightSince = 2015;
+    if (copyrightSince === copyrightNow) {
+        copyrightContent.textContent = copyrightNow;
+    } else {
+        copyrightContent.textContent = copyrightSince + ' - ' + copyrightNow;
+    }
+})();
+console.log('\n %c Suka Theme (hexo-theme-suka) | © SukkaW | Verision 1.4.0 %c https://github.com/SukkaW/hexo-theme-suka \n', 'color: #fff; background: #444; padding:5px 0;', 'background: #bbb; padding:5px 0;');
+
+</script>
+
+<script src="https://cdn.jsdelivr.net/npm/vanilla-lazyload" async></script>
+
+
+
+<!-- Comment -->
+
+    
+        <!-- No need for DisqusJS -->
+    
+
+
+<!-- ### Custom Footer ### -->
+<script> if ('serviceWorker' in navigator) { window.addEventListener('load', () => { navigator.serviceWorker.register('/sw.js'); }) } </script><script>window.ga_tid = "UA-106121780-1";window.ga_api = "https://ga.cdn.uv.uy/";</script><script src="https://cdn.jsdelivr.net/npm/cfga@1.0.1" async></script>
+    </body>
+
+</html>

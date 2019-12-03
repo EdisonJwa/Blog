@@ -1,0 +1,6 @@
+# Redirect default Netlify subdomain to primary domain
+https://infallible-heyrovsky-cce5a2.netlify.com/* https://www.wevg.org/:splat 301!
+/archives/166 /archives/teamspeak-server-build/ 301!
+https://blog.wevg.org/* https://www.wevg.org/:splat 301!
+/how-to-use-teamspeak3 /archives/how-to-use-teamspeak3/ 301!
+/archives/fps-optimize /archives/csgo-fps-optimized/ 301！
