@@ -1,6 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
+    <loc>https://www.wevg.org/archives/teamspeak-server-build/</loc>
+    <lastmod>2019-12-07</lastmod>
+  </url>  <url>
+    <loc>https://www.wevg.org/archives/teamspeak-server-via-docker/</loc>
+    <lastmod>2019-12-07</lastmod>
+  </url>  <url>
     <loc>https://www.wevg.org/archives/add-darkmode-support/</loc>
     <lastmod>2019-12-05</lastmod>
   </url>  <url>
@@ -12,9 +18,6 @@
   </url>  <url>
     <loc>https://www.wevg.org/archives/fix-disqus-vglink-problem/</loc>
     <lastmod>2019-11-08</lastmod>
-  </url>  <url>
-    <loc>https://www.wevg.org/archives/teamspeak-server-build/</loc>
-    <lastmod>2019-10-30</lastmod>
   </url>  <url>
     <loc>https://www.wevg.org/archives/pair-locking-your-iphone/</loc>
     <lastmod>2019-10-12</lastmod>

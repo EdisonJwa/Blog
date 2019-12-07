@@ -8,36 +8,36 @@
     </url>
     
     <url>
-        <loc>https://www.wevg.org/search/</loc>
-        <lastmod>2019-12-07T05:52:15.666Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.8</priority>
-    </url>
-    
-    <url>
         <loc>https://www.wevg.org/how-to-use-teamspeak3.html</loc>
-        <lastmod>2019-12-07T05:52:15.662Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.8</priority>
-    </url>
-    
-    <url>
-        <loc>https://www.wevg.org/donate/</loc>
-        <lastmod>2019-12-07T05:52:15.662Z</lastmod>
+        <lastmod>2019-12-07T08:42:34.269Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.8</priority>
     </url>
     
     <url>
         <loc>https://www.wevg.org/friends/</loc>
-        <lastmod>2019-12-07T05:52:15.662Z</lastmod>
+        <lastmod>2019-12-07T08:42:34.269Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.8</priority>
     </url>
     
     <url>
         <loc>https://www.wevg.org/how-to-use-teamspeak3/</loc>
-        <lastmod>2019-12-07T05:52:15.662Z</lastmod>
+        <lastmod>2019-12-07T08:42:34.269Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.8</priority>
+    </url>
+    
+    <url>
+        <loc>https://www.wevg.org/search/</loc>
+        <lastmod>2019-12-07T08:42:34.269Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.8</priority>
+    </url>
+    
+    <url>
+        <loc>https://www.wevg.org/donate/</loc>
+        <lastmod>2019-12-07T08:42:34.265Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.8</priority>
     </url>
