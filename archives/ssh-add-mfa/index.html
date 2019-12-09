@@ -130,12 +130,6 @@
 
 
 
-    <!-- Prettify Theme -->
-    
-    <link rel="preload" href="/css/highlight/vs2015.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'"><noscript><link rel="stylesheet" href="/css/highlight/vs2015.min.css"></noscript>
-
-
-
 
 
 <script>
@@ -224,7 +218,7 @@
 
 
     <!-- ### Custom Head ### -->
-    <!-- 一行自定义代码 --><!-- 多行自定义代码 --><!-- 第二行 --><!-- 第三行 --><link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/EdisonJwa/Blog@latest/css/darkmode.min.css"><script src="https://cdn.jsdelivr.net/gh/EdisonJwa/Blog@latest/js/edison-main.min.js"></script><script type="module" async="" src="https://cdn.jsdelivr.net/npm/instant.page@3.0.0/instantpage.min.js"></script><link rel="manifest" href="/site.webmanifest"><meta name="msapplication-TileColor" content="#d43d3d"><meta name="msapplication-TileImage" content="/source/favicon/mstile-144x144.png"><meta name="theme-color" content="#ffffff"><script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script><script> (adsbygoogle = window.adsbygoogle || []).push({ google_ad_client: "ca-pub-2345785306567671", enable_page_level_ads: true });</script>
+    <!-- 一行自定义代码 --><!-- 多行自定义代码 --><!-- 第二行 --><!-- 第三行 --><link rel="stylesheet" href="/css/darkmode.css"><script src="/js/edison-main.js"></script><script type="module" async="" src="https://cdn.jsdelivr.net/npm/instant.page@3.0.0/instantpage.min.js"></script><link rel="manifest" href="/site.webmanifest"><meta name="msapplication-TileColor" content="#d43d3d"><meta name="msapplication-TileImage" content="/source/favicon/mstile-144x144.png"><meta name="theme-color" content="#ffffff"><script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script><script> (adsbygoogle = window.adsbygoogle || []).push({ google_ad_client: "ca-pub-2345785306567671", enable_page_level_ads: true });</script>
 </head>
 
     <body>
@@ -370,53 +364,105 @@
 <h1 id="安装-google-pam">安装 Google PAM</h1>
 <p>PAM(<em>Pluggable Authentication Module</em>) 是 Linux 系统上用于对用户进行身份验证的身份验证基础结构。由于 Google 制作了一个OATH-TOTP应用程序，他们还制作了一个生成 TOTP 的 PAM，并且与任何 OATH-TOTP应用程序（如 Google Authenticator 或 <a href="https://www.authy.com/" target="_blank" rel="noopener">Authy</a> ）完全兼容。<br>
 首先，更新 Debian 仓库缓存</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span></pre></td><td class="code"><pre><span class="line">apt update</span></pre></td></tr></table></figure>
+<pre><code class="language-bash">apt update
+</code></pre>
 <p>并安装 PAM</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span></pre></td><td class="code"><pre><span class="line">apt install libpam-google-authenticator</span></pre></td></tr></table></figure>
+<pre><code class="language-bash">apt install libpam-google-authenticator
+</code></pre>
 <p>运行应用程序</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span></pre></td><td class="code"><pre><span class="line">google-authenticator</span></pre></td></tr></table></figure>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span></pre></td><td class="code"><pre><span class="line">Do you want authentication tokens to be time-based (y/n) y</span></pre></td></tr></table></figure>
+<pre><code class="language-bash">google-authenticator
+</code></pre>
+<pre><code class="language-bash">Do you want authentication tokens to be time-based (y/n) y
+</code></pre>
 <p>您希望身份验证令牌是基于时间的吗？ 回复 <code>y</code></p>
 <p>⚠️<strong>此处将会显示二维码，请保证 Shell 窗口足够大，否则会显示错误</strong></p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span></pre></td><td class="code"><pre><span class="line">Your new secret key is: ABCDEFG</span></pre></td></tr></table></figure>
+<pre><code class="language-bash">Your new secret key is: ABCDEFG
+</code></pre>
 <p>无法扫码的话，可以通过手动输入此处显示的密钥来添加</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span></pre></td><td class="code"><pre><span class="line">Your verification code is 123456</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">2</span></pre></td><td class="code"><pre><span class="line">Your emergency scratch codes are:</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">3</span></pre></td><td class="code"><pre><span class="line">  12345678</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">4</span></pre></td><td class="code"><pre><span class="line">  12345678</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">5</span></pre></td><td class="code"><pre><span class="line">  12345678</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">6</span></pre></td><td class="code"><pre><span class="line">  12345678</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">7</span></pre></td><td class="code"><pre><span class="line">  12345678</span></pre></td></tr></table></figure>
+<pre><code class="language-bash">Your verification code is 123456
+Your emergency scratch codes are:
+  12345678
+  12345678
+  12345678
+  12345678
+  12345678
+</code></pre>
 <p>请保存好此处提供的5组应急恢复密钥，您可以在必要时使用</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span></pre></td><td class="code"><pre><span class="line">Do you want me to update your <span class="string">"/root/.google_authenticator"</span> file (y/n) y</span></pre></td></tr></table></figure>
+<pre><code class="language-bash">Do you want me to update your &quot;/root/.google_authenticator&quot; file (y/n) y
+</code></pre>
 <p>是否更新验证文件？ 回复 <code>y</code></p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span></pre></td><td class="code"><pre><span class="line">Do you want to disallow multiple uses of the same authentication</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">2</span></pre></td><td class="code"><pre><span class="line">token? This restricts you to one login about every 30s, but it increases</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">3</span></pre></td><td class="code"><pre><span class="line">your chances to notice or even prevent man-in-the-middle attacks (y/n) y</span></pre></td></tr></table></figure>
+<pre><code class="language-bash">Do you want to disallow multiple uses of the same authentication
+token? This restricts you to one login about every 30s, but it increases
+your chances to notice or even prevent man-in-the-middle attacks (y/n) y
+</code></pre>
 <p>禁止同一时间使用同一个验证码登陆服务器，回复 <code>y</code></p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span></pre></td><td class="code"><pre><span class="line">By default, tokens are good <span class="keyword">for</span> 30 seconds. In order to compensate <span class="keyword">for</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">2</span></pre></td><td class="code"><pre><span class="line">possible time-skew between the client and the server, we allow an extra</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">3</span></pre></td><td class="code"><pre><span class="line">token before and after the current time. If you experience problems with</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">4</span></pre></td><td class="code"><pre><span class="line">poor time synchronization, you can increase the window from its default</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">5</span></pre></td><td class="code"><pre><span class="line">size of +-1min (window size of 3) to about +-4min (window size of</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">6</span></pre></td><td class="code"><pre><span class="line">17 acceptable tokens).</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">7</span></pre></td><td class="code"><pre><span class="line">Do you want to <span class="keyword">do</span> so? (y/n) n</span></pre></td></tr></table></figure>
+<pre><code class="language-bash">By default, tokens are good for 30 seconds. In order to compensate for
+possible time-skew between the client and the server, we allow an extra
+token before and after the current time. If you experience problems with
+poor time synchronization, you can increase the window from its default
+size of +-1min (window size of 3) to about +-4min (window size of
+17 acceptable tokens).
+Do you want to do so? (y/n) n
+</code></pre>
 <p>默认情况下，验证码有效期为30秒。因为时间可能不同步，可以将时间延长至4分钟 建议选择 <code>n</code> (默认30秒)</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span></pre></td><td class="code"><pre><span class="line">If the computer that you are logging into isn<span class="string">'t hardened against brute-force</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">2</span></pre></td><td class="code"><pre><span class="line"><span class="string">login attempts, you can enable rate-limiting for the authentication module.</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">3</span></pre></td><td class="code"><pre><span class="line"><span class="string">By default, this limits attackers to no more than 3 login attempts every 30s.</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">4</span></pre></td><td class="code"><pre><span class="line"><span class="string">Do you want to enable rate-limiting (y/n)</span></span></pre></td></tr></table></figure>
+<pre><code class="language-bash">If the computer that you are logging into isn't hardened against brute-force
+login attempts, you can enable rate-limiting for the authentication module.
+By default, this limits attackers to no more than 3 login attempts every 30s.
+Do you want to enable rate-limiting (y/n)
+</code></pre>
 <p>限制尝试次数，每30秒最大可尝试3次，回复 <code>y</code> 启用</p>
 <h1 id="配置-openssh">配置 OpenSSH</h1>
 <p>编辑 sshd 文件</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span></pre></td><td class="code"><pre><span class="line">nano /etc/pam.d/sshd</span></pre></td></tr></table></figure>
+<pre><code class="language-bash">nano /etc/pam.d/sshd
+</code></pre>
 <p>在文件底部添加以下内容</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span></pre></td><td class="code"><pre><span class="line"># Standard Un*x password updating.</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">2</span></pre></td><td class="code"><pre><span class="line">@include common-password</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">3</span></pre></td><td class="code"><pre><span class="line">auth required pam_google_authenticator.so nullok</span></pre></td></tr></table></figure>
+<pre><code class="language-conf"># Standard Un*x password updating.
+@include common-password
+auth required pam_google_authenticator.so nullok
+</code></pre>
 <p><code>nullok</code> 最后一行末尾的单词告诉 PAM 这种身份验证方法是可选的。这允许没有 OATH-TOTP 令牌的用户仍然使用他们的 SSH 密钥登录。一旦所有用户都拥有 OATH-TOTP 令牌，您就可以 <code>nullok</code> 从此行中删除以强制使用MFA。</p>
 <p>保存并关闭文件</p>
 <p>接下来，配置 SSH 来支持两步认证。</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span></pre></td><td class="code"><pre><span class="line">nano /etc/ssh/sshd_config</span></pre></td></tr></table></figure>
+<pre><code class="language-bash">nano /etc/ssh/sshd_config
+</code></pre>
 <p>找到 <code>ChallengeResponseAuthentication</code> 并设置为 <code>yes</code>。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span></pre></td><td class="code"><pre><span class="line"># Change to yes to enable challenge-response passwords (beware issues with</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">2</span></pre></td><td class="code"><pre><span class="line"># some PAM modules and threads)</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">3</span></pre></td><td class="code"><pre><span class="line">ChallengeResponseAuthentication yes</span></pre></td></tr></table></figure>
+<pre><code class="language-conf"># Change to yes to enable challenge-response passwords (beware issues with
+# some PAM modules and threads)
+ChallengeResponseAuthentication yes
+</code></pre>
 <p>保存并关闭文件，重新启动 SSH 来重新加载配置文件，<strong>不要关闭当前的连接，否则如果配置出现错误，您将无法连接到服务器</strong></p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span></pre></td><td class="code"><pre><span class="line">systemctl restart sshd.service</span></pre></td></tr></table></figure>
+<pre><code class="language-bash">systemctl restart sshd.service
+</code></pre>
 <p>此时新建一个 SSH 连接, 如果您之前已创建 SSH 密钥并正在使用它，则会注意到您无需输入用户密码或MFA验证码。这是因为默认情况下 SSH 密钥会覆盖所有其他身份验证选项。否则，您应该已经获得密码和验证码提示。</p>
 <h1 id="配置两步认证">配置两步认证</h1>
 <p>重新打开 <code>sshd</code> 配置文件</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span></pre></td><td class="code"><pre><span class="line">nano /etc/ssh/sshd_config</span></pre></td></tr></table></figure>
+<pre><code class="language-bash">nano /etc/ssh/sshd_config
+</code></pre>
 <p>在配置文件最下方添加如下内容，添加后连接服务器时需要有SSH key + 密码 或 SSH key + 验证码 (或者同时输入三项)</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span></pre></td><td class="code"><pre><span class="line">UsePAM yes</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">2</span></pre></td><td class="code"><pre><span class="line">AuthenticationMethods publickey,password publickey,keyboard-interactive</span></pre></td></tr></table></figure>
+<pre><code class="language-conf">UsePAM yes
+AuthenticationMethods publickey,password publickey,keyboard-interactive
+</code></pre>
 <p>保存并关闭文件，再次打开 PAM <code>sshd</code> 配置文件</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span></pre></td><td class="code"><pre><span class="line">nano /etc/pam.d/sshd</span></pre></td></tr></table></figure>
+<pre><code class="language-bash">nano /etc/pam.d/sshd
+</code></pre>
 <p>找到 <code>@include common-auth</code> 在句首添加 # ，此举告诉服务器不要提示输入密码</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span></pre></td><td class="code"><pre><span class="line"># Standard Un*x authentication.</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">2</span></pre></td><td class="code"><pre><span class="line">#@include common-auth</span></pre></td></tr></table></figure>
+<pre><code class="language-conf"># Standard Un*x authentication.
+#@include common-auth
+</code></pre>
 <p>保存并关闭文件，重新启动 SSH 来重新加载配置文件，<strong>不要关闭当前的连接，否则如果配置出现错误，您将无法连接到服务器</strong></p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span></pre></td><td class="code"><pre><span class="line">systemctl restart sshd.service</span></pre></td></tr></table></figure>
+<pre><code class="language-bash">systemctl restart sshd.service
+</code></pre>
 <p>此时再次新建一个SSH连接, 与上次不同，SSH会要求您输入验证码。输入后，您将成功连接到服务器。即使您没有看到任何使用SSH密钥的迹象，您的登录尝试也会使用两个认证方式。如果要验证，可以在SSH命令后添加<code>-v</code> (for verbose)</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span></pre></td><td class="code"><pre><span class="line"># Example SSH output\. . .</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">2</span></pre></td><td class="code"><pre><span class="line">debug1: Authentications that can continue: publickey</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">3</span></pre></td><td class="code"><pre><span class="line">debug1: Next authentication method: publickey</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">4</span></pre></td><td class="code"><pre><span class="line">debug1: Offering RSA public key: &#x2F;Users&#x2F;sammy&#x2F;.ssh&#x2F;id_rsa</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">5</span></pre></td><td class="code"><pre><span class="line">debug1: Server accepts key: pkalg rsa-sha2-512 blen 279</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">6</span></pre></td><td class="code"><pre><span class="line">Authenticated with partial success.</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">7</span></pre></td><td class="code"><pre><span class="line">debug1: Authentications that can continue: password,keyboard-interactive</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">8</span></pre></td><td class="code"><pre><span class="line">debug1: Next authentication method: keyboard-interactive</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">9</span></pre></td><td class="code"><pre><span class="line">Verification code:</span></pre></td></tr></table></figure>
+<pre><code class="language-conf"># Example SSH output\. . .
+debug1: Authentications that can continue: publickey
+debug1: Next authentication method: publickey
+debug1: Offering RSA public key: /Users/sammy/.ssh/id_rsa
+debug1: Server accepts key: pkalg rsa-sha2-512 blen 279
+Authenticated with partial success.
+debug1: Authentications that can continue: password,keyboard-interactive
+debug1: Next authentication method: keyboard-interactive
+Verification code:
+</code></pre>
 <h1 id="添加三次认证-可选">添加三次认证 (可选)</h1>
 <p>现在我们已经成功在 sshd_config 文件中添加并允许了以下认证方式：</p>
 <ul>

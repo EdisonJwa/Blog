@@ -130,12 +130,6 @@
 
 
 
-    <!-- Prettify Theme -->
-    
-    <link rel="preload" href="/css/highlight/vs2015.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'"><noscript><link rel="stylesheet" href="/css/highlight/vs2015.min.css"></noscript>
-
-
-
 
 
 <script>
@@ -224,7 +218,7 @@
 
 
     <!-- ### Custom Head ### -->
-    <!-- 一行自定义代码 --><!-- 多行自定义代码 --><!-- 第二行 --><!-- 第三行 --><link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/EdisonJwa/Blog@latest/css/darkmode.min.css"><script src="https://cdn.jsdelivr.net/gh/EdisonJwa/Blog@latest/js/edison-main.min.js"></script><script type="module" async="" src="https://cdn.jsdelivr.net/npm/instant.page@3.0.0/instantpage.min.js"></script><link rel="manifest" href="/site.webmanifest"><meta name="msapplication-TileColor" content="#d43d3d"><meta name="msapplication-TileImage" content="/source/favicon/mstile-144x144.png"><meta name="theme-color" content="#ffffff"><script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script><script> (adsbygoogle = window.adsbygoogle || []).push({ google_ad_client: "ca-pub-2345785306567671", enable_page_level_ads: true });</script>
+    <!-- 一行自定义代码 --><!-- 多行自定义代码 --><!-- 第二行 --><!-- 第三行 --><link rel="stylesheet" href="/css/darkmode.css"><script src="/js/edison-main.js"></script><script type="module" async="" src="https://cdn.jsdelivr.net/npm/instant.page@3.0.0/instantpage.min.js"></script><link rel="manifest" href="/site.webmanifest"><meta name="msapplication-TileColor" content="#d43d3d"><meta name="msapplication-TileImage" content="/source/favicon/mstile-144x144.png"><meta name="theme-color" content="#ffffff"><script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script><script> (adsbygoogle = window.adsbygoogle || []).push({ google_ad_client: "ca-pub-2345785306567671", enable_page_level_ads: true });</script>
 </head>
 
     <body>
@@ -372,7 +366,8 @@
 <p>已经安装 GPG (可通过输入<code>gpg --version</code>，确保已经安装)</p>
 <h1 id="生成-gpg-key">生成 GPG Key</h1>
 <p>在终端/命令提示行中输入</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span></pre></td><td class="code"><pre><span class="line">gpg --full-generate-key</span></pre></td></tr></table></figure>
+<pre><code class="language-bash">gpg --full-generate-key
+</code></pre>
 <p>此处的交互选项推荐为：</p>
 <ul>
 <li>RSA and RSA (Default)</li>
@@ -385,32 +380,50 @@
 <p>此部分为将其他位置导出密钥，导入至当前设备中，不需要的话，可直接跳过此步骤</p>
 </blockquote>
 <p>此处文件名以 <code>edison.gpg</code> 为例</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span></pre></td><td class="code"><pre><span class="line">gpg --import edison.gpg</span></pre></td></tr></table></figure>
+<pre><code class="language-bash">gpg --import edison.gpg
+</code></pre>
 <p>此处需要输入之前设置好的密钥密码。<br>
 导入完成后，还需要更改密钥的信任度，因为是<strong>我们自己的密钥</strong>，所以将信任度设置为 <code>Ultimate</code>。</p>
 <p>首先，输入下面的代码，查看自己所有的 GPG key</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span></pre></td><td class="code"><pre><span class="line">gpg --list-secret-keys --keyid-format LONG</span></pre></td></tr></table></figure>
+<pre><code class="language-bash">gpg --list-secret-keys --keyid-format LONG
+</code></pre>
 <p>输出内容如下(示例)</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span></pre></td><td class="code"><pre><span class="line">/home/edison/.gnupg/pubring.kbx</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">2</span></pre></td><td class="code"><pre><span class="line">------------------------------------</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">3</span></pre></td><td class="code"><pre><span class="line">sec   4096R/1234567890ABCDEF 2019-04-23 [expires: 2019-04-23]</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">4</span></pre></td><td class="code"><pre><span class="line">uid    ***********SECRET***********</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">5</span></pre></td><td class="code"><pre><span class="line">ssb   4096R/FEDCBA0987654321 2019-04-23</span></pre></td></tr></table></figure>
+<pre><code class="language-bash">/home/edison/.gnupg/pubring.kbx
+------------------------------------
+sec   4096R/1234567890ABCDEF 2019-04-23 [expires: 2019-04-23]
+uid    ***********SECRET***********
+ssb   4096R/FEDCBA0987654321 2019-04-23
+</code></pre>
 <p>其中 sec 部分的 <strong>1234567890ABCDEF</strong> 就是我们刚刚生成的 GPG key 的 ID，我们要修改这个密钥的信任度，所以输入</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span></pre></td><td class="code"><pre><span class="line">gpg --edit-key 1234567890ABCDEF</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">2</span></pre></td><td class="code"><pre><span class="line">// 修改 1234567890ABCDEF 为实际ID</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">3</span></pre></td><td class="code"><pre><span class="line">trust</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">4</span></pre></td><td class="code"><pre><span class="line">//修改信任度</span></pre></td></tr></table></figure>
+<pre><code class="language-bash">gpg --edit-key 1234567890ABCDEF
+// 修改 1234567890ABCDEF 为实际ID
+trust
+//修改信任度
+</code></pre>
 <p>此处输入 <code>5</code>，即完全信任。</p>
 <h1 id="将-gpg-key-保存到-github">将 GPG key 保存到 GitHub</h1>
 <p>输入下面的命令显示完整的 GPG key， 此处要注意将 <strong>1234567890ABCDEF</strong> 修改为实际内容</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span></pre></td><td class="code"><pre><span class="line">gpg --armor --<span class="built_in">export</span> 1234567890ABCDEF</span></pre></td></tr></table></figure>
+<pre><code class="language-bash">gpg --armor --export 1234567890ABCDEF
+</code></pre>
 <p><strong>复制输出的全部内容</strong></p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span></pre></td><td class="code"><pre><span class="line">-----BEGIN PGP PUBLIC KEY BLOCK-----</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">2</span></pre></td><td class="code"><pre><span class="line">………………</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">3</span></pre></td><td class="code"><pre><span class="line">-----END PGP PUBLIC KEY BLOCK-----</span></pre></td></tr></table></figure>
+<pre><code class="language-bash">-----BEGIN PGP PUBLIC KEY BLOCK-----
+………………
+-----END PGP PUBLIC KEY BLOCK-----
+</code></pre>
 <p>访问 GitHub -&gt; Settings -&gt; SSH and GPG keys -&gt; New GPG key，将复制好的 GPG key 粘贴到输入框并保存。</p>
 <h1 id="启用-gpg-签名">启用 GPG 签名</h1>
 <p>接下来便要为 Git 启用 GPG 签名了，首先设置自己的 GPG key<br>
 输入</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span></pre></td><td class="code"><pre><span class="line">git config --global user.signingkey 1234567890ABCDEF</span></pre></td></tr></table></figure>
+<pre><code class="language-bash">git config --global user.signingkey 1234567890ABCDEF
+</code></pre>
 <h2 id="单次-commit-签名">单次 Commit 签名</h2>
 <p>在提交 Commit 时，添加 <code>-S</code> 即可对本次 git 进行签名</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span></pre></td><td class="code"><pre><span class="line">git commit -S -m <span class="string">"HAHAHAHA I'm Using GPG now"</span></span></pre></td></tr></table></figure>
+<pre><code class="language-bash">git commit -S -m &quot;HAHAHAHA I'm Using GPG now&quot;
+</code></pre>
 <h2 id="每次-commit-都签名">每次 Commit 都签名</h2>
 <p>执行下面的命令即可，日后提交 Commit 的时候也不需要再加 <code>-S</code>了</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span></pre></td><td class="code"><pre><span class="line">git config --global commit.gpgsign <span class="literal">true</span></span></pre></td></tr></table></figure>
+<pre><code class="language-bash">git config --global commit.gpgsign true
+</code></pre>
 <p>提交 Commit 的效果就会是这样了。</p>
 <p><img src="https://i.yecdn.com/images/2019/04/22/99f379f99563a532e63f29679d35db55.png" alt="Commit"></p>
 <h1 id="参考链接">参考链接</h1>

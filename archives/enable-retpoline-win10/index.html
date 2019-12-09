@@ -130,12 +130,6 @@
 
 
 
-    <!-- Prettify Theme -->
-    
-    <link rel="preload" href="/css/highlight/vs2015.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'"><noscript><link rel="stylesheet" href="/css/highlight/vs2015.min.css"></noscript>
-
-
-
 
 
 <script>
@@ -224,7 +218,7 @@
 
 
     <!-- ### Custom Head ### -->
-    <!-- 一行自定义代码 --><!-- 多行自定义代码 --><!-- 第二行 --><!-- 第三行 --><link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/EdisonJwa/Blog@latest/css/darkmode.min.css"><script src="https://cdn.jsdelivr.net/gh/EdisonJwa/Blog@latest/js/edison-main.min.js"></script><script type="module" async="" src="https://cdn.jsdelivr.net/npm/instant.page@3.0.0/instantpage.min.js"></script><link rel="manifest" href="/site.webmanifest"><meta name="msapplication-TileColor" content="#d43d3d"><meta name="msapplication-TileImage" content="/source/favicon/mstile-144x144.png"><meta name="theme-color" content="#ffffff"><script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script><script> (adsbygoogle = window.adsbygoogle || []).push({ google_ad_client: "ca-pub-2345785306567671", enable_page_level_ads: true });</script>
+    <!-- 一行自定义代码 --><!-- 多行自定义代码 --><!-- 第二行 --><!-- 第三行 --><link rel="stylesheet" href="/css/darkmode.css"><script src="/js/edison-main.js"></script><script type="module" async="" src="https://cdn.jsdelivr.net/npm/instant.page@3.0.0/instantpage.min.js"></script><link rel="manifest" href="/site.webmanifest"><meta name="msapplication-TileColor" content="#d43d3d"><meta name="msapplication-TileImage" content="/source/favicon/mstile-144x144.png"><meta name="theme-color" content="#ffffff"><script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script><script> (adsbygoogle = window.adsbygoogle || []).push({ google_ad_client: "ca-pub-2345785306567671", enable_page_level_ads: true });</script>
 </head>
 
     <body>
@@ -379,11 +373,24 @@
 需要注意的是， Retpoline 将会在 19H1 版本默认启用。下面我便会写出尝鲜办法。</p>
 <h1 id="启用方法">启用方法</h1>
 <p>首先，以管理员身份打开命令提示符或 PowerShell 并输入以下内容。</p>
-<figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span></pre></td><td class="code"><pre><span class="line">reg add <span class="string">"HKLM\SYSTEM\CurrentControlSet\Control\Session Manager\Memory Management"</span> /v FeatureSettingsOverride /t REG_DWORD /d <span class="number">0</span>x400</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">2</span></pre></td><td class="code"><pre><span class="line">reg add <span class="string">"HKLM\SYSTEM\CurrentControlSet\Control\Session Manager\Memory Management"</span> /v FeatureSettingsOverrideMask /t REG_DWORD /d <span class="number">0</span>x400</span></pre></td></tr></table></figure>
+<pre><code class="language-powershell">reg add &quot;HKLM\SYSTEM\CurrentControlSet\Control\Session Manager\Memory Management&quot; /v FeatureSettingsOverride /t REG_DWORD /d 0x400
+reg add &quot;HKLM\SYSTEM\CurrentControlSet\Control\Session Manager\Memory Management&quot; /v FeatureSettingsOverrideMask /t REG_DWORD /d 0x400
+</code></pre>
 <p>接下来，重启计算机，重启完成后，以管理员身份运行 PowerShell 并输入以下内容</p>
-<figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span></pre></td><td class="code"><pre><span class="line"><span class="built_in">Install-Module</span> -Name SpeculationControl</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">2</span></pre></td><td class="code"><pre><span class="line"><span class="built_in">Set-ExecutionPolicy</span> RemoteSigned</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">3</span></pre></td><td class="code"><pre><span class="line"><span class="built_in">Import-Module</span> SpeculationControl</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">4</span></pre></td><td class="code"><pre><span class="line">Get-SpeculationControlSettings</span></pre></td></tr></table></figure>
+<pre><code class="language-powershell">Install-Module -Name SpeculationControl
+Set-ExecutionPolicy RemoteSigned
+Import-Module SpeculationControl
+Get-SpeculationControlSettings
+</code></pre>
 <p>安装过程全部回复 Y，完成后，会返回一大堆信息,如果内容与下面一致即说明启用成功。</p>
-<figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span></pre></td><td class="code"><pre><span class="line">Speculation control settings <span class="keyword">for</span> CVE-<span class="number">2017</span>-<span class="number">5715</span> [branch target injection]</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">2</span></pre></td><td class="code"><pre><span class="line">Hardware support <span class="keyword">for</span> branch target injection mitigation is present: True </span></pre></td></tr><tr><td class="gutter"><pre><span class="line">3</span></pre></td><td class="code"><pre><span class="line">Windows OS support <span class="keyword">for</span> branch target injection mitigation is present: True</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">4</span></pre></td><td class="code"><pre><span class="line">Windows OS support <span class="keyword">for</span> branch target injection mitigation is enabled: True</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">5</span></pre></td><td class="code"><pre><span class="line">…</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">6</span></pre></td><td class="code"><pre><span class="line">BTIKernelRetpolineEnabled           : True</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">7</span></pre></td><td class="code"><pre><span class="line">BTIKernelImportOptimizationEnabled  : True</span></pre></td></tr></table></figure>
+<pre><code class="language-powershell">Speculation control settings for CVE-2017-5715 [branch target injection]
+Hardware support for branch target injection mitigation is present: True 
+Windows OS support for branch target injection mitigation is present: True
+Windows OS support for branch target injection mitigation is enabled: True
+…
+BTIKernelRetpolineEnabled           : True
+BTIKernelImportOptimizationEnabled  : True
+</code></pre>
 <h1 id="参考链接">参考链接</h1>
 <p><a href="https://blog.alyac.co.kr/1479" target="_blank" rel="noopener">Google, 성능저하 없이 Spectre 취약점을 패치할 수 있는 Retpoline 공개</a><br>
 <a href="https://techcommunity.microsoft.com/t5/Windows-Kernel-Internals/Mitigating-Spectre-variant-2-with-Retpoline-on-Windows/ba-p/295618" target="_blank" rel="noopener">Mitigating Spectre variant 2 with Retpoline on Windows</a><br>

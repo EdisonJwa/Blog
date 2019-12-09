@@ -130,12 +130,6 @@
 
 
 
-    <!-- Prettify Theme -->
-    
-    <link rel="preload" href="/css/highlight/vs2015.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'"><noscript><link rel="stylesheet" href="/css/highlight/vs2015.min.css"></noscript>
-
-
-
 
 
 <script>
@@ -224,7 +218,7 @@
 
 
     <!-- ### Custom Head ### -->
-    <!-- 一行自定义代码 --><!-- 多行自定义代码 --><!-- 第二行 --><!-- 第三行 --><link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/EdisonJwa/Blog@latest/css/darkmode.min.css"><script src="https://cdn.jsdelivr.net/gh/EdisonJwa/Blog@latest/js/edison-main.min.js"></script><script type="module" async="" src="https://cdn.jsdelivr.net/npm/instant.page@3.0.0/instantpage.min.js"></script><link rel="manifest" href="/site.webmanifest"><meta name="msapplication-TileColor" content="#d43d3d"><meta name="msapplication-TileImage" content="/source/favicon/mstile-144x144.png"><meta name="theme-color" content="#ffffff"><script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script><script> (adsbygoogle = window.adsbygoogle || []).push({ google_ad_client: "ca-pub-2345785306567671", enable_page_level_ads: true });</script>
+    <!-- 一行自定义代码 --><!-- 多行自定义代码 --><!-- 第二行 --><!-- 第三行 --><link rel="stylesheet" href="/css/darkmode.css"><script src="/js/edison-main.js"></script><script type="module" async="" src="https://cdn.jsdelivr.net/npm/instant.page@3.0.0/instantpage.min.js"></script><link rel="manifest" href="/site.webmanifest"><meta name="msapplication-TileColor" content="#d43d3d"><meta name="msapplication-TileImage" content="/source/favicon/mstile-144x144.png"><meta name="theme-color" content="#ffffff"><script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script><script> (adsbygoogle = window.adsbygoogle || []).push({ google_ad_client: "ca-pub-2345785306567671", enable_page_level_ads: true });</script>
 </head>
 
     <body>
@@ -378,24 +372,32 @@ TeamSpeak 官网 <a href="https://www.teamspeak.com" target="_blank" rel="noopen
 <p><span style="color:#DB4D6D;"><strong>为了保证系统的安全，不要使用 root 账户安装并配置TS服务器</strong></span></p>
 </blockquote>
 <p>执行一下系统更新操作：</p>
-<figure class="highlight routeros"><table><tr><td class="gutter"><pre><span class="line">1</span></pre></td><td class="code"><pre><span class="line">apt update &amp;&amp; apt full-upgrade -y</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">2</span></pre></td><td class="code"><pre><span class="line">apt install curl vim wget git sudo unzip apt-transport-https<span class="built_in"> screen </span>ca-certificates dialog softw</span></pre></td></tr></table></figure>
+<pre><code>apt update &amp;&amp; apt full-upgrade -y
+apt install curl vim wget git sudo unzip apt-transport-https screen ca-certificates dialog softw
+</code></pre>
 <p>新建一个用户</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span></pre></td><td class="code"><pre><span class="line">useradd teamspeak</span></pre></td></tr></table></figure>
+<pre><code class="language-bash">useradd teamspeak
+</code></pre>
 <p>切换至 /opt录下</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span></pre></td><td class="code"><pre><span class="line"><span class="built_in">cd</span> /opt</span></pre></td></tr></table></figure>
+<pre><code class="language-bash">cd /opt
+</code></pre>
 <p>复制并解压TS服务器端文件</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span></pre></td><td class="code"><pre><span class="line">wget https://files.teamspeak-services.com/releases/server/3.10.1/teamspeak3-server_linux_amd64-3.10.1.tar.bz2 &amp;&amp; tar -xjvf teamspeak3-server_linux_amd64-3.10.1.tar.bz2 &amp;&amp; rm teamspeak3-server_linux_amd64-3.10.1.tar.bz2</span></pre></td></tr></table></figure>
+<pre><code class="language-bash">wget https://files.teamspeak-services.com/releases/server/3.10.1/teamspeak3-server_linux_amd64-3.10.1.tar.bz2 &amp;&amp; tar -xjvf teamspeak3-server_linux_amd64-3.10.1.tar.bz2 &amp;&amp; rm teamspeak3-server_linux_amd64-3.10.1.tar.bz2
+</code></pre>
 <p>赋予刚刚新建的用户权限，并进入该目录</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span></pre></td><td class="code"><pre><span class="line">chown -R teamspeak:teamspeak teamspeak3-server_linux_amd64 &amp;&amp; <span class="built_in">cd</span> /opt/teamspeak3-server_linux_amd64 &amp;&amp; su teamspeak</span></pre></td></tr></table></figure>
+<pre><code class="language-bash">chown -R teamspeak:teamspeak teamspeak3-server_linux_amd64 &amp;&amp; cd /opt/teamspeak3-server_linux_amd64 &amp;&amp; su teamspeak
+</code></pre>
 <h2 id="同意许可条款">同意许可条款</h2>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span></pre></td><td class="code"><pre><span class="line">touch .ts3server_license_accepted</span></pre></td></tr></table></figure>
+<pre><code class="language-bash">touch .ts3server_license_accepted
+</code></pre>
 <blockquote>
 <p>您可以选择以下任意一种搭建方式进行搭建，若您不理解这些方式的区别，请直接使用第一种搭建方式，即使用 SQLite 搭建</p>
 </blockquote>
 <h2 id="数据库配置">数据库配置</h2>
 <h3 id="方式一-使用-sqlite-搭建">方式一: 使用 SQLite 搭建</h3>
 <p>因 TeamSpeak 默认使用 SQLite, 所以直接执行以下操作即可自动配置，并启动服务器</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span></pre></td><td class="code"><pre><span class="line">./ts3server_startscript.sh start</span></pre></td></tr></table></figure>
+<pre><code class="language-bash">./ts3server_startscript.sh start
+</code></pre>
 <blockquote>
 <p>注意保存密钥及 ServerQuery 管理员账户和密码</p>
 </blockquote>
@@ -404,19 +406,22 @@ TeamSpeak 官网 <a href="https://www.teamspeak.com" target="_blank" rel="noopen
 <ol>
 <li>首先使用 root 登录 MySQL/MariaDB</li>
 </ol>
-<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span></pre></td><td class="code"><pre><span class="line">mysql -u root -p</span></pre></td></tr></table></figure>
+<pre><code class="language-sql">mysql -u root -p 
+</code></pre>
 <ol start="2">
 <li>会提示输入密码，输入密码登陆后，创建一个名为 teamspeak 的数据库</li>
 </ol>
 <blockquote>
 <p>数据库名，用户名和密码请自行修改，此处以数据库名 <code>teamspeak_database</code>，用户名 <code>teamspeak_user</code> 及密码 <code>teamspeak_password</code> 为例</p>
 </blockquote>
-<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span></pre></td><td class="code"><pre><span class="line"><span class="keyword">CREATE</span> <span class="keyword">DATABASE</span> teamspeak_database <span class="keyword">DEFAULT</span> <span class="built_in">CHARACTER</span> <span class="keyword">SET</span> utf8mb4 <span class="keyword">COLLATE</span> utf8mb4_general_ci;</span></pre></td></tr></table></figure>
+<pre><code class="language-sql">CREATE DATABASE teamspeak_database DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci; 
+</code></pre>
 <ol start="3">
 <li>创建一个叫做 <code>teamspeak_user</code> 的用户，使用强大的密码并且赋予 <code>teamspeak_database</code> 数据库权限</li>
 </ol>
 <p>由于手机端的流行，我们已经不再使用 <code>utf-8</code> 编码，而改用 <code>utf8mb4</code> 这样我们就可以在 MySQL 数据库里储存 emoji 表情了。你甚至可以尝试使用 emoji 作为用户名或者密码。</p>
-<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span></pre></td><td class="code"><pre><span class="line"><span class="keyword">GRANT</span> <span class="keyword">ALL</span> <span class="keyword">ON</span> teamspeak_database.* <span class="keyword">TO</span> <span class="string">'teamspeak_user'</span>@<span class="string">'localhost'</span> <span class="keyword">IDENTIFIED</span> <span class="keyword">BY</span> <span class="string">'teamspeak_password'</span>;</span></pre></td></tr></table></figure>
+<pre><code class="language-sql">GRANT ALL ON teamspeak_database.* TO 'teamspeak_user'@'localhost' IDENTIFIED BY 'teamspeak_password'; 
+</code></pre>
 <blockquote>
 <p>这里请将密码 <code>teamspeak_password</code> 改成你要设置的强大的没人能猜出来的随机的密码</p>
 </blockquote>
@@ -424,7 +429,9 @@ TeamSpeak 官网 <a href="https://www.teamspeak.com" target="_blank" rel="noopen
 <ol start="4">
 <li>刷新权限，没问题就可以退出结束安装了</li>
 </ol>
-<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span></pre></td><td class="code"><pre><span class="line"><span class="keyword">FLUSH</span> <span class="keyword">PRIVILEGES</span>;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">2</span></pre></td><td class="code"><pre><span class="line">EXIT;</span></pre></td></tr></table></figure>
+<pre><code class="language-sql">FLUSH PRIVILEGES;
+EXIT;
+</code></pre>
 <blockquote>
 <p>进行后续步骤前，首先确保您已经安装 MySQL/MariaDB, 且已经创建好数据库</p>
 </blockquote>
@@ -435,23 +442,37 @@ TeamSpeak 官网 <a href="https://www.teamspeak.com" target="_blank" rel="noopen
 <p>若您已经使用的是 MySQL 数据库, 请将 <code>dbpluginparameter=ts3db_mariadb.ini</code> 部分修改为<br>
 <code>dbpluginparameter=ts3db_mysql.ini</code></p>
 </blockquote>
-<figure class="highlight ini"><table><tr><td class="gutter"><pre><span class="line">1</span></pre></td><td class="code"><pre><span class="line">cat &gt; ts3server.ini &lt;&lt; EOF</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">2</span></pre></td><td class="code"><pre><span class="line"><span class="attr">dbplugin</span>=ts3db_mariadb </span></pre></td></tr><tr><td class="gutter"><pre><span class="line">3</span></pre></td><td class="code"><pre><span class="line"><span class="attr">dbpluginparameter</span>=ts3db_mariadb.ini </span></pre></td></tr><tr><td class="gutter"><pre><span class="line">4</span></pre></td><td class="code"><pre><span class="line"><span class="attr">dbsqlpath</span>=sql/ </span></pre></td></tr><tr><td class="gutter"><pre><span class="line">5</span></pre></td><td class="code"><pre><span class="line"><span class="attr">dbsqlcreatepath</span>=create_mariadb/ </span></pre></td></tr><tr><td class="gutter"><pre><span class="line">6</span></pre></td><td class="code"><pre><span class="line"><span class="attr">dbconnections</span>=<span class="number">10</span></span></pre></td></tr></table></figure>
+<pre><code class="language-ini">cat &gt; ts3server.ini &lt;&lt; EOF
+dbplugin=ts3db_mariadb 
+dbpluginparameter=ts3db_mariadb.ini 
+dbsqlpath=sql/ 
+dbsqlcreatepath=create_mariadb/ 
+dbconnections=10
+</code></pre>
 <ol start="6">
 <li>新建 <code>ts3db_mariadb.ini</code> 文件并输入如下内容</li>
 </ol>
 <blockquote>
 <p>若您已经使用的是 MySQL 数据库, 请创建<code>ts3db_mysql.ini</code> , 不要创建 <code>ts3db_mariadb.ini</code> 文件</p>
 </blockquote>
-<figure class="highlight ini"><table><tr><td class="gutter"><pre><span class="line">1</span></pre></td><td class="code"><pre><span class="line"><span class="section">[config]</span> </span></pre></td></tr><tr><td class="gutter"><pre><span class="line">2</span></pre></td><td class="code"><pre><span class="line"><span class="attr">server</span>=<span class="string">'localhost'</span> </span></pre></td></tr><tr><td class="gutter"><pre><span class="line">3</span></pre></td><td class="code"><pre><span class="line"><span class="attr">port</span>=<span class="string">'3306'</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">4</span></pre></td><td class="code"><pre><span class="line"><span class="attr">username</span>=<span class="string">'teamspeak_user'</span> </span></pre></td></tr><tr><td class="gutter"><pre><span class="line">5</span></pre></td><td class="code"><pre><span class="line"><span class="attr">password</span>=<span class="string">'teamspeak_password'</span> </span></pre></td></tr><tr><td class="gutter"><pre><span class="line">6</span></pre></td><td class="code"><pre><span class="line"><span class="attr">database</span>=<span class="string">'teamspeak_database'</span></span></pre></td></tr></table></figure>
+<pre><code class="language-ini">[config] 
+server='localhost' 
+port='3306'
+username='teamspeak_user' 
+password='teamspeak_password' 
+database='teamspeak_database'
+</code></pre>
 <blockquote>
 <p>将 数据库名 <code>teamspeak_database</code>，用户名 <code>teamspeak_user</code> 及密码 <code>teamspeak_password</code> 部分修改为您自己数据库的信息</p>
 </blockquote>
 <ol start="7">
 <li>将 redist 目录下的 <code>libmariadb.so.2</code> 文件拷贝至当前目录下</li>
 </ol>
-<figure class="highlight vim"><table><tr><td class="gutter"><pre><span class="line">1</span></pre></td><td class="code"><pre><span class="line"><span class="keyword">cp</span> redist/libmariadb.<span class="keyword">so</span>.<span class="number">2</span> ./</span></pre></td></tr></table></figure>
+<pre><code>cp redist/libmariadb.so.2 ./
+</code></pre>
 <p>执行以下操作即可启动服务器</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span></pre></td><td class="code"><pre><span class="line">./ts3server_startscript.sh start inifile=ts3server.ini</span></pre></td></tr></table></figure>
+<pre><code class="language-bash">./ts3server_startscript.sh start inifile=ts3server.ini
+</code></pre>
 <blockquote>
 <p>注意保存密钥及 ServerQuery 管理员账户和密码</p>
 </blockquote>
@@ -460,13 +481,31 @@ TeamSpeak 官网 <a href="https://www.teamspeak.com" target="_blank" rel="noopen
 <blockquote>
 <p><strong>此步骤需要root权限</strong></p>
 </blockquote>
-<figure class="highlight ini"><table><tr><td class="gutter"><pre><span class="line">1</span></pre></td><td class="code"><pre><span class="line"><span class="section">[Unit]</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">2</span></pre></td><td class="code"><pre><span class="line"><span class="attr">Description</span>=Teamspeak, The most superior <span class="literal">on</span>line voice communication solution.</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">3</span></pre></td><td class="code"><pre><span class="line"><span class="attr">Wants</span>=network-<span class="literal">on</span>line.target</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">4</span></pre></td><td class="code"><pre><span class="line"><span class="attr">After</span>=syslog.target network.target network-<span class="literal">on</span>line.target</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">5</span></pre></td><td class="code"><pre><span class="line"></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">6</span></pre></td><td class="code"><pre><span class="line"><span class="section">[Service]</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">7</span></pre></td><td class="code"><pre><span class="line"><span class="attr">User</span>=teamspeak</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">8</span></pre></td><td class="code"><pre><span class="line"><span class="attr">Group</span>=teamspeak</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">9</span></pre></td><td class="code"><pre><span class="line"><span class="attr">WorkingDirectory</span>=/opt/teamspeak3-server_linux_amd64/</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">10</span></pre></td><td class="code"><pre><span class="line"><span class="attr">ExecStart</span>=/opt/teamspeak3-server_linux_amd64/ts3server_startscript.sh start</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">11</span></pre></td><td class="code"><pre><span class="line"><span class="attr">ExecStop</span>=/opt/teamspeak3-server_linux_amd64/ts3server_startscript.sh stop</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">12</span></pre></td><td class="code"><pre><span class="line"><span class="attr">PIDFile</span>=/opt/teamspeak3-server_linux_amd64/ts3server.pid</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">13</span></pre></td><td class="code"><pre><span class="line"><span class="attr">Type</span>=forking</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">14</span></pre></td><td class="code"><pre><span class="line"></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">15</span></pre></td><td class="code"><pre><span class="line"><span class="section">[Install]</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">16</span></pre></td><td class="code"><pre><span class="line"><span class="attr">WantedBy</span>=multi-user.target</span></pre></td></tr></table></figure>
+<pre><code class="language-ini">[Unit]
+Description=Teamspeak, The most superior online voice communication solution.
+Wants=network-online.target
+After=syslog.target network.target network-online.target
+
+[Service]
+User=teamspeak
+Group=teamspeak
+WorkingDirectory=/opt/teamspeak3-server_linux_amd64/
+ExecStart=/opt/teamspeak3-server_linux_amd64/ts3server_startscript.sh start
+ExecStop=/opt/teamspeak3-server_linux_amd64/ts3server_startscript.sh stop
+PIDFile=/opt/teamspeak3-server_linux_amd64/ts3server.pid
+Type=forking
+
+[Install]
+WantedBy=multi-user.target
+</code></pre>
 <blockquote>
 <p>若您是使用 MySQL 或 MariaDB 数据库方式搭建的话，请将</p>
 </blockquote>
-<figure class="highlight ini"><table><tr><td class="gutter"><pre><span class="line">1</span></pre></td><td class="code"><pre><span class="line"><span class="attr">ExecStart</span>=/opt/teamspeak3-server_linux_amd64/ts3server_startscript.sh start</span></pre></td></tr></table></figure>
+<pre><code>ExecStart=/opt/teamspeak3-server_linux_amd64/ts3server_startscript.sh start
+</code></pre>
 <p>修改为</p>
-<figure class="highlight routeros"><table><tr><td class="gutter"><pre><span class="line">1</span></pre></td><td class="code"><pre><span class="line"><span class="attribute">ExecStart</span>=/opt/teamspeak3-server_linux_amd64/ts3server_startscript.sh start <span class="attribute">inifile</span>=ts3server.ini</span></pre></td></tr></table></figure>
+<pre><code>ExecStart=/opt/teamspeak3-server_linux_amd64/ts3server_startscript.sh start inifile=ts3server.ini
+</code></pre>
 <p>重新加载 systemd : <code>systemctl daemon-reload</code><br>
 开启自启动(可选): <code>systemctl enable teamspeak.service</code><br>
 启动 TeamSpeak : <code>systemctl start teamspeak.service</code><br>
@@ -474,7 +513,8 @@ TeamSpeak 官网 <a href="https://www.teamspeak.com" target="_blank" rel="noopen
 重启 TeamSpeak : <code>systemctl restart teamspeak.service</code></p>
 <h1 id="tsdns设置方法-可选">TSDNS设置方法 (可选)</h1>
 <p>进入tsdns文件夹中，并创建的 <code>tsdns_settings.ini</code> 文件，</p>
-<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">nano</span> <span class="selector-tag">tsdns_settings</span><span class="selector-class">.ini</span></span></pre></td></tr></table></figure>
+<pre><code>nano tsdns_settings.ini
+</code></pre>
 <p>配置的格式为 <code>DOMAIN=IP:PORT</code>,比如：</p>
 <ul>
 <li><code>example.com=1.1.1.1:9987</code> 即代表将 <code>example.com</code> 和其他任何以 <code>example.com</code> 为后缀的域名，解析到地址为 <code>1.1.1.1:9987</code> 的ts服务器</li>
@@ -571,12 +611,15 @@ TeamSpeak 官网 <a href="https://www.teamspeak.com" target="_blank" rel="noopen
 <p>接下载, 运行tsdnsserver程序即可，现在连接到TS服务器，可以看到已经显示成功</p>
 <p><img src="https://i.yecdn.com/images/2019/01/05/e3b3003d5f109c0c67c71432bc0155c9.png" alt=""></p>
 <p>可通过此代码来后台运行</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span></pre></td><td class="code"><pre><span class="line">screen -AmdS tsdns ./tsdnsserver</span></pre></td></tr></table></figure>
+<pre><code class="language-bash">screen -AmdS tsdns ./tsdnsserver
+</code></pre>
 <h3 id="添加至开机自启动-可选">添加至开机自启动 (可选)</h3>
 <p>通过 crontab 来实现开机启动</p>
-<figure class="highlight ebnf"><table><tr><td class="gutter"><pre><span class="line">1</span></pre></td><td class="code"><pre><span class="line"><span class="attribute">crontab -e</span></span></pre></td></tr></table></figure>
+<pre><code>crontab -e
+</code></pre>
 <p>在文件中添加</p>
-<figure class="highlight groovy"><table><tr><td class="gutter"><pre><span class="line">1</span></pre></td><td class="code"><pre><span class="line"><span class="meta">@reboot</span> <span class="regexp">/opt/</span>teamspeak3-server_linux_amd64<span class="regexp">/tsdns/</span>tsdnsserver</span></pre></td></tr></table></figure>
+<pre><code>@reboot /opt/teamspeak3-server_linux_amd64/tsdns/tsdnsserver
+</code></pre>
 <p>关闭编辑器并保存。</p>
 <p>接下来，你可以通过 <code>crontab -l</code> 来确认是否添加成功即可。</p>
 <h1 id="许可证介绍">许可证介绍</h1>

@@ -130,12 +130,6 @@
 
 
 
-    <!-- Prettify Theme -->
-    
-    <link rel="preload" href="/css/highlight/vs2015.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'"><noscript><link rel="stylesheet" href="/css/highlight/vs2015.min.css"></noscript>
-
-
-
 
 
 <script>
@@ -224,7 +218,7 @@
 
 
     <!-- ### Custom Head ### -->
-    <!-- 一行自定义代码 --><!-- 多行自定义代码 --><!-- 第二行 --><!-- 第三行 --><link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/EdisonJwa/Blog@latest/css/darkmode.min.css"><script src="https://cdn.jsdelivr.net/gh/EdisonJwa/Blog@latest/js/edison-main.min.js"></script><script type="module" async="" src="https://cdn.jsdelivr.net/npm/instant.page@3.0.0/instantpage.min.js"></script><link rel="manifest" href="/site.webmanifest"><meta name="msapplication-TileColor" content="#d43d3d"><meta name="msapplication-TileImage" content="/source/favicon/mstile-144x144.png"><meta name="theme-color" content="#ffffff"><script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script><script> (adsbygoogle = window.adsbygoogle || []).push({ google_ad_client: "ca-pub-2345785306567671", enable_page_level_ads: true });</script>
+    <!-- 一行自定义代码 --><!-- 多行自定义代码 --><!-- 第二行 --><!-- 第三行 --><link rel="stylesheet" href="/css/darkmode.css"><script src="/js/edison-main.js"></script><script type="module" async="" src="https://cdn.jsdelivr.net/npm/instant.page@3.0.0/instantpage.min.js"></script><link rel="manifest" href="/site.webmanifest"><meta name="msapplication-TileColor" content="#d43d3d"><meta name="msapplication-TileImage" content="/source/favicon/mstile-144x144.png"><meta name="theme-color" content="#ffffff"><script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script><script> (adsbygoogle = window.adsbygoogle || []).push({ google_ad_client: "ca-pub-2345785306567671", enable_page_level_ads: true });</script>
 </head>
 
     <body>
@@ -380,7 +374,9 @@
 <ol>
 <li>请根据自己的显示器分辨率修改 <strong>videoconfig.txt</strong> 文件中的以下两项(此处以 1920x1080 为例)，提供的配置文件已经设置为1920x1080。</li>
 </ol>
-  <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span></pre></td><td class="code"><pre><span class="line">&quot;setting.defaultres&quot;		&quot;1920&quot;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">2</span></pre></td><td class="code"><pre><span class="line">&quot;setting.defaultresheight&quot;		&quot;1080&quot;</span></pre></td></tr></table></figure>
+<pre><code class="language-conf">	&quot;setting.defaultres&quot;		&quot;1920&quot;
+	&quot;setting.defaultresheight&quot;		&quot;1080&quot;
+</code></pre>
 <ol start="2">
 <li>配置完成后，请务必将 <strong>videoconfig.txt</strong> 文件设置为 <strong>只读</strong>，否则启动游戏时，修改的内容将会被覆写。</li>
 </ol>
@@ -409,7 +405,8 @@
 <p>打开 <strong>Origin</strong>，点击界面左侧的 <strong>游戏库</strong> 找到并右键点击 <strong>Apex</strong> 并打开菜单中的 <strong>游戏属性</strong> 选项。</p>
 <p><img src="https://i.yecdn.com/images/2019/02/24/23bec10b1ef3e591a0c3cd212dd2c4e2.png" alt=""></p>
 <p>点击 <strong>进阶启动选项</strong> 在 <strong>命令行引数</strong> 中 填写以下内容</p>
-<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span></pre></td><td class="code"><pre><span class="line">+exec autoexec +cl_showfps 4 -fullscreen -novid -forcenovsync</span></pre></td></tr></table></figure>
+<pre><code class="language-json">+exec autoexec +cl_showfps 4 -fullscreen -novid -forcenovsync
+</code></pre>
 <p>2019.04.12 最近本人在电脑上重新安装 Apex 时发现，有时候会出现在进入游戏的界面未响应（非性能问题），后发现可通过删除启动项中的 <code>-fullscreen</code> 解决此问题，但造成的问题是，进入游戏时为窗口化，目前在寻找解决办法，请关注后期更新~~</p>
 <blockquote>
 <p><strong>部分参数说明</strong><br>
@@ -431,7 +428,14 @@
 <p>第一种就是就是登陆微软账户并打开 XBOX 软件<strong>关闭 DVR 滑钮</strong>，这里不做教程。</p>
 <p>第二种就是使用我们提供好的一键关闭 XBOX DVR 脚本，运行并重启电脑后生效。</p>
 <p><strong>2018-10-18</strong> 提供一键关闭 DVR 脚本 <a href="https://cloud.wevg.org/Blog/CS-GO/disableDVR.reg" target="_blank" rel="noopener"><strong>点此下载</strong></a></p>
-<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span></pre></td><td class="code"><pre><span class="line">Windows Registry Editor Version 5.00</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">2</span></pre></td><td class="code"><pre><span class="line">[HKEY_CURRENT_USER\System\GameConfigStore]</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">3</span></pre></td><td class="code"><pre><span class="line">"GameDVR_Enabled"=dword:0</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">4</span></pre></td><td class="code"><pre><span class="line">[HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\GameDVR]</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">5</span></pre></td><td class="code"><pre><span class="line">"AllowGameDVR"=dword:0</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">6</span></pre></td><td class="code"><pre><span class="line">[HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\PolicyManager\default\ApplicationManagement\AllowGameDVR]</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">7</span></pre></td><td class="code"><pre><span class="line">"value"=dword:0</span></pre></td></tr></table></figure>
+<pre><code class="language-json">Windows Registry Editor Version 5.00
+[HKEY_CURRENT_USER\System\GameConfigStore]
+&quot;GameDVR_Enabled&quot;=dword:0
+[HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\GameDVR]
+&quot;AllowGameDVR&quot;=dword:0
+[HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\PolicyManager\default\ApplicationManagement\AllowGameDVR]
+&quot;value&quot;=dword:0
+</code></pre>
 <p>至此，有关 Xbox 的关闭与卸载结束，我们接着说 Windows 系统的一些设置。</p>
 <h2 id="电源设置">电源设置</h2>
 <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css">
@@ -451,7 +455,8 @@
 <p>​	至此，有关 WIN10 XBOX DVR 的关闭及系统设置章节结束。</p>
 <h2 id="启用-windows-10-卓越性能-可选">启用 Windows 10 卓越性能 (可选)</h2>
 <p>左下角开始菜单点击右键，以管理员方式运行 Powershell，输入以下内容</p>
-<figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span></pre></td><td class="code"><pre><span class="line">powercfg -duplicatescheme e9a42b02-d5df-<span class="number">448</span>d-aa00-<span class="number">03</span>f14749eb61</span></pre></td></tr></table></figure>
+<pre><code class="language-powershell">powercfg -duplicatescheme e9a42b02-d5df-448d-aa00-03f14749eb61
+</code></pre>
 <p>此时，再打开 <strong>设置</strong> - <strong>系统</strong> - <strong>电源</strong> - <strong>其他电源设置</strong> ，即可在电源计划中看到 <strong>卓越性能</strong> 模式。</p>
 <p><img src="https://i.yecdn.com/images/2019/02/26/8ea26f6b98f55e809904b3286a0b98b6.png" alt=""></p>
 <h2 id="其他杂项设置：">其他杂项设置：</h2>

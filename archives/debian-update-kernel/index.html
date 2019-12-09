@@ -130,12 +130,6 @@
 
 
 
-    <!-- Prettify Theme -->
-    
-    <link rel="preload" href="/css/highlight/vs2015.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'"><noscript><link rel="stylesheet" href="/css/highlight/vs2015.min.css"></noscript>
-
-
-
 
 
 <script>
@@ -224,7 +218,7 @@
 
 
     <!-- ### Custom Head ### -->
-    <!-- 一行自定义代码 --><!-- 多行自定义代码 --><!-- 第二行 --><!-- 第三行 --><link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/EdisonJwa/Blog@latest/css/darkmode.min.css"><script src="https://cdn.jsdelivr.net/gh/EdisonJwa/Blog@latest/js/edison-main.min.js"></script><script type="module" async="" src="https://cdn.jsdelivr.net/npm/instant.page@3.0.0/instantpage.min.js"></script><link rel="manifest" href="/site.webmanifest"><meta name="msapplication-TileColor" content="#d43d3d"><meta name="msapplication-TileImage" content="/source/favicon/mstile-144x144.png"><meta name="theme-color" content="#ffffff"><script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script><script> (adsbygoogle = window.adsbygoogle || []).push({ google_ad_client: "ca-pub-2345785306567671", enable_page_level_ads: true });</script>
+    <!-- 一行自定义代码 --><!-- 多行自定义代码 --><!-- 第二行 --><!-- 第三行 --><link rel="stylesheet" href="/css/darkmode.css"><script src="/js/edison-main.js"></script><script type="module" async="" src="https://cdn.jsdelivr.net/npm/instant.page@3.0.0/instantpage.min.js"></script><link rel="manifest" href="/site.webmanifest"><meta name="msapplication-TileColor" content="#d43d3d"><meta name="msapplication-TileImage" content="/source/favicon/mstile-144x144.png"><meta name="theme-color" content="#ffffff"><script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script><script> (adsbygoogle = window.adsbygoogle || []).push({ google_ad_client: "ca-pub-2345785306567671", enable_page_level_ads: true });</script>
 </head>
 
     <body>
@@ -369,30 +363,49 @@
                         <p>在本文中，将向您展示如何升级 Debian 的内核。让我们开始吧。<a id="more"></a></p>
 <h1 id="更新系统">更新系统</h1>
 <p>执行一下系统更新操作：</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span></pre></td><td class="code"><pre><span class="line">apt update &amp;&amp; apt full-upgrade -y</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">2</span></pre></td><td class="code"><pre><span class="line">apt install lsb-release</span></pre></td></tr></table></figure>
+<pre><code class="language-bash">apt update &amp;&amp; apt full-upgrade -y
+apt install lsb-release
+</code></pre>
 <h2 id="更新系统的-apt-源-可选">更新系统的 apt 源（可选）</h2>
 <p>个人来说，比较喜欢 Debian AWS 的源，所以此处以此为例。<br>
 执行下面的操作来使用 AWS Debian：</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span></pre></td><td class="code"><pre><span class="line">cat &gt; /etc/apt/sources.list &lt;&lt; EOF</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">2</span></pre></td><td class="code"><pre><span class="line">deb http://cdn-aws.deb.debian.org/debian $(lsb_release -sc) main contrib non-free</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">3</span></pre></td><td class="code"><pre><span class="line">deb http://cdn-aws.deb.debian.org/debian-security $(lsb_release -sc)/updates main contrib non-free</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">4</span></pre></td><td class="code"><pre><span class="line">deb http://cdn-aws.deb.debian.org/debian $(lsb_release -sc)-updates main contrib non-free</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">5</span></pre></td><td class="code"><pre><span class="line">deb http://cdn-aws.deb.debian.org/debian $(lsb_release -sc)-backports main contrib non-free</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">6</span></pre></td><td class="code"><pre><span class="line">deb http://cdn-aws.deb.debian.org/debian $(lsb_release -sc)-proposed-updates main contrib non-free</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">7</span></pre></td><td class="code"><pre><span class="line"><span class="comment"># deb http://cdn-aws.deb.debian.org/debian $(lsb_release -sc)-backports-sloppy main contrib non-free</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">8</span></pre></td><td class="code"><pre><span class="line">EOF</span></pre></td></tr></table></figure>
+<pre><code class="language-bash">cat &gt; /etc/apt/sources.list &lt;&lt; EOF
+deb http://cdn-aws.deb.debian.org/debian $(lsb_release -sc) main contrib non-free
+deb http://cdn-aws.deb.debian.org/debian-security $(lsb_release -sc)/updates main contrib non-free
+deb http://cdn-aws.deb.debian.org/debian $(lsb_release -sc)-updates main contrib non-free
+deb http://cdn-aws.deb.debian.org/debian $(lsb_release -sc)-backports main contrib non-free
+deb http://cdn-aws.deb.debian.org/debian $(lsb_release -sc)-proposed-updates main contrib non-free
+# deb http://cdn-aws.deb.debian.org/debian $(lsb_release -sc)-backports-sloppy main contrib non-free
+EOF
+</code></pre>
 <p>修改过源之后，记得更新 apt 的本地包信息：</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span></pre></td><td class="code"><pre><span class="line">apt update</span></pre></td></tr></table></figure>
+<pre><code class="language-bash">apt update
+</code></pre>
 <h1 id="安装新版内核">安装新版内核</h1>
 <p>要安装内核，必须要先确定要使用的镜像，先执行：</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span></pre></td><td class="code"><pre><span class="line">apt search linux-image</span></pre></td></tr></table></figure>
+<pre><code class="language-bash">apt search linux-image
+</code></pre>
 <p>接下来，再执行：</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span></pre></td><td class="code"><pre><span class="line">apt install -t $(lsb_release -sc)-backports linux-image-$(dpkg --<span class="built_in">print</span>-architecture) linux-headers-$(dpkg --<span class="built_in">print</span>-architecture) --install-recommends -y</span></pre></td></tr></table></figure>
+<pre><code class="language-bash">apt install -t $(lsb_release -sc)-backports linux-image-$(dpkg --print-architecture) linux-headers-$(dpkg --print-architecture) --install-recommends -y
+</code></pre>
 <p>Debian 10 云服务器可以执行此项， 安装专为云平台优化的内核 (Thanks to <a href="https://dcc.cat/" target="_blank" rel="noopener">七呼大佬</a>)</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span></pre></td><td class="code"><pre><span class="line">apt install -t $(lsb_release -sc)-backports linux-image-cloud-$(dpkg --<span class="built_in">print</span>-architecture) linux-headers-cloud-$(dpkg --<span class="built_in">print</span>-architecture) --install-recommends -y</span></pre></td></tr></table></figure>
+<pre><code class="language-bash">apt install -t $(lsb_release -sc)-backports linux-image-cloud-$(dpkg --print-architecture) linux-headers-cloud-$(dpkg --print-architecture) --install-recommends -y
+</code></pre>
 <p>下面，需要更新更改，并重新启动：</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span></pre></td><td class="code"><pre><span class="line">update-grub</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">2</span></pre></td><td class="code"><pre><span class="line">reboot</span></pre></td></tr></table></figure>
+<pre><code class="language-bash">update-grub
+reboot
+</code></pre>
 <h1 id="检查已安装的内核版本">检查已安装的内核版本</h1>
 <p>重启之后，应该已经切换到新的内核了，输入 <code>uname -r</code>可以查看当前的内核版本</p>
 <p><img src="https://i.yecdn.com/images/2019/04/25/4ba6a6225a6873158d228cf9328a040f.png" alt=""></p>
 <h1 id="后续清理工作">后续清理工作</h1>
 <p>执行下面的命令来获取已经不需要的旧版内核：</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span></pre></td><td class="code"><pre><span class="line">dpkg -l | grep linux</span></pre></td></tr></table></figure>
+<pre><code class="language-bash">dpkg -l | grep linux
+</code></pre>
 <p>然后把不必要的内核逐一删除，此处以 <code>linux-image-4.9.0-3-amd64</code> 为例：</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span></pre></td><td class="code"><pre><span class="line">apt purge linux-image-4.9.0-3-amd64</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">2</span></pre></td><td class="code"><pre><span class="line">……</span></pre></td></tr></table></figure>
+<pre><code class="language-bash">apt purge linux-image-4.9.0-3-amd64
+……
+</code></pre>
 <p><strong>请注意，此处如果操作失误，可能会导致服务器无法启动</strong></p>
 <p>至此更新的工作就完成了。撒花~</p>
 <h1 id="参考链接">参考链接</h1>

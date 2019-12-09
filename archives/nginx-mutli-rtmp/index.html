@@ -130,12 +130,6 @@
 
 
 
-    <!-- Prettify Theme -->
-    
-    <link rel="preload" href="/css/highlight/vs2015.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'"><noscript><link rel="stylesheet" href="/css/highlight/vs2015.min.css"></noscript>
-
-
-
 
 
 <script>
@@ -224,7 +218,7 @@
 
 
     <!-- ### Custom Head ### -->
-    <!-- 一行自定义代码 --><!-- 多行自定义代码 --><!-- 第二行 --><!-- 第三行 --><link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/EdisonJwa/Blog@latest/css/darkmode.min.css"><script src="https://cdn.jsdelivr.net/gh/EdisonJwa/Blog@latest/js/edison-main.min.js"></script><script type="module" async="" src="https://cdn.jsdelivr.net/npm/instant.page@3.0.0/instantpage.min.js"></script><link rel="manifest" href="/site.webmanifest"><meta name="msapplication-TileColor" content="#d43d3d"><meta name="msapplication-TileImage" content="/source/favicon/mstile-144x144.png"><meta name="theme-color" content="#ffffff"><script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script><script> (adsbygoogle = window.adsbygoogle || []).push({ google_ad_client: "ca-pub-2345785306567671", enable_page_level_ads: true });</script>
+    <!-- 一行自定义代码 --><!-- 多行自定义代码 --><!-- 第二行 --><!-- 第三行 --><link rel="stylesheet" href="/css/darkmode.css"><script src="/js/edison-main.js"></script><script type="module" async="" src="https://cdn.jsdelivr.net/npm/instant.page@3.0.0/instantpage.min.js"></script><link rel="manifest" href="/site.webmanifest"><meta name="msapplication-TileColor" content="#d43d3d"><meta name="msapplication-TileImage" content="/source/favicon/mstile-144x144.png"><meta name="theme-color" content="#ffffff"><script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script><script> (adsbygoogle = window.adsbygoogle || []).push({ google_ad_client: "ca-pub-2345785306567671", enable_page_level_ads: true });</script>
 </head>
 
     <body>
@@ -374,34 +368,84 @@
 <h2 id="ondřej-surý-的-ppa">Ondřej Surý 的 PPA</h2>
 <p>更新非常快速，而且做的质量也非常好。</p>
 <h3 id="对于-ubuntu-系列："><strong>对于 Ubuntu 系列：</strong></h3>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span></pre></td><td class="code"><pre><span class="line">add-apt-repository ppa:ondrej/nginx-mainline -y</span></pre></td></tr></table></figure>
+<pre><code class="language-bash">add-apt-repository ppa:ondrej/nginx-mainline -y
+</code></pre>
 <h3 id="对于-debian-系列："><strong>对于 Debian 系列：</strong></h3>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span></pre></td><td class="code"><pre><span class="line">wget -O /etc/apt/trusted.gpg.d/nginx-mainline.gpg https://packages.sury.xyz/nginx-mainline/apt.gpg</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">2</span></pre></td><td class="code"><pre><span class="line"></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">3</span></pre></td><td class="code"><pre><span class="line">cat &gt;&gt; /etc/apt/sources.list.d/nginx.list &lt;&lt; EOF</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">4</span></pre></td><td class="code"><pre><span class="line">deb https://packages.sury.xyz/nginx-mainline/ $(lsb_release -sc) main</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">5</span></pre></td><td class="code"><pre><span class="line">EOF</span></pre></td></tr></table></figure>
+<pre><code class="language-bash">wget -O /etc/apt/trusted.gpg.d/nginx-mainline.gpg https://packages.sury.xyz/nginx-mainline/apt.gpg
+
+cat &gt;&gt; /etc/apt/sources.list.d/nginx.list &lt;&lt; EOF
+deb https://packages.sury.xyz/nginx-mainline/ $(lsb_release -sc) main
+EOF
+</code></pre>
 <p>然后我们更新系统、安装必要组件和 Nginx 本身：</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span></pre></td><td class="code"><pre><span class="line">apt update &amp;&amp; apt install nginx-extras -y</span></pre></td></tr></table></figure>
+<pre><code class="language-bash">apt update &amp;&amp; apt install nginx-extras -y
+</code></pre>
 <p>查看 Nginx 版本和参数和安装目录</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span></pre></td><td class="code"><pre><span class="line">nginx -V</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">2</span></pre></td><td class="code"><pre><span class="line">whereis nginx</span></pre></td></tr></table></figure>
+<pre><code class="language-bash">nginx -V
+whereis nginx
+</code></pre>
 <h2 id="烧饼博客大佬打包的-nginx">烧饼博客大佬打包的 Nginx</h2>
 <p>使用最新 OpenSSL 编译，支持 TLS 1.3, GeoIP2, brotli 压缩等</p>
 <h3 id="使用方法">使用方法</h3>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span></pre></td><td class="code"><pre><span class="line">curl https://mirror.xtom.com/sb/nginx/public.key | apt-key add -</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">2</span></pre></td><td class="code"><pre><span class="line"><span class="built_in">echo</span> <span class="string">"deb http://mirror.xtom.com/sb/nginx stretch main"</span> &gt; /etc/apt/sources.list.d/sb-nginx.list</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">3</span></pre></td><td class="code"><pre><span class="line">apt update</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">4</span></pre></td><td class="code"><pre><span class="line">apt install nginx-extras</span></pre></td></tr></table></figure>
+<pre><code class="language-bash">curl https://mirror.xtom.com/sb/nginx/public.key | apt-key add -
+echo &quot;deb http://mirror.xtom.com/sb/nginx stretch main&quot; &gt; /etc/apt/sources.list.d/sb-nginx.list
+apt update
+apt install nginx-extras
+</code></pre>
 <p>安装成功后使用 <code>nginx -V</code> 查看信息</p>
 <p>完成 Nginx 的安装后，接下来安装 rtmp 模块</p>
 <h1 id="安装-rtmp-模块">安装 rtmp 模块</h1>
 <p>debian 9 用户可以直接使用 apt 安装，需<strong>启用 stretch-backports 源</strong>:</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span></pre></td><td class="code"><pre><span class="line">apt install libnginx-mod-rtmp libnginx-mod-http-lua -t stretch-backports</span></pre></td></tr></table></figure>
+<pre><code class="language-bash">apt install libnginx-mod-rtmp libnginx-mod-http-lua -t stretch-backports
+</code></pre>
 <p>安装完成后，准备阶段就结束了，下面开始配置 Nginx。</p>
 <h1 id="配置-nginx">配置 Nginx</h1>
 <p>打开 nginx.conf 在文件中添加以下部分</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span></pre></td><td class="code"><pre><span class="line">rtmp &#123;							#RTMP服务</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">2</span></pre></td><td class="code"><pre><span class="line">    server&#123;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">3</span></pre></td><td class="code"><pre><span class="line">        listen 1935;			#服务端口</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">4</span></pre></td><td class="code"><pre><span class="line">        chunk_size 10240;		#数据传输块的大小</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">5</span></pre></td><td class="code"><pre><span class="line"></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">6</span></pre></td><td class="code"><pre><span class="line">        application live &#123;		#直播</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">7</span></pre></td><td class="code"><pre><span class="line">            live on;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">8</span></pre></td><td class="code"><pre><span class="line">            record off;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">9</span></pre></td><td class="code"><pre><span class="line">            on_publish http:&#x2F;&#x2F;YOUR_SERVERNAME:2080&#x2F;auth;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">10</span></pre></td><td class="code"><pre><span class="line">            push rtmp:&#x2F;&#x2F;live.twitch.tv&#x2F;app&#x2F;YOUR_LIVE_API;	#RTMP直播地址1</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">11</span></pre></td><td class="code"><pre><span class="line">            push rtmp:&#x2F;&#x2F;a.rtmp.youtube.com&#x2F;YOUR_LIVE_API;	#RTMP直播地址2</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">12</span></pre></td><td class="code"><pre><span class="line">         </span></pre></td></tr><tr><td class="gutter"><pre><span class="line">13</span></pre></td><td class="code"><pre><span class="line">        &#125;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">14</span></pre></td><td class="code"><pre><span class="line">    &#125;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">15</span></pre></td><td class="code"><pre><span class="line">&#125;</span></pre></td></tr></table></figure>
+<pre><code class="language-conf">rtmp {							#RTMP服务
+    server{
+        listen 1935;			#服务端口
+        chunk_size 10240;		#数据传输块的大小
+
+        application live {		#直播
+            live on;
+            record off;
+            on_publish http://YOUR_SERVERNAME:2080/auth;
+            push rtmp://live.twitch.tv/app/YOUR_LIVE_API;	#RTMP直播地址1
+            push rtmp://a.rtmp.youtube.com/YOUR_LIVE_API;	#RTMP直播地址2
+         
+        }
+    }
+}  
+</code></pre>
 <p>替换上方的 RTMP直播地址需要自己进行替换，现在我们完成了服务器上的分流部分</p>
 <p>接下来，我们配置一个 http 服务器，此部分与平时配置网站 conf 的过程比较类似</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span></pre></td><td class="code"><pre><span class="line">server &#123;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">2</span></pre></td><td class="code"><pre><span class="line">        listen 2080; #此处可自定义</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">3</span></pre></td><td class="code"><pre><span class="line">        </span></pre></td></tr><tr><td class="gutter"><pre><span class="line">4</span></pre></td><td class="code"><pre><span class="line">        server_name YOUR_SERVERNAME;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">5</span></pre></td><td class="code"><pre><span class="line">        location &#x2F;auth &#123;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">6</span></pre></td><td class="code"><pre><span class="line">            rewrite_by_lua &#39;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">7</span></pre></td><td class="code"><pre><span class="line">                ngx.req.read_body()</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">8</span></pre></td><td class="code"><pre><span class="line">                local name &#x3D; ngx.req.get_post_args().name</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">9</span></pre></td><td class="code"><pre><span class="line">                if (name &#x3D;&#x3D; &quot;xxxYOUR_UUID&quot;) then</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">10</span></pre></td><td class="code"><pre><span class="line">                    ngx.status &#x3D; 200</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">11</span></pre></td><td class="code"><pre><span class="line">                    ngx.say(&quot;OK&quot;)</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">12</span></pre></td><td class="code"><pre><span class="line">                    ngx.exit(200)</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">13</span></pre></td><td class="code"><pre><span class="line">                else</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">14</span></pre></td><td class="code"><pre><span class="line">                    ngx.status &#x3D; 403</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">15</span></pre></td><td class="code"><pre><span class="line">                    ngx.say(&quot;Forbidden&quot;)</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">16</span></pre></td><td class="code"><pre><span class="line">                    ngx.exit(403)</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">17</span></pre></td><td class="code"><pre><span class="line">                end</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">18</span></pre></td><td class="code"><pre><span class="line">            &#39;;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">19</span></pre></td><td class="code"><pre><span class="line">        &#125;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">20</span></pre></td><td class="code"><pre><span class="line">    &#125;</span></pre></td></tr></table></figure>
+<pre><code class="language-conf">server {
+        listen 2080; #此处可自定义
+        
+        server_name YOUR_SERVERNAME;
+        location /auth {
+            rewrite_by_lua '
+                ngx.req.read_body()
+                local name = ngx.req.get_post_args().name
+                if (name == &quot;xxxYOUR_UUID&quot;) then
+                    ngx.status = 200
+                    ngx.say(&quot;OK&quot;)
+                    ngx.exit(200)
+                else
+                    ngx.status = 403
+                    ngx.say(&quot;Forbidden&quot;)
+                    ngx.exit(403)
+                end
+            ';
+        }
+    }
+</code></pre>
 <p>此处的 <code>xxxYOUR_UUID</code> 是我们使用 OBS 推流时候的&quot;流名称&quot;，可以使用 <a href="https://www.uuidgenerator.net/" target="_blank" rel="noopener">UUID Generator</a> 进行生成。</p>
 <p><strong>经测试不能加 TLS</strong></p>
 <h1 id="测试-rtmp-服务器配置">测试 RTMP 服务器配置</h1>
 <p>启动 Nginx 服务后，在服务器上执行下面的命令：</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span></pre></td><td class="code"><pre><span class="line">curl -0 http://127.0.0.1:2080/auth -d <span class="string">"name=xxxYOUR_UUID"</span></span></pre></td></tr></table></figure>
+<pre><code class="language-bash">curl -0 http://127.0.0.1:2080/auth -d &quot;name=xxxYOUR_UUID&quot;
+</code></pre>
 <p><code>xxxYOUR_UUID</code> 替换成前面生成的 UUID，应该输出 OK，再把 <code>xxxYOUR_UUID</code> 换成一个错误的，应该输出 Forbidden。</p>
 <h1 id="配置-obs-推流">配置 OBS 推流</h1>
 <p>如果身份验证没有问题，我们就可以使用 OBS 来推流了。</p>

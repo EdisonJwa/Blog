@@ -130,12 +130,6 @@
 
 
 
-    <!-- Prettify Theme -->
-    
-    <link rel="preload" href="/css/highlight/vs2015.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'"><noscript><link rel="stylesheet" href="/css/highlight/vs2015.min.css"></noscript>
-
-
-
 
 
 <script>
@@ -224,7 +218,7 @@
 
 
     <!-- ### Custom Head ### -->
-    <!-- 一行自定义代码 --><!-- 多行自定义代码 --><!-- 第二行 --><!-- 第三行 --><link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/EdisonJwa/Blog@latest/css/darkmode.min.css"><script src="https://cdn.jsdelivr.net/gh/EdisonJwa/Blog@latest/js/edison-main.min.js"></script><script type="module" async="" src="https://cdn.jsdelivr.net/npm/instant.page@3.0.0/instantpage.min.js"></script><link rel="manifest" href="/site.webmanifest"><meta name="msapplication-TileColor" content="#d43d3d"><meta name="msapplication-TileImage" content="/source/favicon/mstile-144x144.png"><meta name="theme-color" content="#ffffff"><script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script><script> (adsbygoogle = window.adsbygoogle || []).push({ google_ad_client: "ca-pub-2345785306567671", enable_page_level_ads: true });</script>
+    <!-- 一行自定义代码 --><!-- 多行自定义代码 --><!-- 第二行 --><!-- 第三行 --><link rel="stylesheet" href="/css/darkmode.css"><script src="/js/edison-main.js"></script><script type="module" async="" src="https://cdn.jsdelivr.net/npm/instant.page@3.0.0/instantpage.min.js"></script><link rel="manifest" href="/site.webmanifest"><meta name="msapplication-TileColor" content="#d43d3d"><meta name="msapplication-TileImage" content="/source/favicon/mstile-144x144.png"><meta name="theme-color" content="#ffffff"><script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script><script> (adsbygoogle = window.adsbygoogle || []).push({ google_ad_client: "ca-pub-2345785306567671", enable_page_level_ads: true });</script>
 </head>
 
     <body>
@@ -447,7 +441,9 @@
 <p>像上面说的，你只需要创建一个 txt，第一行是表头，然后在下面每一行填上歌曲信息，然后在 iTunes 里导入就完事了。一首两首问题倒是不大，歌曲多起来呢？</p>
 <p>注意，我上面说了，并不是每个信息都是必要的，事实上，如果你要从本地磁盘导入音乐，<strong>只需要歌曲文件路径就够了</strong> 。OK，这种重复性的工作在 Windows 上一个批处理脚本就完事了，在 Mac 上我相信有更多的工具可以完成，比如 Automator 啥的。</p>
 <p>新建一个文本文件，在里面键入：</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span></pre></td><td class="code"><pre><span class="line"><span class="built_in">echo</span> 位置 名称  艺人  作曲  专辑  归类  作品  乐章编号    乐章  乐章名称    类型  大小  时间  光盘编号    光盘统计    音轨编号    音轨统计    年份  修改日期    添加日期    比特  采样速率    音量调整    种类  均衡  注释  播放次数    上次播放时间  跳过次数    上次跳过时间  我的评分  &gt; PlayList.txt</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">2</span></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span> %%s <span class="keyword">in</span> (*.mp3 *.aac) <span class="keyword">do</span> (<span class="built_in">echo</span> %<span class="built_in">cd</span>%\%%s&gt;&gt;PlayList.TXT)</span></pre></td></tr></table></figure>
+<pre><code class="language-bash">  echo 位置 名称  艺人  作曲  专辑  归类  作品  乐章编号    乐章  乐章名称    类型  大小  时间  光盘编号    光盘统计    音轨编号    音轨统计    年份  修改日期    添加日期    比特  采样速率    音量调整    种类  均衡  注释  播放次数    上次播放时间  跳过次数    上次跳过时间  我的评分  &gt; PlayList.txt
+  for %%s in (*.mp3 *.aac) do (echo %cd%\%%s&gt;&gt;PlayList.TXT)
+</code></pre>
 <p>另存为 <code>GenPlayList.bat</code> 。把这个文件放在存储了音乐的文件夹里，双击运行，就会生成一个叫 <code>PlayList.txt</code> 的文件，把这个文件名改成 <code>你要的播放列表名.txt</code>，去 iTunes 里选择这个文件导入就好了。在导入的播放列表里全选右键就能全部上传到 iCloud 音乐资料库。</p>
 <h2 id="网易云音乐这边的事">网易云音乐这边的事</h2>
 <p>到此之前都没有说到网易云，但其实整个思路已经很明显了：我们只需要从网易云里面把对应的播放列表里的歌全部下载下来，然后做一个 txt 往 iTunes 里面一导入就完事了，再借助 iCloud 音乐资料库即可把音乐传到云端，那么在哪里都能听。</p>

@@ -130,12 +130,6 @@
 
 
 
-    <!-- Prettify Theme -->
-    
-    <link rel="preload" href="/css/highlight/vs2015.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'"><noscript><link rel="stylesheet" href="/css/highlight/vs2015.min.css"></noscript>
-
-
-
 
 
 <script>
@@ -224,7 +218,7 @@
 
 
     <!-- ### Custom Head ### -->
-    <!-- 一行自定义代码 --><!-- 多行自定义代码 --><!-- 第二行 --><!-- 第三行 --><link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/EdisonJwa/Blog@latest/css/darkmode.min.css"><script src="https://cdn.jsdelivr.net/gh/EdisonJwa/Blog@latest/js/edison-main.min.js"></script><script type="module" async="" src="https://cdn.jsdelivr.net/npm/instant.page@3.0.0/instantpage.min.js"></script><link rel="manifest" href="/site.webmanifest"><meta name="msapplication-TileColor" content="#d43d3d"><meta name="msapplication-TileImage" content="/source/favicon/mstile-144x144.png"><meta name="theme-color" content="#ffffff"><script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script><script> (adsbygoogle = window.adsbygoogle || []).push({ google_ad_client: "ca-pub-2345785306567671", enable_page_level_ads: true });</script>
+    <!-- 一行自定义代码 --><!-- 多行自定义代码 --><!-- 第二行 --><!-- 第三行 --><link rel="stylesheet" href="/css/darkmode.css"><script src="/js/edison-main.js"></script><script type="module" async="" src="https://cdn.jsdelivr.net/npm/instant.page@3.0.0/instantpage.min.js"></script><link rel="manifest" href="/site.webmanifest"><meta name="msapplication-TileColor" content="#d43d3d"><meta name="msapplication-TileImage" content="/source/favicon/mstile-144x144.png"><meta name="theme-color" content="#ffffff"><script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script><script> (adsbygoogle = window.adsbygoogle || []).push({ google_ad_client: "ca-pub-2345785306567671", enable_page_level_ads: true });</script>
 </head>
 
     <body>
@@ -395,11 +389,13 @@
 <p>结束掉之后，会发现已经回到了最开始的地方</p>
 <p><img src="https://cdn.jsdelivr.net/gh/EdisonJwa/Blog@latest/source/build-iso/VirtualBoxVM_190511_214642.png" alt=""></p>
 <p>现在在命令提示符中输入</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span></pre></td><td class="code"><pre><span class="line">dism /image:E:\ /<span class="built_in">enable</span>-feature /featurename:netfx3 /<span class="built_in">source</span>:D:\sources\sxs /all</span></pre></td></tr></table></figure>
+<pre><code class="language-bash">dism /image:E:\ /enable-feature /featurename:netfx3 /source:D:\sources\sxs /all
+</code></pre>
 <blockquote>
 <p>如果您要定制的系统版本低于 Windows Server 2012 那么请输入</p>
 </blockquote>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span></pre></td><td class="code"><pre><span class="line">dism /image:E:\ /<span class="built_in">enable</span>-feature /featurename:netfx3 /<span class="built_in">source</span>:D:\sources\sxs</span></pre></td></tr></table></figure>
+<pre><code class="language-bash">dism /image:E:\ /enable-feature /featurename:netfx3 /source:D:\sources\sxs
+</code></pre>
 <p>来安装 .Net 3.5 ,此处的E盘为系统安装盘，D盘为光盘所在分区。可以通过在命令提示符中输入 notepad 来确定盘符。</p>
 <p><img src="https://cdn.jsdelivr.net/gh/EdisonJwa/Blog@latest/source/build-iso/VirtualBoxVM_190511_214853.png" alt=""></p>
 <p>如果没有问题的话，应该会显示这个界面，在安装完成后，重启虚拟机。</p>
@@ -447,7 +443,8 @@
 重启之后请立即进入PE对成品进行备份。</p>
 <h2 id="part-2-快速打包">Part 2.快速打包</h2>
 <p>在命令提示符中输入下面命令对系统进行备份</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span></pre></td><td class="code"><pre><span class="line">dism /capture-image /capturedir:D:\ /imagefile:E:\Edison_Windows10_19H1_X64.wim /name:<span class="string">"Edison Windows10 19H1 X64"</span> /compress:fast</span></pre></td></tr></table></figure>
+<pre><code class="language-bash">dism /capture-image /capturedir:D:\ /imagefile:E:\Edison_Windows10_19H1_X64.wim /name:&quot;Edison Windows10 19H1 X64&quot; /compress:fast
+</code></pre>
 <p>此处和之前安装 .Net3.5 比较类似，<code>capturedir</code> 为系统盘符，<code>imagefile</code> 的位置为我们之前新建出来的第二个分区，名称可以随意。<br>
 <img src="https://cdn.jsdelivr.net/gh/EdisonJwa/Blog@latest/source/build-iso/VirtualBoxVM_190511_234455.png" alt=""></p>
 <p>打包的过程将会消耗一定的时间，在打包完成后，你会在指定的盘符中看到打包好的文件。</p>
@@ -455,7 +452,8 @@
 <h2 id="part-3-快速压缩">Part 3.快速压缩</h2>
 <p>下面，我们需要将打包的 wim文件拷贝出来，可以通过 7-zip打开VMDK镜像，然后双击2.NTFS就可以解压出里面的镜像了。</p>
 <p>接下来还是以这个镜像为例，以管理员权限打开命令提示符或是PowerShell，输入下面的命令，将镜像进行高度压缩。</p>
-<figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span></pre></td><td class="code"><pre><span class="line">dism /export-image /sourceimagefile:E:\Edison_Windows10_19H1_X64.wim /sourceindex:<span class="number">1</span> /destinationimagefile:E:\Edison_Windows10_19H1_X64.esd /compress:recovery</span></pre></td></tr></table></figure>
+<pre><code class="language-powershell">dism /export-image /sourceimagefile:E:\Edison_Windows10_19H1_X64.wim /sourceindex:1 /destinationimagefile:E:\Edison_Windows10_19H1_X64.esd /compress:recovery
+</code></pre>
 <p><img src="https://cdn.jsdelivr.net/gh/EdisonJwa/Blog@latest/source/build-iso/powershell_190512_001848.png" alt=""></p>
 <p>你可以发现这个过程非常的吃内存和CPU，所以建议你在不用电脑的过程中进行这个操作。我昨晚在电脑上压缩的过程大概耗费了差不多20分钟左右。不过压缩出来的成果也是比较喜人的。</p>
 <p><img src="https://cdn.jsdelivr.net/gh/EdisonJwa/Blog@latest/source/build-iso/g9hIMxhMyQIBlX4Q.jpg" alt=""></p>
@@ -464,7 +462,16 @@
 <p>如果你想把它做成光盘镜像，那你还需要做这些操作：<br>
 解压原版win10 64位安装镜像，删除里面sources文件夹的install.wim，将最终成品重命名成install.esd复制进去。<br>
 并新建一直文本文档，命名为 <code>ei.cfg</code></p>
-<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span></pre></td><td class="code"><pre><span class="line"><span class="section">[EditionID]</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">2</span></pre></td><td class="code"><pre><span class="line">Home</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">3</span></pre></td><td class="code"><pre><span class="line">Professional</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">4</span></pre></td><td class="code"><pre><span class="line">ProfessionalWorkstation</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">5</span></pre></td><td class="code"><pre><span class="line">Enterprise</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">6</span></pre></td><td class="code"><pre><span class="line"><span class="section">[Channel]</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">7</span></pre></td><td class="code"><pre><span class="line">Retail</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">8</span></pre></td><td class="code"><pre><span class="line"><span class="section">[VL]</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">9</span></pre></td><td class="code"><pre><span class="line">2</span></pre></td></tr></table></figure>
+<pre><code class="language-ini">[EditionID]
+Home
+Professional
+ProfessionalWorkstation
+Enterprise
+[Channel]
+Retail
+[VL]
+2
+</code></pre>
 <p>保存之后，将它重新打包回ISO即可。<br>
 可以在此处下载 <a href="https://go.microsoft.com/fwlink/?linkid=2086042" target="_blank" rel="noopener">Windows ADK 1903</a><br>
 此处我只安装了部署工具。</p>
@@ -473,7 +480,8 @@
 <p>切换到 oscdimg 目录下<br>
 <code>C:\Program Files (x86)\Windows Kits\10\Assessment and Deployment Kit\Deployment Tools\amd64\Oscdimg</code></p>
 <p>在 PowerShell 中输入</p>
-<figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span></pre></td><td class="code"><pre><span class="line">.\oscdimg.exe -m -o -u2 -udfver102 -bootdata:<span class="number">2</span><span class="comment">#p0,e,bEtfsboot.com#pEF,e,bEfisys.bin -l"Edison Windows 10 19H1 X64" E:\Edison_WIN10_19H1 E:\Edison_WIN10_19H1.iso</span></span></pre></td></tr></table></figure>
+<pre><code class="language-powershell">.\oscdimg.exe -m -o -u2 -udfver102 -bootdata:2#p0,e,bEtfsboot.com#pEF,e,bEfisys.bin -l&quot;Edison Windows 10 19H1 X64&quot; E:\Edison_WIN10_19H1 E:\Edison_WIN10_19H1.iso
+</code></pre>
 <blockquote>
 <p>此处的 <code>E:\Edison_WIN10_19H1</code> 为安装程序所在文件夹，<code>E:\Edison_WIN10_19H1.iso</code> 为输出文件夹</p>
 </blockquote>

@@ -130,12 +130,6 @@
 
 
 
-    <!-- Prettify Theme -->
-    
-    <link rel="preload" href="/css/highlight/vs2015.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'"><noscript><link rel="stylesheet" href="/css/highlight/vs2015.min.css"></noscript>
-
-
-
 
 
 <script>
@@ -224,7 +218,7 @@
 
 
     <!-- ### Custom Head ### -->
-    <!-- 一行自定义代码 --><!-- 多行自定义代码 --><!-- 第二行 --><!-- 第三行 --><link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/EdisonJwa/Blog@latest/css/darkmode.min.css"><script src="https://cdn.jsdelivr.net/gh/EdisonJwa/Blog@latest/js/edison-main.min.js"></script><script type="module" async="" src="https://cdn.jsdelivr.net/npm/instant.page@3.0.0/instantpage.min.js"></script><link rel="manifest" href="/site.webmanifest"><meta name="msapplication-TileColor" content="#d43d3d"><meta name="msapplication-TileImage" content="/source/favicon/mstile-144x144.png"><meta name="theme-color" content="#ffffff"><script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script><script> (adsbygoogle = window.adsbygoogle || []).push({ google_ad_client: "ca-pub-2345785306567671", enable_page_level_ads: true });</script>
+    <!-- 一行自定义代码 --><!-- 多行自定义代码 --><!-- 第二行 --><!-- 第三行 --><link rel="stylesheet" href="/css/darkmode.css"><script src="/js/edison-main.js"></script><script type="module" async="" src="https://cdn.jsdelivr.net/npm/instant.page@3.0.0/instantpage.min.js"></script><link rel="manifest" href="/site.webmanifest"><meta name="msapplication-TileColor" content="#d43d3d"><meta name="msapplication-TileImage" content="/source/favicon/mstile-144x144.png"><meta name="theme-color" content="#ffffff"><script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script><script> (adsbygoogle = window.adsbygoogle || []).push({ google_ad_client: "ca-pub-2345785306567671", enable_page_level_ads: true });</script>
 </head>
 
     <body>
@@ -371,7 +365,11 @@
 <h2 id="排查-markdown-renderer">排查 Markdown renderer</h2>
 <p><img src="https://cdn.jsdelivr.net/gh/EdisonJwa/Blog@latest/source/hexo-vglink-problems/01.jpg" alt=""></p>
 <p>在发现这种情况的时候，最先想到的是 markdown renderer 的问题，因为 hexo 默认自带的 markdown 渲染器是 hexo-renderer-marked，便根据文档<sup class="footnote-ref"><a href="#fn1" id="fnref1">[1]</a></sup>，在站点配置文件 <code>_config.yml</code> 里禁用 autolink 后，但是网页中仍然会莫名出现奇怪的链接。</p>
-<figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span></pre></td><td class="code"><pre><span class="line"><span class="string">…</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">2</span></pre></td><td class="code"><pre><span class="line"><span class="attr">marked:</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">3</span></pre></td><td class="code"><pre><span class="line">  <span class="attr">autolink:</span> <span class="literal">false</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">4</span></pre></td><td class="code"><pre><span class="line"><span class="string">…</span></span></pre></td></tr></table></figure>
+<pre><code>…
+marked:
+  autolink: false
+…
+</code></pre>
 <p>因为 hexo 的 debug 中没有出现报错，我也不能确定问题是否出在 <code>hexo-renderer-marked</code> 上面，便安装了 <code>hexo-renderer-markdown-it</code> 进行测试，得到了相同的结果，基本确定问题不是 renderer 的问题。</p>
 <h2 id="排查主题">排查主题</h2>
 <p>接下来，我便将目光转制主题上，在翻遍 Suka 主题的配置文件和说明文档<sup class="footnote-ref"><a href="#fn2" id="fnref2">[2]</a></sup>后，没有找到相关的配置，便尝试将 Prism 代码高亮模块换回 hexo 自带的 highlight 模块，但是问题仍然存在。因为不能确定问题是否出在主题上，我便将博客主题更换成 NexT，但是还是出现同样的问题。在经过多次尝试后，确定问题不是出在主题上。</p>
@@ -386,7 +384,12 @@
 <img src="https://cdn.jsdelivr.net/gh/EdisonJwa/Blog@latest/source/hexo-vglink-problems/04.png" alt=""></p>
 <h2 id="原因">原因</h2>
 <p>Disqus 的 Affiliate links 存在问题，该问题导致如果网页中存在任何与域名 (即abcde.com) 相似的任何文本，都会被转换成 HTML 超链接代码的格式：</p>
-<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">a</span> <span class="attr">class</span>=<span class="string">"vglnk"</span> <span class="attr">href</span>=<span class="string">"http://abcde.com"</span> <span class="attr">rel</span>=<span class="string">"nofollow"</span>&gt;</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">2</span></pre></td><td class="code"><pre><span class="line">    <span class="tag">&lt;<span class="name">span</span>&gt;</span>abcde<span class="tag">&lt;/<span class="name">span</span>&gt;</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">3</span></pre></td><td class="code"><pre><span class="line">    <span class="tag">&lt;<span class="name">span</span>&gt;</span>.<span class="tag">&lt;/<span class="name">span</span>&gt;</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">4</span></pre></td><td class="code"><pre><span class="line">    <span class="tag">&lt;<span class="name">span</span>&gt;</span>com<span class="tag">&lt;/<span class="name">span</span>&gt;</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">5</span></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;/<span class="name">a</span>&gt;</span></span></pre></td></tr></table></figure>
+<pre><code class="language-html">&lt;a class=&quot;vglnk&quot; href=&quot;http://abcde.com&quot; rel=&quot;nofollow&quot;&gt;
+    &lt;span&gt;abcde&lt;/span&gt;
+    &lt;span&gt;.&lt;/span&gt;
+    &lt;span&gt;com&lt;/span&gt;
+&lt;/a&gt;
+</code></pre>
 <p><s>其实是我的 BUG 体质再度灵验</s>（大雾</p>
 <h1 id="参考链接">参考链接</h1>
 <p><a href="http://www.queryadmin.com/1813/disable-affiliate-links-vglnk-disqus/" target="_blank" rel="noopener">Disable Affiliate Links (VGLNK) on Disqus</a></p>

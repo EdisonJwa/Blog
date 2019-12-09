@@ -130,12 +130,6 @@
 
 
 
-    <!-- Prettify Theme -->
-    
-    <link rel="preload" href="/css/highlight/vs2015.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'"><noscript><link rel="stylesheet" href="/css/highlight/vs2015.min.css"></noscript>
-
-
-
 
 
 <script>
@@ -224,7 +218,7 @@
 
 
     <!-- ### Custom Head ### -->
-    <!-- 一行自定义代码 --><!-- 多行自定义代码 --><!-- 第二行 --><!-- 第三行 --><link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/EdisonJwa/Blog@latest/css/darkmode.min.css"><script src="https://cdn.jsdelivr.net/gh/EdisonJwa/Blog@latest/js/edison-main.min.js"></script><script type="module" async="" src="https://cdn.jsdelivr.net/npm/instant.page@3.0.0/instantpage.min.js"></script><link rel="manifest" href="/site.webmanifest"><meta name="msapplication-TileColor" content="#d43d3d"><meta name="msapplication-TileImage" content="/source/favicon/mstile-144x144.png"><meta name="theme-color" content="#ffffff"><script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script><script> (adsbygoogle = window.adsbygoogle || []).push({ google_ad_client: "ca-pub-2345785306567671", enable_page_level_ads: true });</script>
+    <!-- 一行自定义代码 --><!-- 多行自定义代码 --><!-- 第二行 --><!-- 第三行 --><link rel="stylesheet" href="/css/darkmode.css"><script src="/js/edison-main.js"></script><script type="module" async="" src="https://cdn.jsdelivr.net/npm/instant.page@3.0.0/instantpage.min.js"></script><link rel="manifest" href="/site.webmanifest"><meta name="msapplication-TileColor" content="#d43d3d"><meta name="msapplication-TileImage" content="/source/favicon/mstile-144x144.png"><meta name="theme-color" content="#ffffff"><script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script><script> (adsbygoogle = window.adsbygoogle || []).push({ google_ad_client: "ca-pub-2345785306567671", enable_page_level_ads: true });</script>
 </head>
 
     <body>
@@ -379,7 +373,38 @@
 <li><strong>重启 Telegram</strong>，这时 Telegram Desktop 目录中会出现 json 文件，默认只会把宋体替换成微软雅黑，当然也可以修改 <code>FontMod.yaml</code> 来更换其他字体，下面的配置可以替换 TG 界面上用到的所有字体。</li>
 </ol>
 <h1 id="配置文件">配置文件</h1>
-<figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span></pre></td><td class="code"><pre><span class="line"><span class="attr">style:</span> <span class="meta">&amp;style</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">2</span></pre></td><td class="code"><pre><span class="line"><span class="comment"># Remove '#' to override font style</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">3</span></pre></td><td class="code"><pre><span class="line"><span class="comment">#  size: 0</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">4</span></pre></td><td class="code"><pre><span class="line"><span class="comment">#  width: 0</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">5</span></pre></td><td class="code"><pre><span class="line"><span class="comment">#  weight: 0</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">6</span></pre></td><td class="code"><pre><span class="line"><span class="comment">#  italic: false</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">7</span></pre></td><td class="code"><pre><span class="line"><span class="comment">#  underLine: false</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">8</span></pre></td><td class="code"><pre><span class="line"><span class="comment">#  strikeOut: false</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">9</span></pre></td><td class="code"><pre><span class="line"><span class="comment">#  charSet: 0</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">10</span></pre></td><td class="code"><pre><span class="line"><span class="comment">#  outPrecision: 0</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">11</span></pre></td><td class="code"><pre><span class="line"><span class="comment">#  clipPrecision: 0</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">12</span></pre></td><td class="code"><pre><span class="line"><span class="comment">#  quality: 0</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">13</span></pre></td><td class="code"><pre><span class="line"><span class="comment">#  pitchAndFamily: 0</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">14</span></pre></td><td class="code"><pre><span class="line"></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">15</span></pre></td><td class="code"><pre><span class="line"><span class="attr">fonts:</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">16</span></pre></td><td class="code"><pre><span class="line">  <span class="attr">SimSun:</span> <span class="string">&amp;zh-cn-font</span> <span class="comment"># Chinese (Simplified) fallback font</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">17</span></pre></td><td class="code"><pre><span class="line">    <span class="attr">replace:</span> <span class="string">Microsoft</span> <span class="string">YaHei</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">18</span></pre></td><td class="code"><pre><span class="line">    <span class="string">&lt;&lt;:</span> <span class="meta">*style</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">19</span></pre></td><td class="code"><pre><span class="line">  <span class="attr">PMingLiU:</span> <span class="comment"># Chinese (Traditional) fallback font</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">20</span></pre></td><td class="code"><pre><span class="line">    <span class="attr">replace:</span> <span class="string">Microsoft</span> <span class="string">JhengHei</span> <span class="string">UI</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">21</span></pre></td><td class="code"><pre><span class="line">    <span class="string">&lt;&lt;:</span> <span class="meta">*style</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">22</span></pre></td><td class="code"><pre><span class="line">  <span class="attr">MS UI Gothic:</span> <span class="comment"># Japanese fallback font</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">23</span></pre></td><td class="code"><pre><span class="line">    <span class="attr">replace:</span> <span class="string">Yu</span> <span class="string">Gothic</span> <span class="string">UI</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">24</span></pre></td><td class="code"><pre><span class="line">    <span class="string">&lt;&lt;:</span> <span class="meta">*style</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">25</span></pre></td><td class="code"><pre><span class="line">  <span class="attr">Gulim:</span> <span class="comment"># Korean fallback font</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">26</span></pre></td><td class="code"><pre><span class="line">    <span class="attr">replace:</span> <span class="string">맑은</span> <span class="string">고딕</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">27</span></pre></td><td class="code"><pre><span class="line">    <span class="string">&lt;&lt;:</span> <span class="meta">*style</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">28</span></pre></td><td class="code"><pre><span class="line"></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">29</span></pre></td><td class="code"><pre><span class="line"><span class="attr">fixGSOFont:</span> <span class="literal">true</span> <span class="comment"># true is to use system UI font</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">30</span></pre></td><td class="code"><pre><span class="line"><span class="comment">#fixGSOFont: *zh-cn-font # Or replace with user defined font</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">31</span></pre></td><td class="code"><pre><span class="line"><span class="attr">debug:</span> <span class="literal">false</span></span></pre></td></tr></table></figure>
+<pre><code class="language-yaml">style: &amp;style
+# Remove '#' to override font style
+#  size: 0
+#  width: 0
+#  weight: 0
+#  italic: false
+#  underLine: false
+#  strikeOut: false
+#  charSet: 0
+#  outPrecision: 0
+#  clipPrecision: 0
+#  quality: 0
+#  pitchAndFamily: 0
+
+fonts:
+  SimSun: &amp;zh-cn-font # Chinese (Simplified) fallback font
+    replace: Microsoft YaHei
+    &lt;&lt;: *style
+  PMingLiU: # Chinese (Traditional) fallback font
+    replace: Microsoft JhengHei UI
+    &lt;&lt;: *style
+  MS UI Gothic: # Japanese fallback font
+    replace: Yu Gothic UI
+    &lt;&lt;: *style
+  Gulim: # Korean fallback font
+    replace: 맑은 고딕
+    &lt;&lt;: *style
+
+fixGSOFont: true # true is to use system UI font
+#fixGSOFont: *zh-cn-font # Or replace with user defined font
+debug: false
+</code></pre>
 <blockquote>
 <p>** 参数说明 **<br>
 <strong>key (“SimSun”)</strong>: 要修改的字体名称。<br>
@@ -403,7 +428,10 @@
 <p><img src="https://i.yecdn.com/images/2019/04/15/b376fd9caa036ad9ee9a61d7710f6f65.png" alt=""></p>
 <p>此时在配置文件中添加要修改的部分，比如将 <code>Open Sans</code> 替换为 <code>Ubuntu</code> (⚠ 此处纯个人喜好)<br>
 那么在配置文件中添加如下字段即可。</p>
-<figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span></pre></td><td class="code"><pre><span class="line"><span class="attr">Open Sans:</span> </span></pre></td></tr><tr><td class="gutter"><pre><span class="line">2</span></pre></td><td class="code"><pre><span class="line">  <span class="attr">replace:</span> <span class="string">Ubuntu</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">3</span></pre></td><td class="code"><pre><span class="line">  <span class="string">&lt;&lt;:</span> <span class="meta">*style</span></span></pre></td></tr></table></figure>
+<pre><code class="language-yaml">  Open Sans: 
+    replace: Ubuntu
+    &lt;&lt;: *style
+</code></pre>
 <p><img src="https://i.yecdn.com/images/2019/04/15/c9e21364ee43bf5ca12df328af75587a.png" alt="替换后效果示例"></p>
 <blockquote>
 <p>本文部分内容摘自项目 Github 说明文档。</p>
