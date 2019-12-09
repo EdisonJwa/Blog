@@ -1,4 +1,180 @@
-<!DOCTYPE html><html lang="zh-CN"><head><meta charset="utf-8"><meta http-equiv="x-dns-prefetch-control" content="on"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width,minimum-scale=1,initial-scale=1,maximum-scale=5,viewport-fit=cover"><meta name="renderer" content="webkit"><title>TeamSpeak 服务器搭建方法 | Vigorous Pro</title><link rel="icon" type="image&#x2F;ico" href="/favicon.ico"><link rel="apple-touch-icon" sizes="180x180" href="/source/favicon/apple-touch-icon.png"><link rel="icon" typt="image&#x2F;png" sizes="192x192" href="/source/favicon/android-chrome-192x192.png"><link rel="icon" typt="image&#x2F;png" sizes="32x32" href="/source/favicon/favicon-32x32.png"><link rel="icon" typt="image&#x2F;png" sizes="16x16" href="/source/favicon/favicon-16x16.png"><link rel="mask-icon" href="/safari-pinned-tab.svg" color=""><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/spectre.css@0.5.3"><style>body{background-color:#f8f9fa}a,a:visited{color:#0070ff}a:active,a:focus,a:hover{color:#0070ff;opacity:.75}#post-content a,#post-content a:focus,#post-content a:hover,#post-content a:visited{color:#005eb9;opacity:1}.post-entry .card-body a{color:#0070ff}.avatar{background:#444}.navbar-link,.navbar-link:visited,.timeline .timeline-item .timeline-icon.icon-lg{color:#0070ff}.navbar-link:hover{color:#0070ff;opacity:.8}#disqus-loadmore-button,#disqus-switch-to-direct,#disqus_click_btn,#search-input .btn{background:#727e96;border-color:#727e96;color:#fff}#post-toc a.post-toc-link,#post-toc a.post-toc-link:visited,.share-menu.menu .menu-item>a{color:#727e96}.share-menu.menu .menu-item>a:focus,.share-menu.menu .menu-item>a:hover,.share-menu.menu .menu-item>a:visited{color:#50596c;background:#f8f9fa;opacity:.85}</style><link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/sukkaw/hexo-theme-suka@latest/source/css/style.min.css"><link rel="preload" href="https://cdn.jsdelivr.net/npm/disqusjs@1.2.5/dist/disqusjs.css" as="style" onload='this.onload=null,this.rel="stylesheet"'><noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/disqusjs@1.2.5/dist/disqusjs.css"></noscript><link rel="preload" href="/css/highlight/vs2015.min.css" as="style" onload='this.onload=null,this.rel="stylesheet"'><noscript><link rel="stylesheet" href="/css/highlight/vs2015.min.css"></noscript><script>!function(n){"use strict";n.loadCSS||(n.loadCSS=function(){});var o=loadCSS.relpreload={};if(o.support=function(){var e;try{e=n.document.createElement("link").relList.supports("preload")}catch(t){e=!1}return function(){return e}}(),o.bindMediaToggle=function(t){var e=t.media||"all";function a(){t.addEventListener?t.removeEventListener("load",a):t.attachEvent&&t.detachEvent("onload",a),t.setAttribute("onload",null),t.media=e}t.addEventListener?t.addEventListener("load",a):t.attachEvent&&t.attachEvent("onload",a),setTimeout(function(){t.rel="stylesheet",t.media="only x"}),setTimeout(a,3e3)},o.poly=function(){if(!o.support())for(var t=n.document.getElementsByTagName("link"),e=0;e<t.length;e++){var a=t[e];"preload"!==a.rel||"style"!==a.getAttribute("as")||a.getAttribute("data-loadcss")||(a.setAttribute("data-loadcss",!0),o.bindMediaToggle(a))}},!o.support()){o.poly();var t=n.setInterval(o.poly,500);n.addEventListener?n.addEventListener("load",function(){o.poly(),n.clearInterval(t)}):n.attachEvent&&n.attachEvent("onload",function(){o.poly(),n.clearInterval(t)})}"undefined"!=typeof exports?exports.loadCSS=loadCSS:n.loadCSS=loadCSS}("undefined"!=typeof global?global:this)</script><link rel="alternate" type="application/atom+xml" href="/atom.xml"><meta name="mobile-web-app-capable" content="yes"><meta name="application-name" content="Vigorous Pro"><meta name="msapplication-starturl" content="https://www.wevg.org"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-title" content="Vigorous Pro"><meta name="apple-mobile-web-app-status-bar-style" content="black-translucent"><link rel="manifest" href="/manifest.json"><link rel="search" type="application/opensearchdescription+xml" href="/opensearch.xml" title="Vigorous Pro"><meta property="og:title" content="TeamSpeak 服务器搭建方法 | Vigorous Pro"><meta property="og:site_name" content="Vigorous Pro"><meta property="og:type" content="article"><meta property="og:url" content="https:&#x2F;&#x2F;www.wevg.org&#x2F;archives&#x2F;teamspeak-server-build&#x2F;"><meta property="og:locale" content="zh-CN"><meta name="description" content="本文介绍 TeamSpeak 服务器端搭建方法 ，TeamSpeak (简称TS) 是一套专有的VoIP软件 - Edison Jwa - Vigorous Pro"><meta name="keywords" content="Linux, 搭建, 服务器, VoIP, 语音, edisonjwa,game,blog,Web,Html,edison"><meta property="og:image" content="https:&#x2F;&#x2F;cdn.jsdelivr.net&#x2F;gh&#x2F;EdisonJwa&#x2F;Blog@master&#x2F;source&#x2F;thumbnail&#x2F;teamspeak-server-build.png"><meta property="og:image" content="https:&#x2F;&#x2F;i.yecdn.com&#x2F;images&#x2F;2019&#x2F;01&#x2F;05&#x2F;470060848e9bcfcf7e49aa9deed1008f.png"><meta property="og:image" content="https:&#x2F;&#x2F;i.yecdn.com&#x2F;images&#x2F;2019&#x2F;01&#x2F;05&#x2F;e3b3003d5f109c0c67c71432bc0155c9.png"><meta property="og:image" content="https:&#x2F;&#x2F;i.yecdn.com&#x2F;images&#x2F;2019&#x2F;01&#x2F;05&#x2F;5dab956bb57536ab3ec97158fd71681f.jpg"><meta property="og:image" content="https:&#x2F;&#x2F;i.yecdn.com&#x2F;images&#x2F;2019&#x2F;04&#x2F;15&#x2F;89ff411ff26c02dc24fdec127742faf3.png"><meta property="article:published_time" content="2017-08-28T14:08:46.000Z"><meta property="article:modified_time" content="2019-12-07T08:40:26.000Z"><meta property="og:updated_time" content="2019-12-07T08:40:26.000Z"><meta property="article:author" content="Edison Jwa"><meta property="article:tag" content="Linux, 搭建, 服务器, VoIP, 语音, edisonjwa,game,blog,Web,Html,edison"><meta name="twitter:card" content="summary_large_image"><meta name="twitter:image" content="https:&#x2F;&#x2F;cdn.jsdelivr.net&#x2F;gh&#x2F;EdisonJwa&#x2F;Blog@master&#x2F;source&#x2F;thumbnail&#x2F;teamspeak-server-build.png"><link rel="canonical" href="https://www.wevg.org/archives/teamspeak-server-build/"><meta name="generator" content="Hexo 4.1.0"><script type="application/ld+json">{
+<!DOCTYPE html>
+
+<html lang="zh-CN">
+    <head>
+    <meta charset="utf-8">
+    <!--
+        hexo-theme-suka © SukkaW
+        GitHub: https://github.com/SukkaW/hexo-theme-suka
+    -->
+
+    <!-- ### Resource Hint ### -->
+
+    <!-- ## DNS Prefetch ## -->
+    <meta http-equiv="x-dns-prefetch-control" content="on">
+
+<!-- busuanzi -->
+
+
+<!-- comment -->
+
+
+
+
+
+
+
+<!-- analytics -->
+
+
+
+
+
+
+
+    <!-- ## Preload ## -->
+    
+
+
+
+
+    <!-- ### Meta & Title & Info ### -->
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, minimum-scale=1, initial-scale=1, maximum-scale=5, viewport-fit=cover">
+    <meta name="renderer" content="webkit">
+
+    <!-- Title -->
+    <title>TeamSpeak 服务器搭建方法 | Vigorous Pro</title>
+
+    <!-- Favicons -->
+    <link rel="icon" type="image&#x2F;ico" href="/favicon.ico"><link rel="apple-touch-icon" sizes="180x180" href="/source/favicon/apple-touch-icon.png"><link rel="icon" typt="image&#x2F;png" sizes="192x192" href="/source/favicon/android-chrome-192x192.png"><link rel="icon" typt="image&#x2F;png" sizes="32x32" href="/source/favicon/favicon-32x32.png"><link rel="icon" typt="image&#x2F;png" sizes="16x16" href="/source/favicon/favicon-16x16.png"><link rel="mask-icon" href="/safari-pinned-tab.svg" color="">
+
+    <!-- ### Import File ### -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/spectre.css@0.5.3"><style>
+    body {
+        background-color: #f8f9fa;
+    }
+
+    a, a:visited {
+        color: #0070ff;
+    }
+
+    a:active, a:focus, a:hover {
+        color: #0070ff;
+        opacity: .75;
+    }
+
+    #post-content a,
+    #post-content a:hover,
+    #post-content a:focus,
+    #post-content a:visited {
+        color: #005eb9;
+        opacity: 1;
+    }
+
+    
+
+    .post-entry .card-body a {
+        color: #0070ff;
+    }
+
+    .avatar {
+        background: #444;
+    }
+
+    .navbar-link,
+    .navbar-link:visited,
+    .timeline .timeline-item .timeline-icon.icon-lg {
+        color: #0070ff;
+    }
+
+    .navbar-link:hover {
+        color: #0070ff;
+        opacity: .8;
+    }
+
+    #search-input .btn,
+    #disqus_click_btn,
+    #disqus-switch-to-direct,
+    #disqus-loadmore-button {
+        background: #727e96;
+        border-color: #727e96;
+        color: #fff;
+    }
+
+    #post-toc a.post-toc-link,
+    #post-toc a.post-toc-link:visited,
+    .share-menu.menu .menu-item>a {
+        color: #727e96;
+    }
+
+    .share-menu.menu .menu-item>a:hover,
+    .share-menu.menu .menu-item>a:focus,
+    .share-menu.menu .menu-item>a:visited {
+        color: #50596c;
+        background: #f8f9fa;
+        opacity: .85;
+    }
+</style><link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/sukkaw/hexo-theme-suka@latest/source/css/style.min.css">
+
+
+    
+        <!-- Import DisqusJS Default Theme -->
+        <link rel="preload" href="https://cdn.jsdelivr.net/npm/disqusjs@1.2.5/dist/disqusjs.css" as="style" onload="this.onload=null;this.rel='stylesheet'"><noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/disqusjs@1.2.5/dist/disqusjs.css"></noscript>
+
+    
+
+
+
+
+
+
+
+    <!-- Prettify Theme -->
+    
+    <link rel="preload" href="/css/highlight/vs2015.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'"><noscript><link rel="stylesheet" href="/css/highlight/vs2015.min.css"></noscript>
+
+
+
+
+
+<script>
+/*! loadCSS. [c]2017 Filament Group, Inc. MIT License */
+!function(t){"use strict";t.loadCSS||(t.loadCSS=function(){});var e=loadCSS.relpreload={};if(e.support=function(){var e;try{e=t.document.createElement("link").relList.supports("preload")}catch(t){e=!1}return function(){return e}}(),e.bindMediaToggle=function(t){var e=t.media||"all";function a(){t.addEventListener?t.removeEventListener("load",a):t.attachEvent&&t.detachEvent("onload",a),t.setAttribute("onload",null),t.media=e}t.addEventListener?t.addEventListener("load",a):t.attachEvent&&t.attachEvent("onload",a),setTimeout(function(){t.rel="stylesheet",t.media="only x"}),setTimeout(a,3e3)},e.poly=function(){if(!e.support())for(var a=t.document.getElementsByTagName("link"),n=0;n<a.length;n++){var o=a[n];"preload"!==o.rel||"style"!==o.getAttribute("as")||o.getAttribute("data-loadcss")||(o.setAttribute("data-loadcss",!0),e.bindMediaToggle(o))}},!e.support()){e.poly();var a=t.setInterval(e.poly,500);t.addEventListener?t.addEventListener("load",function(){e.poly(),t.clearInterval(a)}):t.attachEvent&&t.attachEvent("onload",function(){e.poly(),t.clearInterval(a)})}"undefined"!=typeof exports?exports.loadCSS=loadCSS:t.loadCSS=loadCSS}("undefined"!=typeof global?global:this);
+</script>
+
+    <!-- ### Site Verification ### -->
+    
+
+
+    <link rel="alternate" type="application/atom+xml" href="/atom.xml"><meta name="mobile-web-app-capable" content="yes"><meta name="application-name" content="Vigorous Pro"><meta name="msapplication-starturl" content="https://www.wevg.org"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-title" content="Vigorous Pro"><meta name="apple-mobile-web-app-status-bar-style" content="black-translucent"><link rel="manifest" href="/manifest.json"><link rel="search" type="application/opensearchdescription+xml" href="/opensearch.xml" title="Vigorous Pro">
+
+    <!-- ### The Open Graph & Twitter Card Protocol ### -->
+    <meta property="og:title" content="TeamSpeak 服务器搭建方法 | Vigorous Pro"><meta property="og:site_name" content="Vigorous Pro"><meta property="og:type" content="article"><meta property="og:url" content="https:&#x2F;&#x2F;www.wevg.org&#x2F;archives&#x2F;teamspeak-server-build&#x2F;"><meta property="og:locale" content="zh-CN"><meta name="description" content="本文介绍 TeamSpeak 服务器端搭建方法 ，TeamSpeak (简称TS) 是一套专有的VoIP软件 - Edison Jwa - Vigorous Pro"><meta name="keywords" content="Linux, 搭建, 服务器, VoIP, 语音, edisonjwa,game,blog,Web,Html,edison"><meta property="og:image" content="https:&#x2F;&#x2F;cdn.jsdelivr.net&#x2F;gh&#x2F;EdisonJwa&#x2F;Blog@master&#x2F;source&#x2F;thumbnail&#x2F;teamspeak-server-build.png"><meta property="og:image" content="https:&#x2F;&#x2F;i.yecdn.com&#x2F;images&#x2F;2019&#x2F;01&#x2F;05&#x2F;470060848e9bcfcf7e49aa9deed1008f.png"><meta property="og:image" content="https:&#x2F;&#x2F;i.yecdn.com&#x2F;images&#x2F;2019&#x2F;01&#x2F;05&#x2F;e3b3003d5f109c0c67c71432bc0155c9.png"><meta property="og:image" content="https:&#x2F;&#x2F;i.yecdn.com&#x2F;images&#x2F;2019&#x2F;01&#x2F;05&#x2F;5dab956bb57536ab3ec97158fd71681f.jpg"><meta property="og:image" content="https:&#x2F;&#x2F;i.yecdn.com&#x2F;images&#x2F;2019&#x2F;04&#x2F;15&#x2F;89ff411ff26c02dc24fdec127742faf3.png"><meta property="article:published_time" content="2017-08-28T14:08:46.000Z"><meta property="article:modified_time" content="2019-12-07T08:40:26.000Z"><meta property="og:updated_time" content="2019-12-07T08:40:26.000Z"><meta property="article:author" content="Edison Jwa"><meta property="article:tag" content="Linux, 搭建, 服务器, VoIP, 语音, edisonjwa,game,blog,Web,Html,edison"><meta name="twitter:card" content="summary_large_image"><meta name="twitter:image" content="https:&#x2F;&#x2F;cdn.jsdelivr.net&#x2F;gh&#x2F;EdisonJwa&#x2F;Blog@master&#x2F;source&#x2F;thumbnail&#x2F;teamspeak-server-build.png">
+
+    
+
+    <!-- ### Canonical link ### -->
+    <link rel="canonical" href="https://www.wevg.org/archives/teamspeak-server-build/">
+
+    <meta name="generator" content="Hexo 4.1.0">
+
+    <!-- ### Analytics ### -->
+    
+
+
+
+
+
+
+
+    <!-- ### Structured Data ### -->
+    
+
+
+
+<script type="application/ld+json">
+{
     "@context": "http://schema.org",
     "url": "https://www.wevg.org/archives/teamspeak-server-build/",
     "@type": "BlogPosting",
@@ -42,4 +218,660 @@
     
     "keywords": "Linux, 搭建, 服务器, VoIP, 语音, edisonjwa,game,blog,Web,Html,edison",
     "description": "本文介绍 TeamSpeak 服务器端搭建方法 ，TeamSpeak (简称TS) 是一套专有的VoIP软件 - Edison Jwa - Vigorous Pro"
-}</script><link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/EdisonJwa/Blog@latest/css/darkmode.min.css"><script src="https://cdn.jsdelivr.net/gh/EdisonJwa/Blog@latest/js/edison-main.min.js"></script><script type="module" async src="https://cdn.jsdelivr.net/npm/instant.page@3.0.0/instantpage.min.js"></script><link rel="manifest" href="/site.webmanifest"><meta name="msapplication-TileColor" content="#d43d3d"><meta name="msapplication-TileImage" content="/source/favicon/mstile-144x144.png"><meta name="theme-color" content="#ffffff"><script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script><script>(adsbygoogle=window.adsbygoogle||[]).push({google_ad_client:"ca-pub-2345785306567671",enable_page_level_ads:!0})</script></head><body><header><h1 class="header-title text-center"><a href="/">Vigorous Pro</a></h1><p class="text-center header-slogan">The world can always use more heroes.</p><nav class="navbar-section text-center"><a href="/" class="navbar-link">首页</a> <a href="/archives/" class="navbar-link">归档</a> <a href="/search" class="navbar-link">搜索</a> <a href="/about/" class="navbar-link">关于</a> <a href="/friends/" class="navbar-link">友链</a></nav></header><div class="post-container"><div id="post-card" class="card"><div class="card-image lazyload" data-bg="url('https://cdn.jsdelivr.net/gh/EdisonJwa/Blog@master/source/thumbnail/teamspeak-server-build.png')"></div><div class="card-item-container"><div class="card-inner-cell"><div class="card-header"><h1 class="card-title h3 mb-2">TeamSpeak 服务器搭建方法</h1><div class="post-header-info"><p class="post-header-info-left text-gray"><img class="author-thumb lazyload" data-src="https://cdn.jsdelivr.net/gh/EdisonJwa/Blog/source/image/avatar.jpg" src="/img/suka-lazyload.gif" alt="Edison Jwa's Avatar"> <span>2017-08-28</span> <span class="suka-devide-dot"></span> <a class="category-link" href="/categories/Tech/">Tech</a></p><div class="post-header-info-right"><div class="dropdown dropdown-right"><a class="dropdown-toggle" tabindex="0">分享本文</a><ul class="menu share-menu"><li class="menu-item"><a href="http://service.weibo.com/share/share.php?appkey=&title=TeamSpeak 服务器搭建方法&url=https://www.wevg.org/archives/teamspeak-server-build/&pic=https://cdn.jsdelivr.net/gh/EdisonJwa/Blog@master/source/thumbnail/teamspeak-server-build.png&searchPic=false&style=simple" target="_blank" rel="external noopener noreferrer nofollow">分享到微博</a></li><li class="menu-item"><a href="https://twitter.com/intent/tweet?text=TeamSpeak 服务器搭建方法&url=https://www.wevg.org/archives/teamspeak-server-build/&via=Edison Jwa" target="_blank" rel="external noopener noreferrer nofollow">分享到 Twitter</a></li><li class="menu-item"><a href="https://www.facebook.com/sharer/sharer.php?u=https://www.wevg.org/archives/teamspeak-server-build/" target="_blank" rel="external noopener noreferrer nofollow">分享到 Facebook</a></li><li class="menu-item"><a href="https://plus.google.com/share?url=https://www.wevg.org/archives/teamspeak-server-build/" target="_blank" rel="external noopener noreferrer nofollow">分享到 Google+</a></li><li class="menu-item"><a href="https://www.linkedin.com/shareArticle?mini=true&url=https://www.wevg.org/archives/teamspeak-server-build/&title=Vigorous Pro" target="_blank" rel="external noopener noreferrer nofollow">分享到 LinkedIn</a></li><li class="menu-item"><a href="http://connect.qq.com/widget/shareqq/index.html?site=Vigorous Pro&title=Vigorous Pro&summary=The world can always use more heroes.&pics=https://cdn.jsdelivr.net/gh/EdisonJwa/Blog@master/source/thumbnail/teamspeak-server-build.png&url=https://www.wevg.org/archives/teamspeak-server-build/" target="_blank" rel="external noopener noreferrer nofollow">分享到 QQ</a></li><li class="menu-item"><a href="https://t.me/share/url?url=https://www.wevg.org/archives/teamspeak-server-build/&text=Vigorous Pro" target="_blank" rel="external noopener noreferrer nofollow">分享到 Telegram</a></li><li class="menu-item"><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAJQAAACUCAAAAABQV18IAAAB1ElEQVR42u3aQY7EIAxE0dz/0jPbXuCqMsoCnJ/NtNQJeSPRGBs/fwdeDyhQoEAtUI+44sGKZ3/HSN4Dag6qetFqwAqT3GvfA2oUqpqk7vtkwqfjgPomyv0YVuOCAqUwKvhWY4H6JqoKlNXL0kmvFltQc1FqQ//m39eyGVBHo7qJZhVw3f2vVl1AHY1SE9Ehq81fgl0+A2oEqgq6LhmoPrvCR/UMqDkot2lLAuoKnialtrgP6jpUNeHT4n26QYySD1BjUG4QlaSqjVxyGABqJipZ6NR91QSuFtUy4IMag6omZFLcTwJ6fFAJagzKTcT0QNsFX5vAghqDUhO9s7h2kLK4D+pqlDucdhM0XSTbBQ5QV6PSxU0OGP5z7aoLqGtRu4dAnYYIV+AHNRMlD3SCwv8OFtRcVHIw6WCdRNYGZFDXopJmrmRxdUmEbbQANQ7lFrdkYPUDiItmoMag3MFjN0i7cUDNRNnmveCgsVNwlYssqBGonaYalWSoRq6triBQV6JcwE0/pxM97ogFdTWq05CVJAguoY12CaBGo9IGZnsopA6YQH0GpQqsLuC2gjyoUaikIafTtJMkGqDmonYSSldcSwok29kMqKNRJ12gQIEC9XP9A13ocUDW8/GcAAAAAElFTkSuQmCC" alt="QRCode"></li></ul></div></div></div></div><div class="card-body"><div id="post-toc"><ol class="post-toc"><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#准备阶段"><span class="post-toc-number">1.</span> <span class="post-toc-text">准备阶段</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#同意许可条款"><span class="post-toc-number">1.1.</span> <span class="post-toc-text">同意许可条款</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#数据库配置"><span class="post-toc-number">1.2.</span> <span class="post-toc-text">数据库配置</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#方式一-使用-sqlite-搭建"><span class="post-toc-number">1.2.1.</span> <span class="post-toc-text">方式一: 使用 SQLite 搭建</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#方法二：使用-mysql-mariadb-数据库搭建"><span class="post-toc-number">1.2.2.</span> <span class="post-toc-text">方法二：使用 MySQL&#x2F;MariaDB 数据库搭建</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#设置自启动"><span class="post-toc-number">1.3.</span> <span class="post-toc-text">设置自启动</span></a></li></ol></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#tsdns设置方法-可选"><span class="post-toc-number">2.</span> <span class="post-toc-text">TSDNS设置方法 (可选)</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#域名-srv-记录添加格式"><span class="post-toc-number">2.1.</span> <span class="post-toc-text">域名 SRV 记录添加格式</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#添加至开机自启动-可选"><span class="post-toc-number">2.1.1.</span> <span class="post-toc-text">添加至开机自启动 (可选)</span></a></li></ol></li></ol></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#许可证介绍"><span class="post-toc-number">3.</span> <span class="post-toc-text">许可证介绍</span></a></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#teamspeak-端口"><span class="post-toc-number">4.</span> <span class="post-toc-text">TeamSpeak 端口</span></a></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#faq"><span class="post-toc-number">5.</span> <span class="post-toc-text">FAQ</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#使用-teamviewer-时-teamspeak-声音变小的问题"><span class="post-toc-number">5.1.</span> <span class="post-toc-text">使用 TeamViewer 时 TeamSpeak 声音变小的问题</span></a></li></ol></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#参考链接"><span class="post-toc-number">6.</span> <span class="post-toc-text">参考链接</span></a></li></ol></div><article id="post-content"><p>本文介绍 TeamSpeak 服务器端搭建方法 ，TeamSpeak (简称TS) 是一套专有的VoIP软件<a id="more"></a>，使用者可以用耳机和麦克风，通过客户端软件连线到指定的服务器，与在服务器内频道的其他使用者进行通话。是一种很像电话会议的方式。 通常 TeamSpeak 的使用者大多为多人连线游戏的玩家，与同队伍的玩家进行通讯。在游戏的对战方面，语音对话通讯具有竞争优势。</p><blockquote><p>如果您想找一个最快最简单的搭建方法，请参考 <a href="/archives/teamspeak-server-via-docker/">使用 Docker 搭建 TeamSpeak 服务器</a>。除此之外的更多情况下，我更推荐按照本文来进行搭建。</p></blockquote><p><strong>请务必从官网下载最新版本服务端，否则可能会出现无法连接至服务器的情况</strong><br>TeamSpeak 官网 <a href="https://www.teamspeak.com" target="_blank" rel="noopener">teamspeak.com</a></p><h1 id="准备阶段">准备阶段</h1><p>本部分以装有 Debian 10 x64 系统为例，其他系统搭建方法类似。</p><blockquote><p><span style="color:#db4d6d"><strong>为了保证系统的安全，不要使用 root 账户安装并配置TS服务器</strong></span></p></blockquote><p>执行一下系统更新操作：</p><figure class="highlight routeros"><table><tr><td class="gutter"><pre><span class="line">1</span></pre></td><td class="code"><pre><span class="line">apt update &amp;&amp; apt full-upgrade -y</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">2</span></pre></td><td class="code"><pre><span class="line">apt install curl vim wget git sudo unzip apt-transport-https<span class="built_in"> screen </span>ca-certificates dialog softw</span></pre></td></tr></table></figure><p>新建一个用户</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span></pre></td><td class="code"><pre><span class="line">useradd teamspeak</span></pre></td></tr></table></figure><p>切换至 /opt录下</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span></pre></td><td class="code"><pre><span class="line"><span class="built_in">cd</span> /opt</span></pre></td></tr></table></figure><p>复制并解压TS服务器端文件</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span></pre></td><td class="code"><pre><span class="line">wget https://files.teamspeak-services.com/releases/server/3.10.1/teamspeak3-server_linux_amd64-3.10.1.tar.bz2 &amp;&amp; tar -xjvf teamspeak3-server_linux_amd64-3.10.1.tar.bz2 &amp;&amp; rm teamspeak3-server_linux_amd64-3.10.1.tar.bz2</span></pre></td></tr></table></figure><p>赋予刚刚新建的用户权限，并进入该目录</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span></pre></td><td class="code"><pre><span class="line">chown -R teamspeak:teamspeak teamspeak3-server_linux_amd64 &amp;&amp; <span class="built_in">cd</span> /opt/teamspeak3-server_linux_amd64 &amp;&amp; su teamspeak</span></pre></td></tr></table></figure><h2 id="同意许可条款">同意许可条款</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span></pre></td><td class="code"><pre><span class="line">touch .ts3server_license_accepted</span></pre></td></tr></table></figure><blockquote><p>您可以选择以下任意一种搭建方式进行搭建，若您不理解这些方式的区别，请直接使用第一种搭建方式，即使用 SQLite 搭建</p></blockquote><h2 id="数据库配置">数据库配置</h2><h3 id="方式一-使用-sqlite-搭建">方式一: 使用 SQLite 搭建</h3><p>因 TeamSpeak 默认使用 SQLite, 所以直接执行以下操作即可自动配置，并启动服务器</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span></pre></td><td class="code"><pre><span class="line">./ts3server_startscript.sh start</span></pre></td></tr></table></figure><blockquote><p>注意保存密钥及 ServerQuery 管理员账户和密码</p></blockquote><p><img src="https://i.yecdn.com/images/2019/01/05/470060848e9bcfcf7e49aa9deed1008f.png" alt=""></p><h3 id="方法二：使用-mysql-mariadb-数据库搭建">方法二：使用 MySQL/MariaDB 数据库搭建</h3><ol><li>首先使用 root 登录 MySQL/MariaDB</li></ol><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span></pre></td><td class="code"><pre><span class="line">mysql -u root -p</span></pre></td></tr></table></figure><ol start="2"><li>会提示输入密码，输入密码登陆后，创建一个名为 teamspeak 的数据库</li></ol><blockquote><p>数据库名，用户名和密码请自行修改，此处以数据库名 <code>teamspeak_database</code>，用户名 <code>teamspeak_user</code> 及密码 <code>teamspeak_password</code> 为例</p></blockquote><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span></pre></td><td class="code"><pre><span class="line"><span class="keyword">CREATE</span> <span class="keyword">DATABASE</span> teamspeak_database <span class="keyword">DEFAULT</span> <span class="built_in">CHARACTER</span> <span class="keyword">SET</span> utf8mb4 <span class="keyword">COLLATE</span> utf8mb4_general_ci;</span></pre></td></tr></table></figure><ol start="3"><li>创建一个叫做 <code>teamspeak_user</code> 的用户，使用强大的密码并且赋予 <code>teamspeak_database</code> 数据库权限</li></ol><p>由于手机端的流行，我们已经不再使用 <code>utf-8</code> 编码，而改用 <code>utf8mb4</code> 这样我们就可以在 MySQL 数据库里储存 emoji 表情了。你甚至可以尝试使用 emoji 作为用户名或者密码。</p><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span></pre></td><td class="code"><pre><span class="line"><span class="keyword">GRANT</span> <span class="keyword">ALL</span> <span class="keyword">ON</span> teamspeak_database.* <span class="keyword">TO</span> <span class="string">'teamspeak_user'</span>@<span class="string">'localhost'</span> <span class="keyword">IDENTIFIED</span> <span class="keyword">BY</span> <span class="string">'teamspeak_password'</span>;</span></pre></td></tr></table></figure><blockquote><p>这里请将密码 <code>teamspeak_password</code> 改成你要设置的强大的没人能猜出来的随机的密码</p></blockquote><p>终端会提示类似 Query OK, 0 rows affected, 1 warning 不用去管它</p><ol start="4"><li>刷新权限，没问题就可以退出结束安装了</li></ol><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span></pre></td><td class="code"><pre><span class="line"><span class="keyword">FLUSH</span> <span class="keyword">PRIVILEGES</span>;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">2</span></pre></td><td class="code"><pre><span class="line">EXIT;</span></pre></td></tr></table></figure><blockquote><p>进行后续步骤前，首先确保您已经安装 MySQL/MariaDB, 且已经创建好数据库</p></blockquote><ol start="5"><li>创建 <code>ts3server.ini</code> 文件，以启用数据库插件</li></ol><blockquote><p>若您已经使用的是 MySQL 数据库, 请将 <code>dbpluginparameter=ts3db_mariadb.ini</code> 部分修改为<br><code>dbpluginparameter=ts3db_mysql.ini</code></p></blockquote><figure class="highlight ini"><table><tr><td class="gutter"><pre><span class="line">1</span></pre></td><td class="code"><pre><span class="line">cat &gt; ts3server.ini &lt;&lt; EOF</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">2</span></pre></td><td class="code"><pre><span class="line"><span class="attr">dbplugin</span>=ts3db_mariadb </span></pre></td></tr><tr><td class="gutter"><pre><span class="line">3</span></pre></td><td class="code"><pre><span class="line"><span class="attr">dbpluginparameter</span>=ts3db_mariadb.ini </span></pre></td></tr><tr><td class="gutter"><pre><span class="line">4</span></pre></td><td class="code"><pre><span class="line"><span class="attr">dbsqlpath</span>=sql/ </span></pre></td></tr><tr><td class="gutter"><pre><span class="line">5</span></pre></td><td class="code"><pre><span class="line"><span class="attr">dbsqlcreatepath</span>=create_mariadb/ </span></pre></td></tr><tr><td class="gutter"><pre><span class="line">6</span></pre></td><td class="code"><pre><span class="line"><span class="attr">dbconnections</span>=<span class="number">10</span></span></pre></td></tr></table></figure><ol start="6"><li>新建 <code>ts3db_mariadb.ini</code> 文件并输入如下内容</li></ol><blockquote><p>若您已经使用的是 MySQL 数据库, 请创建<code>ts3db_mysql.ini</code> , 不要创建 <code>ts3db_mariadb.ini</code> 文件</p></blockquote><figure class="highlight ini"><table><tr><td class="gutter"><pre><span class="line">1</span></pre></td><td class="code"><pre><span class="line"><span class="section">[config]</span> </span></pre></td></tr><tr><td class="gutter"><pre><span class="line">2</span></pre></td><td class="code"><pre><span class="line"><span class="attr">server</span>=<span class="string">'localhost'</span> </span></pre></td></tr><tr><td class="gutter"><pre><span class="line">3</span></pre></td><td class="code"><pre><span class="line"><span class="attr">port</span>=<span class="string">'3306'</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">4</span></pre></td><td class="code"><pre><span class="line"><span class="attr">username</span>=<span class="string">'teamspeak_user'</span> </span></pre></td></tr><tr><td class="gutter"><pre><span class="line">5</span></pre></td><td class="code"><pre><span class="line"><span class="attr">password</span>=<span class="string">'teamspeak_password'</span> </span></pre></td></tr><tr><td class="gutter"><pre><span class="line">6</span></pre></td><td class="code"><pre><span class="line"><span class="attr">database</span>=<span class="string">'teamspeak_database'</span></span></pre></td></tr></table></figure><blockquote><p>将 数据库名 <code>teamspeak_database</code>，用户名 <code>teamspeak_user</code> 及密码 <code>teamspeak_password</code> 部分修改为您自己数据库的信息</p></blockquote><ol start="7"><li>将 redist 目录下的 <code>libmariadb.so.2</code> 文件拷贝至当前目录下</li></ol><figure class="highlight vim"><table><tr><td class="gutter"><pre><span class="line">1</span></pre></td><td class="code"><pre><span class="line"><span class="keyword">cp</span> redist/libmariadb.<span class="keyword">so</span>.<span class="number">2</span> ./</span></pre></td></tr></table></figure><p>执行以下操作即可启动服务器</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span></pre></td><td class="code"><pre><span class="line">./ts3server_startscript.sh start inifile=ts3server.ini</span></pre></td></tr></table></figure><blockquote><p>注意保存密钥及 ServerQuery 管理员账户和密码</p></blockquote><h2 id="设置自启动">设置自启动</h2><p>创建并编辑文件 <code>/lib/systemd/system/teamspeak.service</code></p><blockquote><p><strong>此步骤需要root权限</strong></p></blockquote><figure class="highlight ini"><table><tr><td class="gutter"><pre><span class="line">1</span></pre></td><td class="code"><pre><span class="line"><span class="section">[Unit]</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">2</span></pre></td><td class="code"><pre><span class="line"><span class="attr">Description</span>=Teamspeak, The most superior <span class="literal">on</span>line voice communication solution.</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">3</span></pre></td><td class="code"><pre><span class="line"><span class="attr">Wants</span>=network-<span class="literal">on</span>line.target</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">4</span></pre></td><td class="code"><pre><span class="line"><span class="attr">After</span>=syslog.target network.target network-<span class="literal">on</span>line.target</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">5</span></pre></td><td class="code"><pre><span class="line"></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">6</span></pre></td><td class="code"><pre><span class="line"><span class="section">[Service]</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">7</span></pre></td><td class="code"><pre><span class="line"><span class="attr">User</span>=teamspeak</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">8</span></pre></td><td class="code"><pre><span class="line"><span class="attr">Group</span>=teamspeak</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">9</span></pre></td><td class="code"><pre><span class="line"><span class="attr">WorkingDirectory</span>=/opt/teamspeak3-server_linux_amd64/</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">10</span></pre></td><td class="code"><pre><span class="line"><span class="attr">ExecStart</span>=/opt/teamspeak3-server_linux_amd64/ts3server_startscript.sh start</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">11</span></pre></td><td class="code"><pre><span class="line"><span class="attr">ExecStop</span>=/opt/teamspeak3-server_linux_amd64/ts3server_startscript.sh stop</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">12</span></pre></td><td class="code"><pre><span class="line"><span class="attr">PIDFile</span>=/opt/teamspeak3-server_linux_amd64/ts3server.pid</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">13</span></pre></td><td class="code"><pre><span class="line"><span class="attr">Type</span>=forking</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">14</span></pre></td><td class="code"><pre><span class="line"></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">15</span></pre></td><td class="code"><pre><span class="line"><span class="section">[Install]</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">16</span></pre></td><td class="code"><pre><span class="line"><span class="attr">WantedBy</span>=multi-user.target</span></pre></td></tr></table></figure><blockquote><p>若您是使用 MySQL 或 MariaDB 数据库方式搭建的话，请将</p></blockquote><figure class="highlight ini"><table><tr><td class="gutter"><pre><span class="line">1</span></pre></td><td class="code"><pre><span class="line"><span class="attr">ExecStart</span>=/opt/teamspeak3-server_linux_amd64/ts3server_startscript.sh start</span></pre></td></tr></table></figure><p>修改为</p><figure class="highlight routeros"><table><tr><td class="gutter"><pre><span class="line">1</span></pre></td><td class="code"><pre><span class="line"><span class="attribute">ExecStart</span>=/opt/teamspeak3-server_linux_amd64/ts3server_startscript.sh start <span class="attribute">inifile</span>=ts3server.ini</span></pre></td></tr></table></figure><p>重新加载 systemd : <code>systemctl daemon-reload</code><br>开启自启动(可选): <code>systemctl enable teamspeak.service</code><br>启动 TeamSpeak : <code>systemctl start teamspeak.service</code><br>停止 TeamSpeak : <code>systemctl stop teamspeak.service</code><br>重启 TeamSpeak : <code>systemctl restart teamspeak.service</code></p><h1 id="tsdns设置方法-可选">TSDNS设置方法 (可选)</h1><p>进入tsdns文件夹中，并创建的 <code>tsdns_settings.ini</code> 文件，</p><figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">nano</span> <span class="selector-tag">tsdns_settings</span><span class="selector-class">.ini</span></span></pre></td></tr></table></figure><p>配置的格式为 <code>DOMAIN=IP:PORT</code>,比如：</p><ul><li><code>example.com=1.1.1.1:9987</code> 即代表将 <code>example.com</code> 和其他任何以 <code>example.com</code> 为后缀的域名，解析到地址为 <code>1.1.1.1:9987</code> 的ts服务器</li><li>包括 example.com, abc.example.com, abc.def.ghi.example.com …</li><li><code>*.example.com=2.2.2.2:9987</code> 即代表将任何以符合 <code>*.example.com</code> 格式的域名，解析到地址为 <code>1.1.1.1:9987</code> 的ts服务器<ul><li>包括 abc.example.com, abc.example.com, 123.example.com …</li></ul></li><li>PORT 也可以调用变量, 如<ul><li><code>abc.example.com=1.2.3.4:$PORT</code></li></ul></li><li><code>*=1.2.3.4:10000</code> 在这种情况下，它充当向后兼容机制, 可以对没有使用新 TSDNS 名称进行连接的人,连接至当前服务器.<ul><li>比如一名用户连接至 <code>test.example.com:20000</code> ,则该用户会被自动转至 <code>1.2.3.4:10000</code> 的服务器地址</li></ul></li><li>IPv6 格式为 <code>example.com=[2001:0db8::1]:9987</code><ul><li><code>example.com=[2001:0db8::1]:9987 1.1.1.1:9987</code></li></ul></li></ul><h2 id="域名-srv-记录添加格式">域名 SRV 记录添加格式</h2><p>此处以给 <code>example.com</code> 域名配置 TSDNS 为例, 假如 tsdns 的</p><table><thead><tr><th style="text-align:center">类别</th><th style="text-align:center">记录值</th></tr></thead><tbody><tr><td style="text-align:center">名称</td><td style="text-align:center">_tsdns._tcp.example.com</td></tr><tr><td style="text-align:center">Priority</td><td style="text-align:center">1</td></tr><tr><td style="text-align:center">Weight</td><td style="text-align:center">0</td></tr><tr><td style="text-align:center">Port</td><td style="text-align:center">41144</td></tr><tr><td style="text-align:center">Address</td><td style="text-align:center">tsdns.example.com</td></tr></tbody></table><blockquote><p>此处以 TSDNS 所在服务器地址为 tsdns.example.com 为例, <code>Address</code> 部分请务必填写为域名格式。</p></blockquote><table><thead><tr><th style="text-align:center">类别</th><th style="text-align:center">记录值</th></tr></thead><tbody><tr><td style="text-align:center">名称</td><td style="text-align:center">_ts3._udp.example.com</td></tr><tr><td style="text-align:center">Priority</td><td style="text-align:center">1</td></tr><tr><td style="text-align:center">Weight</td><td style="text-align:center">0</td></tr><tr><td style="text-align:center">Port</td><td style="text-align:center">9987</td></tr><tr><td style="text-align:center">Address</td><td style="text-align:center">teamspeak.example.com</td></tr></tbody></table><blockquote><p><code>Port</code> 为 TeamSpeak 服务器地址端口， <code>Address</code> 为 TeamSpeak 服务器地址</p></blockquote><p>接下载, 运行tsdnsserver程序即可，现在连接到TS服务器，可以看到已经显示成功</p><p><img src="https://i.yecdn.com/images/2019/01/05/e3b3003d5f109c0c67c71432bc0155c9.png" alt=""></p><p>可通过此代码来后台运行</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span></pre></td><td class="code"><pre><span class="line">screen -AmdS tsdns ./tsdnsserver</span></pre></td></tr></table></figure><h3 id="添加至开机自启动-可选">添加至开机自启动 (可选)</h3><p>通过 crontab 来实现开机启动</p><figure class="highlight ebnf"><table><tr><td class="gutter"><pre><span class="line">1</span></pre></td><td class="code"><pre><span class="line"><span class="attribute">crontab -e</span></span></pre></td></tr></table></figure><p>在文件中添加</p><figure class="highlight groovy"><table><tr><td class="gutter"><pre><span class="line">1</span></pre></td><td class="code"><pre><span class="line"><span class="meta">@reboot</span> <span class="regexp">/opt/</span>teamspeak3-server_linux_amd64<span class="regexp">/tsdns/</span>tsdnsserver</span></pre></td></tr></table></figure><p>关闭编辑器并保存。</p><p>接下来，你可以通过 <code>crontab -l</code> 来确认是否添加成功即可。</p><h1 id="许可证介绍">许可证介绍</h1><p><img src="https://i.yecdn.com/images/2019/01/05/5dab956bb57536ab3ec97158fd71681f.jpg" alt=""></p><p><strong>2018-09-11</strong> Non-Profit License (NPL) 现在申请接口已经关闭，许可证相关信息也发生了改变</p><p><strong>2019-03-23</strong> 许可证信息前不久又发生了改变，当前许可证状态<br><img src="https://i.yecdn.com/images/2019/04/15/89ff411ff26c02dc24fdec127742faf3.png" alt=""></p><p><strong>2019-10-06</strong> 官方于 <code>2019-05-13</code><sup class="footnote-ref"><a href="#fn1" id="fnref1">[1]</a></sup> 上线了 Sponsorship License，可供游戏俱乐部，教育机构，视频创作者使用，详细说明可在此处查看 https://teamspeak.com/sponsorship/ (Thanks to <a href="https://github.com/xcgjack" target="_blank" rel="noopener">@xcgjack</a>)</p><h1 id="teamspeak-端口">TeamSpeak 端口</h1><p>TeamSpeak 默认情况下, 服务器端需要下表中的端口<sup class="footnote-ref"><a href="#fn2" id="fnref2">[2]</a></sup></p><table><thead><tr><th style="text-align:center">端口</th><th style="text-align:center">协议</th><th style="text-align:center">说明</th></tr></thead><tbody><tr><td style="text-align:center">9987</td><td style="text-align:center">UDP</td><td style="text-align:center">默认语音服务器端口</td></tr><tr><td style="text-align:center">10011</td><td style="text-align:center">TCP</td><td style="text-align:center">ServerQuery raw 端口</td></tr><tr><td style="text-align:center">10022</td><td style="text-align:center">TCP</td><td style="text-align:center">ServerQuery SSH 端口(3.3.0 以上版本服务端)</td></tr><tr><td style="text-align:center">30033</td><td style="text-align:center">TCP</td><td style="text-align:center">文件传输端口</td></tr><tr><td style="text-align:center">41144</td><td style="text-align:center">TCP</td><td style="text-align:center">TSDNS</td></tr></tbody></table><p>服务端的所有端口都可自由更改</p><p>TeamSpeak 3 服务器还会与下方的地址进行连接<sup class="footnote-ref"><a href="#fn3" id="fnref3">[3]</a></sup></p><table><thead><tr><th style="text-align:center">域名</th><th style="text-align:center">协议</th><th style="text-align:center">本地端口(服务器)</th><th style="text-align:center">远程端口</th><th style="text-align:center">说明</th></tr></thead><tbody><tr><td style="text-align:center">accounting.teamspeak.com</td><td style="text-align:center">TCP</td><td style="text-align:center">1024-65535</td><td style="text-align:center">2008</td><td style="text-align:center">3.0.x 服务端版本</td></tr><tr><td style="text-align:center">accounting2.teamspeak.com</td><td style="text-align:center">TCP</td><td style="text-align:center">1024-65535</td><td style="text-align:center">443</td><td style="text-align:center">3.1.x 服务端版本</td></tr><tr><td style="text-align:center">ts3services.teamspeak.com</td><td style="text-align:center">TCP</td><td style="text-align:center">1024-65535</td><td style="text-align:center">443</td><td style="text-align:center">3.1.x 服务端版本</td></tr><tr><td style="text-align:center">weblist.teamspeak.com</td><td style="text-align:center">UDP</td><td style="text-align:center">2011-2110</td><td style="text-align:center">2010</td><td style="text-align:center">全部服务端版本</td></tr></tbody></table><p>至此 TeamSpeak 服务器端的搭建方法到此结束。</p><h1 id="faq">FAQ</h1><h2 id="使用-teamviewer-时-teamspeak-声音变小的问题">使用 TeamViewer 时 TeamSpeak 声音变小的问题</h2><p>此部分请移步至 <a href="https://www.wevg.org/archives/how-to-use-teamspeak3/">TeamSpeak3 食用方法 (新手向)</a></p><h1 id="参考链接">参考链接</h1><p><a href="https://forum.teamspeak.com/threads/46486-Teamspeak-3-Server-Ports" target="_blank" rel="noopener">Teamspeak 3 Server Ports</a></p><p><a href="https://forum.teamspeak.com/threads/102772-Teamspeak-3-server-TSDNS-setup" target="_blank" rel="noopener">Teamspeak 3 server TSDNS setup</a></p><p><a href="https://support.teamspeakusa.com/index.php?/Knowledgebase/Article/View/332/15/server-address-resolution-and-tsdns-changes-with-client-31x" target="_blank" rel="noopener">Server address resolution and TSDNS changes with Client 3.1.x</a></p><p><a href="https://support.teamspeakusa.com/index.php?/Knowledgebase/Article/View/293/12/does-teamspeak-3-support-dns-srv-records" target="_blank" rel="noopener">Does TeamSpeak 3 support DNS SRV records?</a></p><hr class="footnotes-sep"><section class="footnotes"><ol class="footnotes-list"><li id="fn1" class="footnote-item"><p><a href="https://twitter.com/teamspeak/status/1127939577501687808" target="_blank" rel="noopener">TeamSpeak Official Twitter</a> <a href="#fnref1" class="footnote-backref">↩</a></p></li><li id="fn2" class="footnote-item"><p><a href="https://forum.teamspeak.com/threads/135502-What-ports-TeamSpeak-3-server-use" target="_blank" rel="noopener">What ports TeamSpeak 3 server use?</a> <a href="#fnref2" class="footnote-backref">↩</a></p></li><li id="fn3" class="footnote-item"><p><a href="https://support.teamspeakusa.com/index.php?/Knowledgebase/Article/View/44/16/which-ports-does-the-teamspeak-3-server-use" target="_blank" rel="noopener">Which ports does the TeamSpeak 3 server use?</a> <a href="#fnref3" class="footnote-backref">↩</a></p></li></ol></section></article><blockquote class="post-license"><p><strong>本文作者&nbsp;:&nbsp;Edison Jwa</strong><br><strong>本文使用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">署名-非商业性使用-相同方式共享 4.0 国际 (CC BY-NC-SA 4.0)</a> 协议</strong><br><strong>本文链接&nbsp;:&nbsp;</strong><a href="https://www.wevg.org/archives/teamspeak-server-build/">https://www.wevg.org/archives/teamspeak-server-build/</a></p></blockquote><blockquote id="date-expire-notification" class="post-expired-notify">本文最后更新于 <span id="date-expire-num"></span> 天前，文中所描述的信息可能已发生改变</blockquote><script>!function(){var e=Date.parse("2019-12-07"),t=(new Date).getTime()-e,n=Math.floor(t/864e5);120<=n?document.getElementById("date-expire-num").innerHTML=n:document.getElementById("date-expire-notification").style.display="none"}()</script><p class="post-footer-info mb-0 pt-0">本文发表于&nbsp;<time datetime="2017-08-28T14:08:46.000Z" itemprop="datePublished">2017-08-28</time> , 最后修改于&nbsp;<time datetime="2019-12-07T08:40:26.000Z" itemprop="dateModified">2019-12-07</time></p><p class="post-footer-info mb-0 pt-2"><span class="post-categories-list mt-2"><a class="post-categories-list-item" href="/categories/Tech/">Tech</a> </span><span class="post-tags-list mt-2"><a class="post-tags-list-item" href="/tags/Linux/" rel="tag">#&nbsp;Linux</a> <a class="post-tags-list-item" href="/tags/%E6%90%AD%E5%BB%BA/" rel="tag">#&nbsp;搭建</a> <a class="post-tags-list-item" href="/tags/%E6%9C%8D%E5%8A%A1%E5%99%A8/" rel="tag">#&nbsp;服务器</a> <a class="post-tags-list-item" href="/tags/VoIP/" rel="tag">#&nbsp;VoIP</a> <a class="post-tags-list-item" href="/tags/%E8%AF%AD%E9%9F%B3/" rel="tag">#&nbsp;语音</a></span></p></div><div class="post-nav px-2 bg-gray"><ul class="pagination"><li class="page-item page-prev"><a href="/archives/change-telegram-fonts/" rel="prev"><div class="page-item-title"><i class="icon icon-back" aria-hidden="true"></i></div><div class="page-item-subtitle">为 Telegram Desktop 替换字体</div></a></li></ul></div><div class="card-footer post-comment"><div id="disqus_thread"></div><script id="js-disqusjs" src="https://cdn.jsdelivr.net/npm/disqusjs@1.2.5/dist/disqus.js" async></script><script>document.getElementById("js-disqusjs").addEventListener("load",function(){function e(){new DisqusJS({shortname:"edisonj",siteName:"Vigorous Pro",identifier:"https://www.wevg.org/archives/teamspeak-server-build/",url:"https://www.wevg.org/archives/teamspeak-server-build/",api:"https://disqus.wevg.org/api/",apikey:"vBTqc5gYirQfuj9STIAANtQCArVi9MN8UZ72UUucwnhus4AhpgpbVJMIn3Ojl4O7"})}"complete"===document.readyState?e():window.addEventListener("load",e)})</script></div></div></div></div></div><footer class="text-center"><p class="footer-copyright mb-0">Copyright&nbsp;©&nbsp;<span id="copyright-year"></span> <a class="footer-copyright-a" href="https://www.wevg.org">Vigorous Pro</a></p><p class="footer-text mb-0"><a href="/atom.xml" target="_blank" class="footer-develop-a" rel="nofollow noopener noreferrer">RSS</a><span class="footer-develop-divider"></span><a href="/donate" target="_blank" class="footer-develop-a" rel="nofollow noopener noreferrer">Donate</a><span class="footer-develop-divider"></span><a href="/privacy-policy" target="_blank" class="footer-develop-a" rel="nofollow noopener noreferrer">Privacy Policy</a></p><p class="footer-develop mb-0">Powered by&nbsp;<a href="https://hexo.io" target="_blank" class="footer-develop-a" rel="external nofollow noopener noreferrer">Hexo</a><span class="footer-develop-divider"></span>Theme&nbsp;-&nbsp;<a href="https://github.com/SukkaW/hexo-theme-suka" target="_blank" class="footer-develop-a" rel="external noopener">Suka</a></p></footer><script>window.lazyLoadOptions={elements_selector:".lazyload",threshold:50},function(){var e=(new Date).getFullYear();document.getElementById("copyright-year").textContent=2015===e?e:"2015 - "+e}(),console.log("\n %c Suka Theme (hexo-theme-suka) | © SukkaW | Verision 1.4.0 %c https://github.com/SukkaW/hexo-theme-suka \n","color: #fff; background: #444; padding:5px 0;","background: #bbb; padding:5px 0;")</script><script src="https://cdn.jsdelivr.net/npm/vanilla-lazyload" async></script><script>if ('serviceWorker' in navigator) { window.addEventListener('load', () => { navigator.serviceWorker.register('/sw.js'); }) }</script><script>window.ga_tid="UA-106121780-1",window.ga_api="https://ga.cdn.uv.uy/"</script><script src="https://cdn.jsdelivr.net/npm/cfga@1.0.1" async></script></body></html>
+}
+</script>
+
+
+
+    <!-- ### Custom Head ### -->
+    <!-- 一行自定义代码 --><!-- 多行自定义代码 --><!-- 第二行 --><!-- 第三行 --><link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/EdisonJwa/Blog@latest/css/darkmode.min.css"><script src="https://cdn.jsdelivr.net/gh/EdisonJwa/Blog@latest/js/edison-main.min.js"></script><script type="module" async="" src="https://cdn.jsdelivr.net/npm/instant.page@3.0.0/instantpage.min.js"></script><link rel="manifest" href="/site.webmanifest"><meta name="msapplication-TileColor" content="#d43d3d"><meta name="msapplication-TileImage" content="/source/favicon/mstile-144x144.png"><meta name="theme-color" content="#ffffff"><script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script><script> (adsbygoogle = window.adsbygoogle || []).push({ google_ad_client: "ca-pub-2345785306567671", enable_page_level_ads: true });</script>
+</head>
+
+    <body>
+            
+
+            <!-- ### Main content ### -->
+            <!-- ## Header ##-->
+<header>
+    <h1 class="header-title text-center"><a href="/">Vigorous Pro</a></h1>
+
+    <p class="text-center header-slogan">
+        
+            
+                The world can always use more heroes.
+            
+        
+    </p>
+
+    <nav class="navbar-section text-center">
+    
+        <a href="/" class="navbar-link">首页</a>
+    
+    
+        <a href="/archives/" class="navbar-link">归档</a>
+    
+    
+        <a href="/search" class="navbar-link">搜索</a>
+    
+    
+        <a href="/about/" class="navbar-link">关于</a>
+    
+        <a href="/friends/" class="navbar-link">友链</a>
+    
+    
+    
+</nav>
+</header>
+
+            
+    <!-- ## Post ## -->
+    <div class="post-container">
+    <div id="post-card" class="card">
+        
+            <div class="card-image lazyload" data-bg="url('https://cdn.jsdelivr.net/gh/EdisonJwa/Blog@master/source/thumbnail/teamspeak-server-build.png')"></div>
+        
+        <div class="card-item-container">
+            <div class="card-inner-cell">
+                <!-- # Post Header Info # -->
+                <div class="card-header">
+                    
+    <h1 class="card-title h3 mb-2">TeamSpeak 服务器搭建方法</h1>
+
+
+
+
+<div class="post-header-info">
+    <p class="post-header-info-left text-gray">
+        <img class="author-thumb lazyload" data-src="https://cdn.jsdelivr.net/gh/EdisonJwa/Blog/source/image/avatar.jpg" src="/img/suka-lazyload.gif" alt="Edison Jwa's Avatar">
+        <span>2017-08-28</span>
+        
+            <span class="suka-devide-dot"></span>
+            <a class="category-link" href="/categories/Tech/">Tech</a>
+        
+        
+        
+    </p>
+    <div class="post-header-info-right">
+        
+            <div class="dropdown dropdown-right">
+<a class="dropdown-toggle" tabindex="0">分享本文</a>
+<ul class="menu share-menu">
+    <!-- Share Weibo -->
+    
+    <li class="menu-item">
+        <a href="http://service.weibo.com/share/share.php?appkey=&title=TeamSpeak 服务器搭建方法&url=https://www.wevg.org/archives/teamspeak-server-build/&pic=https://cdn.jsdelivr.net/gh/EdisonJwa/Blog@master/source/thumbnail/teamspeak-server-build.png&searchPic=false&style=simple" target="_blank" rel="external noopener noreferrer nofollow">分享到微博</a>
+    </li>
+    
+
+    <!-- Share Twitter -->
+    
+    <li class="menu-item">
+        <a href="https://twitter.com/intent/tweet?text=TeamSpeak 服务器搭建方法&url=https://www.wevg.org/archives/teamspeak-server-build/&via=Edison Jwa" target="_blank" rel="external noopener noreferrer nofollow">分享到 Twitter</a>
+    </li>
+    
+
+    <!-- Share Facebook -->
+    
+    <li class="menu-item">
+        <a href="https://www.facebook.com/sharer/sharer.php?u=https://www.wevg.org/archives/teamspeak-server-build/" target="_blank" rel="external noopener noreferrer nofollow">分享到 Facebook</a>
+    </li>
+    
+
+    <!-- Share Google+ -->
+    
+    <li class="menu-item">
+        <a href="https://plus.google.com/share?url=https://www.wevg.org/archives/teamspeak-server-build/" target="_blank" rel="external noopener noreferrer nofollow">分享到 Google+</a>
+    </li>
+    
+
+    <!-- Share LinkedIn -->
+    
+    <li class="menu-item">
+        <a href="https://www.linkedin.com/shareArticle?mini=true&url=https://www.wevg.org/archives/teamspeak-server-build/&title=Vigorous Pro" target="_blank" rel="external noopener noreferrer nofollow">分享到 LinkedIn</a>
+    </li>
+    
+
+    <!-- Share QQ -->
+    
+    <li class="menu-item">
+        <a href="http://connect.qq.com/widget/shareqq/index.html?site=Vigorous Pro&title=Vigorous Pro&summary=The world can always use more heroes.&pics=https://cdn.jsdelivr.net/gh/EdisonJwa/Blog@master/source/thumbnail/teamspeak-server-build.png&url=https://www.wevg.org/archives/teamspeak-server-build/" target="_blank" rel="external noopener noreferrer nofollow"> 分享到 QQ</a>
+    </li>
+    
+
+    <!-- Share Telegram -->
+    
+    <li class="menu-item">
+        <a href="https://t.me/share/url?url=https://www.wevg.org/archives/teamspeak-server-build/&text=Vigorous Pro" target="_blank" rel="external noopener noreferrer nofollow">分享到 Telegram</a>
+    </li>
+    
+
+    <!-- QRCode -->
+    
+    <li class="menu-item">
+        <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAJQAAACUCAAAAABQV18IAAAB1ElEQVR42u3aQY7EIAxE0dz/0jPbXuCqMsoCnJ/NtNQJeSPRGBs/fwdeDyhQoEAtUI+44sGKZ3/HSN4Dag6qetFqwAqT3GvfA2oUqpqk7vtkwqfjgPomyv0YVuOCAqUwKvhWY4H6JqoKlNXL0kmvFltQc1FqQ//m39eyGVBHo7qJZhVw3f2vVl1AHY1SE9Ehq81fgl0+A2oEqgq6LhmoPrvCR/UMqDkot2lLAuoKnialtrgP6jpUNeHT4n26QYySD1BjUG4QlaSqjVxyGABqJipZ6NR91QSuFtUy4IMag6omZFLcTwJ6fFAJagzKTcT0QNsFX5vAghqDUhO9s7h2kLK4D+pqlDucdhM0XSTbBQ5QV6PSxU0OGP5z7aoLqGtRu4dAnYYIV+AHNRMlD3SCwv8OFtRcVHIw6WCdRNYGZFDXopJmrmRxdUmEbbQANQ7lFrdkYPUDiItmoMag3MFjN0i7cUDNRNnmveCgsVNwlYssqBGonaYalWSoRq6triBQV6JcwE0/pxM97ogFdTWq05CVJAguoY12CaBGo9IGZnsopA6YQH0GpQqsLuC2gjyoUaikIafTtJMkGqDmonYSSldcSwok29kMqKNRJ12gQIEC9XP9A13ocUDW8/GcAAAAAElFTkSuQmCC" alt="QRCode">
+    </li>
+    
+
+</ul>
+</div>
+        
+    </div>
+</div>
+                </div>
+                <div class="card-body">
+                    
+                        
+                        
+                            <div id="post-toc"><ol class="post-toc"><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#准备阶段"><span class="post-toc-number">1.</span> <span class="post-toc-text">准备阶段</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#同意许可条款"><span class="post-toc-number">1.1.</span> <span class="post-toc-text">同意许可条款</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#数据库配置"><span class="post-toc-number">1.2.</span> <span class="post-toc-text">数据库配置</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#方式一-使用-sqlite-搭建"><span class="post-toc-number">1.2.1.</span> <span class="post-toc-text">方式一: 使用 SQLite 搭建</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#方法二：使用-mysql-mariadb-数据库搭建"><span class="post-toc-number">1.2.2.</span> <span class="post-toc-text">方法二：使用 MySQL&#x2F;MariaDB 数据库搭建</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#设置自启动"><span class="post-toc-number">1.3.</span> <span class="post-toc-text">设置自启动</span></a></li></ol></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#tsdns设置方法-可选"><span class="post-toc-number">2.</span> <span class="post-toc-text">TSDNS设置方法 (可选)</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#域名-srv-记录添加格式"><span class="post-toc-number">2.1.</span> <span class="post-toc-text">域名 SRV 记录添加格式</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#添加至开机自启动-可选"><span class="post-toc-number">2.1.1.</span> <span class="post-toc-text">添加至开机自启动 (可选)</span></a></li></ol></li></ol></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#许可证介绍"><span class="post-toc-number">3.</span> <span class="post-toc-text">许可证介绍</span></a></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#teamspeak-端口"><span class="post-toc-number">4.</span> <span class="post-toc-text">TeamSpeak 端口</span></a></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#faq"><span class="post-toc-number">5.</span> <span class="post-toc-text">FAQ</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#使用-teamviewer-时-teamspeak-声音变小的问题"><span class="post-toc-number">5.1.</span> <span class="post-toc-text">使用 TeamViewer 时 TeamSpeak 声音变小的问题</span></a></li></ol></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#参考链接"><span class="post-toc-number">6.</span> <span class="post-toc-text">参考链接</span></a></li></ol></div>
+                        
+                    
+                    <article id="post-content">
+                        <p>本文介绍 TeamSpeak 服务器端搭建方法 ，TeamSpeak (简称TS) 是一套专有的VoIP软件<a id="more"></a>，使用者可以用耳机和麦克风，通过客户端软件连线到指定的服务器，与在服务器内频道的其他使用者进行通话。是一种很像电话会议的方式。 通常 TeamSpeak 的使用者大多为多人连线游戏的玩家，与同队伍的玩家进行通讯。在游戏的对战方面，语音对话通讯具有竞争优势。</p>
+<blockquote>
+<p>如果您想找一个最快最简单的搭建方法，请参考 <a href="/archives/teamspeak-server-via-docker/">使用 Docker 搭建 TeamSpeak 服务器</a>。除此之外的更多情况下，我更推荐按照本文来进行搭建。</p>
+</blockquote>
+<p><strong>请务必从官网下载最新版本服务端，否则可能会出现无法连接至服务器的情况</strong><br>
+TeamSpeak 官网 <a href="https://www.teamspeak.com" target="_blank" rel="noopener">teamspeak.com</a></p>
+<h1 id="准备阶段">准备阶段</h1>
+<p>本部分以装有 Debian 10 x64 系统为例，其他系统搭建方法类似。</p>
+<blockquote>
+<p><span style="color:#DB4D6D;"><strong>为了保证系统的安全，不要使用 root 账户安装并配置TS服务器</strong></span></p>
+</blockquote>
+<p>执行一下系统更新操作：</p>
+<figure class="highlight routeros"><table><tr><td class="gutter"><pre><span class="line">1</span></pre></td><td class="code"><pre><span class="line">apt update &amp;&amp; apt full-upgrade -y</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">2</span></pre></td><td class="code"><pre><span class="line">apt install curl vim wget git sudo unzip apt-transport-https<span class="built_in"> screen </span>ca-certificates dialog softw</span></pre></td></tr></table></figure>
+<p>新建一个用户</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span></pre></td><td class="code"><pre><span class="line">useradd teamspeak</span></pre></td></tr></table></figure>
+<p>切换至 /opt录下</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span></pre></td><td class="code"><pre><span class="line"><span class="built_in">cd</span> /opt</span></pre></td></tr></table></figure>
+<p>复制并解压TS服务器端文件</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span></pre></td><td class="code"><pre><span class="line">wget https://files.teamspeak-services.com/releases/server/3.10.1/teamspeak3-server_linux_amd64-3.10.1.tar.bz2 &amp;&amp; tar -xjvf teamspeak3-server_linux_amd64-3.10.1.tar.bz2 &amp;&amp; rm teamspeak3-server_linux_amd64-3.10.1.tar.bz2</span></pre></td></tr></table></figure>
+<p>赋予刚刚新建的用户权限，并进入该目录</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span></pre></td><td class="code"><pre><span class="line">chown -R teamspeak:teamspeak teamspeak3-server_linux_amd64 &amp;&amp; <span class="built_in">cd</span> /opt/teamspeak3-server_linux_amd64 &amp;&amp; su teamspeak</span></pre></td></tr></table></figure>
+<h2 id="同意许可条款">同意许可条款</h2>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span></pre></td><td class="code"><pre><span class="line">touch .ts3server_license_accepted</span></pre></td></tr></table></figure>
+<blockquote>
+<p>您可以选择以下任意一种搭建方式进行搭建，若您不理解这些方式的区别，请直接使用第一种搭建方式，即使用 SQLite 搭建</p>
+</blockquote>
+<h2 id="数据库配置">数据库配置</h2>
+<h3 id="方式一-使用-sqlite-搭建">方式一: 使用 SQLite 搭建</h3>
+<p>因 TeamSpeak 默认使用 SQLite, 所以直接执行以下操作即可自动配置，并启动服务器</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span></pre></td><td class="code"><pre><span class="line">./ts3server_startscript.sh start</span></pre></td></tr></table></figure>
+<blockquote>
+<p>注意保存密钥及 ServerQuery 管理员账户和密码</p>
+</blockquote>
+<p><img src="https://i.yecdn.com/images/2019/01/05/470060848e9bcfcf7e49aa9deed1008f.png" alt=""></p>
+<h3 id="方法二：使用-mysql-mariadb-数据库搭建">方法二：使用 MySQL/MariaDB 数据库搭建</h3>
+<ol>
+<li>首先使用 root 登录 MySQL/MariaDB</li>
+</ol>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span></pre></td><td class="code"><pre><span class="line">mysql -u root -p</span></pre></td></tr></table></figure>
+<ol start="2">
+<li>会提示输入密码，输入密码登陆后，创建一个名为 teamspeak 的数据库</li>
+</ol>
+<blockquote>
+<p>数据库名，用户名和密码请自行修改，此处以数据库名 <code>teamspeak_database</code>，用户名 <code>teamspeak_user</code> 及密码 <code>teamspeak_password</code> 为例</p>
+</blockquote>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span></pre></td><td class="code"><pre><span class="line"><span class="keyword">CREATE</span> <span class="keyword">DATABASE</span> teamspeak_database <span class="keyword">DEFAULT</span> <span class="built_in">CHARACTER</span> <span class="keyword">SET</span> utf8mb4 <span class="keyword">COLLATE</span> utf8mb4_general_ci;</span></pre></td></tr></table></figure>
+<ol start="3">
+<li>创建一个叫做 <code>teamspeak_user</code> 的用户，使用强大的密码并且赋予 <code>teamspeak_database</code> 数据库权限</li>
+</ol>
+<p>由于手机端的流行，我们已经不再使用 <code>utf-8</code> 编码，而改用 <code>utf8mb4</code> 这样我们就可以在 MySQL 数据库里储存 emoji 表情了。你甚至可以尝试使用 emoji 作为用户名或者密码。</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span></pre></td><td class="code"><pre><span class="line"><span class="keyword">GRANT</span> <span class="keyword">ALL</span> <span class="keyword">ON</span> teamspeak_database.* <span class="keyword">TO</span> <span class="string">'teamspeak_user'</span>@<span class="string">'localhost'</span> <span class="keyword">IDENTIFIED</span> <span class="keyword">BY</span> <span class="string">'teamspeak_password'</span>;</span></pre></td></tr></table></figure>
+<blockquote>
+<p>这里请将密码 <code>teamspeak_password</code> 改成你要设置的强大的没人能猜出来的随机的密码</p>
+</blockquote>
+<p>终端会提示类似 Query OK, 0 rows affected, 1 warning 不用去管它</p>
+<ol start="4">
+<li>刷新权限，没问题就可以退出结束安装了</li>
+</ol>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span></pre></td><td class="code"><pre><span class="line"><span class="keyword">FLUSH</span> <span class="keyword">PRIVILEGES</span>;</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">2</span></pre></td><td class="code"><pre><span class="line">EXIT;</span></pre></td></tr></table></figure>
+<blockquote>
+<p>进行后续步骤前，首先确保您已经安装 MySQL/MariaDB, 且已经创建好数据库</p>
+</blockquote>
+<ol start="5">
+<li>创建 <code>ts3server.ini</code> 文件，以启用数据库插件</li>
+</ol>
+<blockquote>
+<p>若您已经使用的是 MySQL 数据库, 请将 <code>dbpluginparameter=ts3db_mariadb.ini</code> 部分修改为<br>
+<code>dbpluginparameter=ts3db_mysql.ini</code></p>
+</blockquote>
+<figure class="highlight ini"><table><tr><td class="gutter"><pre><span class="line">1</span></pre></td><td class="code"><pre><span class="line">cat &gt; ts3server.ini &lt;&lt; EOF</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">2</span></pre></td><td class="code"><pre><span class="line"><span class="attr">dbplugin</span>=ts3db_mariadb </span></pre></td></tr><tr><td class="gutter"><pre><span class="line">3</span></pre></td><td class="code"><pre><span class="line"><span class="attr">dbpluginparameter</span>=ts3db_mariadb.ini </span></pre></td></tr><tr><td class="gutter"><pre><span class="line">4</span></pre></td><td class="code"><pre><span class="line"><span class="attr">dbsqlpath</span>=sql/ </span></pre></td></tr><tr><td class="gutter"><pre><span class="line">5</span></pre></td><td class="code"><pre><span class="line"><span class="attr">dbsqlcreatepath</span>=create_mariadb/ </span></pre></td></tr><tr><td class="gutter"><pre><span class="line">6</span></pre></td><td class="code"><pre><span class="line"><span class="attr">dbconnections</span>=<span class="number">10</span></span></pre></td></tr></table></figure>
+<ol start="6">
+<li>新建 <code>ts3db_mariadb.ini</code> 文件并输入如下内容</li>
+</ol>
+<blockquote>
+<p>若您已经使用的是 MySQL 数据库, 请创建<code>ts3db_mysql.ini</code> , 不要创建 <code>ts3db_mariadb.ini</code> 文件</p>
+</blockquote>
+<figure class="highlight ini"><table><tr><td class="gutter"><pre><span class="line">1</span></pre></td><td class="code"><pre><span class="line"><span class="section">[config]</span> </span></pre></td></tr><tr><td class="gutter"><pre><span class="line">2</span></pre></td><td class="code"><pre><span class="line"><span class="attr">server</span>=<span class="string">'localhost'</span> </span></pre></td></tr><tr><td class="gutter"><pre><span class="line">3</span></pre></td><td class="code"><pre><span class="line"><span class="attr">port</span>=<span class="string">'3306'</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">4</span></pre></td><td class="code"><pre><span class="line"><span class="attr">username</span>=<span class="string">'teamspeak_user'</span> </span></pre></td></tr><tr><td class="gutter"><pre><span class="line">5</span></pre></td><td class="code"><pre><span class="line"><span class="attr">password</span>=<span class="string">'teamspeak_password'</span> </span></pre></td></tr><tr><td class="gutter"><pre><span class="line">6</span></pre></td><td class="code"><pre><span class="line"><span class="attr">database</span>=<span class="string">'teamspeak_database'</span></span></pre></td></tr></table></figure>
+<blockquote>
+<p>将 数据库名 <code>teamspeak_database</code>，用户名 <code>teamspeak_user</code> 及密码 <code>teamspeak_password</code> 部分修改为您自己数据库的信息</p>
+</blockquote>
+<ol start="7">
+<li>将 redist 目录下的 <code>libmariadb.so.2</code> 文件拷贝至当前目录下</li>
+</ol>
+<figure class="highlight vim"><table><tr><td class="gutter"><pre><span class="line">1</span></pre></td><td class="code"><pre><span class="line"><span class="keyword">cp</span> redist/libmariadb.<span class="keyword">so</span>.<span class="number">2</span> ./</span></pre></td></tr></table></figure>
+<p>执行以下操作即可启动服务器</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span></pre></td><td class="code"><pre><span class="line">./ts3server_startscript.sh start inifile=ts3server.ini</span></pre></td></tr></table></figure>
+<blockquote>
+<p>注意保存密钥及 ServerQuery 管理员账户和密码</p>
+</blockquote>
+<h2 id="设置自启动">设置自启动</h2>
+<p>创建并编辑文件 <code>/lib/systemd/system/teamspeak.service</code></p>
+<blockquote>
+<p><strong>此步骤需要root权限</strong></p>
+</blockquote>
+<figure class="highlight ini"><table><tr><td class="gutter"><pre><span class="line">1</span></pre></td><td class="code"><pre><span class="line"><span class="section">[Unit]</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">2</span></pre></td><td class="code"><pre><span class="line"><span class="attr">Description</span>=Teamspeak, The most superior <span class="literal">on</span>line voice communication solution.</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">3</span></pre></td><td class="code"><pre><span class="line"><span class="attr">Wants</span>=network-<span class="literal">on</span>line.target</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">4</span></pre></td><td class="code"><pre><span class="line"><span class="attr">After</span>=syslog.target network.target network-<span class="literal">on</span>line.target</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">5</span></pre></td><td class="code"><pre><span class="line"></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">6</span></pre></td><td class="code"><pre><span class="line"><span class="section">[Service]</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">7</span></pre></td><td class="code"><pre><span class="line"><span class="attr">User</span>=teamspeak</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">8</span></pre></td><td class="code"><pre><span class="line"><span class="attr">Group</span>=teamspeak</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">9</span></pre></td><td class="code"><pre><span class="line"><span class="attr">WorkingDirectory</span>=/opt/teamspeak3-server_linux_amd64/</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">10</span></pre></td><td class="code"><pre><span class="line"><span class="attr">ExecStart</span>=/opt/teamspeak3-server_linux_amd64/ts3server_startscript.sh start</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">11</span></pre></td><td class="code"><pre><span class="line"><span class="attr">ExecStop</span>=/opt/teamspeak3-server_linux_amd64/ts3server_startscript.sh stop</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">12</span></pre></td><td class="code"><pre><span class="line"><span class="attr">PIDFile</span>=/opt/teamspeak3-server_linux_amd64/ts3server.pid</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">13</span></pre></td><td class="code"><pre><span class="line"><span class="attr">Type</span>=forking</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">14</span></pre></td><td class="code"><pre><span class="line"></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">15</span></pre></td><td class="code"><pre><span class="line"><span class="section">[Install]</span></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">16</span></pre></td><td class="code"><pre><span class="line"><span class="attr">WantedBy</span>=multi-user.target</span></pre></td></tr></table></figure>
+<blockquote>
+<p>若您是使用 MySQL 或 MariaDB 数据库方式搭建的话，请将</p>
+</blockquote>
+<figure class="highlight ini"><table><tr><td class="gutter"><pre><span class="line">1</span></pre></td><td class="code"><pre><span class="line"><span class="attr">ExecStart</span>=/opt/teamspeak3-server_linux_amd64/ts3server_startscript.sh start</span></pre></td></tr></table></figure>
+<p>修改为</p>
+<figure class="highlight routeros"><table><tr><td class="gutter"><pre><span class="line">1</span></pre></td><td class="code"><pre><span class="line"><span class="attribute">ExecStart</span>=/opt/teamspeak3-server_linux_amd64/ts3server_startscript.sh start <span class="attribute">inifile</span>=ts3server.ini</span></pre></td></tr></table></figure>
+<p>重新加载 systemd : <code>systemctl daemon-reload</code><br>
+开启自启动(可选): <code>systemctl enable teamspeak.service</code><br>
+启动 TeamSpeak : <code>systemctl start teamspeak.service</code><br>
+停止 TeamSpeak : <code>systemctl stop teamspeak.service</code><br>
+重启 TeamSpeak : <code>systemctl restart teamspeak.service</code></p>
+<h1 id="tsdns设置方法-可选">TSDNS设置方法 (可选)</h1>
+<p>进入tsdns文件夹中，并创建的 <code>tsdns_settings.ini</code> 文件，</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">nano</span> <span class="selector-tag">tsdns_settings</span><span class="selector-class">.ini</span></span></pre></td></tr></table></figure>
+<p>配置的格式为 <code>DOMAIN=IP:PORT</code>,比如：</p>
+<ul>
+<li><code>example.com=1.1.1.1:9987</code> 即代表将 <code>example.com</code> 和其他任何以 <code>example.com</code> 为后缀的域名，解析到地址为 <code>1.1.1.1:9987</code> 的ts服务器</li>
+<li>包括 example.com, abc.example.com, abc.def.ghi.example.com …</li>
+<li><code>*.example.com=2.2.2.2:9987</code> 即代表将任何以符合 <code>*.example.com</code> 格式的域名，解析到地址为 <code>1.1.1.1:9987</code> 的ts服务器
+<ul>
+<li>包括 abc.example.com, abc.example.com, 123.example.com …</li>
+</ul>
+</li>
+<li>PORT 也可以调用变量, 如
+<ul>
+<li><code>abc.example.com=1.2.3.4:$PORT</code></li>
+</ul>
+</li>
+<li><code>*=1.2.3.4:10000</code> 在这种情况下，它充当向后兼容机制, 可以对没有使用新 TSDNS 名称进行连接的人,连接至当前服务器.
+<ul>
+<li>比如一名用户连接至 <code>test.example.com:20000</code> ,则该用户会被自动转至 <code>1.2.3.4:10000</code> 的服务器地址</li>
+</ul>
+</li>
+<li>IPv6 格式为 <code>example.com=[2001:0db8::1]:9987</code>
+<ul>
+<li><code>example.com=[2001:0db8::1]:9987 1.1.1.1:9987</code></li>
+</ul>
+</li>
+</ul>
+<h2 id="域名-srv-记录添加格式">域名 SRV 记录添加格式</h2>
+<p>此处以给 <code>example.com</code> 域名配置 TSDNS 为例, 假如 tsdns 的</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">类别</th>
+<th style="text-align:center">记录值</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">名称</td>
+<td style="text-align:center">_tsdns._tcp.example.com</td>
+</tr>
+<tr>
+<td style="text-align:center">Priority</td>
+<td style="text-align:center">1</td>
+</tr>
+<tr>
+<td style="text-align:center">Weight</td>
+<td style="text-align:center">0</td>
+</tr>
+<tr>
+<td style="text-align:center">Port</td>
+<td style="text-align:center">41144</td>
+</tr>
+<tr>
+<td style="text-align:center">Address</td>
+<td style="text-align:center">tsdns.example.com</td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<p>此处以 TSDNS 所在服务器地址为 tsdns.example.com 为例, <code>Address</code> 部分请务必填写为域名格式。</p>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">类别</th>
+<th style="text-align:center">记录值</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">名称</td>
+<td style="text-align:center">_ts3._udp.example.com</td>
+</tr>
+<tr>
+<td style="text-align:center">Priority</td>
+<td style="text-align:center">1</td>
+</tr>
+<tr>
+<td style="text-align:center">Weight</td>
+<td style="text-align:center">0</td>
+</tr>
+<tr>
+<td style="text-align:center">Port</td>
+<td style="text-align:center">9987</td>
+</tr>
+<tr>
+<td style="text-align:center">Address</td>
+<td style="text-align:center">teamspeak.example.com</td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<p><code>Port</code> 为 TeamSpeak 服务器地址端口， <code>Address</code> 为 TeamSpeak 服务器地址</p>
+</blockquote>
+<p>接下载, 运行tsdnsserver程序即可，现在连接到TS服务器，可以看到已经显示成功</p>
+<p><img src="https://i.yecdn.com/images/2019/01/05/e3b3003d5f109c0c67c71432bc0155c9.png" alt=""></p>
+<p>可通过此代码来后台运行</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span></pre></td><td class="code"><pre><span class="line">screen -AmdS tsdns ./tsdnsserver</span></pre></td></tr></table></figure>
+<h3 id="添加至开机自启动-可选">添加至开机自启动 (可选)</h3>
+<p>通过 crontab 来实现开机启动</p>
+<figure class="highlight ebnf"><table><tr><td class="gutter"><pre><span class="line">1</span></pre></td><td class="code"><pre><span class="line"><span class="attribute">crontab -e</span></span></pre></td></tr></table></figure>
+<p>在文件中添加</p>
+<figure class="highlight groovy"><table><tr><td class="gutter"><pre><span class="line">1</span></pre></td><td class="code"><pre><span class="line"><span class="meta">@reboot</span> <span class="regexp">/opt/</span>teamspeak3-server_linux_amd64<span class="regexp">/tsdns/</span>tsdnsserver</span></pre></td></tr></table></figure>
+<p>关闭编辑器并保存。</p>
+<p>接下来，你可以通过 <code>crontab -l</code> 来确认是否添加成功即可。</p>
+<h1 id="许可证介绍">许可证介绍</h1>
+<p><img src="https://i.yecdn.com/images/2019/01/05/5dab956bb57536ab3ec97158fd71681f.jpg" alt=""></p>
+<p><strong>2018-09-11</strong> Non-Profit License (NPL) 现在申请接口已经关闭，许可证相关信息也发生了改变</p>
+<p><strong>2019-03-23</strong> 许可证信息前不久又发生了改变，当前许可证状态<br>
+<img src="https://i.yecdn.com/images/2019/04/15/89ff411ff26c02dc24fdec127742faf3.png" alt=""></p>
+<p><strong>2019-10-06</strong>  官方于 <code>2019-05-13</code><sup class="footnote-ref"><a href="#fn1" id="fnref1">[1]</a></sup> 上线了 Sponsorship License，可供游戏俱乐部，教育机构，视频创作者使用，详细说明可在此处查看 https://teamspeak.com/sponsorship/ (Thanks to <a href="https://github.com/xcgjack" target="_blank" rel="noopener">@xcgjack</a>)</p>
+<h1 id="teamspeak-端口">TeamSpeak 端口</h1>
+<p>TeamSpeak 默认情况下, 服务器端需要下表中的端口<sup class="footnote-ref"><a href="#fn2" id="fnref2">[2]</a></sup></p>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">端口</th>
+<th style="text-align:center">协议</th>
+<th style="text-align:center">说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">9987</td>
+<td style="text-align:center">UDP</td>
+<td style="text-align:center">默认语音服务器端口</td>
+</tr>
+<tr>
+<td style="text-align:center">10011</td>
+<td style="text-align:center">TCP</td>
+<td style="text-align:center">ServerQuery raw 端口</td>
+</tr>
+<tr>
+<td style="text-align:center">10022</td>
+<td style="text-align:center">TCP</td>
+<td style="text-align:center">ServerQuery SSH 端口(3.3.0 以上版本服务端)</td>
+</tr>
+<tr>
+<td style="text-align:center">30033</td>
+<td style="text-align:center">TCP</td>
+<td style="text-align:center">文件传输端口</td>
+</tr>
+<tr>
+<td style="text-align:center">41144</td>
+<td style="text-align:center">TCP</td>
+<td style="text-align:center">TSDNS</td>
+</tr>
+</tbody>
+</table>
+<p>服务端的所有端口都可自由更改</p>
+<p>TeamSpeak 3 服务器还会与下方的地址进行连接<sup class="footnote-ref"><a href="#fn3" id="fnref3">[3]</a></sup></p>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">域名</th>
+<th style="text-align:center">协议</th>
+<th style="text-align:center">本地端口(服务器)</th>
+<th style="text-align:center">远程端口</th>
+<th style="text-align:center">说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">accounting.teamspeak.com</td>
+<td style="text-align:center">TCP</td>
+<td style="text-align:center">1024-65535</td>
+<td style="text-align:center">2008</td>
+<td style="text-align:center">3.0.x 服务端版本</td>
+</tr>
+<tr>
+<td style="text-align:center">accounting2.teamspeak.com</td>
+<td style="text-align:center">TCP</td>
+<td style="text-align:center">1024-65535</td>
+<td style="text-align:center">443</td>
+<td style="text-align:center">3.1.x 服务端版本</td>
+</tr>
+<tr>
+<td style="text-align:center">ts3services.teamspeak.com</td>
+<td style="text-align:center">TCP</td>
+<td style="text-align:center">1024-65535</td>
+<td style="text-align:center">443</td>
+<td style="text-align:center">3.1.x 服务端版本</td>
+</tr>
+<tr>
+<td style="text-align:center">weblist.teamspeak.com</td>
+<td style="text-align:center">UDP</td>
+<td style="text-align:center">2011-2110</td>
+<td style="text-align:center">2010</td>
+<td style="text-align:center">全部服务端版本</td>
+</tr>
+</tbody>
+</table>
+<p>至此 TeamSpeak 服务器端的搭建方法到此结束。</p>
+<h1 id="faq">FAQ</h1>
+<h2 id="使用-teamviewer-时-teamspeak-声音变小的问题">使用 TeamViewer 时 TeamSpeak 声音变小的问题</h2>
+<p>此部分请移步至 <a href="https://www.wevg.org/archives/how-to-use-teamspeak3/">TeamSpeak3 食用方法 (新手向)</a></p>
+<h1 id="参考链接">参考链接</h1>
+<p><a href="https://forum.teamspeak.com/threads/46486-Teamspeak-3-Server-Ports" target="_blank" rel="noopener">Teamspeak 3 Server Ports</a></p>
+<p><a href="https://forum.teamspeak.com/threads/102772-Teamspeak-3-server-TSDNS-setup" target="_blank" rel="noopener">Teamspeak 3 server TSDNS setup</a></p>
+<p><a href="https://support.teamspeakusa.com/index.php?/Knowledgebase/Article/View/332/15/server-address-resolution-and-tsdns-changes-with-client-31x" target="_blank" rel="noopener">Server address resolution and TSDNS changes with Client 3.1.x</a></p>
+<p><a href="https://support.teamspeakusa.com/index.php?/Knowledgebase/Article/View/293/12/does-teamspeak-3-support-dns-srv-records" target="_blank" rel="noopener">Does TeamSpeak 3 support DNS SRV records?</a></p>
+<hr class="footnotes-sep">
+<section class="footnotes">
+<ol class="footnotes-list">
+<li id="fn1"  class="footnote-item"><p><a href="https://twitter.com/teamspeak/status/1127939577501687808" target="_blank" rel="noopener">TeamSpeak Official Twitter</a> <a href="#fnref1" class="footnote-backref">↩</a></p>
+</li>
+<li id="fn2"  class="footnote-item"><p><a href="https://forum.teamspeak.com/threads/135502-What-ports-TeamSpeak-3-server-use" target="_blank" rel="noopener">What ports TeamSpeak 3 server use?</a> <a href="#fnref2" class="footnote-backref">↩</a></p>
+</li>
+<li id="fn3"  class="footnote-item"><p><a href="https://support.teamspeakusa.com/index.php?/Knowledgebase/Article/View/44/16/which-ports-does-the-teamspeak-3-server-use" target="_blank" rel="noopener">Which ports does the TeamSpeak 3 server use?</a> <a href="#fnref3" class="footnote-backref">↩</a></p>
+</li>
+</ol>
+</section>
+
+                    </article>
+                    
+    <blockquote class="post-license">
+        <p>
+            <strong>本文作者&nbsp;:&nbsp;Edison Jwa</strong>
+            <br>
+            <strong>
+            
+                本文使用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">署名-非商业性使用-相同方式共享 4.0 国际 (CC BY-NC-SA 4.0)</a> 协议
+            </strong>
+            <br>
+            <strong>本文链接&nbsp;:&nbsp;</strong><a href="https://www.wevg.org/archives/teamspeak-server-build/">https://www.wevg.org/archives/teamspeak-server-build/</a>
+        </p>
+    </blockquote>
+
+
+
+    <blockquote id="date-expire-notification" class="post-expired-notify">本文最后更新于 <span id="date-expire-num"></span> 天前，文中所描述的信息可能已发生改变</blockquote>
+    <script>
+    (function() {
+        var dateUpdate = Date.parse("2019-12-07");
+        var nowDate = new Date();
+        var a = nowDate.getTime();
+        var b = a - dateUpdate;
+        var daysUpdateExpire = Math.floor(b/(24*3600*1000));
+        if (daysUpdateExpire >= 120) {
+            document.getElementById('date-expire-num').innerHTML = daysUpdateExpire;
+        } else {
+            document.getElementById('date-expire-notification').style.display = 'none';
+        }
+    })();
+    </script>
+
+
+<p class="post-footer-info mb-0 pt-0">本文发表于&nbsp;<time datetime="2017-08-28T14:08:46.000Z" itemprop="datePublished">2017-08-28</time>
+
+    , 最后修改于&nbsp;<time datetime="2019-12-07T08:40:26.000Z" itemprop="dateModified">2019-12-07</time>
+
+</p>
+<p class="post-footer-info mb-0 pt-2">
+
+<span class="post-categories-list mt-2">
+
+<a class="post-categories-list-item" href='/categories/Tech/'>Tech</a>
+
+</span>
+
+
+
+<span class="post-tags-list mt-2">
+
+<a class="post-tags-list-item" href="/tags/Linux/" rel="tag">#&nbsp;Linux</a>
+
+<a class="post-tags-list-item" href="/tags/%E6%90%AD%E5%BB%BA/" rel="tag">#&nbsp;搭建</a>
+
+<a class="post-tags-list-item" href="/tags/%E6%9C%8D%E5%8A%A1%E5%99%A8/" rel="tag">#&nbsp;服务器</a>
+
+<a class="post-tags-list-item" href="/tags/VoIP/" rel="tag">#&nbsp;VoIP</a>
+
+<a class="post-tags-list-item" href="/tags/%E8%AF%AD%E9%9F%B3/" rel="tag">#&nbsp;语音</a>
+
+</span>
+
+
+</p>
+
+                </div>
+                <div class="post-nav px-2 bg-gray">
+<ul class="pagination">
+    <!-- Prev Nav -->
+    
+        <li class="page-item page-prev">
+            <a href="/archives/change-telegram-fonts/" rel="prev">
+                <div class="page-item-title"><i class="icon icon-back" aria-hidden="true"></i></div>
+                <div class="page-item-subtitle">为 Telegram Desktop 替换字体</div>
+            </a>
+        </li>
+    
+
+    <!-- Next Nav -->
+    
+</ul>
+</div>
+
+                
+                    <!-- # Comment # -->
+                    
+                        <div class="card-footer post-comment">
+                            <div id="disqus_thread"></div>
+
+<script id="js-disqusjs" src="https://cdn.jsdelivr.net/npm/disqusjs@1.2.5/dist/disqus.js" async></script>
+<script>
+document.getElementById('js-disqusjs').addEventListener('load', function () {
+    function loadDisqusJS() {
+        new DisqusJS({
+            shortname: 'edisonj',
+            
+            siteName: 'Vigorous Pro',
+            
+            identifier: 'https://www.wevg.org/archives/teamspeak-server-build/',
+            url: 'https://www.wevg.org/archives/teamspeak-server-build/',
+            api: 'https://disqus.wevg.org/api/',
+            apikey: 'vBTqc5gYirQfuj9STIAANtQCArVi9MN8UZ72UUucwnhus4AhpgpbVJMIn3Ojl4O7',
+            
+            
+        })
+    }
+    if (document.readyState === 'complete') {
+        loadDisqusJS();
+    } else {
+        window.addEventListener('load', loadDisqusJS);
+    }
+});
+</script>
+
+                        </div>
+                    
+                
+            </div>
+        </div>
+    </div>
+</div>
+
+            <!-- ### Footer ### -->
+            <footer class="text-center">
+    <!-- footer copyright -->
+    
+        <p class="footer-copyright mb-0">Copyright&nbsp;©&nbsp;<span id="copyright-year"></span>
+            <a class="footer-copyright-a" href="https://www.wevg.org">Vigorous Pro</a>
+        </p>
+
+    <!-- footer custom text -->
+    <p class="footer-text mb-0">
+    <a href="/atom.xml" target="_blank" class="footer-develop-a" rel="nofollow noopener noreferrer">RSS</a><span class="footer-develop-divider"></span><a href="/donate" target="_blank" class="footer-develop-a" rel="nofollow noopener noreferrer">Donate</a><span class="footer-develop-divider"></span><a href="/privacy-policy" target="_blank" class="footer-develop-a" rel="nofollow noopener noreferrer">Privacy Policy</a>
+    </p>
+    <!-- footer develop info -->
+    <p class="footer-develop mb-0">
+        
+
+        
+        Powered by&nbsp;<!--
+         --><a href="https://hexo.io" target="_blank" class="footer-develop-a" rel="external nofollow noopener noreferrer">Hexo</a><span class="footer-develop-divider"></span>Theme&nbsp;-&nbsp;<!--
+         --><a href="https://github.com/SukkaW/hexo-theme-suka" target="_blank" class="footer-develop-a" rel="external noopener">Suka</a>
+    </p>
+</footer>
+
+
+        <!-- ### Import File ### -->
+        <!-- ### Footer JS Import ### -->
+
+<script>
+
+    
+window.lazyLoadOptions = {
+    elements_selector: ".lazyload",
+    threshold: 50
+};
+
+(function() {
+    var copyrightNow = new Date().getFullYear();
+    var copyrightContent = document.getElementById('copyright-year');
+    var copyrightSince = 2015;
+    if (copyrightSince === copyrightNow) {
+        copyrightContent.textContent = copyrightNow;
+    } else {
+        copyrightContent.textContent = copyrightSince + ' - ' + copyrightNow;
+    }
+})();
+console.log('\n %c Suka Theme (hexo-theme-suka) | © SukkaW | Verision 1.4.0 %c https://github.com/SukkaW/hexo-theme-suka \n', 'color: #fff; background: #444; padding:5px 0;', 'background: #bbb; padding:5px 0;');
+
+</script>
+
+<script src="https://cdn.jsdelivr.net/npm/vanilla-lazyload" async></script>
+
+
+
+<!-- Comment -->
+
+    
+        <!-- No need for DisqusJS -->
+    
+
+
+<!-- ### Custom Footer ### -->
+<script> if ('serviceWorker' in navigator) { window.addEventListener('load', () => { navigator.serviceWorker.register('/sw.js'); }) } </script><script>window.ga_tid = "UA-106121780-1";window.ga_api = "https://ga.cdn.uv.uy/";</script><script src="https://cdn.jsdelivr.net/npm/cfga@1.0.1" async></script>
+    </body>
+
+</html>

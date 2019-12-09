@@ -1,4 +1,180 @@
-<!DOCTYPE html><html lang="zh-CN"><head><meta charset="utf-8"><meta http-equiv="x-dns-prefetch-control" content="on"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width,minimum-scale=1,initial-scale=1,maximum-scale=5,viewport-fit=cover"><meta name="renderer" content="webkit"><title>解决 Win10 “幽灵”漏洞补丁性能问题 | Vigorous Pro</title><link rel="icon" type="image&#x2F;ico" href="/favicon.ico"><link rel="apple-touch-icon" sizes="180x180" href="/source/favicon/apple-touch-icon.png"><link rel="icon" typt="image&#x2F;png" sizes="192x192" href="/source/favicon/android-chrome-192x192.png"><link rel="icon" typt="image&#x2F;png" sizes="32x32" href="/source/favicon/favicon-32x32.png"><link rel="icon" typt="image&#x2F;png" sizes="16x16" href="/source/favicon/favicon-16x16.png"><link rel="mask-icon" href="/safari-pinned-tab.svg" color=""><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/spectre.css@0.5.3"><style>body{background-color:#f8f9fa}a,a:visited{color:#0070ff}a:active,a:focus,a:hover{color:#0070ff;opacity:.75}#post-content a,#post-content a:focus,#post-content a:hover,#post-content a:visited{color:#005eb9;opacity:1}.post-entry .card-body a{color:#0070ff}.avatar{background:#444}.navbar-link,.navbar-link:visited,.timeline .timeline-item .timeline-icon.icon-lg{color:#0070ff}.navbar-link:hover{color:#0070ff;opacity:.8}#disqus-loadmore-button,#disqus-switch-to-direct,#disqus_click_btn,#search-input .btn{background:#727e96;border-color:#727e96;color:#fff}#post-toc a.post-toc-link,#post-toc a.post-toc-link:visited,.share-menu.menu .menu-item>a{color:#727e96}.share-menu.menu .menu-item>a:focus,.share-menu.menu .menu-item>a:hover,.share-menu.menu .menu-item>a:visited{color:#50596c;background:#f8f9fa;opacity:.85}</style><link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/sukkaw/hexo-theme-suka@latest/source/css/style.min.css"><link rel="preload" href="https://cdn.jsdelivr.net/npm/disqusjs@1.2.5/dist/disqusjs.css" as="style" onload='this.onload=null,this.rel="stylesheet"'><noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/disqusjs@1.2.5/dist/disqusjs.css"></noscript><link rel="preload" href="/css/highlight/vs2015.min.css" as="style" onload='this.onload=null,this.rel="stylesheet"'><noscript><link rel="stylesheet" href="/css/highlight/vs2015.min.css"></noscript><script>!function(n){"use strict";n.loadCSS||(n.loadCSS=function(){});var o=loadCSS.relpreload={};if(o.support=function(){var e;try{e=n.document.createElement("link").relList.supports("preload")}catch(t){e=!1}return function(){return e}}(),o.bindMediaToggle=function(t){var e=t.media||"all";function a(){t.addEventListener?t.removeEventListener("load",a):t.attachEvent&&t.detachEvent("onload",a),t.setAttribute("onload",null),t.media=e}t.addEventListener?t.addEventListener("load",a):t.attachEvent&&t.attachEvent("onload",a),setTimeout(function(){t.rel="stylesheet",t.media="only x"}),setTimeout(a,3e3)},o.poly=function(){if(!o.support())for(var t=n.document.getElementsByTagName("link"),e=0;e<t.length;e++){var a=t[e];"preload"!==a.rel||"style"!==a.getAttribute("as")||a.getAttribute("data-loadcss")||(a.setAttribute("data-loadcss",!0),o.bindMediaToggle(a))}},!o.support()){o.poly();var t=n.setInterval(o.poly,500);n.addEventListener?n.addEventListener("load",function(){o.poly(),n.clearInterval(t)}):n.attachEvent&&n.attachEvent("onload",function(){o.poly(),n.clearInterval(t)})}"undefined"!=typeof exports?exports.loadCSS=loadCSS:n.loadCSS=loadCSS}("undefined"!=typeof global?global:this)</script><link rel="alternate" type="application/atom+xml" href="/atom.xml"><meta name="mobile-web-app-capable" content="yes"><meta name="application-name" content="Vigorous Pro"><meta name="msapplication-starturl" content="https://www.wevg.org"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-title" content="Vigorous Pro"><meta name="apple-mobile-web-app-status-bar-style" content="black-translucent"><link rel="manifest" href="/manifest.json"><link rel="search" type="application/opensearchdescription+xml" href="/opensearch.xml" title="Vigorous Pro"><meta property="og:title" content="解决 Win10 “幽灵”漏洞补丁性能问题 | Vigorous Pro"><meta property="og:site_name" content="Vigorous Pro"><meta property="og:type" content="article"><meta property="og:url" content="https:&#x2F;&#x2F;www.wevg.org&#x2F;archives&#x2F;enable-retpoline-win10&#x2F;"><meta property="og:locale" content="zh-CN"><meta name="description" content="微软在 Windows 10 1809版本引入了 Retpoline 修复补丁。但是却不是默认开启的，本文将会简单的说明 Retpoline ，以及手动启用方法。 - Edison Jwa - Vigorous Pro"><meta name="keywords" content="Windows, Secure, Intel, System, Google, 优化, edisonjwa,game,blog,Web,Html,edison"><meta property="og:image" content="https:&#x2F;&#x2F;cdn.jsdelivr.net&#x2F;gh&#x2F;EdisonJwa&#x2F;Blog@master&#x2F;source&#x2F;thumbnail&#x2F;d9662bb32d82713b1b6020f44a96197c.png"><meta property="article:published_time" content="2019-03-07T05:04:46.000Z"><meta property="article:modified_time" content="2019-05-15T01:00:04.000Z"><meta property="og:updated_time" content="2019-05-15T01:00:04.000Z"><meta property="article:author" content="Edison Jwa"><meta property="article:tag" content="Windows, Secure, Intel, System, Google, 优化, edisonjwa,game,blog,Web,Html,edison"><meta name="twitter:card" content="summary_large_image"><meta name="twitter:image" content="https:&#x2F;&#x2F;cdn.jsdelivr.net&#x2F;gh&#x2F;EdisonJwa&#x2F;Blog@master&#x2F;source&#x2F;thumbnail&#x2F;d9662bb32d82713b1b6020f44a96197c.png"><link rel="canonical" href="https://www.wevg.org/archives/enable-retpoline-win10/"><meta name="generator" content="Hexo 4.1.0"><script type="application/ld+json">{
+<!DOCTYPE html>
+
+<html lang="zh-CN">
+    <head>
+    <meta charset="utf-8">
+    <!--
+        hexo-theme-suka © SukkaW
+        GitHub: https://github.com/SukkaW/hexo-theme-suka
+    -->
+
+    <!-- ### Resource Hint ### -->
+
+    <!-- ## DNS Prefetch ## -->
+    <meta http-equiv="x-dns-prefetch-control" content="on">
+
+<!-- busuanzi -->
+
+
+<!-- comment -->
+
+
+
+
+
+
+
+<!-- analytics -->
+
+
+
+
+
+
+
+    <!-- ## Preload ## -->
+    
+
+
+
+
+    <!-- ### Meta & Title & Info ### -->
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, minimum-scale=1, initial-scale=1, maximum-scale=5, viewport-fit=cover">
+    <meta name="renderer" content="webkit">
+
+    <!-- Title -->
+    <title>解决 Win10 “幽灵”漏洞补丁性能问题 | Vigorous Pro</title>
+
+    <!-- Favicons -->
+    <link rel="icon" type="image&#x2F;ico" href="/favicon.ico"><link rel="apple-touch-icon" sizes="180x180" href="/source/favicon/apple-touch-icon.png"><link rel="icon" typt="image&#x2F;png" sizes="192x192" href="/source/favicon/android-chrome-192x192.png"><link rel="icon" typt="image&#x2F;png" sizes="32x32" href="/source/favicon/favicon-32x32.png"><link rel="icon" typt="image&#x2F;png" sizes="16x16" href="/source/favicon/favicon-16x16.png"><link rel="mask-icon" href="/safari-pinned-tab.svg" color="">
+
+    <!-- ### Import File ### -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/spectre.css@0.5.3"><style>
+    body {
+        background-color: #f8f9fa;
+    }
+
+    a, a:visited {
+        color: #0070ff;
+    }
+
+    a:active, a:focus, a:hover {
+        color: #0070ff;
+        opacity: .75;
+    }
+
+    #post-content a,
+    #post-content a:hover,
+    #post-content a:focus,
+    #post-content a:visited {
+        color: #005eb9;
+        opacity: 1;
+    }
+
+    
+
+    .post-entry .card-body a {
+        color: #0070ff;
+    }
+
+    .avatar {
+        background: #444;
+    }
+
+    .navbar-link,
+    .navbar-link:visited,
+    .timeline .timeline-item .timeline-icon.icon-lg {
+        color: #0070ff;
+    }
+
+    .navbar-link:hover {
+        color: #0070ff;
+        opacity: .8;
+    }
+
+    #search-input .btn,
+    #disqus_click_btn,
+    #disqus-switch-to-direct,
+    #disqus-loadmore-button {
+        background: #727e96;
+        border-color: #727e96;
+        color: #fff;
+    }
+
+    #post-toc a.post-toc-link,
+    #post-toc a.post-toc-link:visited,
+    .share-menu.menu .menu-item>a {
+        color: #727e96;
+    }
+
+    .share-menu.menu .menu-item>a:hover,
+    .share-menu.menu .menu-item>a:focus,
+    .share-menu.menu .menu-item>a:visited {
+        color: #50596c;
+        background: #f8f9fa;
+        opacity: .85;
+    }
+</style><link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/sukkaw/hexo-theme-suka@latest/source/css/style.min.css">
+
+
+    
+        <!-- Import DisqusJS Default Theme -->
+        <link rel="preload" href="https://cdn.jsdelivr.net/npm/disqusjs@1.2.5/dist/disqusjs.css" as="style" onload="this.onload=null;this.rel='stylesheet'"><noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/disqusjs@1.2.5/dist/disqusjs.css"></noscript>
+
+    
+
+
+
+
+
+
+
+    <!-- Prettify Theme -->
+    
+    <link rel="preload" href="/css/highlight/vs2015.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'"><noscript><link rel="stylesheet" href="/css/highlight/vs2015.min.css"></noscript>
+
+
+
+
+
+<script>
+/*! loadCSS. [c]2017 Filament Group, Inc. MIT License */
+!function(t){"use strict";t.loadCSS||(t.loadCSS=function(){});var e=loadCSS.relpreload={};if(e.support=function(){var e;try{e=t.document.createElement("link").relList.supports("preload")}catch(t){e=!1}return function(){return e}}(),e.bindMediaToggle=function(t){var e=t.media||"all";function a(){t.addEventListener?t.removeEventListener("load",a):t.attachEvent&&t.detachEvent("onload",a),t.setAttribute("onload",null),t.media=e}t.addEventListener?t.addEventListener("load",a):t.attachEvent&&t.attachEvent("onload",a),setTimeout(function(){t.rel="stylesheet",t.media="only x"}),setTimeout(a,3e3)},e.poly=function(){if(!e.support())for(var a=t.document.getElementsByTagName("link"),n=0;n<a.length;n++){var o=a[n];"preload"!==o.rel||"style"!==o.getAttribute("as")||o.getAttribute("data-loadcss")||(o.setAttribute("data-loadcss",!0),e.bindMediaToggle(o))}},!e.support()){e.poly();var a=t.setInterval(e.poly,500);t.addEventListener?t.addEventListener("load",function(){e.poly(),t.clearInterval(a)}):t.attachEvent&&t.attachEvent("onload",function(){e.poly(),t.clearInterval(a)})}"undefined"!=typeof exports?exports.loadCSS=loadCSS:t.loadCSS=loadCSS}("undefined"!=typeof global?global:this);
+</script>
+
+    <!-- ### Site Verification ### -->
+    
+
+
+    <link rel="alternate" type="application/atom+xml" href="/atom.xml"><meta name="mobile-web-app-capable" content="yes"><meta name="application-name" content="Vigorous Pro"><meta name="msapplication-starturl" content="https://www.wevg.org"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-title" content="Vigorous Pro"><meta name="apple-mobile-web-app-status-bar-style" content="black-translucent"><link rel="manifest" href="/manifest.json"><link rel="search" type="application/opensearchdescription+xml" href="/opensearch.xml" title="Vigorous Pro">
+
+    <!-- ### The Open Graph & Twitter Card Protocol ### -->
+    <meta property="og:title" content="解决 Win10 “幽灵”漏洞补丁性能问题 | Vigorous Pro"><meta property="og:site_name" content="Vigorous Pro"><meta property="og:type" content="article"><meta property="og:url" content="https:&#x2F;&#x2F;www.wevg.org&#x2F;archives&#x2F;enable-retpoline-win10&#x2F;"><meta property="og:locale" content="zh-CN"><meta name="description" content="微软在 Windows 10 1809版本引入了 Retpoline 修复补丁。但是却不是默认开启的，本文将会简单的说明 Retpoline ，以及手动启用方法。 - Edison Jwa - Vigorous Pro"><meta name="keywords" content="Windows, Secure, Intel, System, Google, 优化, edisonjwa,game,blog,Web,Html,edison"><meta property="og:image" content="https:&#x2F;&#x2F;cdn.jsdelivr.net&#x2F;gh&#x2F;EdisonJwa&#x2F;Blog@master&#x2F;source&#x2F;thumbnail&#x2F;d9662bb32d82713b1b6020f44a96197c.png"><meta property="article:published_time" content="2019-03-07T05:04:46.000Z"><meta property="article:modified_time" content="2019-05-15T01:00:04.000Z"><meta property="og:updated_time" content="2019-05-15T01:00:04.000Z"><meta property="article:author" content="Edison Jwa"><meta property="article:tag" content="Windows, Secure, Intel, System, Google, 优化, edisonjwa,game,blog,Web,Html,edison"><meta name="twitter:card" content="summary_large_image"><meta name="twitter:image" content="https:&#x2F;&#x2F;cdn.jsdelivr.net&#x2F;gh&#x2F;EdisonJwa&#x2F;Blog@master&#x2F;source&#x2F;thumbnail&#x2F;d9662bb32d82713b1b6020f44a96197c.png">
+
+    
+
+    <!-- ### Canonical link ### -->
+    <link rel="canonical" href="https://www.wevg.org/archives/enable-retpoline-win10/">
+
+    <meta name="generator" content="Hexo 4.1.0">
+
+    <!-- ### Analytics ### -->
+    
+
+
+
+
+
+
+
+    <!-- ### Structured Data ### -->
+    
+
+
+
+<script type="application/ld+json">
+{
     "@context": "http://schema.org",
     "url": "https://www.wevg.org/archives/enable-retpoline-win10/",
     "@type": "BlogPosting",
@@ -42,4 +218,374 @@
     
     "keywords": "Windows, Secure, Intel, System, Google, 优化, edisonjwa,game,blog,Web,Html,edison",
     "description": "微软在 Windows 10 1809版本引入了 Retpoline 修复补丁。但是却不是默认开启的，本文将会简单的说明 Retpoline ，以及手动启用方法。 - Edison Jwa - Vigorous Pro"
-}</script><link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/EdisonJwa/Blog@latest/css/darkmode.min.css"><script src="https://cdn.jsdelivr.net/gh/EdisonJwa/Blog@latest/js/edison-main.min.js"></script><script type="module" async src="https://cdn.jsdelivr.net/npm/instant.page@3.0.0/instantpage.min.js"></script><link rel="manifest" href="/site.webmanifest"><meta name="msapplication-TileColor" content="#d43d3d"><meta name="msapplication-TileImage" content="/source/favicon/mstile-144x144.png"><meta name="theme-color" content="#ffffff"><script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script><script>(adsbygoogle=window.adsbygoogle||[]).push({google_ad_client:"ca-pub-2345785306567671",enable_page_level_ads:!0})</script></head><body><header><h1 class="header-title text-center"><a href="/">Vigorous Pro</a></h1><p class="text-center header-slogan">The world can always use more heroes.</p><nav class="navbar-section text-center"><a href="/" class="navbar-link">首页</a> <a href="/archives/" class="navbar-link">归档</a> <a href="/search" class="navbar-link">搜索</a> <a href="/about/" class="navbar-link">关于</a> <a href="/friends/" class="navbar-link">友链</a></nav></header><div class="post-container"><div id="post-card" class="card"><div class="card-image lazyload" data-bg="url('https://cdn.jsdelivr.net/gh/EdisonJwa/Blog@master/source/thumbnail/d9662bb32d82713b1b6020f44a96197c.png')"></div><div class="card-item-container"><div class="card-inner-cell"><div class="card-header"><h1 class="card-title h3 mb-2">解决 Win10 “幽灵”漏洞补丁性能问题</h1><div class="post-header-info"><p class="post-header-info-left text-gray"><img class="author-thumb lazyload" data-src="https://cdn.jsdelivr.net/gh/EdisonJwa/Blog/source/image/avatar.jpg" src="/img/suka-lazyload.gif" alt="Edison Jwa's Avatar"> <span>2019-03-07</span> <span class="suka-devide-dot"></span> <a class="category-link" href="/categories/Tech/">Tech</a><span class="suka-devide-dot"></span><a class="category-link" href="/categories/Tech/Windows/">Windows</a></p><div class="post-header-info-right"><div class="dropdown dropdown-right"><a class="dropdown-toggle" tabindex="0">分享本文</a><ul class="menu share-menu"><li class="menu-item"><a href="http://service.weibo.com/share/share.php?appkey=&title=解决 Win10 “幽灵”漏洞补丁性能问题&url=https://www.wevg.org/archives/enable-retpoline-win10/&pic=https://cdn.jsdelivr.net/gh/EdisonJwa/Blog@master/source/thumbnail/d9662bb32d82713b1b6020f44a96197c.png&searchPic=false&style=simple" target="_blank" rel="external noopener noreferrer nofollow">分享到微博</a></li><li class="menu-item"><a href="https://twitter.com/intent/tweet?text=解决 Win10 “幽灵”漏洞补丁性能问题&url=https://www.wevg.org/archives/enable-retpoline-win10/&via=Edison Jwa" target="_blank" rel="external noopener noreferrer nofollow">分享到 Twitter</a></li><li class="menu-item"><a href="https://www.facebook.com/sharer/sharer.php?u=https://www.wevg.org/archives/enable-retpoline-win10/" target="_blank" rel="external noopener noreferrer nofollow">分享到 Facebook</a></li><li class="menu-item"><a href="https://plus.google.com/share?url=https://www.wevg.org/archives/enable-retpoline-win10/" target="_blank" rel="external noopener noreferrer nofollow">分享到 Google+</a></li><li class="menu-item"><a href="https://www.linkedin.com/shareArticle?mini=true&url=https://www.wevg.org/archives/enable-retpoline-win10/&title=Vigorous Pro" target="_blank" rel="external noopener noreferrer nofollow">分享到 LinkedIn</a></li><li class="menu-item"><a href="http://connect.qq.com/widget/shareqq/index.html?site=Vigorous Pro&title=Vigorous Pro&summary=The world can always use more heroes.&pics=https://cdn.jsdelivr.net/gh/EdisonJwa/Blog@master/source/thumbnail/d9662bb32d82713b1b6020f44a96197c.png&url=https://www.wevg.org/archives/enable-retpoline-win10/" target="_blank" rel="external noopener noreferrer nofollow">分享到 QQ</a></li><li class="menu-item"><a href="https://t.me/share/url?url=https://www.wevg.org/archives/enable-retpoline-win10/&text=Vigorous Pro" target="_blank" rel="external noopener noreferrer nofollow">分享到 Telegram</a></li><li class="menu-item"><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAJQAAACUCAAAAABQV18IAAAB4UlEQVR42u3aQW7DMAxEUd//0ukqgNOInKHjhUh/b1q4sfUCqBJJ8XhteB2gQIECtUAdyfXxQHB/9Y7z/co4oOaglpMuGFxB37+vPqvGATUL9X+A1f1oEkfICBt+BtTjUNFA589FEx4UqGwRXE1+9Syo56GijTJaOLMNV/395ygB1PaoLKC/8+dt2QyorVGy6GAEbe4zt1VdQG2NyiZiFsCtNuIIpt4Pai5KBWYO0NnES5EnqJaoCOQUPLIJrZLUr0AQ1AiUs5lmk1RdqsgPai4qGkwthk5Smr0H1DyUc7iYDar+QbL3WBkyqHaoakJ5pSDiHjqBmoVyJ6UK3pwDcJmMgmqNUkGbKvo7h9zqC4OahXILrgqkAsFSgQNUa5RTiMgS12rjhF11AdUeVSnkVxu31IIKahZKFc6cpNM50HYCSlAzUOrFCuc2bjlJBqi5qGqTVqW4lj4DahRKLXaVpmaVKMgDI1AjUE5SUGmCcA/BQc1DVRoF3UKbUyQrJw6g2qCsRmNjIXQCvXJXEKi2qGzxrDRuqS9324YMqgWqMjGvHASoYBHUs1BXkwG32QLU81Dq4NFtvCk1S4Bqj8qSUdUs4RTJnMNNUHNQlUnpHBKppMKquoBqi9rpAgUKFKjT9QdcfPGx8rtiEAAAAABJRU5ErkJggg==" alt="QRCode"></li></ul></div></div></div></div><div class="card-body"><div id="post-toc"><ol class="post-toc"><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#什么是-retpoline-呢？"><span class="post-toc-number">1.</span> <span class="post-toc-text">什么是 Retpoline 呢？</span></a></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#启用方法"><span class="post-toc-number">2.</span> <span class="post-toc-text">启用方法</span></a></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#参考链接"><span class="post-toc-number">3.</span> <span class="post-toc-text">参考链接</span></a></li></ol></div><article id="post-content"><p>微软在 Windows 10 1809版本引入了 Retpoline 修复补丁。但是却不是默认开启的，本文将会简单的说明 Retpoline ，以及手动启用方法。</p><a id="more"></a><p><s><strong>2019-03-07</strong> 请注意，当前版本会导致某些情况下出现性能下降！！！在微软重新发布前建议卸载 <code>KB4482887</code> 补丁</s></p><p><strong>2019-03-20</strong> 官方已于 2019-03-12 日放出修复补丁 <code>KB4489899</code> 强烈建议安装</p><h1 id="什么是-retpoline-呢？">什么是 Retpoline 呢？</h1><blockquote><p>2018年1月4日，Google 在其安全博客上详细介绍了新技术 “Retpoline”，该技术能够以微不足道的处理器开销克服 Spectre 漏洞。它涉及在编译器编译时让间接分支跳转到不同的目标，减少易受攻击的乱序执行发生。虽然这项技术面向x86指令集开发，Google 工程师认为该技术也可以用于其他处理器。<br>简单来说，就是谷歌为了解决/减少目前 Meltdown 和 Spectre 漏洞补丁对性能产生的 5% - 30% 的影响，开发了名为 Retpoline 的基于软件的修复方案。Retpoline 方案旨在提高 Windows 和 Linux 平台中 Spectre Variant 2 的性能。</p></blockquote><p>微软的一篇博客文章中表示，目前在 Windows 客户端设备上默认禁用此功能，当然该文章中也写明了启用方法。<br>需要注意的是， Retpoline 将会在 19H1 版本默认启用。下面我便会写出尝鲜办法。</p><h1 id="启用方法">启用方法</h1><p>首先，以管理员身份打开命令提示符或 PowerShell 并输入以下内容。</p><figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span></pre></td><td class="code"><pre><span class="line">reg add <span class="string">"HKLM\SYSTEM\CurrentControlSet\Control\Session Manager\Memory Management"</span> /v FeatureSettingsOverride /t REG_DWORD /d <span class="number">0</span>x400</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">2</span></pre></td><td class="code"><pre><span class="line">reg add <span class="string">"HKLM\SYSTEM\CurrentControlSet\Control\Session Manager\Memory Management"</span> /v FeatureSettingsOverrideMask /t REG_DWORD /d <span class="number">0</span>x400</span></pre></td></tr></table></figure><p>接下来，重启计算机，重启完成后，以管理员身份运行 PowerShell 并输入以下内容</p><figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span></pre></td><td class="code"><pre><span class="line"><span class="built_in">Install-Module</span> -Name SpeculationControl</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">2</span></pre></td><td class="code"><pre><span class="line"><span class="built_in">Set-ExecutionPolicy</span> RemoteSigned</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">3</span></pre></td><td class="code"><pre><span class="line"><span class="built_in">Import-Module</span> SpeculationControl</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">4</span></pre></td><td class="code"><pre><span class="line">Get-SpeculationControlSettings</span></pre></td></tr></table></figure><p>安装过程全部回复 Y，完成后，会返回一大堆信息,如果内容与下面一致即说明启用成功。</p><figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span></pre></td><td class="code"><pre><span class="line">Speculation control settings <span class="keyword">for</span> CVE-<span class="number">2017</span>-<span class="number">5715</span> [branch target injection]</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">2</span></pre></td><td class="code"><pre><span class="line">Hardware support <span class="keyword">for</span> branch target injection mitigation is present: True </span></pre></td></tr><tr><td class="gutter"><pre><span class="line">3</span></pre></td><td class="code"><pre><span class="line">Windows OS support <span class="keyword">for</span> branch target injection mitigation is present: True</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">4</span></pre></td><td class="code"><pre><span class="line">Windows OS support <span class="keyword">for</span> branch target injection mitigation is enabled: True</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">5</span></pre></td><td class="code"><pre><span class="line">…</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">6</span></pre></td><td class="code"><pre><span class="line">BTIKernelRetpolineEnabled           : True</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">7</span></pre></td><td class="code"><pre><span class="line">BTIKernelImportOptimizationEnabled  : True</span></pre></td></tr></table></figure><h1 id="参考链接">参考链接</h1><p><a href="https://blog.alyac.co.kr/1479" target="_blank" rel="noopener">Google, 성능저하 없이 Spectre 취약점을 패치할 수 있는 Retpoline 공개</a><br><a href="https://techcommunity.microsoft.com/t5/Windows-Kernel-Internals/Mitigating-Spectre-variant-2-with-Retpoline-on-Windows/ba-p/295618" target="_blank" rel="noopener">Mitigating Spectre variant 2 with Retpoline on Windows</a><br><a href="https://zh.m.wikipedia.org/wiki/%E5%B9%BD%E7%81%B5%E6%BC%8F%E6%B4%9E" target="_blank" rel="noopener">幽灵漏洞</a><br><a href="https://support.google.com/faqs/answer/7625886" target="_blank" rel="noopener">Retpoline: a software construct for preventing branch-target-injection</a></p></article><blockquote class="post-license"><p><strong>本文作者&nbsp;:&nbsp;Edison Jwa</strong><br><strong>本文使用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">署名-非商业性使用-相同方式共享 4.0 国际 (CC BY-NC-SA 4.0)</a> 协议</strong><br><strong>本文链接&nbsp;:&nbsp;</strong><a href="https://www.wevg.org/archives/enable-retpoline-win10/">https://www.wevg.org/archives/enable-retpoline-win10/</a></p></blockquote><blockquote id="date-expire-notification" class="post-expired-notify">本文最后更新于 <span id="date-expire-num"></span> 天前，文中所描述的信息可能已发生改变</blockquote><script>!function(){var e=Date.parse("2019-05-15"),t=(new Date).getTime()-e,n=Math.floor(t/864e5);120<=n?document.getElementById("date-expire-num").innerHTML=n:document.getElementById("date-expire-notification").style.display="none"}()</script><p class="post-footer-info mb-0 pt-0">本文发表于&nbsp;<time datetime="2019-03-07T05:04:46.000Z" itemprop="datePublished">2019-03-07</time> , 最后修改于&nbsp;<time datetime="2019-05-15T01:00:04.000Z" itemprop="dateModified">2019-05-15</time></p><p class="post-footer-info mb-0 pt-2"><span class="post-categories-list mt-2"><a class="post-categories-list-item" href="/categories/Tech/">Tech</a> <a class="post-categories-list-item" href="/categories/Tech/Windows/">Windows</a> </span><span class="post-tags-list mt-2"><a class="post-tags-list-item" href="/tags/Windows/" rel="tag">#&nbsp;Windows</a> <a class="post-tags-list-item" href="/tags/Secure/" rel="tag">#&nbsp;Secure</a> <a class="post-tags-list-item" href="/tags/Intel/" rel="tag">#&nbsp;Intel</a> <a class="post-tags-list-item" href="/tags/System/" rel="tag">#&nbsp;System</a> <a class="post-tags-list-item" href="/tags/Google/" rel="tag">#&nbsp;Google</a> <a class="post-tags-list-item" href="/tags/%E4%BC%98%E5%8C%96/" rel="tag">#&nbsp;优化</a></span></p></div><div class="post-nav px-2 bg-gray"><ul class="pagination"><li class="page-item page-prev"><a href="/archives/shortcut-for-uwps/" rel="prev"><div class="page-item-title"><i class="icon icon-back" aria-hidden="true"></i></div><div class="page-item-subtitle">为 UWP 创建快捷方式</div></a></li><li class="page-item page-next"><a href="/archives/best-optimize-apex/" rel="next"><div class="page-item-title"><i class="icon icon-forward" aria-hidden="true"></i></div><div class="page-item-subtitle">Apex英雄 游戏优化指南</div></a></li></ul></div><div class="card-footer post-comment"><div id="disqus_thread"></div><script id="js-disqusjs" src="https://cdn.jsdelivr.net/npm/disqusjs@1.2.5/dist/disqus.js" async></script><script>document.getElementById("js-disqusjs").addEventListener("load",function(){function e(){new DisqusJS({shortname:"edisonj",siteName:"Vigorous Pro",identifier:"https://www.wevg.org/archives/enable-retpoline-win10/",url:"https://www.wevg.org/archives/enable-retpoline-win10/",api:"https://disqus.wevg.org/api/",apikey:"vBTqc5gYirQfuj9STIAANtQCArVi9MN8UZ72UUucwnhus4AhpgpbVJMIn3Ojl4O7"})}"complete"===document.readyState?e():window.addEventListener("load",e)})</script></div></div></div></div></div><footer class="text-center"><p class="footer-copyright mb-0">Copyright&nbsp;©&nbsp;<span id="copyright-year"></span> <a class="footer-copyright-a" href="https://www.wevg.org">Vigorous Pro</a></p><p class="footer-text mb-0"><a href="/atom.xml" target="_blank" class="footer-develop-a" rel="nofollow noopener noreferrer">RSS</a><span class="footer-develop-divider"></span><a href="/donate" target="_blank" class="footer-develop-a" rel="nofollow noopener noreferrer">Donate</a><span class="footer-develop-divider"></span><a href="/privacy-policy" target="_blank" class="footer-develop-a" rel="nofollow noopener noreferrer">Privacy Policy</a></p><p class="footer-develop mb-0">Powered by&nbsp;<a href="https://hexo.io" target="_blank" class="footer-develop-a" rel="external nofollow noopener noreferrer">Hexo</a><span class="footer-develop-divider"></span>Theme&nbsp;-&nbsp;<a href="https://github.com/SukkaW/hexo-theme-suka" target="_blank" class="footer-develop-a" rel="external noopener">Suka</a></p></footer><script>window.lazyLoadOptions={elements_selector:".lazyload",threshold:50},function(){var e=(new Date).getFullYear();document.getElementById("copyright-year").textContent=2015===e?e:"2015 - "+e}(),console.log("\n %c Suka Theme (hexo-theme-suka) | © SukkaW | Verision 1.4.0 %c https://github.com/SukkaW/hexo-theme-suka \n","color: #fff; background: #444; padding:5px 0;","background: #bbb; padding:5px 0;")</script><script src="https://cdn.jsdelivr.net/npm/vanilla-lazyload" async></script><script>if ('serviceWorker' in navigator) { window.addEventListener('load', () => { navigator.serviceWorker.register('/sw.js'); }) }</script><script>window.ga_tid="UA-106121780-1",window.ga_api="https://ga.cdn.uv.uy/"</script><script src="https://cdn.jsdelivr.net/npm/cfga@1.0.1" async></script></body></html>
+}
+</script>
+
+
+
+    <!-- ### Custom Head ### -->
+    <!-- 一行自定义代码 --><!-- 多行自定义代码 --><!-- 第二行 --><!-- 第三行 --><link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/EdisonJwa/Blog@latest/css/darkmode.min.css"><script src="https://cdn.jsdelivr.net/gh/EdisonJwa/Blog@latest/js/edison-main.min.js"></script><script type="module" async="" src="https://cdn.jsdelivr.net/npm/instant.page@3.0.0/instantpage.min.js"></script><link rel="manifest" href="/site.webmanifest"><meta name="msapplication-TileColor" content="#d43d3d"><meta name="msapplication-TileImage" content="/source/favicon/mstile-144x144.png"><meta name="theme-color" content="#ffffff"><script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script><script> (adsbygoogle = window.adsbygoogle || []).push({ google_ad_client: "ca-pub-2345785306567671", enable_page_level_ads: true });</script>
+</head>
+
+    <body>
+            
+
+            <!-- ### Main content ### -->
+            <!-- ## Header ##-->
+<header>
+    <h1 class="header-title text-center"><a href="/">Vigorous Pro</a></h1>
+
+    <p class="text-center header-slogan">
+        
+            
+                The world can always use more heroes.
+            
+        
+    </p>
+
+    <nav class="navbar-section text-center">
+    
+        <a href="/" class="navbar-link">首页</a>
+    
+    
+        <a href="/archives/" class="navbar-link">归档</a>
+    
+    
+        <a href="/search" class="navbar-link">搜索</a>
+    
+    
+        <a href="/about/" class="navbar-link">关于</a>
+    
+        <a href="/friends/" class="navbar-link">友链</a>
+    
+    
+    
+</nav>
+</header>
+
+            
+    <!-- ## Post ## -->
+    <div class="post-container">
+    <div id="post-card" class="card">
+        
+            <div class="card-image lazyload" data-bg="url('https://cdn.jsdelivr.net/gh/EdisonJwa/Blog@master/source/thumbnail/d9662bb32d82713b1b6020f44a96197c.png')"></div>
+        
+        <div class="card-item-container">
+            <div class="card-inner-cell">
+                <!-- # Post Header Info # -->
+                <div class="card-header">
+                    
+    <h1 class="card-title h3 mb-2">解决 Win10 “幽灵”漏洞补丁性能问题</h1>
+
+
+
+
+<div class="post-header-info">
+    <p class="post-header-info-left text-gray">
+        <img class="author-thumb lazyload" data-src="https://cdn.jsdelivr.net/gh/EdisonJwa/Blog/source/image/avatar.jpg" src="/img/suka-lazyload.gif" alt="Edison Jwa's Avatar">
+        <span>2019-03-07</span>
+        
+            <span class="suka-devide-dot"></span>
+            <a class="category-link" href="/categories/Tech/">Tech</a><span class="suka-devide-dot"></span><a class="category-link" href="/categories/Tech/Windows/">Windows</a>
+        
+        
+        
+    </p>
+    <div class="post-header-info-right">
+        
+            <div class="dropdown dropdown-right">
+<a class="dropdown-toggle" tabindex="0">分享本文</a>
+<ul class="menu share-menu">
+    <!-- Share Weibo -->
+    
+    <li class="menu-item">
+        <a href="http://service.weibo.com/share/share.php?appkey=&title=解决 Win10 “幽灵”漏洞补丁性能问题&url=https://www.wevg.org/archives/enable-retpoline-win10/&pic=https://cdn.jsdelivr.net/gh/EdisonJwa/Blog@master/source/thumbnail/d9662bb32d82713b1b6020f44a96197c.png&searchPic=false&style=simple" target="_blank" rel="external noopener noreferrer nofollow">分享到微博</a>
+    </li>
+    
+
+    <!-- Share Twitter -->
+    
+    <li class="menu-item">
+        <a href="https://twitter.com/intent/tweet?text=解决 Win10 “幽灵”漏洞补丁性能问题&url=https://www.wevg.org/archives/enable-retpoline-win10/&via=Edison Jwa" target="_blank" rel="external noopener noreferrer nofollow">分享到 Twitter</a>
+    </li>
+    
+
+    <!-- Share Facebook -->
+    
+    <li class="menu-item">
+        <a href="https://www.facebook.com/sharer/sharer.php?u=https://www.wevg.org/archives/enable-retpoline-win10/" target="_blank" rel="external noopener noreferrer nofollow">分享到 Facebook</a>
+    </li>
+    
+
+    <!-- Share Google+ -->
+    
+    <li class="menu-item">
+        <a href="https://plus.google.com/share?url=https://www.wevg.org/archives/enable-retpoline-win10/" target="_blank" rel="external noopener noreferrer nofollow">分享到 Google+</a>
+    </li>
+    
+
+    <!-- Share LinkedIn -->
+    
+    <li class="menu-item">
+        <a href="https://www.linkedin.com/shareArticle?mini=true&url=https://www.wevg.org/archives/enable-retpoline-win10/&title=Vigorous Pro" target="_blank" rel="external noopener noreferrer nofollow">分享到 LinkedIn</a>
+    </li>
+    
+
+    <!-- Share QQ -->
+    
+    <li class="menu-item">
+        <a href="http://connect.qq.com/widget/shareqq/index.html?site=Vigorous Pro&title=Vigorous Pro&summary=The world can always use more heroes.&pics=https://cdn.jsdelivr.net/gh/EdisonJwa/Blog@master/source/thumbnail/d9662bb32d82713b1b6020f44a96197c.png&url=https://www.wevg.org/archives/enable-retpoline-win10/" target="_blank" rel="external noopener noreferrer nofollow"> 分享到 QQ</a>
+    </li>
+    
+
+    <!-- Share Telegram -->
+    
+    <li class="menu-item">
+        <a href="https://t.me/share/url?url=https://www.wevg.org/archives/enable-retpoline-win10/&text=Vigorous Pro" target="_blank" rel="external noopener noreferrer nofollow">分享到 Telegram</a>
+    </li>
+    
+
+    <!-- QRCode -->
+    
+    <li class="menu-item">
+        <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAJQAAACUCAAAAABQV18IAAAB4UlEQVR42u3aQW7DMAxEUd//0ukqgNOInKHjhUh/b1q4sfUCqBJJ8XhteB2gQIECtUAdyfXxQHB/9Y7z/co4oOaglpMuGFxB37+vPqvGATUL9X+A1f1oEkfICBt+BtTjUNFA589FEx4UqGwRXE1+9Syo56GijTJaOLMNV/395ygB1PaoLKC/8+dt2QyorVGy6GAEbe4zt1VdQG2NyiZiFsCtNuIIpt4Pai5KBWYO0NnES5EnqJaoCOQUPLIJrZLUr0AQ1AiUs5lmk1RdqsgPai4qGkwthk5Smr0H1DyUc7iYDar+QbL3WBkyqHaoakJ5pSDiHjqBmoVyJ6UK3pwDcJmMgmqNUkGbKvo7h9zqC4OahXILrgqkAsFSgQNUa5RTiMgS12rjhF11AdUeVSnkVxu31IIKahZKFc6cpNM50HYCSlAzUOrFCuc2bjlJBqi5qGqTVqW4lj4DahRKLXaVpmaVKMgDI1AjUE5SUGmCcA/BQc1DVRoF3UKbUyQrJw6g2qCsRmNjIXQCvXJXEKi2qGzxrDRuqS9324YMqgWqMjGvHASoYBHUs1BXkwG32QLU81Dq4NFtvCk1S4Bqj8qSUdUs4RTJnMNNUHNQlUnpHBKppMKquoBqi9rpAgUKFKjT9QdcfPGx8rtiEAAAAABJRU5ErkJggg==" alt="QRCode">
+    </li>
+    
+
+</ul>
+</div>
+        
+    </div>
+</div>
+                </div>
+                <div class="card-body">
+                    
+                        
+                        
+                            <div id="post-toc"><ol class="post-toc"><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#什么是-retpoline-呢？"><span class="post-toc-number">1.</span> <span class="post-toc-text">什么是 Retpoline 呢？</span></a></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#启用方法"><span class="post-toc-number">2.</span> <span class="post-toc-text">启用方法</span></a></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#参考链接"><span class="post-toc-number">3.</span> <span class="post-toc-text">参考链接</span></a></li></ol></div>
+                        
+                    
+                    <article id="post-content">
+                        <p>微软在 Windows 10 1809版本引入了 Retpoline 修复补丁。但是却不是默认开启的，本文将会简单的说明 Retpoline ，以及手动启用方法。</p>
+<a id="more"></a>
+<p><s><strong>2019-03-07</strong> 请注意，当前版本会导致某些情况下出现性能下降！！！在微软重新发布前建议卸载 <code>KB4482887</code> 补丁</s></p>
+<p><strong>2019-03-20</strong> 官方已于 2019-03-12 日放出修复补丁 <code>KB4489899</code> 强烈建议安装</p>
+<h1 id="什么是-retpoline-呢？">什么是 Retpoline 呢？</h1>
+<blockquote>
+<p>2018年1月4日，Google 在其安全博客上详细介绍了新技术 “Retpoline”，该技术能够以微不足道的处理器开销克服 Spectre 漏洞。它涉及在编译器编译时让间接分支跳转到不同的目标，减少易受攻击的乱序执行发生。虽然这项技术面向x86指令集开发，Google 工程师认为该技术也可以用于其他处理器。<br>
+简单来说，就是谷歌为了解决/减少目前 Meltdown 和 Spectre 漏洞补丁对性能产生的 5% - 30% 的影响，开发了名为 Retpoline 的基于软件的修复方案。Retpoline 方案旨在提高 Windows 和 Linux 平台中 Spectre Variant 2 的性能。</p>
+</blockquote>
+<p>微软的一篇博客文章中表示，目前在 Windows 客户端设备上默认禁用此功能，当然该文章中也写明了启用方法。<br>
+需要注意的是， Retpoline 将会在 19H1 版本默认启用。下面我便会写出尝鲜办法。</p>
+<h1 id="启用方法">启用方法</h1>
+<p>首先，以管理员身份打开命令提示符或 PowerShell 并输入以下内容。</p>
+<figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span></pre></td><td class="code"><pre><span class="line">reg add <span class="string">"HKLM\SYSTEM\CurrentControlSet\Control\Session Manager\Memory Management"</span> /v FeatureSettingsOverride /t REG_DWORD /d <span class="number">0</span>x400</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">2</span></pre></td><td class="code"><pre><span class="line">reg add <span class="string">"HKLM\SYSTEM\CurrentControlSet\Control\Session Manager\Memory Management"</span> /v FeatureSettingsOverrideMask /t REG_DWORD /d <span class="number">0</span>x400</span></pre></td></tr></table></figure>
+<p>接下来，重启计算机，重启完成后，以管理员身份运行 PowerShell 并输入以下内容</p>
+<figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span></pre></td><td class="code"><pre><span class="line"><span class="built_in">Install-Module</span> -Name SpeculationControl</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">2</span></pre></td><td class="code"><pre><span class="line"><span class="built_in">Set-ExecutionPolicy</span> RemoteSigned</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">3</span></pre></td><td class="code"><pre><span class="line"><span class="built_in">Import-Module</span> SpeculationControl</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">4</span></pre></td><td class="code"><pre><span class="line">Get-SpeculationControlSettings</span></pre></td></tr></table></figure>
+<p>安装过程全部回复 Y，完成后，会返回一大堆信息,如果内容与下面一致即说明启用成功。</p>
+<figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span></pre></td><td class="code"><pre><span class="line">Speculation control settings <span class="keyword">for</span> CVE-<span class="number">2017</span>-<span class="number">5715</span> [branch target injection]</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">2</span></pre></td><td class="code"><pre><span class="line">Hardware support <span class="keyword">for</span> branch target injection mitigation is present: True </span></pre></td></tr><tr><td class="gutter"><pre><span class="line">3</span></pre></td><td class="code"><pre><span class="line">Windows OS support <span class="keyword">for</span> branch target injection mitigation is present: True</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">4</span></pre></td><td class="code"><pre><span class="line">Windows OS support <span class="keyword">for</span> branch target injection mitigation is enabled: True</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">5</span></pre></td><td class="code"><pre><span class="line">…</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">6</span></pre></td><td class="code"><pre><span class="line">BTIKernelRetpolineEnabled           : True</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">7</span></pre></td><td class="code"><pre><span class="line">BTIKernelImportOptimizationEnabled  : True</span></pre></td></tr></table></figure>
+<h1 id="参考链接">参考链接</h1>
+<p><a href="https://blog.alyac.co.kr/1479" target="_blank" rel="noopener">Google, 성능저하 없이 Spectre 취약점을 패치할 수 있는 Retpoline 공개</a><br>
+<a href="https://techcommunity.microsoft.com/t5/Windows-Kernel-Internals/Mitigating-Spectre-variant-2-with-Retpoline-on-Windows/ba-p/295618" target="_blank" rel="noopener">Mitigating Spectre variant 2 with Retpoline on Windows</a><br>
+<a href="https://zh.m.wikipedia.org/wiki/%E5%B9%BD%E7%81%B5%E6%BC%8F%E6%B4%9E" target="_blank" rel="noopener">幽灵漏洞</a><br>
+<a href="https://support.google.com/faqs/answer/7625886" target="_blank" rel="noopener">Retpoline: a software construct for preventing branch-target-injection</a></p>
+
+                    </article>
+                    
+    <blockquote class="post-license">
+        <p>
+            <strong>本文作者&nbsp;:&nbsp;Edison Jwa</strong>
+            <br>
+            <strong>
+            
+                本文使用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">署名-非商业性使用-相同方式共享 4.0 国际 (CC BY-NC-SA 4.0)</a> 协议
+            </strong>
+            <br>
+            <strong>本文链接&nbsp;:&nbsp;</strong><a href="https://www.wevg.org/archives/enable-retpoline-win10/">https://www.wevg.org/archives/enable-retpoline-win10/</a>
+        </p>
+    </blockquote>
+
+
+
+    <blockquote id="date-expire-notification" class="post-expired-notify">本文最后更新于 <span id="date-expire-num"></span> 天前，文中所描述的信息可能已发生改变</blockquote>
+    <script>
+    (function() {
+        var dateUpdate = Date.parse("2019-05-15");
+        var nowDate = new Date();
+        var a = nowDate.getTime();
+        var b = a - dateUpdate;
+        var daysUpdateExpire = Math.floor(b/(24*3600*1000));
+        if (daysUpdateExpire >= 120) {
+            document.getElementById('date-expire-num').innerHTML = daysUpdateExpire;
+        } else {
+            document.getElementById('date-expire-notification').style.display = 'none';
+        }
+    })();
+    </script>
+
+
+<p class="post-footer-info mb-0 pt-0">本文发表于&nbsp;<time datetime="2019-03-07T05:04:46.000Z" itemprop="datePublished">2019-03-07</time>
+
+    , 最后修改于&nbsp;<time datetime="2019-05-15T01:00:04.000Z" itemprop="dateModified">2019-05-15</time>
+
+</p>
+<p class="post-footer-info mb-0 pt-2">
+
+<span class="post-categories-list mt-2">
+
+<a class="post-categories-list-item" href='/categories/Tech/'>Tech</a>
+
+<a class="post-categories-list-item" href='/categories/Tech/Windows/'>Windows</a>
+
+</span>
+
+
+
+<span class="post-tags-list mt-2">
+
+<a class="post-tags-list-item" href="/tags/Windows/" rel="tag">#&nbsp;Windows</a>
+
+<a class="post-tags-list-item" href="/tags/Secure/" rel="tag">#&nbsp;Secure</a>
+
+<a class="post-tags-list-item" href="/tags/Intel/" rel="tag">#&nbsp;Intel</a>
+
+<a class="post-tags-list-item" href="/tags/System/" rel="tag">#&nbsp;System</a>
+
+<a class="post-tags-list-item" href="/tags/Google/" rel="tag">#&nbsp;Google</a>
+
+<a class="post-tags-list-item" href="/tags/%E4%BC%98%E5%8C%96/" rel="tag">#&nbsp;优化</a>
+
+</span>
+
+
+</p>
+
+                </div>
+                <div class="post-nav px-2 bg-gray">
+<ul class="pagination">
+    <!-- Prev Nav -->
+    
+        <li class="page-item page-prev">
+            <a href="/archives/shortcut-for-uwps/" rel="prev">
+                <div class="page-item-title"><i class="icon icon-back" aria-hidden="true"></i></div>
+                <div class="page-item-subtitle">为 UWP 创建快捷方式</div>
+            </a>
+        </li>
+    
+
+    <!-- Next Nav -->
+    
+        <li class="page-item page-next">
+            <a href="/archives/best-optimize-apex/" rel="next">
+                <div class="page-item-title"><i class="icon icon-forward" aria-hidden="true"></i></div>
+                <div class="page-item-subtitle">Apex英雄 游戏优化指南</div>
+            </a>
+        </li>
+    
+</ul>
+</div>
+
+                
+                    <!-- # Comment # -->
+                    
+                        <div class="card-footer post-comment">
+                            <div id="disqus_thread"></div>
+
+<script id="js-disqusjs" src="https://cdn.jsdelivr.net/npm/disqusjs@1.2.5/dist/disqus.js" async></script>
+<script>
+document.getElementById('js-disqusjs').addEventListener('load', function () {
+    function loadDisqusJS() {
+        new DisqusJS({
+            shortname: 'edisonj',
+            
+            siteName: 'Vigorous Pro',
+            
+            identifier: 'https://www.wevg.org/archives/enable-retpoline-win10/',
+            url: 'https://www.wevg.org/archives/enable-retpoline-win10/',
+            api: 'https://disqus.wevg.org/api/',
+            apikey: 'vBTqc5gYirQfuj9STIAANtQCArVi9MN8UZ72UUucwnhus4AhpgpbVJMIn3Ojl4O7',
+            
+            
+        })
+    }
+    if (document.readyState === 'complete') {
+        loadDisqusJS();
+    } else {
+        window.addEventListener('load', loadDisqusJS);
+    }
+});
+</script>
+
+                        </div>
+                    
+                
+            </div>
+        </div>
+    </div>
+</div>
+
+            <!-- ### Footer ### -->
+            <footer class="text-center">
+    <!-- footer copyright -->
+    
+        <p class="footer-copyright mb-0">Copyright&nbsp;©&nbsp;<span id="copyright-year"></span>
+            <a class="footer-copyright-a" href="https://www.wevg.org">Vigorous Pro</a>
+        </p>
+
+    <!-- footer custom text -->
+    <p class="footer-text mb-0">
+    <a href="/atom.xml" target="_blank" class="footer-develop-a" rel="nofollow noopener noreferrer">RSS</a><span class="footer-develop-divider"></span><a href="/donate" target="_blank" class="footer-develop-a" rel="nofollow noopener noreferrer">Donate</a><span class="footer-develop-divider"></span><a href="/privacy-policy" target="_blank" class="footer-develop-a" rel="nofollow noopener noreferrer">Privacy Policy</a>
+    </p>
+    <!-- footer develop info -->
+    <p class="footer-develop mb-0">
+        
+
+        
+        Powered by&nbsp;<!--
+         --><a href="https://hexo.io" target="_blank" class="footer-develop-a" rel="external nofollow noopener noreferrer">Hexo</a><span class="footer-develop-divider"></span>Theme&nbsp;-&nbsp;<!--
+         --><a href="https://github.com/SukkaW/hexo-theme-suka" target="_blank" class="footer-develop-a" rel="external noopener">Suka</a>
+    </p>
+</footer>
+
+
+        <!-- ### Import File ### -->
+        <!-- ### Footer JS Import ### -->
+
+<script>
+
+    
+window.lazyLoadOptions = {
+    elements_selector: ".lazyload",
+    threshold: 50
+};
+
+(function() {
+    var copyrightNow = new Date().getFullYear();
+    var copyrightContent = document.getElementById('copyright-year');
+    var copyrightSince = 2015;
+    if (copyrightSince === copyrightNow) {
+        copyrightContent.textContent = copyrightNow;
+    } else {
+        copyrightContent.textContent = copyrightSince + ' - ' + copyrightNow;
+    }
+})();
+console.log('\n %c Suka Theme (hexo-theme-suka) | © SukkaW | Verision 1.4.0 %c https://github.com/SukkaW/hexo-theme-suka \n', 'color: #fff; background: #444; padding:5px 0;', 'background: #bbb; padding:5px 0;');
+
+</script>
+
+<script src="https://cdn.jsdelivr.net/npm/vanilla-lazyload" async></script>
+
+
+
+<!-- Comment -->
+
+    
+        <!-- No need for DisqusJS -->
+    
+
+
+<!-- ### Custom Footer ### -->
+<script> if ('serviceWorker' in navigator) { window.addEventListener('load', () => { navigator.serviceWorker.register('/sw.js'); }) } </script><script>window.ga_tid = "UA-106121780-1";window.ga_api = "https://ga.cdn.uv.uy/";</script><script src="https://cdn.jsdelivr.net/npm/cfga@1.0.1" async></script>
+    </body>
+
+</html>
