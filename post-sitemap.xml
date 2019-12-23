@@ -8,6 +8,14 @@
     </url>
 
     <url>
+        <loc>https://www.wevg.org/archives/bye-2019/</loc>
+        <lastmod>2019-12-23T01:51:41.000Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
         <loc>https://www.wevg.org/archives/teamspeak-server-build/</loc>
         <lastmod>2019-12-07T08:40:26.000Z</lastmod>
         <changefreq>weekly</changefreq>

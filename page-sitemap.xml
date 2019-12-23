@@ -8,15 +8,15 @@
     </url>
     
     <url>
-        <loc>https://www.wevg.org/friends/</loc>
-        <lastmod>2019-12-22T06:00:16.098Z</lastmod>
+        <loc>https://www.wevg.org/search/</loc>
+        <lastmod>2019-12-23T02:01:45.218Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.8</priority>
     </url>
     
     <url>
-        <loc>https://www.wevg.org/search/</loc>
-        <lastmod>2019-12-22T06:00:16.098Z</lastmod>
+        <loc>https://www.wevg.org/friends/</loc>
+        <lastmod>2019-12-23T02:01:45.214Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.8</priority>
     </url>
