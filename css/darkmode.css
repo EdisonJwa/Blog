@@ -4,8 +4,8 @@
 
 @media (prefers-color-scheme: dark) {
     body {
-        background-color: #242424;
-        color: #fff;
+        background-color: #121212;
+        color: #e1e1e1;
     }
 
     a, a:visited {
@@ -50,7 +50,7 @@
     #disqus-loadmore-button {
         background:#727e96;
         border-color: #727e96;
-        color: #fff;
+        color: #e1e1e1;
     }
 
     #post-toc a.post-toc-link,
@@ -96,7 +96,7 @@
 
 .pagination .page-item a {
     border-radius: .1rem;
-    color: #fff;
+    color: #e1e1e1;
     display: inline-block;
     padding: .2rem .4rem;
     text-decoration: none;
@@ -113,7 +113,7 @@
 
 .form-input {
     background: transparent;
-    color: #fff;
+    color: #e1e1e1;
 }~
 .form-input::-webkit-input-placeholder {
     color: #d9dce2;
@@ -177,7 +177,7 @@
 }
 
 .card {
-    background: #191919;
+    background: #1d1d1d;
 }
 /**
  * =========================================================
@@ -249,7 +249,7 @@ a.category-link {
 
 #post-card .card-footer.post-comment {
     padding: 1.5rem;
-    background-color: #191919;
+    background-color: #1d1d1d;
 }
 
 
@@ -315,7 +315,7 @@ a.category-link {
 }
 
 #post-content table tr {
-    background-color: #fff;
+    background-color: #e1e1e1;
     border-top: 1px solid #444b54;
 }
 

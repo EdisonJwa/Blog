@@ -130,6 +130,12 @@
 
 
 
+    <!-- Prettify Theme -->
+    
+    <link rel="preload" href="/css/highlight/vs2015.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'"><noscript><link rel="stylesheet" href="/css/highlight/vs2015.min.css"></noscript>
+
+
+
 
 
 <script>
@@ -373,11 +379,7 @@
 <li>打开目录下的 <code>EACore.ini</code> 文件，如果没有，手动创建一个即可。<br>
 在文件中输入以下内容</li>
 </ol>
-<pre><code class="language-ini">[Connection]
-EnvironmentName=production 
-[Feature]
-CdnOverride=akamai
-</code></pre>
+<figure class="highlight ini"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs ini"><span class="hljs-section">[Connection]</span><br><span class="hljs-attr">EnvironmentName</span>=production <br><span class="hljs-section">[Feature]</span><br><span class="hljs-attr">CdnOverride</span>=akamai<br></code></pre></td></tr></table></figure>
 <p>保存，并运行 Origin 。登陆后，右上角显示 <code>[R&amp;D mode] Production</code> 即表示配置成功。</p>
 <p><img src="https://i.yecdn.com/images/2019/02/20/b48180e7277bc91d7d0201da453a15a6.png" alt=""></p>
 <h2 id="软件修改">软件修改</h2>

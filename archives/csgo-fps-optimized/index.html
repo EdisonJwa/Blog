@@ -130,6 +130,12 @@
 
 
 
+    <!-- Prettify Theme -->
+    
+    <link rel="preload" href="/css/highlight/vs2015.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'"><noscript><link rel="stylesheet" href="/css/highlight/vs2015.min.css"></noscript>
+
+
+
 
 
 <script>
@@ -373,14 +379,7 @@
 <p>第一种就是就是登陆微软账户并打开 XBOX 软件<strong>关闭 DVR 滑钮</strong>，这里不做教程。</p>
 <p>第二种就是使用我们提供好的一键关闭XBOX DVR脚本，运行并重启电脑后生效。</p>
 <p><strong>2018-10-18</strong> 提供一键关闭 DVR 脚本 <a href="https://cdn.jsdelivr.net/gh/EdisonJwa/markets@master/disableDVR.zip" target="_blank" rel="noopener"><strong>点此下载</strong></a></p>
-<pre><code class="language-ini">Windows Registry Editor Version 5.00
-[HKEY_CURRENT_USER\System\GameConfigStore]
-&quot;GameDVR_Enabled&quot;=dword:0
-[HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\GameDVR]
-&quot;AllowGameDVR&quot;=dword:0
-[HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\PolicyManager\default\ApplicationManagement\AllowGameDVR]
-&quot;value&quot;=dword:0
-</code></pre>
+<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs ini">Windows Registry Editor Version 5.00<br>[HKEY_CURRENT_USER\System\GameConfigStore]<br>"GameDVR_Enabled"=dword:0<br>[HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\GameDVR]<br>"AllowGameDVR"=dword:0<br>[HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\PolicyManager\default\ApplicationManagement\AllowGameDVR]<br>"value"=dword:0<br></code></pre></td></tr></table></figure>
 <p>至此，有关 Xbox 的关闭与卸载结束，我们接着说 Windows 系统的一些设置。</p>
 <h2 id="电源设置">电源设置</h2>
 <p>首先是电源设置，我们右键左下角 <i class="fab fa-windows"></i> Windows 菜单，点击<strong>电源选项</strong>。</p>
@@ -430,8 +429,7 @@
 <h1 id="csgo-启动项以及游戏内设置">CSGO 启动项以及游戏内设置</h1>
 <h2 id="csgo-启动项推荐设置">CSGO 启动项推荐设置</h2>
 <p>​	目前的启动项基本上已经没有几条是有有效的，有效的参数只有下面这些</p>
-<pre><code class="language-conf">-freq 144 -tickrate 128 -novid -nojoy  -language english  -high -highpriority
-</code></pre>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs conf">-freq 144 -tickrate 128 -novid -nojoy  -language english  -high -highpriority<br></code></pre></td></tr></table></figure>
 <p>​	老的三条/四条去加速指令在 CSGO 初期其实就已经无效了，在近几年的职业选手中也会发现，越来越少的人会使用这几条参数了</p>
 <blockquote>
 <p><strong>2019-03-12</strong> 更新：Valve官方更新了一条新的启动项 <code>-d3d9ex</code> ，据说可以减少40%的CPU占用，经过测试提升了一些帧数，但目前尚不确定是否会带来其他方面的影响。<br>

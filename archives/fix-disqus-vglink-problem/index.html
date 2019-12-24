@@ -130,6 +130,12 @@
 
 
 
+    <!-- Prettify Theme -->
+    
+    <link rel="preload" href="/css/highlight/vs2015.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'"><noscript><link rel="stylesheet" href="/css/highlight/vs2015.min.css"></noscript>
+
+
+
 
 
 <script>
@@ -365,11 +371,7 @@
 <h2 id="排查-markdown-renderer">排查 Markdown renderer</h2>
 <p><img src="https://cdn.jsdelivr.net/gh/EdisonJwa/Blog@latest/source/hexo-vglink-problems/01.jpg" alt=""></p>
 <p>在发现这种情况的时候，最先想到的是 markdown renderer 的问题，因为 hexo 默认自带的 markdown 渲染器是 hexo-renderer-marked，便根据文档<sup class="footnote-ref"><a href="#fn1" id="fnref1">[1]</a></sup>，在站点配置文件 <code>_config.yml</code> 里禁用 autolink 后，但是网页中仍然会莫名出现奇怪的链接。</p>
-<pre><code>…
-marked:
-  autolink: false
-…
-</code></pre>
+<figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs yaml"><span class="hljs-string">…</span><br><span class="hljs-attr">marked:</span><br>  <span class="hljs-attr">autolink:</span> <span class="hljs-literal">false</span><br><span class="hljs-string">…</span><br></code></pre></td></tr></table></figure>
 <p>因为 hexo 的 debug 中没有出现报错，我也不能确定问题是否出在 <code>hexo-renderer-marked</code> 上面，便安装了 <code>hexo-renderer-markdown-it</code> 进行测试，得到了相同的结果，基本确定问题不是 renderer 的问题。</p>
 <h2 id="排查主题">排查主题</h2>
 <p>接下来，我便将目光转制主题上，在翻遍 Suka 主题的配置文件和说明文档<sup class="footnote-ref"><a href="#fn2" id="fnref2">[2]</a></sup>后，没有找到相关的配置，便尝试将 Prism 代码高亮模块换回 hexo 自带的 highlight 模块，但是问题仍然存在。因为不能确定问题是否出在主题上，我便将博客主题更换成 NexT，但是还是出现同样的问题。在经过多次尝试后，确定问题不是出在主题上。</p>
@@ -384,12 +386,7 @@ marked:
 <img src="https://cdn.jsdelivr.net/gh/EdisonJwa/Blog@latest/source/hexo-vglink-problems/04.png" alt=""></p>
 <h2 id="原因">原因</h2>
 <p>Disqus 的 Affiliate links 存在问题，该问题导致如果网页中存在任何与域名 (即abcde.com) 相似的任何文本，都会被转换成 HTML 超链接代码的格式：</p>
-<pre><code class="language-html">&lt;a class=&quot;vglnk&quot; href=&quot;http://abcde.com&quot; rel=&quot;nofollow&quot;&gt;
-    &lt;span&gt;abcde&lt;/span&gt;
-    &lt;span&gt;.&lt;/span&gt;
-    &lt;span&gt;com&lt;/span&gt;
-&lt;/a&gt;
-</code></pre>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs html"><span class="hljs-tag">&lt;<span class="hljs-name">a</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"vglnk"</span> <span class="hljs-attr">href</span>=<span class="hljs-string">"http://abcde.com"</span> <span class="hljs-attr">rel</span>=<span class="hljs-string">"nofollow"</span>&gt;</span><br>    <span class="hljs-tag">&lt;<span class="hljs-name">span</span>&gt;</span>abcde<span class="hljs-tag">&lt;/<span class="hljs-name">span</span>&gt;</span><br>    <span class="hljs-tag">&lt;<span class="hljs-name">span</span>&gt;</span>.<span class="hljs-tag">&lt;/<span class="hljs-name">span</span>&gt;</span><br>    <span class="hljs-tag">&lt;<span class="hljs-name">span</span>&gt;</span>com<span class="hljs-tag">&lt;/<span class="hljs-name">span</span>&gt;</span><br><span class="hljs-tag">&lt;/<span class="hljs-name">a</span>&gt;</span><br></code></pre></td></tr></table></figure>
 <p><s>其实是我的 BUG 体质再度灵验</s>（大雾</p>
 <h1 id="参考链接">参考链接</h1>
 <p><a href="http://www.queryadmin.com/1813/disable-affiliate-links-vglnk-disqus/" target="_blank" rel="noopener">Disable Affiliate Links (VGLNK) on Disqus</a></p>

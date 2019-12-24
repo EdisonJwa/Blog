@@ -130,6 +130,12 @@
 
 
 
+    <!-- Prettify Theme -->
+    
+    <link rel="preload" href="/css/highlight/vs2015.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'"><noscript><link rel="stylesheet" href="/css/highlight/vs2015.min.css"></noscript>
+
+
+
 
 
 <script>
@@ -366,11 +372,7 @@
 <h1 id="darkmode-js-方式">Darkmode.js 方式</h1>
 <p>这个是我最初的解决方案，可是这个最初偶然发现的项目，才促使了我后面的方法。<br>
 使用 Darkmode.js 的方式很简单，在网页的代码中加入，即可调用完成。</p>
-<pre><code class="language-html">&lt;script src=&quot;https://cdn.jsdelivr.net/npm/darkmode-js@1.4.0/lib/darkmode-js.min.js&quot;&gt;&lt;/script&gt;
-&lt;script&gt;
-  new Darkmode({ label: '🌓' }).showWidget();
-&lt;/script&gt;
-</code></pre>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs html"><span class="hljs-tag">&lt;<span class="hljs-name">script</span> <span class="hljs-attr">src</span>=<span class="hljs-string">"https://cdn.jsdelivr.net/npm/darkmode-js@1.4.0/lib/darkmode-js.min.js"</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span><br><span class="hljs-tag">&lt;<span class="hljs-name">script</span>&gt;</span><span class="actionscript"><br>  <span class="hljs-keyword">new</span> Darkmode(&#123; label: <span class="hljs-string">'🌓'</span> &#125;).showWidget();<br></span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span><br></code></pre></td></tr></table></figure>
 <p>但是可能会出现的情况是，部分网页没有变成深色，然后你又神奇的发现你的图片被反色了~  (＃°Д°)</p>
 <p>Github 项目地址: <a href="https://github.com/sandoche/Darkmode.js" target="_blank" rel="noopener">https://github.com/sandoche/Darkmode.js</a></p>
 <h1 id="css-方式">CSS 方式</h1>
@@ -382,38 +384,7 @@
 <li>dark: 用户选择了深色模式</li>
 </ul>
 <p>实际上，用法非常简单。此处以我的网站为例，我现在使用的主题作为浅色模式，然后使用<code>@media (prefers-color-scheme: dark)</code> 深色模式覆盖相关部分的CSS ，比如：</p>
-<pre><code class="language-css">@media (prefers-color-scheme: dark) {
-    body {
-        color: #fff;
-        background: #000;
-    }
-
-    a {
-        color: #369fe4;
-    }
-
-    footer p {
-        color: #aaa;
-    }
-
-    header h1,
-    header h2 {
-        color: #fff;
-    }
-
-    header h1 a {
-        color: #fff;
-    }
-
-    nav ul li {
-        background: #000;
-    }
-
-    .divider {
-        border-bottom: 1px solid #ddd;
-    }
-}
-</code></pre>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><code class="hljs css"><span class="hljs-keyword">@media</span> (<span class="hljs-attribute">prefers-color-scheme:</span> dark) &#123;<br>    <span class="hljs-selector-tag">body</span> &#123;<br>        <span class="hljs-attribute">color</span>: <span class="hljs-number">#fff</span>;<br>        <span class="hljs-attribute">background</span>: <span class="hljs-number">#000</span>;<br>    &#125;<br><br>    <span class="hljs-selector-tag">a</span> &#123;<br>        <span class="hljs-attribute">color</span>: <span class="hljs-number">#369fe4</span>;<br>    &#125;<br><br>    <span class="hljs-selector-tag">footer</span> <span class="hljs-selector-tag">p</span> &#123;<br>        <span class="hljs-attribute">color</span>: <span class="hljs-number">#aaa</span>;<br>    &#125;<br><br>    <span class="hljs-selector-tag">header</span> <span class="hljs-selector-tag">h1</span>,<br>    <span class="hljs-selector-tag">header</span> <span class="hljs-selector-tag">h2</span> &#123;<br>        <span class="hljs-attribute">color</span>: <span class="hljs-number">#fff</span>;<br>    &#125;<br><br>    <span class="hljs-selector-tag">header</span> <span class="hljs-selector-tag">h1</span> <span class="hljs-selector-tag">a</span> &#123;<br>        <span class="hljs-attribute">color</span>: <span class="hljs-number">#fff</span>;<br>    &#125;<br><br>    <span class="hljs-selector-tag">nav</span> <span class="hljs-selector-tag">ul</span> <span class="hljs-selector-tag">li</span> &#123;<br>        <span class="hljs-attribute">background</span>: <span class="hljs-number">#000</span>;<br>    &#125;<br><br>    <span class="hljs-selector-class">.divider</span> &#123;<br>        <span class="hljs-attribute">border-bottom</span>: <span class="hljs-number">1px</span> solid <span class="hljs-number">#ddd</span>;<br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
 <p>然后网站便会无缝的选择与用户设备相匹配的主题。</p>
 <p><img src="https://img10.360buyimg.com/img/jfs/t1/86698/17/4863/310361/5de90b78E5594e1d6/86bb905652d56882.jpg" alt=""></p>
 <h1 id="支援设备">支援设备</h1>

@@ -130,6 +130,12 @@
 
 
 
+    <!-- Prettify Theme -->
+    
+    <link rel="preload" href="/css/highlight/vs2015.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'"><noscript><link rel="stylesheet" href="/css/highlight/vs2015.min.css"></noscript>
+
+
+
 
 
 <script>
@@ -392,8 +398,7 @@
 <p>启用虚拟化</p>
 <p>如果您使用的是物理机，请确保在BIOS中启用了虚拟化功能。</p>
 <p>如果您使用的是虚拟机，请使用此PowerShell cmdlet启用嵌套虚拟化：</p>
-<pre><code class="language-powershell">Set-VMProcessor -VMName &lt;VMName&gt; -ExposeVirtualizationExtensions $ true*
-</code></pre>
+<figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs powershell"><span class="hljs-built_in">Set-VMProcessor</span> <span class="hljs-literal">-VMName</span> &lt;VMName&gt; <span class="hljs-literal">-ExposeVirtualizationExtensions</span> <span class="hljs-variable">$</span> true*<br></code></pre></td></tr></table></figure>
 </li>
 <li>
 <p>打开Windows功能，然后选择Windows Sandbox。选择 “<strong>确定</strong>” 以安装Windows Sandbox。系统可能会要求您<strong>重新启动计算机</strong>。</p>

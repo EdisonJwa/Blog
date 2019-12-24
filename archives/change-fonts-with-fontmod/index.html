@@ -130,6 +130,12 @@
 
 
 
+    <!-- Prettify Theme -->
+    
+    <link rel="preload" href="/css/highlight/vs2015.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'"><noscript><link rel="stylesheet" href="/css/highlight/vs2015.min.css"></noscript>
+
+
+
 
 
 <script>
@@ -373,38 +379,7 @@
 <li><strong>重启 Telegram</strong>，这时 Telegram Desktop 目录中会出现 json 文件，默认只会把宋体替换成微软雅黑，当然也可以修改 <code>FontMod.yaml</code> 来更换其他字体，下面的配置可以替换 TG 界面上用到的所有字体。</li>
 </ol>
 <h1 id="配置文件">配置文件</h1>
-<pre><code class="language-yaml">style: &amp;style
-# Remove '#' to override font style
-#  size: 0
-#  width: 0
-#  weight: 0
-#  italic: false
-#  underLine: false
-#  strikeOut: false
-#  charSet: 0
-#  outPrecision: 0
-#  clipPrecision: 0
-#  quality: 0
-#  pitchAndFamily: 0
-
-fonts:
-  SimSun: &amp;zh-cn-font # Chinese (Simplified) fallback font
-    replace: Microsoft YaHei
-    &lt;&lt;: *style
-  PMingLiU: # Chinese (Traditional) fallback font
-    replace: Microsoft JhengHei UI
-    &lt;&lt;: *style
-  MS UI Gothic: # Japanese fallback font
-    replace: Yu Gothic UI
-    &lt;&lt;: *style
-  Gulim: # Korean fallback font
-    replace: 맑은 고딕
-    &lt;&lt;: *style
-
-fixGSOFont: true # true is to use system UI font
-#fixGSOFont: *zh-cn-font # Or replace with user defined font
-debug: false
-</code></pre>
+<figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><code class="hljs yaml"><span class="hljs-attr">style:</span> <span class="hljs-meta">&amp;style</span><br><span class="hljs-comment"># Remove '#' to override font style</span><br><span class="hljs-comment">#  size: 0</span><br><span class="hljs-comment">#  width: 0</span><br><span class="hljs-comment">#  weight: 0</span><br><span class="hljs-comment">#  italic: false</span><br><span class="hljs-comment">#  underLine: false</span><br><span class="hljs-comment">#  strikeOut: false</span><br><span class="hljs-comment">#  charSet: 0</span><br><span class="hljs-comment">#  outPrecision: 0</span><br><span class="hljs-comment">#  clipPrecision: 0</span><br><span class="hljs-comment">#  quality: 0</span><br><span class="hljs-comment">#  pitchAndFamily: 0</span><br><br><span class="hljs-attr">fonts:</span><br>  <span class="hljs-attr">SimSun:</span> <span class="hljs-string">&amp;zh-cn-font</span> <span class="hljs-comment"># Chinese (Simplified) fallback font</span><br>    <span class="hljs-attr">replace:</span> <span class="hljs-string">Microsoft</span> <span class="hljs-string">YaHei</span><br>    <span class="hljs-string">&lt;&lt;:</span> <span class="hljs-meta">*style</span><br>  <span class="hljs-attr">PMingLiU:</span> <span class="hljs-comment"># Chinese (Traditional) fallback font</span><br>    <span class="hljs-attr">replace:</span> <span class="hljs-string">Microsoft</span> <span class="hljs-string">JhengHei</span> <span class="hljs-string">UI</span><br>    <span class="hljs-string">&lt;&lt;:</span> <span class="hljs-meta">*style</span><br>  <span class="hljs-attr">MS UI Gothic:</span> <span class="hljs-comment"># Japanese fallback font</span><br>    <span class="hljs-attr">replace:</span> <span class="hljs-string">Yu</span> <span class="hljs-string">Gothic</span> <span class="hljs-string">UI</span><br>    <span class="hljs-string">&lt;&lt;:</span> <span class="hljs-meta">*style</span><br>  <span class="hljs-attr">Gulim:</span> <span class="hljs-comment"># Korean fallback font</span><br>    <span class="hljs-attr">replace:</span> <span class="hljs-string">맑은</span> <span class="hljs-string">고딕</span><br>    <span class="hljs-string">&lt;&lt;:</span> <span class="hljs-meta">*style</span><br><br><span class="hljs-attr">fixGSOFont:</span> <span class="hljs-literal">true</span> <span class="hljs-comment"># true is to use system UI font</span><br><span class="hljs-comment">#fixGSOFont: *zh-cn-font # Or replace with user defined font</span><br><span class="hljs-attr">debug:</span> <span class="hljs-literal">false</span><br></code></pre></td></tr></table></figure>
 <blockquote>
 <p>** 参数说明 **<br>
 <strong>key (“SimSun”)</strong>: 要修改的字体名称。<br>
@@ -428,10 +403,7 @@ debug: false
 <p><img src="https://i.yecdn.com/images/2019/04/15/b376fd9caa036ad9ee9a61d7710f6f65.png" alt=""></p>
 <p>此时在配置文件中添加要修改的部分，比如将 <code>Open Sans</code> 替换为 <code>Ubuntu</code> (⚠ 此处纯个人喜好)<br>
 那么在配置文件中添加如下字段即可。</p>
-<pre><code class="language-yaml">  Open Sans: 
-    replace: Ubuntu
-    &lt;&lt;: *style
-</code></pre>
+<figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs yaml"><span class="hljs-attr">Open Sans:</span> <br>  <span class="hljs-attr">replace:</span> <span class="hljs-string">Ubuntu</span><br>  <span class="hljs-string">&lt;&lt;:</span> <span class="hljs-meta">*style</span><br></code></pre></td></tr></table></figure>
 <p><img src="https://i.yecdn.com/images/2019/04/15/c9e21364ee43bf5ca12df328af75587a.png" alt="替换后效果示例"></p>
 <blockquote>
 <p>本文部分内容摘自项目 Github 说明文档。</p>

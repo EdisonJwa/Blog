@@ -130,6 +130,12 @@
 
 
 
+    <!-- Prettify Theme -->
+    
+    <link rel="preload" href="/css/highlight/vs2015.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'"><noscript><link rel="stylesheet" href="/css/highlight/vs2015.min.css"></noscript>
+
+
+
 
 
 <script>
@@ -366,17 +372,14 @@
 </blockquote>
 <h1 id="调整方法">调整方法</h1>
 <p>打开终端/命令提示符等，输入以下内容，将会自动存储密码。</p>
-<pre><code class="language-bash">git config --global credential.helper store
-</code></pre>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">git config --global credential.helper store<br></code></pre></td></tr></table></figure>
 <p>如果您认为此方式不安全，也可将密码存储在内存中，一般情况下，Git 会存储密码15分钟，当然有时候还是会出现文章开头提到的问题，所以也可以通过这个方式修改密码在内存中储存的时间</p>
 <blockquote>
 <p>此操作将会设置 git 把用户凭据存储在内存中</p>
 </blockquote>
-<pre><code class="language-bash">git config --global credential.helper cache
-</code></pre>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">git config --global credential.helper cache<br></code></pre></td></tr></table></figure>
 <p>接下来，可以设置您希望密码在内存中保存的时间，将 <code>&lt;timeout&gt;</code> 修改为您希望储存的时间，<strong>此处以秒为单位</strong>，比如15分钟则修改为 <code>900</code> 。</p>
-<pre><code class="language-bash">git config credential.helper cache &lt;timout&gt;
-</code></pre>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">git config credential.helper cache &lt;timout&gt;<br></code></pre></td></tr></table></figure>
 <h1 id="参考链接">参考链接</h1>
 <p><a href="https://stackoverflow.com/questions/35942754/how-to-save-username-and-password-in-git/45327254" target="_blank" rel="noopener">How to save username and password in GIT?</a></p>
 <p><a href="https://help.github.com/en/articles/caching-your-github-password-in-git" target="_blank" rel="noopener">Caching your GitHub password in Git</a></p>

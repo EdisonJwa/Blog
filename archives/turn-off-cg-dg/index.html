@@ -130,6 +130,12 @@
 
 
 
+    <!-- Prettify Theme -->
+    
+    <link rel="preload" href="/css/highlight/vs2015.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'"><noscript><link rel="stylesheet" href="/css/highlight/vs2015.min.css"></noscript>
+
+
+
 
 
 <script>
@@ -363,8 +369,7 @@
                         <p>在更新了Win10系统之后便遇到了这个问题，BIOS 里面的虚拟化也打开了，也检查了Device Guard的设置，但是始终提示这个，最后终于找到了解决办法。<a id="more"></a></p>
 <p><img src="https://i.yecdn.com/images/2019/01/29/6999631c1f7b104c3e1d09bb64f3e24d.png" alt="6999631c1f7b104c3e1d09bb64f3e24d.png"></p>
 <h1 id="解决办法">解决办法</h1>
-<pre><code class="language-powershell">bcdedit /set hypervisorlaunchtype off
-</code></pre>
+<figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs powershell">bcdedit /set hypervisorlaunchtype off<br></code></pre></td></tr></table></figure>
 <p>以管理员身份运行 Powershell 或者命令提示符后，输入此命令并重启后即可</p>
 <h1 id="参考文章">参考文章</h1>
 <p><a href="https://kb.vmware.com/s/article/2146361" target="_blank" rel="noopener">Powering on a vm in VMware Workstation on Windows 10 host where Credential Guard/Device Guard is enabled fails with BSOD (2146361)</a><br>

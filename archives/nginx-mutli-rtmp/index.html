@@ -130,6 +130,12 @@
 
 
 
+    <!-- Prettify Theme -->
+    
+    <link rel="preload" href="/css/highlight/vs2015.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'"><noscript><link rel="stylesheet" href="/css/highlight/vs2015.min.css"></noscript>
+
+
+
 
 
 <script>
@@ -368,84 +374,34 @@
 <h2 id="ondřej-surý-的-ppa">Ondřej Surý 的 PPA</h2>
 <p>更新非常快速，而且做的质量也非常好。</p>
 <h3 id="对于-ubuntu-系列："><strong>对于 Ubuntu 系列：</strong></h3>
-<pre><code class="language-bash">add-apt-repository ppa:ondrej/nginx-mainline -y
-</code></pre>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">add-apt-repository ppa:ondrej/nginx-mainline -y<br></code></pre></td></tr></table></figure>
 <h3 id="对于-debian-系列："><strong>对于 Debian 系列：</strong></h3>
-<pre><code class="language-bash">wget -O /etc/apt/trusted.gpg.d/nginx-mainline.gpg https://packages.sury.xyz/nginx-mainline/apt.gpg
-
-cat &gt;&gt; /etc/apt/sources.list.d/nginx.list &lt;&lt; EOF
-deb https://packages.sury.xyz/nginx-mainline/ $(lsb_release -sc) main
-EOF
-</code></pre>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs bash">wget -O /etc/apt/trusted.gpg.d/nginx-mainline.gpg https://packages.sury.xyz/nginx-mainline/apt.gpg<br><br>cat &gt;&gt; /etc/apt/sources.list.d/nginx.list &lt;&lt; EOF<br>deb https://packages.sury.xyz/nginx-mainline/ $(lsb_release -sc) main<br>EOF<br></code></pre></td></tr></table></figure>
 <p>然后我们更新系统、安装必要组件和 Nginx 本身：</p>
-<pre><code class="language-bash">apt update &amp;&amp; apt install nginx-extras -y
-</code></pre>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">apt update &amp;&amp; apt install nginx-extras -y<br></code></pre></td></tr></table></figure>
 <p>查看 Nginx 版本和参数和安装目录</p>
-<pre><code class="language-bash">nginx -V
-whereis nginx
-</code></pre>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs bash">nginx -V<br>whereis nginx<br></code></pre></td></tr></table></figure>
 <h2 id="烧饼博客大佬打包的-nginx">烧饼博客大佬打包的 Nginx</h2>
 <p>使用最新 OpenSSL 编译，支持 TLS 1.3, GeoIP2, brotli 压缩等</p>
 <h3 id="使用方法">使用方法</h3>
-<pre><code class="language-bash">curl https://mirror.xtom.com/sb/nginx/public.key | apt-key add -
-echo &quot;deb http://mirror.xtom.com/sb/nginx stretch main&quot; &gt; /etc/apt/sources.list.d/sb-nginx.list
-apt update
-apt install nginx-extras
-</code></pre>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs bash">curl https://mirror.xtom.com/sb/nginx/public.key | apt-key add -<br><span class="hljs-built_in">echo</span> <span class="hljs-string">"deb http://mirror.xtom.com/sb/nginx stretch main"</span> &gt; /etc/apt/sources.list.d/sb-nginx.list<br>apt update<br>apt install nginx-extras<br></code></pre></td></tr></table></figure>
 <p>安装成功后使用 <code>nginx -V</code> 查看信息</p>
 <p>完成 Nginx 的安装后，接下来安装 rtmp 模块</p>
 <h1 id="安装-rtmp-模块">安装 rtmp 模块</h1>
 <p>debian 9 用户可以直接使用 apt 安装，需<strong>启用 stretch-backports 源</strong>:</p>
-<pre><code class="language-bash">apt install libnginx-mod-rtmp libnginx-mod-http-lua -t stretch-backports
-</code></pre>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">apt install libnginx-mod-rtmp libnginx-mod-http-lua -t stretch-backports<br></code></pre></td></tr></table></figure>
 <p>安装完成后，准备阶段就结束了，下面开始配置 Nginx。</p>
 <h1 id="配置-nginx">配置 Nginx</h1>
 <p>打开 nginx.conf 在文件中添加以下部分</p>
-<pre><code class="language-conf">rtmp {							#RTMP服务
-    server{
-        listen 1935;			#服务端口
-        chunk_size 10240;		#数据传输块的大小
-
-        application live {		#直播
-            live on;
-            record off;
-            on_publish http://YOUR_SERVERNAME:2080/auth;
-            push rtmp://live.twitch.tv/app/YOUR_LIVE_API;	#RTMP直播地址1
-            push rtmp://a.rtmp.youtube.com/YOUR_LIVE_API;	#RTMP直播地址2
-         
-        }
-    }
-}  
-</code></pre>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><code class="hljs conf">rtmp &#123;							#RTMP服务<br>    server&#123;<br>        listen 1935;			#服务端口<br>        chunk_size 10240;		#数据传输块的大小<br><br>        application live &#123;		#直播<br>            live on;<br>            record off;<br>            on_publish http:&#x2F;&#x2F;YOUR_SERVERNAME:2080&#x2F;auth;<br>            push rtmp:&#x2F;&#x2F;live.twitch.tv&#x2F;app&#x2F;YOUR_LIVE_API;	#RTMP直播地址1<br>            push rtmp:&#x2F;&#x2F;a.rtmp.youtube.com&#x2F;YOUR_LIVE_API;	#RTMP直播地址2<br>         <br>        &#125;<br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
 <p>替换上方的 RTMP直播地址需要自己进行替换，现在我们完成了服务器上的分流部分</p>
 <p>接下来，我们配置一个 http 服务器，此部分与平时配置网站 conf 的过程比较类似</p>
-<pre><code class="language-conf">server {
-        listen 2080; #此处可自定义
-        
-        server_name YOUR_SERVERNAME;
-        location /auth {
-            rewrite_by_lua '
-                ngx.req.read_body()
-                local name = ngx.req.get_post_args().name
-                if (name == &quot;xxxYOUR_UUID&quot;) then
-                    ngx.status = 200
-                    ngx.say(&quot;OK&quot;)
-                    ngx.exit(200)
-                else
-                    ngx.status = 403
-                    ngx.say(&quot;Forbidden&quot;)
-                    ngx.exit(403)
-                end
-            ';
-        }
-    }
-</code></pre>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><code class="hljs conf">server &#123;<br>        listen 2080; #此处可自定义<br>        <br>        server_name YOUR_SERVERNAME;<br>        location &#x2F;auth &#123;<br>            rewrite_by_lua &#39;<br>                ngx.req.read_body()<br>                local name &#x3D; ngx.req.get_post_args().name<br>                if (name &#x3D;&#x3D; &quot;xxxYOUR_UUID&quot;) then<br>                    ngx.status &#x3D; 200<br>                    ngx.say(&quot;OK&quot;)<br>                    ngx.exit(200)<br>                else<br>                    ngx.status &#x3D; 403<br>                    ngx.say(&quot;Forbidden&quot;)<br>                    ngx.exit(403)<br>                end<br>            &#39;;<br>        &#125;<br>    &#125;<br></code></pre></td></tr></table></figure>
 <p>此处的 <code>xxxYOUR_UUID</code> 是我们使用 OBS 推流时候的&quot;流名称&quot;，可以使用 <a href="https://www.uuidgenerator.net/" target="_blank" rel="noopener">UUID Generator</a> 进行生成。</p>
 <p><strong>经测试不能加 TLS</strong></p>
 <h1 id="测试-rtmp-服务器配置">测试 RTMP 服务器配置</h1>
 <p>启动 Nginx 服务后，在服务器上执行下面的命令：</p>
-<pre><code class="language-bash">curl -0 http://127.0.0.1:2080/auth -d &quot;name=xxxYOUR_UUID&quot;
-</code></pre>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">curl -0 http://127.0.0.1:2080/auth -d <span class="hljs-string">"name=xxxYOUR_UUID"</span><br></code></pre></td></tr></table></figure>
 <p><code>xxxYOUR_UUID</code> 替换成前面生成的 UUID，应该输出 OK，再把 <code>xxxYOUR_UUID</code> 换成一个错误的，应该输出 Forbidden。</p>
 <h1 id="配置-obs-推流">配置 OBS 推流</h1>
 <p>如果身份验证没有问题，我们就可以使用 OBS 来推流了。</p>

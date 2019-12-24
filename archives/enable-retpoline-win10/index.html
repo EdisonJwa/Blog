@@ -130,6 +130,12 @@
 
 
 
+    <!-- Prettify Theme -->
+    
+    <link rel="preload" href="/css/highlight/vs2015.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'"><noscript><link rel="stylesheet" href="/css/highlight/vs2015.min.css"></noscript>
+
+
+
 
 
 <script>
@@ -373,24 +379,11 @@
 需要注意的是， Retpoline 将会在 19H1 版本默认启用。下面我便会写出尝鲜办法。</p>
 <h1 id="启用方法">启用方法</h1>
 <p>首先，以管理员身份打开命令提示符或 PowerShell 并输入以下内容。</p>
-<pre><code class="language-powershell">reg add &quot;HKLM\SYSTEM\CurrentControlSet\Control\Session Manager\Memory Management&quot; /v FeatureSettingsOverride /t REG_DWORD /d 0x400
-reg add &quot;HKLM\SYSTEM\CurrentControlSet\Control\Session Manager\Memory Management&quot; /v FeatureSettingsOverrideMask /t REG_DWORD /d 0x400
-</code></pre>
+<figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs powershell">reg add <span class="hljs-string">"HKLM\SYSTEM\CurrentControlSet\Control\Session Manager\Memory Management"</span> /v FeatureSettingsOverride /t REG_DWORD /d <span class="hljs-number">0</span>x400<br>reg add <span class="hljs-string">"HKLM\SYSTEM\CurrentControlSet\Control\Session Manager\Memory Management"</span> /v FeatureSettingsOverrideMask /t REG_DWORD /d <span class="hljs-number">0</span>x400<br></code></pre></td></tr></table></figure>
 <p>接下来，重启计算机，重启完成后，以管理员身份运行 PowerShell 并输入以下内容</p>
-<pre><code class="language-powershell">Install-Module -Name SpeculationControl
-Set-ExecutionPolicy RemoteSigned
-Import-Module SpeculationControl
-Get-SpeculationControlSettings
-</code></pre>
+<figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs powershell"><span class="hljs-built_in">Install-Module</span> <span class="hljs-literal">-Name</span> SpeculationControl<br><span class="hljs-built_in">Set-ExecutionPolicy</span> RemoteSigned<br><span class="hljs-built_in">Import-Module</span> SpeculationControl<br><span class="hljs-built_in">Get-SpeculationControlSettings</span><br></code></pre></td></tr></table></figure>
 <p>安装过程全部回复 Y，完成后，会返回一大堆信息,如果内容与下面一致即说明启用成功。</p>
-<pre><code class="language-powershell">Speculation control settings for CVE-2017-5715 [branch target injection]
-Hardware support for branch target injection mitigation is present: True 
-Windows OS support for branch target injection mitigation is present: True
-Windows OS support for branch target injection mitigation is enabled: True
-…
-BTIKernelRetpolineEnabled           : True
-BTIKernelImportOptimizationEnabled  : True
-</code></pre>
+<figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs powershell">Speculation control settings <span class="hljs-keyword">for</span> CVE<span class="hljs-literal">-2017</span><span class="hljs-literal">-5715</span> [<span class="hljs-type">branch</span> <span class="hljs-type">target</span> <span class="hljs-type">injection</span>]<br>Hardware support <span class="hljs-keyword">for</span> branch target injection mitigation is present: True <br>Windows OS support <span class="hljs-keyword">for</span> branch target injection mitigation is present: True<br>Windows OS support <span class="hljs-keyword">for</span> branch target injection mitigation is enabled: True<br>…<br>BTIKernelRetpolineEnabled           : True<br>BTIKernelImportOptimizationEnabled  : True<br></code></pre></td></tr></table></figure>
 <h1 id="参考链接">参考链接</h1>
 <p><a href="https://blog.alyac.co.kr/1479" target="_blank" rel="noopener">Google, 성능저하 없이 Spectre 취약점을 패치할 수 있는 Retpoline 공개</a><br>
 <a href="https://techcommunity.microsoft.com/t5/Windows-Kernel-Internals/Mitigating-Spectre-variant-2-with-Retpoline-on-Windows/ba-p/295618" target="_blank" rel="noopener">Mitigating Spectre variant 2 with Retpoline on Windows</a><br>
