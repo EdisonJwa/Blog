@@ -38,6 +38,10 @@ workbox.routing.registerRoute(/.*fonts\.cdn\.uv\.uy/, new workbox.strategies.Net
     }), ]
 }));
 workbox.routing.registerRoute(
+    new RegExp('^https://pagead2\.googlesyndication\.com'),
+    new workbox.strategies.NetworkOnly()
+);
+workbox.routing.registerRoute(
     new RegExp('^https://ga\.cdn\.uv\.uy'),
     new workbox.strategies.NetworkOnly()
 );
