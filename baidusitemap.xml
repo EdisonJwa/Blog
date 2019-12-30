@@ -1,6 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
+    <loc>https://www.wevg.org/archives/how-to-use-teamspeak3/</loc>
+    <lastmod>2019-12-30</lastmod>
+  </url>  <url>
     <loc>https://www.wevg.org/archives/bye-2019/</loc>
     <lastmod>2019-12-29</lastmod>
   </url>  <url>
@@ -66,9 +69,6 @@
   </url>  <url>
     <loc>https://www.wevg.org/archives/change-fonts-with-fontmod/</loc>
     <lastmod>2019-04-07</lastmod>
-  </url>  <url>
-    <loc>https://www.wevg.org/archives/how-to-use-teamspeak3/</loc>
-    <lastmod>2019-04-03</lastmod>
   </url>  <url>
     <loc>https://www.wevg.org/archives/magic-word/</loc>
     <lastmod>2019-04-01</lastmod>
