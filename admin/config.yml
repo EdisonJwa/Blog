@@ -30,7 +30,7 @@ collections:
   - name: "drafts"
     label: "Draft"
     folder: "source/_drafts"
-    create: true # Allow users to create new documents in this collection
+    create: false # Allow users to create new documents in this collection
     slug: "{{slug}}" # Filename template, e.g., YYYY-MM-DD-title.md
     fields: # The fields for each document, usually in front matter
       - {label: "Layout", name: "layout", widget: "hidden", default: "blog"}
@@ -44,12 +44,3 @@ collections:
       - {label: "TOC", name: "toc", widget: "boolean", default: true}
       - {label: "Body", name: "body", widget: "markdown"}
   
-  - name: pages
-    label: Pages
-    files:
-      - name: "Friends"
-        label: "friends"
-        file: "_data/links.yml"
-        format: yml
-        editor:
-          preview: false
