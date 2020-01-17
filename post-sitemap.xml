@@ -8,6 +8,14 @@
     </url>
 
     <url>
+        <loc>https://www.wevg.org/archives/hexo-with-netlify-cms/</loc>
+        <lastmod>2020-01-16T21:20:48.706Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
         <loc>https://www.wevg.org/archives/sms2tg/</loc>
         <lastmod>2020-01-13T08:15:34.000Z</lastmod>
         <changefreq>weekly</changefreq>
