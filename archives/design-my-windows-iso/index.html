@@ -369,7 +369,7 @@
                         <p>有没有想过像 OEM 厂商一样制作一个已经预装好软件的  Windows 安装镜像呢? 除了 Ghost 的异端外，有没有其他方法呢? 本文旨在将带您定制一个属于自己的 Windows 系统安装镜像。<a id="more"></a></p>
 <h1 id="必要食材">必要食材</h1>
 <ul>
-<li>一份新鲜的 <strong>Windows</strong> 镜像 (可以从 <a href="https://msdn.itellyou.cn" target="_blank" rel="noopener external nofollow noreferrer">MSDN,我告诉你</a>，<a href="https://tb.rg-adguard.net/" target="_blank" rel="noopener external nofollow noreferrer">TechBench</a> 等处获取)</li>
+<li>一份新鲜的 <strong>Windows</strong> 镜像 (可以从 <a href="https://msdn.itellyou.cn" target="_blank" rel="noopener">MSDN,我告诉你</a>，<a href="https://tb.rg-adguard.net/" target="_blank" rel="noopener">TechBench</a> 等处获取)</li>
 <li>一份新鲜的 PE 镜像</li>
 <li>一只成年的计算鸡</li>
 <li>确保你的计算鸡已经吃掉了一份 64 位的 Windows 系统</li>
@@ -423,7 +423,7 @@
 <p>你可能会发现C盘有两个文件夹， <code>$WINDOWS.~BT</code> 和 <code>$WINDOWS.~LS</code> 将他们删除(我这里直接删除，忘记截图了，贴图是从网上找来的)</p>
 <p><img src="https://cdn.jsdelivr.net/gh/EdisonJwa/Blog@latest/source/build-iso/img_57bdf571e579b.png" alt=""></p>
 <p>安装完 Windows 更新之后重启虚拟机，在重启前挂在你的 PE 镜像。在重启后，疯狂点击虚拟机BIOS设置的热键(VirtualBox 是F12)<br>
-设置成光盘启动优先或选择进入PE 镜像，我这里使用的是光卡大佬制作的<a href="https://hikaricalyx.com/hikaripe/" target="_blank" rel="noopener external nofollow noreferrer">HIKARI PE</a><br>
+设置成光盘启动优先或选择进入PE 镜像，我这里使用的是光卡大佬制作的<a href="https://hikaricalyx.com/hikaripe/" target="_blank" rel="noopener">HIKARI PE</a><br>
 如果使用其他PE 请自行准备DISM++，并确保该PE至少是Win8内核，并且位数要和你要定制的系统一致。</p>
 <h2 id="part-2-清理系统更新后被替换下来的旧系统文件冗余">Part 2.清理系统更新后被替换下来的旧系统文件冗余</h2>
 <p>进入PE之后，打开dism++，选择顶部的Windows 10并打开会话，然后点左边的<strong>空间回收</strong>，按照下图所示勾上“<strong>被取代的WinSxS组件（非常慢）</strong>”和“<strong>Windows报告</strong>”、“<strong>Windows事件</strong>”、“<strong>零售演示离线内容</strong>”，并将<strong>缓存文件</strong>和<strong>临时文件</strong>所有的项目勾上，就可以开始清理了。</p>
@@ -466,7 +466,7 @@
 并新建一直文本文档，命名为 <code>ei.cfg</code></p>
 <figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><code class="hljs ini">[EditionID]<br>Home<br>Professional<br>ProfessionalWorkstation<br>Enterprise<br>[Channel]<br>Retail<br>[VL]<br>2<br></code></pre></td></tr></table></figure>
 <p>保存之后，将它重新打包回ISO即可。<br>
-可以在此处下载 <a href="https://go.microsoft.com/fwlink/?linkid=2086042" target="_blank" rel="noopener external nofollow noreferrer">Windows ADK 1903</a><br>
+可以在此处下载 <a href="https://go.microsoft.com/fwlink/?linkid=2086042" target="_blank" rel="noopener">Windows ADK 1903</a><br>
 此处我只安装了部署工具。</p>
 <p><img src="https://cdn.jsdelivr.net/gh/EdisonJwa/Blog@latest/source/build-iso/adksetup_190512_151237.png" alt=""></p>
 <p>为了支持UEFI，请使用oscdimg命令打包。</p>
@@ -483,28 +483,28 @@
 <p>这个过程可能会消耗较长的时间，不过之后在装系统的时候节约下来的时间就远远超过现在所耗费的时间了。</p>
 <p>这么装完的系统确实是没激活的，因为没整合非法激活工具。这里确实考虑到了版权因素，还考虑到了一些非法激活工具给系统带来的安全隐患问题。</p>
 <p>再加上Win10本身激活的机制那么好，有伴随主板终身的数字许可证，还能转移到下一台电脑上，还有什么理由再去用非法激活工具呢？</p>
-<p>我自己在镜像中压缩了 <a href="https://www.bandisoft.com/bandizip/" target="_blank" rel="noopener external nofollow noreferrer">Bandizip</a>,<a href="https://potplayer.daum.net/" target="_blank" rel="noopener external nofollow noreferrer">Potplayer</a>,<a href="https://www.ccleaner.com/download" target="_blank" rel="noopener external nofollow noreferrer">CCleaner</a>,Chrome,Office 和<a href="https://www.majorgeeks.com/files/details/visual_c_redistributable_runtimes_aio_repack.html" target="_blank" rel="noopener external nofollow noreferrer">基础运行库</a></p>
+<p>我自己在镜像中压缩了 <a href="https://www.bandisoft.com/bandizip/" target="_blank" rel="noopener">Bandizip</a>,<a href="https://potplayer.daum.net/" target="_blank" rel="noopener">Potplayer</a>,<a href="https://www.ccleaner.com/download" target="_blank" rel="noopener">CCleaner</a>,Chrome,Office 和<a href="https://www.majorgeeks.com/files/details/visual_c_redistributable_runtimes_aio_repack.html" target="_blank" rel="noopener">基础运行库</a></p>
 <blockquote>
-<p>PS: Potplayer 是韩国 Daum 公司的一款良心产品，而前不久 Daum 网站已经被墙。你可以在这里下载我的转存版本，但不能保证实时更新 <a href="https://cloud.wevg.org/software/potplayer" target="_blank" rel="noopener external nofollow noreferrer">点击下载</a></p>
+<p>PS: Potplayer 是韩国 Daum 公司的一款良心产品，而前不久 Daum 网站已经被墙。你可以在这里下载我的转存版本，但不能保证实时更新 <a href="https://cloud.wevg.org/software/potplayer" target="_blank" rel="noopener">点击下载</a></p>
 </blockquote>
 <p>至此，属于我们自己的 Windows 系统安装镜像就创建完成了。</p>
 <p><img src="https://cdn.jsdelivr.net/gh/EdisonJwa/Blog@latest/source/build-iso/VirtualBoxVM_190512_154758.png" alt=""></p>
 <h1 id="参考链接">参考链接</h1>
-<p><a href="https://docs.microsoft.com/en-us/windows-hardware/get-started/adk-install" target="_blank" rel="noopener external nofollow noreferrer">Download and install the Windows ADK</a></p>
-<p><a href="https://finalthought.org/2018/01/11/creating-customized-windows-10-version-1709-media-iso-wim-flash-drive/" target="_blank" rel="noopener external nofollow noreferrer">Creating Customized Windows 10 Version 1709 Media (ISO, WIM, Flash Drive)</a></p>
-<p><a href="https://answers.microsoft.com/en-us/windows/forum/windows_7-windows_install/where-is-oscdimgexe/b6ccd22e-b478-4222-b370-d5aaf021f575" target="_blank" rel="noopener external nofollow noreferrer">Where is oscdimg.exe</a></p>
-<p><a href="https://docs.microsoft.com/en-us/windows-hardware/manufacture/desktop/oscdimg-command-line-options#oscdimg-command-line-options-1" target="_blank" rel="noopener external nofollow noreferrer">Oscdimg Command-Line Options</a></p>
-<p><a href="https://docs.microsoft.com/en-us/windows-hardware/manufacture/desktop/windows-setup-edition-configuration-and-product-id-files--eicfg-and-pidtxt" target="_blank" rel="noopener external nofollow noreferrer">Windows Setup Edition Configuration and Product ID Files (EI.cfg and PID.txt)</a></p>
-<p><a href="https://docs.microsoft.com/en-us/windows-hardware/manufacture/desktop/dism-windows-edition-servicing-command-line-options" target="_blank" rel="noopener external nofollow noreferrer">DISM Windows Edition-Servicing Command-Line Options</a></p>
-<p><a href="https://msdn.microsoft.com/en-us/library/windows/hardware/dn898486(v=vs.85).aspx" target="_blank" rel="noopener external nofollow noreferrer">审核模式概述(Audit Mode Overview)</a></p>
-<p><a href="https://www.ithome.com/html/win10/312311.htm" target="_blank" rel="noopener external nofollow noreferrer">IT之家学院：如何定制一个预装好基本软件的Win10</a></p>
-<p><a href="https://docs.microsoft.com/en-us/windows-hardware/manufacture/desktop/system-builder-deployment-of-windows-10-for-desktop-editions" target="_blank" rel="noopener external nofollow noreferrer">System builder deployment of Windows 10 for desktop editions</a></p>
-<p><a href="http://bbs.pcbeta.com/viewthread-1810688-1-1.html" target="_blank" rel="noopener external nofollow noreferrer">18362的哈希出来了，大家来看看，UUP文件的</a></p>
-<p><a href="https://docs.microsoft.com/en-us/windows-hardware/manufacture/desktop/deploy-net-framework-35-by-using-deployment-image-servicing-and-management--dism" target="_blank" rel="noopener external nofollow noreferrer">Deploy .NET Framework 3.5 by using Deployment Image Servicing and Management (DISM)</a></p>
-<p><a href="https://docs.microsoft.com/en-us/previous-versions/windows/it-pro/windows-8.1-and-8/hh825262(v%3dwin.10)" target="_blank" rel="noopener external nofollow noreferrer">https://docs.microsoft.com/en-us/previous-versions/windows/it-pro/windows-8.1-and-8/hh825262%28v%3dwin.10%29</a></p>
-<p><a href="http://www.virtubytes.com/2017/02/03/install-net-framework-3-5-server-2016/" target="_blank" rel="noopener external nofollow noreferrer">INSTALL .NET FRAMEWORK 3.5 ON WINDOWS SERVER 2016 – ALTERNATE PATH ERROR</a></p>
-<p><a href="https://windowsreport.com/net-framework-3-5-missing-windows-10/" target="_blank" rel="noopener external nofollow noreferrer">Fix: .NET Framework 3.5 is Missing From Windows 10</a></p>
-<p><a href="https://www.raymond.cc/blog/access-virtual-hard-disks-easily-in-windows-7/" target="_blank" rel="noopener external nofollow noreferrer">7 Ways To Open Virtual Hard Disk Images For Read And Write Access</a></p>
+<p><a href="https://docs.microsoft.com/en-us/windows-hardware/get-started/adk-install" target="_blank" rel="noopener">Download and install the Windows ADK</a></p>
+<p><a href="https://finalthought.org/2018/01/11/creating-customized-windows-10-version-1709-media-iso-wim-flash-drive/" target="_blank" rel="noopener">Creating Customized Windows 10 Version 1709 Media (ISO, WIM, Flash Drive)</a></p>
+<p><a href="https://answers.microsoft.com/en-us/windows/forum/windows_7-windows_install/where-is-oscdimgexe/b6ccd22e-b478-4222-b370-d5aaf021f575" target="_blank" rel="noopener">Where is oscdimg.exe</a></p>
+<p><a href="https://docs.microsoft.com/en-us/windows-hardware/manufacture/desktop/oscdimg-command-line-options#oscdimg-command-line-options-1" target="_blank" rel="noopener">Oscdimg Command-Line Options</a></p>
+<p><a href="https://docs.microsoft.com/en-us/windows-hardware/manufacture/desktop/windows-setup-edition-configuration-and-product-id-files--eicfg-and-pidtxt" target="_blank" rel="noopener">Windows Setup Edition Configuration and Product ID Files (EI.cfg and PID.txt)</a></p>
+<p><a href="https://docs.microsoft.com/en-us/windows-hardware/manufacture/desktop/dism-windows-edition-servicing-command-line-options" target="_blank" rel="noopener">DISM Windows Edition-Servicing Command-Line Options</a></p>
+<p><a href="https://msdn.microsoft.com/en-us/library/windows/hardware/dn898486(v=vs.85).aspx" target="_blank" rel="noopener">审核模式概述(Audit Mode Overview)</a></p>
+<p><a href="https://www.ithome.com/html/win10/312311.htm" target="_blank" rel="noopener">IT之家学院：如何定制一个预装好基本软件的Win10</a></p>
+<p><a href="https://docs.microsoft.com/en-us/windows-hardware/manufacture/desktop/system-builder-deployment-of-windows-10-for-desktop-editions" target="_blank" rel="noopener">System builder deployment of Windows 10 for desktop editions</a></p>
+<p><a href="http://bbs.pcbeta.com/viewthread-1810688-1-1.html" target="_blank" rel="noopener">18362的哈希出来了，大家来看看，UUP文件的</a></p>
+<p><a href="https://docs.microsoft.com/en-us/windows-hardware/manufacture/desktop/deploy-net-framework-35-by-using-deployment-image-servicing-and-management--dism" target="_blank" rel="noopener">Deploy .NET Framework 3.5 by using Deployment Image Servicing and Management (DISM)</a></p>
+<p><a href="https://docs.microsoft.com/en-us/previous-versions/windows/it-pro/windows-8.1-and-8/hh825262(v%3dwin.10)" target="_blank" rel="noopener">https://docs.microsoft.com/en-us/previous-versions/windows/it-pro/windows-8.1-and-8/hh825262%28v%3dwin.10%29</a></p>
+<p><a href="http://www.virtubytes.com/2017/02/03/install-net-framework-3-5-server-2016/" target="_blank" rel="noopener">INSTALL .NET FRAMEWORK 3.5 ON WINDOWS SERVER 2016 – ALTERNATE PATH ERROR</a></p>
+<p><a href="https://windowsreport.com/net-framework-3-5-missing-windows-10/" target="_blank" rel="noopener">Fix: .NET Framework 3.5 is Missing From Windows 10</a></p>
+<p><a href="https://www.raymond.cc/blog/access-virtual-hard-disks-easily-in-windows-7/" target="_blank" rel="noopener">7 Ways To Open Virtual Hard Disk Images For Read And Write Access</a></p>
 <blockquote>
 <p>Thumbnail by Microsoft</p>
 </blockquote>
@@ -517,7 +517,7 @@
             <br>
             <strong>
             
-                本文使用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" rel="external nofollow noreferrer" target="_blank">署名-非商业性使用-相同方式共享 4.0 国际 (CC BY-NC-SA 4.0)</a> 协议
+                本文使用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">署名-非商业性使用-相同方式共享 4.0 国际 (CC BY-NC-SA 4.0)</a> 协议
             </strong>
             <br>
             <strong>本文链接&nbsp;:&nbsp;</strong><a href="https://www.wevg.org/archives/design-my-windows-iso/">https://www.wevg.org/archives/design-my-windows-iso/</a>

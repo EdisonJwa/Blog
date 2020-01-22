@@ -392,7 +392,7 @@ config，autoexec 用来储存游戏每次重新打开就会被重置的命令�
 <h1 id="开始修改cfg">开始修改CFG</h1>
 <p>开始之前要注意，CFG 的内容并非是越多越好，实现更多的功能同时也会带来更多的不可控性，容易导致出现不可预料的问题，如果出现问题也更难排查。<br>
 当游戏出现卡顿，掉帧，严重的输入延迟时，我们经常会选择重新制作 CFG 来解决，这是有效的，尽量精简的修改内容会大大地减小重置工作量。<br>
-如果不想完完全全地自己去从头制作一个CFG文件，也可以去网上寻找喜欢的选手所用的CFG，比较即时的CFG汇总网站为<a href="https://prosettings.net/" target="_blank" rel="noopener external nofollow noreferrer">prosettings</a>,要注意CFG也是有时效性的在一些更新后某些设置会出现不同的影响，所以如果用别人的CFG那么一定要选择最新日期的，如果网站上没有更新，可以去选手的直播间发送评论获得(Twitch).<br>
+如果不想完完全全地自己去从头制作一个CFG文件，也可以去网上寻找喜欢的选手所用的CFG，比较即时的CFG汇总网站为<a href="https://prosettings.net/" target="_blank" rel="noopener">prosettings</a>,要注意CFG也是有时效性的在一些更新后某些设置会出现不同的影响，所以如果用别人的CFG那么一定要选择最新日期的，如果网站上没有更新，可以去选手的直播间发送评论获得(Twitch).<br>
 那么开始分类讲解如何去修改CFG内容。</p>
 <h2 id="键位设置-v2">键位设置</h2>
 <p>举一个比较简单的例子，<strong>滚轮跳</strong></p>
@@ -438,7 +438,7 @@ config，autoexec 用来储存游戏每次重新打开就会被重置的命令�
 <h3 id="alt飞行">alt飞行</h3>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs cfg">bind alt  noclip;			&#x2F;&#x2F;alt飞行<br></code></pre></td></tr></table></figure>
 <h2 id="鼠标轨迹">鼠标轨迹</h2>
-<p>当然，在这里我不会对鼠标速度进行很深入的探讨，只会讲一些平时较少提及的部分，一般来说鼠标的 DPI 在 500-1500 之间是正常的值，也就是说 <code>dpi* sensitivity</code> 在这个区间,如果想要了解相关的数据可以参照<a href="https://liquipedia.net/counterstrike/List_of_player_mouse_settings" target="_blank" rel="noopener external nofollow noreferrer">liquipedia</a>这里有所有选手的鼠标速度设置，加速度设置于RAWINPUT是否开启，不同鼠标的最佳DPI是不同的，同EDPI下鼠标的轨迹也是不同的。<br>
+<p>当然，在这里我不会对鼠标速度进行很深入的探讨，只会讲一些平时较少提及的部分，一般来说鼠标的 DPI 在 500-1500 之间是正常的值，也就是说 <code>dpi* sensitivity</code> 在这个区间,如果想要了解相关的数据可以参照<a href="https://liquipedia.net/counterstrike/List_of_player_mouse_settings" target="_blank" rel="noopener">liquipedia</a>这里有所有选手的鼠标速度设置，加速度设置于RAWINPUT是否开启，不同鼠标的最佳DPI是不同的，同EDPI下鼠标的轨迹也是不同的。<br>
 参照自己的操作习惯去修改是正确的，虽然不提倡一味地模仿职业选手的设置，但是前提是要知其所以然，切不可随心所欲胡乱设置，无知即力量并不可取。</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs cfg">&quot;m_rawinput&quot; &quot;1&quot;<br></code></pre></td></tr></table></figure>
 <p>开启原始输入，这个参数可以将系统对鼠标移动轨迹的影响改为尽可能小得，但是他也不是绝对的，所以如果想达到更好的状态，或者在不同线下环境下达到相同的手感，还是先要参考我们写的上一篇文章，在此也不做赘述。</p>
@@ -544,11 +544,11 @@ config，autoexec 用来储存游戏每次重新打开就会被重置的命令�
 </tbody>
 </table>
 <p>当然，同样可以用创意工坊地图对枪模进行调整<br>
-<a href="https://steamcommunity.com/sharedfiles/filedetails/?id=365126929" target="_blank" rel="noopener external nofollow noreferrer">crashz’ Viewmodel Generator</a></p>
+<a href="https://steamcommunity.com/sharedfiles/filedetails/?id=365126929" target="_blank" rel="noopener">crashz’ Viewmodel Generator</a></p>
 <h3 id="准星调整">准星调整</h3>
-<p><a href="https://steamcommunity.com/sharedfiles/filedetails/?id=308490450" target="_blank" rel="noopener external nofollow noreferrer">crashz’ CROSSHAIR GENERATOR V3</a></p>
+<p><a href="https://steamcommunity.com/sharedfiles/filedetails/?id=308490450" target="_blank" rel="noopener">crashz’ CROSSHAIR GENERATOR V3</a></p>
 <p>对HUD进行调整(这张地图也可以对其他设置进行调整，但是因为更新不及时并<strong>不建议使用里面的大多数其他设置</strong>)</p>
-<p><a href="https://steamcommunity.com/sharedfiles/filedetails/?id=1325659427" target="_blank" rel="noopener external nofollow noreferrer">Config Generator ✮ crashz &amp; Misterio</a></p>
+<p><a href="https://steamcommunity.com/sharedfiles/filedetails/?id=1325659427" target="_blank" rel="noopener">Config Generator ✮ crashz &amp; Misterio</a></p>
 <h2 id="性能提升">性能提升</h2>
 <p>以下的命令皆可提升FPS或减少掉帧，下面不做赘述</p>
 <table>
@@ -743,14 +743,14 @@ config，autoexec 用来储存游戏每次重新打开就会被重置的命令�
 <p>接下来就保存好文件，畅快体验吧</p>
 <h1 id="参考链接">参考链接</h1>
 <ul>
-<li><a href="https://totalcsgo.com/" target="_blank" rel="noopener external nofollow noreferrer">CS:GO FOV and Viewmodel Commands</a></li>
+<li><a href="https://totalcsgo.com/" target="_blank" rel="noopener">CS:GO FOV and Viewmodel Commands</a></li>
 </ul>
 <hr class="footnotes-sep">
 <section class="footnotes">
 <ol class="footnotes-list">
-<li id="fn1"  class="footnote-item"><p><a href="https://space.bilibili.com/73115492" target="_blank" rel="noopener external nofollow noreferrer">B站链接</a> <a href="#fnref1" class="footnote-backref">↩</a></p>
+<li id="fn1"  class="footnote-item"><p><a href="https://space.bilibili.com/73115492" target="_blank" rel="noopener">B站链接</a> <a href="#fnref1" class="footnote-backref">↩</a></p>
 </li>
-<li id="fn2"  class="footnote-item"><p><a href="https://zhuanlan.zhihu.com/p/47497932" target="_blank" rel="noopener external nofollow noreferrer">CSGO深度教学7——从wNv被“黑”掉的世界冠军，到CS的Netcodes与客户端参数</a> – <cite>Kryp</cite> <a href="#fnref2" class="footnote-backref">↩</a></p>
+<li id="fn2"  class="footnote-item"><p><a href="https://zhuanlan.zhihu.com/p/47497932" target="_blank" rel="noopener">CSGO深度教学7——从wNv被“黑”掉的世界冠军，到CS的Netcodes与客户端参数</a> – <cite>Kryp</cite> <a href="#fnref2" class="footnote-backref">↩</a></p>
 </li>
 </ol>
 </section>
@@ -763,7 +763,7 @@ config，autoexec 用来储存游戏每次重新打开就会被重置的命令�
             <br>
             <strong>
             
-                本文使用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" rel="external nofollow noreferrer" target="_blank">署名-非商业性使用-相同方式共享 4.0 国际 (CC BY-NC-SA 4.0)</a> 协议
+                本文使用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">署名-非商业性使用-相同方式共享 4.0 国际 (CC BY-NC-SA 4.0)</a> 协议
             </strong>
             <br>
             <strong>本文链接&nbsp;:&nbsp;</strong><a href="https://www.wevg.org/archives/csgo-config-guide/">https://www.wevg.org/archives/csgo-config-guide/</a>

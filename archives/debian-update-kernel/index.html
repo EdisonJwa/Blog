@@ -381,7 +381,7 @@
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">apt search linux-image<br></code></pre></td></tr></table></figure>
 <p>接下来，再执行：</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">apt install -t $(lsb_release -sc)-backports linux-image-$(dpkg --<span class="hljs-built_in">print</span>-architecture) linux-headers-$(dpkg --<span class="hljs-built_in">print</span>-architecture) --install-recommends -y<br></code></pre></td></tr></table></figure>
-<p>Debian 10 云服务器可以执行此项， 安装专为云平台优化的内核 (Thanks to <a href="https://dcc.cat/" target="_blank" rel="noopener external nofollow noreferrer">七呼大佬</a>)</p>
+<p>Debian 10 云服务器可以执行此项， 安装专为云平台优化的内核 (Thanks to <a href="https://dcc.cat/" target="_blank" rel="noopener">七呼大佬</a>)</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">apt install -t $(lsb_release -sc)-backports linux-image-cloud-$(dpkg --<span class="hljs-built_in">print</span>-architecture) linux-headers-cloud-$(dpkg --<span class="hljs-built_in">print</span>-architecture) --install-recommends -y<br></code></pre></td></tr></table></figure>
 <p>下面，需要更新更改，并重新启动：</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs bash">update-grub<br>reboot<br></code></pre></td></tr></table></figure>
@@ -397,12 +397,12 @@
 <p>至此更新的工作就完成了。撒花~</p>
 <h1 id="参考链接">参考链接</h1>
 <ul>
-<li><a href="https://wiki.debian.org/HowToUpgradeKernel" target="_blank" rel="noopener external nofollow noreferrer">HowToUpgradeKernel</a></li>
-<li><a href="https://linuxhint.com/how-to-upgrade-kernel-of-debian-9-stretch-from-source/" target="_blank" rel="noopener external nofollow noreferrer">How to Upgrade Kernel of Debian 9 Stretch from Source</a></li>
-<li><a href="https://dcc.cat/lemp/" target="_blank" rel="noopener external nofollow noreferrer">Debian / Ubuntu 环境下 LEMP 建站解析</a></li>
-<li><a href="https://josta.me/blog/201708/debian_9_upgrade_kernel/" target="_blank" rel="noopener external nofollow noreferrer">Debian 9更新Linux内核</a></li>
-<li><a href="https://www.linode.com/docs/platform/update-kernel/" target="_blank" rel="noopener external nofollow noreferrer">How to Update your Linode’s Existing Kernel</a></li>
-<li><a href="https://askubuntu.com/questions/652363/how-can-i-get-a-list-with-the-packages-selected-by-apt-get-autoremove" target="_blank" rel="noopener external nofollow noreferrer">How can I get a list with the packages selected by apt-get autoremove</a></li>
+<li><a href="https://wiki.debian.org/HowToUpgradeKernel" target="_blank" rel="noopener">HowToUpgradeKernel</a></li>
+<li><a href="https://linuxhint.com/how-to-upgrade-kernel-of-debian-9-stretch-from-source/" target="_blank" rel="noopener">How to Upgrade Kernel of Debian 9 Stretch from Source</a></li>
+<li><a href="https://dcc.cat/lemp/" target="_blank" rel="noopener">Debian / Ubuntu 环境下 LEMP 建站解析</a></li>
+<li><a href="https://josta.me/blog/201708/debian_9_upgrade_kernel/" target="_blank" rel="noopener">Debian 9更新Linux内核</a></li>
+<li><a href="https://www.linode.com/docs/platform/update-kernel/" target="_blank" rel="noopener">How to Update your Linode’s Existing Kernel</a></li>
+<li><a href="https://askubuntu.com/questions/652363/how-can-i-get-a-list-with-the-packages-selected-by-apt-get-autoremove" target="_blank" rel="noopener">How can I get a list with the packages selected by apt-get autoremove</a></li>
 </ul>
 
                     </article>
@@ -413,7 +413,7 @@
             <br>
             <strong>
             
-                本文使用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" rel="external nofollow noreferrer" target="_blank">署名-非商业性使用-相同方式共享 4.0 国际 (CC BY-NC-SA 4.0)</a> 协议
+                本文使用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">署名-非商业性使用-相同方式共享 4.0 国际 (CC BY-NC-SA 4.0)</a> 协议
             </strong>
             <br>
             <strong>本文链接&nbsp;:&nbsp;</strong><a href="https://www.wevg.org/archives/debian-update-kernel/">https://www.wevg.org/archives/debian-update-kernel/</a>

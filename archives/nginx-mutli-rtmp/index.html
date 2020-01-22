@@ -370,7 +370,7 @@
 <h1 id="准备工作">准备工作</h1>
 <p><em>如果您已经安装好 Nginx 和 nginx-rtmp-module 可以跳过此部分</em></p>
 <h1 id="使用包管理安装的-nginx">使用包管理安装的 Nginx</h1>
-<p>因为我已经安装过 Nginx，使用的是<strong>使用包管理安装的 Nginx</strong>，您也可以选择<strong>编译安装</strong>的方式进行，因为本人太菜，每次进行编译都会出错，所以此处不在阐述。Nginx 官方有打包好的 Nginx 可以直接通过 <code>apt-get install nginx -y</code> 完成安装，但是这样做的后果是你安装的是一个可能非常老旧和充满隐患的 Nginx （此部分摘自 <a href="https://dcc.cat" target="_blank" rel="noopener external nofollow noreferrer">DCC大佬</a> 的博客）</p>
+<p>因为我已经安装过 Nginx，使用的是<strong>使用包管理安装的 Nginx</strong>，您也可以选择<strong>编译安装</strong>的方式进行，因为本人太菜，每次进行编译都会出错，所以此处不在阐述。Nginx 官方有打包好的 Nginx 可以直接通过 <code>apt-get install nginx -y</code> 完成安装，但是这样做的后果是你安装的是一个可能非常老旧和充满隐患的 Nginx （此部分摘自 <a href="https://dcc.cat" target="_blank" rel="noopener">DCC大佬</a> 的博客）</p>
 <h2 id="ondřej-surý-的-ppa">Ondřej Surý 的 PPA</h2>
 <p>更新非常快速，而且做的质量也非常好。</p>
 <h3 id="对于-ubuntu-系列："><strong>对于 Ubuntu 系列：</strong></h3>
@@ -397,7 +397,7 @@
 <p>替换上方的 RTMP直播地址需要自己进行替换，现在我们完成了服务器上的分流部分</p>
 <p>接下来，我们配置一个 http 服务器，此部分与平时配置网站 conf 的过程比较类似</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><code class="hljs conf">server &#123;<br>        listen 2080; #此处可自定义<br>        <br>        server_name YOUR_SERVERNAME;<br>        location &#x2F;auth &#123;<br>            rewrite_by_lua &#39;<br>                ngx.req.read_body()<br>                local name &#x3D; ngx.req.get_post_args().name<br>                if (name &#x3D;&#x3D; &quot;xxxYOUR_UUID&quot;) then<br>                    ngx.status &#x3D; 200<br>                    ngx.say(&quot;OK&quot;)<br>                    ngx.exit(200)<br>                else<br>                    ngx.status &#x3D; 403<br>                    ngx.say(&quot;Forbidden&quot;)<br>                    ngx.exit(403)<br>                end<br>            &#39;;<br>        &#125;<br>    &#125;<br></code></pre></td></tr></table></figure>
-<p>此处的 <code>xxxYOUR_UUID</code> 是我们使用 OBS 推流时候的&quot;流名称&quot;，可以使用 <a href="https://www.uuidgenerator.net/" target="_blank" rel="noopener external nofollow noreferrer">UUID Generator</a> 进行生成。</p>
+<p>此处的 <code>xxxYOUR_UUID</code> 是我们使用 OBS 推流时候的&quot;流名称&quot;，可以使用 <a href="https://www.uuidgenerator.net/" target="_blank" rel="noopener">UUID Generator</a> 进行生成。</p>
 <p><strong>经测试不能加 TLS</strong></p>
 <h1 id="测试-rtmp-服务器配置">测试 RTMP 服务器配置</h1>
 <p>启动 Nginx 服务后，在服务器上执行下面的命令：</p>
@@ -408,12 +408,12 @@
 <p>在 OBS 设置中选择“<strong>自定义流媒体服务器</strong>”，URL 填入 <code>rtmp://YOUR_SERVERNAME/live</code> (<code>YOUR_SERVERNAME</code> 是推流服务器的 IP或域名), 流名称填入我们前面生成的 UUID。</p>
 <p>设置好后单击 OBS上的“<strong>开始推流</strong>”，不出意外的话就可以同时向我们设置的平台推流了。</p>
 <h2 id="参考文章">参考文章</h2>
-<p><a href="https://dcc.cat/lemp/" target="_blank" rel="noopener external nofollow noreferrer">Debian / Ubuntu 环境下 LEMP 建站解析</a></p>
-<p><a href="https://github.com/arut/nginx-rtmp-module" target="_blank" rel="noopener external nofollow noreferrer">arut/nginx-rtmp-module</a></p>
-<p><a href="https://github.com/illuspas/nginx-rtmp-win32" target="_blank" rel="noopener external nofollow noreferrer">illuspas/nginx-rtmp-win32</a></p>
-<p><a href="https://blog.nanpuyue.com/2018/047.html" target="_blank" rel="noopener external nofollow noreferrer">借助 Nginx 搭建带简单认证的直播推流服务器，实现多平台同步直播</a></p>
-<p><a href="https://blog.52itstyle.com/archives/2254/" target="_blank" rel="noopener external nofollow noreferrer">Nginx学习之配置RTMP模块搭建推流服务</a></p>
-<p><a href="https://www.jianshu.com/p/3224341a205f" target="_blank" rel="noopener external nofollow noreferrer">直播推流nginx-rtmp-module集成</a></p>
+<p><a href="https://dcc.cat/lemp/" target="_blank" rel="noopener">Debian / Ubuntu 环境下 LEMP 建站解析</a></p>
+<p><a href="https://github.com/arut/nginx-rtmp-module" target="_blank" rel="noopener">arut/nginx-rtmp-module</a></p>
+<p><a href="https://github.com/illuspas/nginx-rtmp-win32" target="_blank" rel="noopener">illuspas/nginx-rtmp-win32</a></p>
+<p><a href="https://blog.nanpuyue.com/2018/047.html" target="_blank" rel="noopener">借助 Nginx 搭建带简单认证的直播推流服务器，实现多平台同步直播</a></p>
+<p><a href="https://blog.52itstyle.com/archives/2254/" target="_blank" rel="noopener">Nginx学习之配置RTMP模块搭建推流服务</a></p>
+<p><a href="https://www.jianshu.com/p/3224341a205f" target="_blank" rel="noopener">直播推流nginx-rtmp-module集成</a></p>
 
                     </article>
                     
@@ -423,7 +423,7 @@
             <br>
             <strong>
             
-                本文使用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" rel="external nofollow noreferrer" target="_blank">署名-非商业性使用-相同方式共享 4.0 国际 (CC BY-NC-SA 4.0)</a> 协议
+                本文使用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">署名-非商业性使用-相同方式共享 4.0 国际 (CC BY-NC-SA 4.0)</a> 协议
             </strong>
             <br>
             <strong>本文链接&nbsp;:&nbsp;</strong><a href="https://www.wevg.org/archives/nginx-mutli-rtmp/">https://www.wevg.org/archives/nginx-mutli-rtmp/</a>
