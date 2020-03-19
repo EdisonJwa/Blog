@@ -9,21 +9,21 @@
     
     <url>
         <loc>https://www.wevg.org/search/</loc>
-        <lastmod>2020-03-19T02:11:39.496Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.8</priority>
-    </url>
-    
-    <url>
-        <loc>https://www.wevg.org/friends/</loc>
-        <lastmod>2020-03-19T02:11:39.484Z</lastmod>
+        <lastmod>2020-03-19T06:44:53.781Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.8</priority>
     </url>
     
     <url>
         <loc>https://www.wevg.org/donate/</loc>
-        <lastmod>2020-03-19T02:11:39.480Z</lastmod>
+        <lastmod>2020-03-19T06:44:53.769Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.8</priority>
+    </url>
+    
+    <url>
+        <loc>https://www.wevg.org/friends/</loc>
+        <lastmod>2020-03-19T06:44:53.769Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.8</priority>
     </url>
