@@ -50,7 +50,7 @@ workbox.routing.registerRoute(new RegExp('/disqus/(.*)\.json(.*)'), new workbox.
         networkTimeoutSeconds: 3,
     }]
 }));
-workbox.routing.registerRoute(new RegExp('https://disqus\.api\.opt\.ninja'), new workbox.strategies.NetworkFirst({
+workbox.routing.registerRoute(new RegExp('https://disqus\.uv\.uy'), new workbox.strategies.NetworkFirst({
     options: [{
         networkTimeoutSeconds: 3,
     }]
