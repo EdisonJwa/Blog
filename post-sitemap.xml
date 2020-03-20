@@ -8,6 +8,14 @@
     </url>
 
     <url>
+        <loc>https://www.wevg.org/archives/keep-edge-legacy/</loc>
+        <lastmod>2020-03-20T02:46:47.000Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
         <loc>https://www.wevg.org/archives/gpg-yubikey-windows-no-key/</loc>
         <lastmod>2020-03-19T01:45:00.000Z</lastmod>
         <changefreq>weekly</changefreq>
