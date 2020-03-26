@@ -376,12 +376,15 @@
 首先先引用一下我之前的文章，虽然标题是写 Apple Music 但实际上支持很多主流平台</p>
 </blockquote>
 
-    <div id="aplayer-GKkkAkce" class="aplayer aplayer-tag-marker meting-tag-marker"
+    <div id="aplayer-LckMXbxg" class="aplayer aplayer-tag-marker meting-tag-marker"
          data-id="1392089153" data-server="netease" data-type="song" data-mode="circulation" data-autoplay="false" data-mutex="true" data-listmaxheight="340px" data-preload="auto" data-theme="#ad7a86"
     ></div>
 <h2 id="获取歌曲列表">获取歌曲列表</h2>
 <p>首先，在浏览器中打开你的歌单链接。点击 F12 打开 Developer Tools，接下来点击 Console 选项卡，输入这段指令然后点击回车。接下来便会输出歌单列表了。</p>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs javascript"><span class="hljs-built_in">Array</span>.from(<span class="hljs-built_in">document</span>.querySelectorAll(<span class="hljs-string">".songlist__item"</span>))<br>  .map(<br>    <span class="hljs-function"><span class="hljs-params">v</span> =&gt;</span><br>      v.querySelector(<span class="hljs-string">".js_song"</span>).innerText +<br>      <span class="hljs-string">" - "</span> +<br>      v.querySelector(<span class="hljs-string">".songlist__artist"</span>).title<br>  )<br>  .reduce(<span class="hljs-function">(<span class="hljs-params">s1, s2</span>) =&gt;</span> s1 + <span class="hljs-string">"\n"</span> + s2);<br></code></pre></td></tr></table></figure>
+<blockquote>
+<p>感谢 <a href="http://disq.us/p/284ujt0" target="_blank" rel="noopener">@里里昂</a> 的反馈发现因为 QQ 音乐的网页的显示原因，只能获取到列表中的前十首歌</p>
+</blockquote>
 <p>这里以官方歌单做一个演示，复制输出的歌单信息，然后准备导入到其他平台</p>
 <p><img src="https://i.yecdn.com/images/2020/01/22/d9a7bef209edf2a11e14d22d9706cb94.png" alt="d9a7bef209edf2a11e14d22d9706cb94.png"></p>
 <h2 id="导入到其他平台">导入到其他平台</h2>
