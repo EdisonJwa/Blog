@@ -1,6 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
+    <loc>https://www.wevg.org/archives/how-to-use-teamspeak3/</loc>
+    <lastmod>2020-03-27</lastmod>
+  </url>  <url>
+    <loc>https://www.wevg.org/archives/add-darkmode-support/</loc>
+    <lastmod>2020-03-27</lastmod>
+  </url>  <url>
     <loc>https://www.wevg.org/archives/speed-up-battle-net/</loc>
     <lastmod>2020-03-26</lastmod>
   </url>  <url>
@@ -34,9 +40,6 @@
     <loc>https://www.wevg.org/archives/gpg-sign-via-yubikey/</loc>
     <lastmod>2020-01-09</lastmod>
   </url>  <url>
-    <loc>https://www.wevg.org/archives/how-to-use-teamspeak3/</loc>
-    <lastmod>2019-12-30</lastmod>
-  </url>  <url>
     <loc>https://www.wevg.org/archives/export-passwords-from-iCloud-keychain/</loc>
     <lastmod>2019-12-28</lastmod>
   </url>  <url>
@@ -45,9 +48,6 @@
   </url>  <url>
     <loc>https://www.wevg.org/archives/teamspeak-server-via-docker/</loc>
     <lastmod>2019-12-07</lastmod>
-  </url>  <url>
-    <loc>https://www.wevg.org/archives/add-darkmode-support/</loc>
-    <lastmod>2019-12-05</lastmod>
   </url>  <url>
     <loc>https://www.wevg.org/archives/netease-to-apple-music/</loc>
     <lastmod>2019-11-15</lastmod>

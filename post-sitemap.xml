@@ -8,6 +8,22 @@
     </url>
 
     <url>
+        <loc>https://www.wevg.org/archives/how-to-use-teamspeak3/</loc>
+        <lastmod>2020-03-27T02:56:30.000Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
+        <loc>https://www.wevg.org/archives/add-darkmode-support/</loc>
+        <lastmod>2020-03-27T02:48:43.000Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
         <loc>https://www.wevg.org/archives/speed-up-battle-net/</loc>
         <lastmod>2020-03-26T06:25:01.000Z</lastmod>
         <changefreq>weekly</changefreq>
@@ -96,14 +112,6 @@
     </url>
 
     <url>
-        <loc>https://www.wevg.org/archives/how-to-use-teamspeak3/</loc>
-        <lastmod>2019-12-30T13:48:21.000Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.6</priority>
-
-    </url>
-
-    <url>
         <loc>https://www.wevg.org/archives/export-passwords-from-iCloud-keychain/</loc>
         <lastmod>2019-12-28T23:56:50.000Z</lastmod>
         <changefreq>weekly</changefreq>
@@ -122,14 +130,6 @@
     <url>
         <loc>https://www.wevg.org/archives/teamspeak-server-via-docker/</loc>
         <lastmod>2019-12-07T06:59:55.000Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.6</priority>
-
-    </url>
-
-    <url>
-        <loc>https://www.wevg.org/archives/add-darkmode-support/</loc>
-        <lastmod>2019-12-05T14:44:21.000Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
 
