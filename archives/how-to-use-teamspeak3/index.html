@@ -1,0 +1,701 @@
+<!DOCTYPE html>
+
+<html lang="zh-CN">
+    <head>
+    <meta charset="utf-8">
+    <!--
+        hexo-theme-suka © SukkaW
+        GitHub: https://github.com/SukkaW/hexo-theme-suka
+    -->
+
+    <!-- ### Resource Hint ### -->
+
+    <!-- ## DNS Prefetch ## -->
+    <meta http-equiv="x-dns-prefetch-control" content="on">
+
+<!-- busuanzi -->
+
+
+<!-- comment -->
+
+
+
+
+
+
+
+<!-- analytics -->
+
+
+
+
+
+
+
+    <!-- ## Preload ## -->
+    
+
+
+
+
+    <!-- ### Meta & Title & Info ### -->
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, minimum-scale=1, initial-scale=1, maximum-scale=5, viewport-fit=cover">
+    <meta name="renderer" content="webkit">
+
+    <!-- Title -->
+    <title>TeamSpeak3 使用指南 (新手向) | Vigorous Pro</title>
+
+    <!-- Favicons -->
+    <link rel="icon" type="image&#x2F;ico" href="/favicon.ico"><link rel="apple-touch-icon" sizes="180x180" href="/source/favicon/apple-touch-icon.png"><link rel="icon" typt="image&#x2F;png" sizes="192x192" href="/source/favicon/android-chrome-192x192.png"><link rel="icon" typt="image&#x2F;png" sizes="32x32" href="/source/favicon/favicon-32x32.png"><link rel="icon" typt="image&#x2F;png" sizes="16x16" href="/source/favicon/favicon-16x16.png"><link rel="mask-icon" href="/safari-pinned-tab.svg" color="">
+
+    <!-- ### Import File ### -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/spectre.css@0.5.3"><style>
+    body {
+        background-color: #f8f9fa;
+    }
+
+    a, a:visited {
+        color: #0070ff;
+    }
+
+    a:active, a:focus, a:hover {
+        color: #0070ff;
+        opacity: .75;
+    }
+
+    #post-content a,
+    #post-content a:hover,
+    #post-content a:focus,
+    #post-content a:visited {
+        color: #005eb9;
+        opacity: 1;
+    }
+
+    
+
+    .post-entry .card-body a {
+        color: #0070ff;
+    }
+
+    .avatar {
+        background: #444;
+    }
+
+    .navbar-link,
+    .navbar-link:visited,
+    .timeline .timeline-item .timeline-icon.icon-lg {
+        color: #0070ff;
+    }
+
+    .navbar-link:hover {
+        color: #0070ff;
+        opacity: .8;
+    }
+
+    #search-input .btn,
+    #disqus_click_btn,
+    #disqus-switch-to-direct,
+    #disqus-loadmore-button {
+        background: #727e96;
+        border-color: #727e96;
+        color: #fff;
+    }
+
+    #post-toc a.post-toc-link,
+    #post-toc a.post-toc-link:visited,
+    .share-menu.menu .menu-item>a {
+        color: #727e96;
+    }
+
+    .share-menu.menu .menu-item>a:hover,
+    .share-menu.menu .menu-item>a:focus,
+    .share-menu.menu .menu-item>a:visited {
+        color: #50596c;
+        background: #f8f9fa;
+        opacity: .85;
+    }
+</style><link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/sukkaw/hexo-theme-suka@latest/source/css/style.min.css">
+
+
+    
+        <!-- Import DisqusJS Default Theme -->
+        <link rel="preload" href="https://cdn.jsdelivr.net/npm/disqusjs@1.2.5/dist/disqusjs.css" as="style" onload="this.onload=null;this.rel='stylesheet'"><noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/disqusjs@1.2.5/dist/disqusjs.css"></noscript>
+
+    
+
+
+
+
+
+
+
+    <!-- Prettify Theme -->
+    
+    <link rel="preload" href="https://cdn.jsdelivr.net/gh/sukkaw/hexo-theme-suka@latest/source/css/highlight/tomorrow-night-eighties.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'"><noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/sukkaw/hexo-theme-suka@latest/source/css/highlight/tomorrow-night-eighties.min.css"></noscript>
+
+
+
+
+
+<script>
+/*! loadCSS. [c]2017 Filament Group, Inc. MIT License */
+!function(t){"use strict";t.loadCSS||(t.loadCSS=function(){});var e=loadCSS.relpreload={};if(e.support=function(){var e;try{e=t.document.createElement("link").relList.supports("preload")}catch(t){e=!1}return function(){return e}}(),e.bindMediaToggle=function(t){var e=t.media||"all";function a(){t.addEventListener?t.removeEventListener("load",a):t.attachEvent&&t.detachEvent("onload",a),t.setAttribute("onload",null),t.media=e}t.addEventListener?t.addEventListener("load",a):t.attachEvent&&t.attachEvent("onload",a),setTimeout(function(){t.rel="stylesheet",t.media="only x"}),setTimeout(a,3e3)},e.poly=function(){if(!e.support())for(var a=t.document.getElementsByTagName("link"),n=0;n<a.length;n++){var o=a[n];"preload"!==o.rel||"style"!==o.getAttribute("as")||o.getAttribute("data-loadcss")||(o.setAttribute("data-loadcss",!0),e.bindMediaToggle(o))}},!e.support()){e.poly();var a=t.setInterval(e.poly,500);t.addEventListener?t.addEventListener("load",function(){e.poly(),t.clearInterval(a)}):t.attachEvent&&t.attachEvent("onload",function(){e.poly(),t.clearInterval(a)})}"undefined"!=typeof exports?exports.loadCSS=loadCSS:t.loadCSS=loadCSS}("undefined"!=typeof global?global:this);
+</script>
+
+    <!-- ### Site Verification ### -->
+    
+
+
+    <link rel="alternate" type="application/atom+xml" href="/atom.xml"><meta name="mobile-web-app-capable" content="yes"><meta name="application-name" content="Vigorous Pro"><meta name="msapplication-starturl" content="https://www.wevg.org"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-title" content="Vigorous Pro"><meta name="apple-mobile-web-app-status-bar-style" content="black-translucent"><link rel="manifest" href="/manifest.json"><link rel="search" type="application/opensearchdescription+xml" href="/opensearch.xml" title="Vigorous Pro">
+
+    <!-- ### The Open Graph & Twitter Card Protocol ### -->
+    <meta property="og:title" content="TeamSpeak3 使用指南 (新手向) | Vigorous Pro"><meta property="og:site_name" content="Vigorous Pro"><meta property="og:type" content="article"><meta property="og:url" content="https://www.wevg.org/archives/how-to-use-teamspeak3/"><meta property="og:locale" content="zh-CN"><meta name="description" content="本文将带您了解什么是 TeamSpeak，简单对比它与其它语音软件的区别以及 TeamSpeak 的使用方法。 - Edison Jwa - Vigorous Pro"><meta name="keywords" content="服务器, VoIP, 语音, edisonjwa,game,blog,Web,Html,edison"><meta property="og:image" content="https://cdn.jsdelivr.net/gh/EdisonJwa/Blog@master/source/thumbnail/7eb9d75afbb6e07301dd6f9ecb59aa0b.jpg"><meta property="og:image" content="https://i.yecdn.com/images/2019/02/20/644ca90fc1d9308fd6f57cd0f418c72a.png"><meta property="og:image" content="https://i.yecdn.com/images/2019/02/20/b715e2a65731ab4bd3218b181628d2c4.png"><meta property="og:image" content="https://i.yecdn.com/images/2019/04/15/0198196703f76b0e9c5bd30486973899.png"><meta property="og:image" content="https://i.yecdn.com/images/2020/03/27/11c45ed06c3f0f74ff913c526362f5df.png"><meta property="og:image" content="https://i.yecdn.com/images/2020/03/27/b596cfe52771c9117bb33a06174d571b.png"><meta property="og:image" content="https://i.yecdn.com/images/2019/01/05/537638065bc87a7102e35eb04717771b.png"><meta property="og:image" content="https://i.yecdn.com/images/2019/01/05/201b8cd093ebc341cee6e9c8313ad756.png"><meta property="og:image" content="https://i.yecdn.com/images/2019/01/05/537638065bc87a7102e35eb04717771b.png"><meta property="og:image" content="https://i.yecdn.com/images/2019/04/15/d817c32fcc36dd537c1f465b9818b836.png"><meta property="og:image" content="https://i.yecdn.com/images/2019/04/15/ab297f649859015457d76268827b6759.png"><meta property="article:published_time" content="2019-02-19T15:52:24.000Z"><meta property="article:modified_time" content="2020-06-24T02:56:30.000Z"><meta property="og:updated_time" content="2020-06-24T02:56:30.000Z"><meta property="article:author" content="Edison Jwa"><meta property="article:tag" content="服务器, VoIP, 语音, edisonjwa,game,blog,Web,Html,edison"><meta name="twitter:card" content="summary_large_image"><meta name="twitter:image" content="https://cdn.jsdelivr.net/gh/EdisonJwa/Blog@master/source/thumbnail/7eb9d75afbb6e07301dd6f9ecb59aa0b.jpg">
+
+    
+
+    <!-- ### Canonical link ### -->
+    <link rel="canonical" href="https://www.wevg.org/archives/how-to-use-teamspeak3/">
+
+    <meta name="generator" content="Hexo 5.4.0">
+
+    <!-- ### Analytics ### -->
+    
+
+
+
+
+
+
+
+    <!-- ### Structured Data ### -->
+    
+
+
+
+<script type="application/ld+json">
+{
+    "@context": "http://schema.org",
+    "url": "https://www.wevg.org/archives/how-to-use-teamspeak3/",
+    "@type": "BlogPosting",
+    "logo": "https://www.wevg.org/source/favicon/android-chrome-192x192.png",
+    "mainEntityOfPage": {
+        "@type": "WebPage",
+        "@id": "https://www.wevg.org/archives/how-to-use-teamspeak3/"
+    },
+    "headline": "TeamSpeak3 使用指南 (新手向) | Vigorous Pro",
+    
+    "image": {
+        "@type": "ImageObject",
+        "url": "https://cdn.jsdelivr.net/gh/EdisonJwa/Blog@master/source/thumbnail/7eb9d75afbb6e07301dd6f9ecb59aa0b.jpg"
+    },
+    
+    "datePublished": "2019-02-19T15:52:24.000Z",
+    "dateModified": "2020-06-24T02:56:30.000Z",
+    "author": {
+        "@type": "Person",
+        "name": "Edison Jwa",
+        "image": {
+            "@type": "ImageObject",
+            "url": "https://cdn.jsdelivr.net/gh/EdisonJwa/Blog@master/source/image/avatar.jpg"
+        },
+        "description": "The world can always use more heroes."
+    },
+    "publisher": {
+        "@type": "Organization",
+        "name": "Vigorous Pro",
+        "logo": {
+            "@type": "ImageObject",
+            "url": "https://www.wevg.org/source/favicon/android-chrome-192x192.png"
+        }
+    },
+    
+    "potentialAction": {
+        "@type": "SearchAction",
+        "target": "https://www.wevg.org/search?s={search_term_string}",
+        "query-input": "required name=search_term_string"
+    },
+    
+    "keywords": "服务器, VoIP, 语音, edisonjwa,game,blog,Web,Html,edison",
+    "description": "本文将带您了解什么是 TeamSpeak，简单对比它与其它语音软件的区别以及 TeamSpeak 的使用方法。 - Edison Jwa - Vigorous Pro"
+}
+</script>
+
+
+
+    <!-- ### Custom Head ### -->
+    <!-- EdisonJwas Blog --><script data-ad-client="ca-pub-2345785306567671" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script><link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/EdisonJwa/Blog@latest/css/darkmode.min.css"><script src="https://cdn.jsdelivr.net/gh/EdisonJwa/Blog@master/js/edison-main.min.js"></script><script type="module" async="" src="https://cdn.jsdelivr.net/npm/instant.page@3.0.0/instantpage.min.js"></script><link rel="manifest" href="/site.webmanifest"><meta name="msapplication-TileColor" content="#d43d3d"><meta name="msapplication-TileImage" content="/source/favicon/mstile-144x144.png"><meta name="theme-color" content="#ffffff"><script type="text/javascript">function downloadJSAtOnload(){var d=document.createElement("script");d.src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js",document.body.appendChild(d)}window.addEventListener?window.addEventListener("load",downloadJSAtOnload,!1):window.attachEvent?window.attachEvent("onload",downloadJSAtOnload):window.onload=downloadJSAtOnload;</script><!-- Global site tag (gtag.js) - Google Analytics --><script async src="https://www.googletagmanager.com/gtag/js?id=G-S2SFLD81VT"></script><script>window.dataLayer = window.dataLayer || [];function gtag(){dataLayer.push(arguments);} gtag('js', new Date()); gtag('config', 'G-S2SFLD81VT');</script><!-- Cloudflare Web Analytics --><script defer src=https://static.cloudflareinsights.com/beacon.min.js ; data-cf-beacon="{&quot;token&quot;: 1ebb36a2c023408484ff114c409377b8}"></script><!-- End Cloudflare Web Analytics -->
+<style type="text/css">
+.spoiler {
+  display: inline-flex;
+}
+p.spoiler {
+  display: flex;
+}
+.spoiler a {
+  pointer-events: none;
+}
+.spoiler-blur, .spoiler-blur > * {
+  transition: text-shadow .5s ease;
+}
+.spoiler .spoiler-blur, .spoiler .spoiler-blur > * {
+  color: rgba(0, 0, 0, 0);
+  background-color: rgba(0, 0, 0, 0);
+  text-shadow: 0 0 10px grey;
+  cursor: pointer;
+}
+.spoiler .spoiler-blur:hover, .spoiler .spoiler-blur:hover > * {
+  text-shadow: 0 0 5px grey;
+}
+.spoiler-box, .spoiler-box > * {
+  transition: color .5s ease,
+  background-color .5s ease;
+}
+.spoiler .spoiler-box, .spoiler .spoiler-box > * {
+  color: black;
+  background-color: black;
+  text-shadow: none;
+}</style></head>
+
+    <body>
+            
+
+            <!-- ### Main content ### -->
+            <!-- ## Header ##-->
+<header>
+    <h1 class="header-title text-center"><a href="/">Vigorous Pro</a></h1>
+
+    <p class="text-center header-slogan">
+        
+            
+                The world can always use more heroes.
+            
+        
+    </p>
+
+    <nav class="navbar-section text-center">
+    
+        <a href="/" class="navbar-link">首页</a>
+    
+    
+        <a href="/archives/" class="navbar-link">归档</a>
+    
+    
+        <a href="/search" class="navbar-link">搜索</a>
+    
+    
+        <a target="_blank" rel="noopener" href="https://uv.uy" class="navbar-link">关于</a>
+    
+        <a href="/friends/" class="navbar-link">友链</a>
+    
+    
+    
+</nav>
+</header>
+
+            
+    <!-- ## Post ## -->
+    <div class="post-container">
+    <div id="post-card" class="card">
+        
+            <div class="card-image lazyload" data-bg="url('https://cdn.jsdelivr.net/gh/EdisonJwa/Blog@master/source/thumbnail/7eb9d75afbb6e07301dd6f9ecb59aa0b.jpg')"></div>
+        
+        <div class="card-item-container">
+            <div class="card-inner-cell">
+                <!-- # Post Header Info # -->
+                <div class="card-header">
+                    
+    <h1 class="card-title h3 mb-2">TeamSpeak3 使用指南 (新手向)</h1>
+
+
+
+
+<div class="post-header-info">
+    <p class="post-header-info-left text-gray">
+        <img class="author-thumb lazyload" data-src="https://cdn.jsdelivr.net/gh/EdisonJwa/Blog@master/source/image/avatar.jpg" src="https://cdn.jsdelivr.net/gh/sukkaw/hexo-theme-suka@latest/source/img/suka-lazyload.gif" alt="Edison Jwa's Avatar">
+        <span>2019-02-20</span>
+        
+            <span class="suka-devide-dot"></span>
+            <a class="category-link" href="/categories/Tech/">Tech</a>
+        
+        
+        
+    </p>
+    <div class="post-header-info-right">
+        
+            <div class="dropdown dropdown-right">
+<a class="dropdown-toggle" tabindex="0">分享本文</a>
+<ul class="menu share-menu">
+    <!-- Share Weibo -->
+    
+    <li class="menu-item">
+        <a href="http://service.weibo.com/share/share.php?appkey=&title=TeamSpeak3 使用指南 (新手向)&url=https://www.wevg.org/archives/how-to-use-teamspeak3/&pic=https://cdn.jsdelivr.net/gh/EdisonJwa/Blog@master/source/thumbnail/7eb9d75afbb6e07301dd6f9ecb59aa0b.jpg&searchPic=false&style=simple" target="_blank" rel="external noopener noreferrer nofollow">分享到微博</a>
+    </li>
+    
+
+    <!-- Share Twitter -->
+    
+    <li class="menu-item">
+        <a href="https://twitter.com/intent/tweet?text=TeamSpeak3 使用指南 (新手向)&url=https://www.wevg.org/archives/how-to-use-teamspeak3/&via=Edison Jwa" target="_blank" rel="external noopener noreferrer nofollow">分享到 Twitter</a>
+    </li>
+    
+
+    <!-- Share Facebook -->
+    
+    <li class="menu-item">
+        <a href="https://www.facebook.com/sharer/sharer.php?u=https://www.wevg.org/archives/how-to-use-teamspeak3/" target="_blank" rel="external noopener noreferrer nofollow">分享到 Facebook</a>
+    </li>
+    
+
+    <!-- Share Google+ -->
+    
+    <li class="menu-item">
+        <a href="https://plus.google.com/share?url=https://www.wevg.org/archives/how-to-use-teamspeak3/" target="_blank" rel="external noopener noreferrer nofollow">分享到 Google+</a>
+    </li>
+    
+
+    <!-- Share LinkedIn -->
+    
+    <li class="menu-item">
+        <a href="https://www.linkedin.com/shareArticle?mini=true&url=https://www.wevg.org/archives/how-to-use-teamspeak3/&title=Vigorous Pro" target="_blank" rel="external noopener noreferrer nofollow">分享到 LinkedIn</a>
+    </li>
+    
+
+    <!-- Share QQ -->
+    
+    <li class="menu-item">
+        <a href="http://connect.qq.com/widget/shareqq/index.html?site=Vigorous Pro&title=Vigorous Pro&summary=The world can always use more heroes.&pics=https://cdn.jsdelivr.net/gh/EdisonJwa/Blog@master/source/thumbnail/7eb9d75afbb6e07301dd6f9ecb59aa0b.jpg&url=https://www.wevg.org/archives/how-to-use-teamspeak3/" target="_blank" rel="external noopener noreferrer nofollow"> 分享到 QQ</a>
+    </li>
+    
+
+    <!-- Share Telegram -->
+    
+    <li class="menu-item">
+        <a href="https://t.me/share/url?url=https://www.wevg.org/archives/how-to-use-teamspeak3/&text=Vigorous Pro" target="_blank" rel="external noopener noreferrer nofollow">分享到 Telegram</a>
+    </li>
+    
+
+    <!-- QRCode -->
+    
+    <li class="menu-item">
+        <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAJQAAACUCAAAAABQV18IAAAB2UlEQVR42u3a226EMAyEYd7/pdvbFcIzE2irMP252UMX8lUKju1wfG14HKBAgQJ1gTrEcXnixd+m887v3TigelDT4Of3n68KMsHtOKCqUOeLTYCrAaJJbMYB9f9QUxBVwdLdJKBAnT8ni++fTHRQW6KmhTJJ1NSgv5IlgNoelQ729PXHqhlQW6Ns00EEy6QonSb4o64LqK1RSYGpErxkgU6vD6oD5Sa2u1iSyE3XHRdkUK9GTT9UBagKrC65U0EVVA9KFYqrDY4pqEZNXFAVqPSCaZMs2UQabwpQFSh1UrqZmC7IKmCD6kOtNCaSglX9o2PCCKoGlTYsks1uFUjVzQSqB+USfLfwuu9c0miTPFCvR60+TOM2BpLvQXWh0kU22VRKmhoyWIOqQLnCceWBmrsbkaC6UEmjLC04Fcg1+UF1o5KJrgrOO78F1YVKG/Dpb1yRG2UJoCpQrnlxJ5lLClJQnah0o1ph7zbeQHWh0gcF1SRWBcRKEgiqA5U8aJwCni7UoHpQ0wRPJ2vSlHXNXVB9qGTiugQvCarRhhGoelQ6md3m91LTDFQ1amVjMpngY8AGVYVSD0BMC+hqg8QWuaBqUKsB0TUqXHERdV1AvRa10wEKFChQH8c3uBSSEeDbnt4AAAAASUVORK5CYII=" alt="QRCode">
+    </li>
+    
+
+</ul>
+</div>
+        
+    </div>
+</div>
+                </div>
+                <div class="card-body">
+                    
+                        
+                        
+                            <div id="post-toc"><ol class="post-toc"><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#%E4%BB%80%E4%B9%88%E6%98%AF-teamspeak"><span class="post-toc-number">1.</span> <span class="post-toc-text">什么是 TeamSpeak</span></a></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#%E4%B8%BA%E4%BB%80%E4%B9%88%E6%88%91%E4%BB%AC%E4%BD%BF%E7%94%A8-teamspeak"><span class="post-toc-number">2.</span> <span class="post-toc-text">为什么我们使用 TeamSpeak</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#%E4%B8%BA%E4%BB%80%E4%B9%88%E4%B8%8D%E7%94%A8-yy-%E8%AF%AD%E9%9F%B3"><span class="post-toc-number">2.1.</span> <span class="post-toc-text">为什么不用 YY 语音</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#%E4%B8%BA%E4%BB%80%E4%B9%88%E4%B8%8D%E7%94%A8-discord"><span class="post-toc-number">2.2.</span> <span class="post-toc-text">为什么不用 Discord</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#%E4%B8%BA%E4%BB%80%E4%B9%88%E4%BD%BF%E7%94%A8-teamspeak"><span class="post-toc-number">2.3.</span> <span class="post-toc-text">为什么使用 TeamSpeak</span></a></li></ol></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#%E4%BD%BF%E7%94%A8%E6%96%B9%E6%B3%95"><span class="post-toc-number">3.</span> <span class="post-toc-text">使用方法</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#%E8%BF%9E%E6%8E%A5%E8%87%B3%E6%9C%8D%E5%8A%A1%E5%99%A8"><span class="post-toc-number">3.1.</span> <span class="post-toc-text">连接至服务器</span></a></li></ol></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#teamspeak-%E4%B8%AD%E6%96%87%E8%AF%AD%E8%A8%80%E5%8C%85"><span class="post-toc-number">4.</span> <span class="post-toc-text">TeamSpeak 中文语言包</span></a></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#%E5%B8%B8%E8%A7%81%E9%97%AE%E9%A2%98"><span class="post-toc-number">5.</span> <span class="post-toc-text">常见问题</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#q1-%E8%AE%BE%E7%BD%AE%E6%84%9F%E5%BA%94%E9%BA%A6"><span class="post-toc-number">5.1.</span> <span class="post-toc-text">Q1 设置感应麦</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#q1-1-%E8%AF%B4%E8%AF%9D%E5%88%AB%E4%BA%BA%E5%8F%AA%E8%83%BD%E5%90%AC%E5%88%B0%E5%90%8E%E5%8D%8A%E5%8F%A5-%E5%BD%95%E5%85%A5%E8%BF%87%E5%A4%9A%E6%9D%82%E9%9F%B3"><span class="post-toc-number">5.2.</span> <span class="post-toc-text">Q1.1 说话别人只能听到后半句 &#x2F; 录入过多杂音</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#q2-%E4%BD%BF%E7%94%A8-teamviewer-%E6%97%B6-teamspeak-%E5%A3%B0%E9%9F%B3%E5%8F%98%E5%B0%8F%E7%9A%84%E9%97%AE%E9%A2%98"><span class="post-toc-number">5.3.</span> <span class="post-toc-text">Q2 使用 TeamViewer 时 TeamSpeak 声音变小的问题</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#q3-%E5%A6%82%E4%BD%95%E5%90%8C%E6%97%B6%E8%BF%9E%E6%8E%A5%E5%A4%9A%E5%8F%B0-ts-%E6%9C%8D%E5%8A%A1%E5%99%A8"><span class="post-toc-number">5.4.</span> <span class="post-toc-text">Q3 如何同时连接多台 TS 服务器</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#q4-%E5%AF%B9%E4%BA%8E-teamspeak-%E8%AE%B8%E5%8F%AF%E8%AF%81%E7%9A%84%E9%97%AE%E9%A2%98"><span class="post-toc-number">5.5.</span> <span class="post-toc-text">Q4 对于 TeamSpeak 许可证的问题</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#q5-%E5%A6%82%E4%BD%95%E4%BD%BF%E7%94%A8%E6%9D%83%E9%99%90%E5%AF%86%E9%92%A5"><span class="post-toc-number">5.6.</span> <span class="post-toc-text">Q5 如何使用权限密钥</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#q6-%E5%88%9B%E5%BB%BA%E6%88%96%E7%BC%96%E8%BE%91%E4%B9%A6%E7%AD%BE"><span class="post-toc-number">5.7.</span> <span class="post-toc-text">Q6 创建或编辑书签</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#%E6%AD%A4%E5%88%97%E8%A1%A8%E5%B0%86%E4%BC%9A%E4%B8%8D%E5%AE%9A%E6%9C%9F%E6%9B%B4%E6%96%B0"><span class="post-toc-number">5.8.</span> <span class="post-toc-text">此列表将会不定期更新</span></a></li></ol></li></ol></div>
+                        
+                    
+                    <article id="post-content">
+                        <p>本文将带您了解什么是 TeamSpeak，简单对比它与其它语音软件的区别以及 TeamSpeak 的使用方法。</p>
+<span id="more"></span>
+<h1 id="什么是-teamspeak">什么是 TeamSpeak</h1>
+<p>首先，先引用一下我曾经在 <a href="https://www.wevg.org/archives/teamspeak-server-build/">TeamSpeak 服务器搭建方法</a> 中的简介。</p>
+<blockquote>
+<p>TeamSpeak (简称TS) 是一套专有的VoIP软件，使用者可以用耳机和麦克风，通过客户端软件连线到指定的服务器，与在服务器内频道的其他使用者进行通话。是一种很像电话会议的方式。 通常 TeamSpeak 的使用者大多为多人连线游戏的玩家，与同队伍的玩家进行通讯。在游戏的对战方面，语音对话通讯具有竞争优势。</p>
+</blockquote>
+<p>简单来说，就是一款语音软件，那么有的人可能会问了，那我为什么不直接使用游戏内的语音软件，或者其他的，例如 Discord 或者 YY语音呢？</p>
+<h1 id="为什么我们使用-teamspeak">为什么我们使用 TeamSpeak</h1>
+<h2 id="为什么不用-yy-语音">为什么不用 YY 语音</h2>
+<p>首先，先说一下广告方面，用过 YY 的用户可能都知道上面满屏幕的广告，但是 TeamSpeak 和 Discord 并没有广告。</p>
+<p>其次，捆绑软件方面，Discord没有捆绑， TeamSpeak 在安装时会询问是否安装 Overwolf (可选项，此软件为游戏内覆盖层，可在游戏内查看当前说话的用户)，而安装 YY 后，同时会捆绑 YY浏览器等软件。<br>
+第三，YY 并不支持感应麦，即达到一定分贝才会录入。<br>
+另外，不知道是否还有人记得，在17年年底的某会期间，YY屏蔽了海外用户的登陆。这一条也是我的一部分朋友转战 TeamSpeak 的原因。</p>
+<p><strong>2019-02-24</strong>  根据朋友的提示，YY 不支持感应麦，而且按键麦经常失灵，所以很多情况下只能使用自由麦。</p>
+<h2 id="为什么不用-discord">为什么不用 Discord</h2>
+<p>这个原因很简单，被墙了，国内的小伙伴上不了，而且一般情况下，连接服务器后，延迟方面的问题也比较严重，我们也自然只能 Pass 掉它了。</p>
+<h2 id="为什么使用-teamspeak">为什么使用 TeamSpeak</h2>
+<p>首先 TeamSpeak 没有广告，没有捆绑软件，和 Discord 一样支持游戏内覆盖层，也可以单独调节每个用户的音量大小等等等等。至于服务器方面，TeamSpeak 的服务器一般都是自行租赁或架设的。<br>
+除此之外，在系统占用，语音质量，语音延迟方面，也完胜Discord 和 YY。如果您想的话，甚至可以在自己的内网搭建一台 TeamSpeak 服务器。</p>
+<h1 id="使用方法">使用方法</h1>
+<p>下面来说说使用方法，此处会从安装开始说起，以方便新用户进行使用。</p>
+<blockquote>
+<p><strong>请务必不要某国内公司制作的中文翻译版，该版本过旧，无法登陆现有的大部分 TeamSpeak 服务器</strong><br>
+更多详情可以查看 <a target="_blank" rel="noopener" href="https://ts.wevg.org/why-not-ts1-cn/">为何不要使用 ts1.cn</a> 我在该文中详细解释了为何不要使用 <a target="_blank" rel="noopener" href="http://ts1.cn">ts1.cn</a> 的服务</p>
+</blockquote>
+<p>第一步，下载 TeamSpeak 此处可以前往 TeamSpeak 官网 <a target="_blank" rel="noopener" href="https://teamspeak.com">teamspeak.com</a> 进行下载，也可以通过我的转存地址进行下载，解决国内在官网下载速度过慢的问题<br>
+转存地址 <a target="_blank" rel="noopener" href="https://ts.wevg.org/download/">https://ts.wevg.org/download/</a></p>
+<p>安装过程不需要过多的解释，一直往下就可以</p>
+<blockquote>
+<p>其中 Overwolf 安装后，正如我上面所说的，可以在游戏内显示当前说话的用户，得知哪位用户进入/离开了当前频道等等…</p>
+</blockquote>
+<p><img src="https://i.yecdn.com/images/2019/02/20/644ca90fc1d9308fd6f57cd0f418c72a.png" alt=""></p>
+<p>安装完成后，打开 TeamSpeak ，会提示登录 myTeamSpeak 账号。(可选是否登录，个人建议登录一下)</p>
+<blockquote>
+<p>myTeamSpeak 账号的用途是同步书签，身份和配置等信息，比如在语音服务器获取的权限等等。</p>
+</blockquote>
+<h2 id="连接至服务器">连接至服务器</h2>
+<p>点击主界面上面的 <code>Connection</code> - <code>Connect</code>，在 <code>Server Nickname or Address</code> 位置输入服务器地址， <code>Nickname</code> 位置输入昵称后，点击 <code>Connect</code> 即可。<br>
+也可在安装中文语言包后进行操作。</p>
+<p>我们的 TeamSpeak 服务器地址 <a target="_blank" rel="noopener" href="https://lab.wevg.org/invite/ts3.gs/">ts3.gs</a></p>
+<p>点此查看我们的 TeamSpeak <a target="_blank" rel="noopener" href="https://ts.wevg.org/">服务及相关信息</a></p>
+<p><img src="https://i.yecdn.com/images/2019/02/20/b715e2a65731ab4bd3218b181628d2c4.png" alt=""></p>
+<h1 id="teamspeak-中文语言包">TeamSpeak 中文语言包</h1>
+<p>目前，我正在和寂听联手制作中文语言包，到目前为止，还处于早期阶段，但是基本界面的翻译基本完成，所以也可以拿来直接使用。<br>
+下载地址 <a target="_blank" rel="noopener" href="https://github.com/jitingcn/TS3-Translation_zh-CN/releases">https://github.com/jitingcn/TS3-Translation_zh-CN/releases</a></p>
+<p>下载 Chinese_Translation_zh-CN.ts3_translation 并按照提示进行安装即可。</p>
+<p><img src="https://i.yecdn.com/images/2019/04/15/0198196703f76b0e9c5bd30486973899.png" alt=""></p>
+<h1 id="常见问题">常见问题</h1>
+<blockquote>
+<p>以下内容的中文翻译将会尽量与上方最新版中文语言包相同</p>
+</blockquote>
+<h2 id="q1-设置感应麦">Q1 设置感应麦</h2>
+<p>点击 <code>工具(Tools)</code> ，打开 <code>设置(Options)</code> 菜单目录 ，选择 <code>音频输入(Capture)</code> 选项卡。<br>
+可以在右侧的 配置(Profile) 中看到 语音感应激活(Capture Voice Activation)选项，模式选择 <code>Volume Gate</code>。</p>
+<p>下方的滑杆代表灵敏度，您可以通过 点击 <code>开始测试(Begin test)</code> 进行测试。<br>
+一般情况下，推荐打开下方的<strong>回声抑制(Echo reduction)</strong> <strong>回声消除(Echo cancellation)</strong> 以及 <strong>高级选项(Advanced Options)</strong>，但具体请根据个人情况及设备的不同，自行判断。</p>
+<h2 id="q1-1-说话别人只能听到后半句-录入过多杂音">Q1.1 说话别人只能听到后半句 / 录入过多杂音</h2>
+<p>一般此情况为灵敏度配置不当导致的。<br>
+通过调节 Q1 中提到的滑杆，滑杆越往左越灵敏，不断地测试，找到适合自己的灵敏度即可解决此问题。</p>
+<h2 id="q2-使用-teamviewer-时-teamspeak-声音变小的问题">Q2 使用 TeamViewer 时 TeamSpeak 声音变小的问题</h2>
+<p>不得不说，这个问题，确实困扰了我很久，直到前几天，偶然发现了解决问题的办法</p>
+<blockquote>
+<p>2020-03-27 Windows 更新之后位置有了些许变化<br>
+首先，右键点击任务栏的<strong>声音</strong> - <strong>打开声音设置</strong></p>
+</blockquote>
+<p><img src="https://i.yecdn.com/images/2020/03/27/11c45ed06c3f0f74ff913c526362f5df.png" alt=""></p>
+<p>点击右侧的 <strong>声音控制面板</strong></p>
+<p><img src="https://i.yecdn.com/images/2020/03/27/b596cfe52771c9117bb33a06174d571b.png" alt=""></p>
+<p>然后点击<strong>通信</strong>选项卡，将系统默认的&quot; <strong>将其他声音的音量减小到80%</strong> &quot; 修改为 <strong>不执行任何操作</strong>，即可完美解决声音变小的问题</p>
+<p><img src="https://i.yecdn.com/images/2019/01/05/537638065bc87a7102e35eb04717771b.png" alt="b7f36784197be0b2b10c328b9d5921ba.png"></p>
+<blockquote>
+<p>低版本 Windows 系统可以参考下面的部分<br>
+首先，右键点击任务栏的<strong>声音</strong> - 声音</p>
+</blockquote>
+<p><img src="https://i.yecdn.com/images/2019/01/05/201b8cd093ebc341cee6e9c8313ad756.png" alt="04bd256693edca3803b015a37046b434.png"></p>
+<p>然后点击<strong>通信</strong>选项卡，将系统默认的&quot;将其他声音的音量减小到80%&quot; 修改为不执行任何操作，即可完美解决声音变小的问题</p>
+<p><img src="https://i.yecdn.com/images/2019/01/05/537638065bc87a7102e35eb04717771b.png" alt="b7f36784197be0b2b10c328b9d5921ba.png"></p>
+<h2 id="q3-如何同时连接多台-ts-服务器">Q3 如何同时连接多台 TS 服务器</h2>
+<p>在连接服务器时点击 <code>在新的标签页中</code> 即可同时连接多台 TS 服务器。</p>
+<h2 id="q4-对于-teamspeak-许可证的问题">Q4 对于 TeamSpeak 许可证的问题</h2>
+<p>官方现在在对许可证进行调整，不过可以确定的是，日后非盈利许可证(Non-Profit License) 无法再次申请。<br>
+相关说明可查看我之前发布的 <a href="https://www.wevg.org/archives/teamspeak-server-build/">TeamSpeak 服务器搭建方法</a></p>
+<h2 id="q5-如何使用权限密钥">Q5 如何使用权限密钥</h2>
+<ol>
+<li>打开权限密钥窗口</li>
+</ol>
+<p>在顶部菜单中选择 <code>权限(Permission)</code> ，点击 <code>使用权限密钥(Use Privilege key)</code> 选项。</p>
+<ol start="2">
+<li>输入密钥即可</li>
+</ol>
+<h2 id="q6-创建或编辑书签">Q6 创建或编辑书签</h2>
+<ol>
+<li><strong>打开书签</strong></li>
+</ol>
+<p>在 TeamSpeak 的左上角，单击 <code>书签(Bookmarks)</code> 菜单，然后单击 <code>管理书签(Manage Bookmarks)</code> 选项。</p>
+<p><img src="https://i.yecdn.com/images/2019/04/15/d817c32fcc36dd537c1f465b9818b836.png" alt=""></p>
+<ol start="2">
+<li><strong>添加书签</strong></li>
+</ol>
+<p>在书签窗口中，请单击 <code>新增书签</code> 或在空白处点击右键，即可<strong>新建书签</strong>。</p>
+<p><img src="https://i.yecdn.com/images/2019/04/15/ab297f649859015457d76268827b6759.png" alt=""></p>
+<ol start="3">
+<li><strong>编辑书签</strong></li>
+</ol>
+<p>单击刚刚创建的新书签或要编辑的书签。填写 <strong>书签名</strong>，<strong>服务器地址</strong>，<strong>昵称</strong>和<strong>服务器密码</strong>（如果需要）。然后单击<strong>确定</strong>即可。</p>
+<ol start="4">
+<li><strong>快速添加书签</strong></li>
+</ol>
+<p>连接服务器后，点击 <code>书签(Bookmarks)</code> 菜单，然后单击 <code>添加到书签(Add to Bookmarks)</code> 选项即可。</p>
+<h2 id="此列表将会不定期更新">此列表将会不定期更新</h2>
+
+                    </article>
+                    
+    <blockquote class="post-license">
+        <p>
+            <strong>本文作者&nbsp;:&nbsp;Edison Jwa</strong>
+            <br>
+            <strong>
+            
+                本文使用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">署名-非商业性使用-相同方式共享 4.0 国际 (CC BY-NC-SA 4.0)</a> 协议
+            </strong>
+            <br>
+            <strong>本文链接&nbsp;:&nbsp;</strong><a href="https://www.wevg.org/archives/how-to-use-teamspeak3/">https://www.wevg.org/archives/how-to-use-teamspeak3/</a>
+        </p>
+    </blockquote>
+
+
+
+    <blockquote id="date-expire-notification" class="post-expired-notify">本文最后更新于 <span id="date-expire-num"></span> 天前，文中所描述的信息可能已发生改变</blockquote>
+    <script>
+    (function() {
+        var dateUpdate = Date.parse("2020-06-24");
+        var nowDate = new Date();
+        var a = nowDate.getTime();
+        var b = a - dateUpdate;
+        var daysUpdateExpire = Math.floor(b/(24*3600*1000));
+        if (daysUpdateExpire >= 120) {
+            document.getElementById('date-expire-num').innerHTML = daysUpdateExpire;
+        } else {
+            document.getElementById('date-expire-notification').style.display = 'none';
+        }
+    })();
+    </script>
+
+
+<p class="post-footer-info mb-0 pt-0">本文发表于&nbsp;<time datetime="2019-02-19T15:52:24.000Z" itemprop="datePublished">2019-02-20</time>
+
+    , 最后修改于&nbsp;<time datetime="2020-06-24T02:56:30.000Z" itemprop="dateModified">2020-06-24</time>
+
+</p>
+<p class="post-footer-info mb-0 pt-2">
+
+<span class="post-categories-list mt-2">
+
+<a class="post-categories-list-item" href='/categories/Tech/'>Tech</a>
+
+</span>
+
+
+
+<span class="post-tags-list mt-2">
+
+<a class="post-tags-list-item" href="/tags/%E6%9C%8D%E5%8A%A1%E5%99%A8/" rel="tag">#&nbsp;服务器</a>
+
+<a class="post-tags-list-item" href="/tags/VoIP/" rel="tag">#&nbsp;VoIP</a>
+
+<a class="post-tags-list-item" href="/tags/%E8%AF%AD%E9%9F%B3/" rel="tag">#&nbsp;语音</a>
+
+</span>
+
+
+</p>
+
+                </div>
+                <div class="post-nav px-2 bg-gray">
+<ul class="pagination">
+    <!-- Prev Nav -->
+    
+        <li class="page-item page-prev">
+            <a href="/archives/get-steam-game-icon/" rel="prev">
+                <div class="page-item-title"><i class="icon icon-back" aria-hidden="true"></i></div>
+                <div class="page-item-subtitle">获取 Steam 游戏图标文件方法</div>
+            </a>
+        </li>
+    
+
+    <!-- Next Nav -->
+    
+        <li class="page-item page-next">
+            <a href="/archives/speed-up-origin-download/" rel="next">
+                <div class="page-item-title"><i class="icon icon-forward" aria-hidden="true"></i></div>
+                <div class="page-item-subtitle">如何解决 Origin 下载速度慢的问题</div>
+            </a>
+        </li>
+    
+</ul>
+</div>
+
+                
+                    <!-- # Comment # -->
+                    
+                        <div class="card-footer post-comment">
+                            <div id="disqus_thread"></div>
+
+<script id="js-disqusjs" src="https://cdn.jsdelivr.net/npm/disqusjs@1.2.5/dist/disqus.js" async></script>
+<script>
+document.getElementById('js-disqusjs').addEventListener('load', function () {
+    function loadDisqusJS() {
+        new DisqusJS({
+            shortname: 'edisonj',
+            
+            siteName: 'Vigorous Pro',
+            
+            identifier: 'https://www.wevg.org/archives/how-to-use-teamspeak3/',
+            url: 'https://www.wevg.org/archives/how-to-use-teamspeak3/',
+            api: 'https://disqus.uv.uy/api/',
+            apikey: 'vBTqc5gYirQfuj9STIAANtQCArVi9MN8UZ72UUucwnhus4AhpgpbVJMIn3Ojl4O7',
+            
+            
+        })
+    }
+    if (document.readyState === 'complete') {
+        loadDisqusJS();
+    } else {
+        window.addEventListener('load', loadDisqusJS);
+    }
+});
+</script>
+
+                        </div>
+                    
+                
+            </div>
+        </div>
+    </div>
+</div>
+
+            <!-- ### Footer ### -->
+            <footer class="text-center">
+    <!-- footer copyright -->
+    
+        <p class="footer-copyright mb-0">Copyright&nbsp;©&nbsp;<span id="copyright-year"></span>
+            <a class="footer-copyright-a" href="https://www.wevg.org">Vigorous Pro</a>
+        </p>
+
+    <!-- footer custom text -->
+    <p class="footer-text mb-0">
+    <a href="/atom.xml" target="_blank" class="footer-develop-a" rel="nofollow noopener noreferrer">RSS</a><span class="footer-develop-divider"></span><a href="https://donate.edison.do" target="_blank" class="footer-develop-a" rel="nofollow noopener noreferrer">Donate</a><span class="footer-develop-divider"></span><a href="/privacy-policy" target="_blank" class="footer-develop-a" rel="nofollow noopener noreferrer">Privacy Policy</a>
+    </p>
+    <!-- footer develop info -->
+    <p class="footer-develop mb-0">
+        
+
+        
+        Powered by&nbsp;<!--
+         --><a href="https://hexo.io" target="_blank" class="footer-develop-a" rel="external nofollow noopener noreferrer">Hexo</a><span class="footer-develop-divider"></span>Theme&nbsp;-&nbsp;<!--
+         --><a href="https://github.com/SukkaW/hexo-theme-suka" target="_blank" class="footer-develop-a" rel="external noopener">Suka</a>
+    </p>
+</footer>
+
+
+        <!-- ### Import File ### -->
+        <!-- ### Footer JS Import ### -->
+
+<script>
+
+    
+window.lazyLoadOptions = {
+    elements_selector: ".lazyload",
+    threshold: 50
+};
+
+(function() {
+    var copyrightNow = new Date().getFullYear();
+    var copyrightContent = document.getElementById('copyright-year');
+    var copyrightSince = 2015;
+    if (copyrightSince === copyrightNow) {
+        copyrightContent.textContent = copyrightNow;
+    } else {
+        copyrightContent.textContent = copyrightSince + ' - ' + copyrightNow;
+    }
+})();
+console.log('\n %c Suka Theme (hexo-theme-suka) | © SukkaW | Verision 1.3.3 %c https://github.com/SukkaW/hexo-theme-suka \n', 'color: #fff; background: #444; padding:5px 0;', 'background: #bbb; padding:5px 0;');
+
+</script>
+
+<script src="https://cdn.jsdelivr.net/npm/vanilla-lazyload@12.3.0" async></script>
+
+
+
+<!-- Comment -->
+
+    
+        <!-- No need for DisqusJS -->
+    
+
+
+<!-- ### Custom Footer ### -->
+<script> if ('serviceWorker' in navigator) { window.addEventListener('load', () => { navigator.serviceWorker.register('/sw.js'); }) } </script><script>window.ga_tid = "UA-106121780-1";window.ga_api = "https://ga.cdn.uv.uy/jquery.js"; </script><script src="https://cdn.jsdelivr.net/gh/EdisonJwa/Blog@master/js/main.js" async></script>
+    </body>
+
+</html>

@@ -1,0 +1,620 @@
+<!DOCTYPE html>
+
+<html lang="zh-CN">
+    <head>
+    <meta charset="utf-8">
+    <!--
+        hexo-theme-suka © SukkaW
+        GitHub: https://github.com/SukkaW/hexo-theme-suka
+    -->
+
+    <!-- ### Resource Hint ### -->
+
+    <!-- ## DNS Prefetch ## -->
+    <meta http-equiv="x-dns-prefetch-control" content="on">
+
+<!-- busuanzi -->
+
+
+<!-- comment -->
+
+
+
+
+
+
+
+<!-- analytics -->
+
+
+
+
+
+
+
+    <!-- ## Preload ## -->
+    
+
+
+
+
+    <!-- ### Meta & Title & Info ### -->
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, minimum-scale=1, initial-scale=1, maximum-scale=5, viewport-fit=cover">
+    <meta name="renderer" content="webkit">
+
+    <!-- Title -->
+    <title>为 Telegram Desktop 替换字体 | Vigorous Pro</title>
+
+    <!-- Favicons -->
+    <link rel="icon" type="image&#x2F;ico" href="/favicon.ico"><link rel="apple-touch-icon" sizes="180x180" href="/source/favicon/apple-touch-icon.png"><link rel="icon" typt="image&#x2F;png" sizes="192x192" href="/source/favicon/android-chrome-192x192.png"><link rel="icon" typt="image&#x2F;png" sizes="32x32" href="/source/favicon/favicon-32x32.png"><link rel="icon" typt="image&#x2F;png" sizes="16x16" href="/source/favicon/favicon-16x16.png"><link rel="mask-icon" href="/safari-pinned-tab.svg" color="">
+
+    <!-- ### Import File ### -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/spectre.css@0.5.3"><style>
+    body {
+        background-color: #f8f9fa;
+    }
+
+    a, a:visited {
+        color: #0070ff;
+    }
+
+    a:active, a:focus, a:hover {
+        color: #0070ff;
+        opacity: .75;
+    }
+
+    #post-content a,
+    #post-content a:hover,
+    #post-content a:focus,
+    #post-content a:visited {
+        color: #005eb9;
+        opacity: 1;
+    }
+
+    
+
+    .post-entry .card-body a {
+        color: #0070ff;
+    }
+
+    .avatar {
+        background: #444;
+    }
+
+    .navbar-link,
+    .navbar-link:visited,
+    .timeline .timeline-item .timeline-icon.icon-lg {
+        color: #0070ff;
+    }
+
+    .navbar-link:hover {
+        color: #0070ff;
+        opacity: .8;
+    }
+
+    #search-input .btn,
+    #disqus_click_btn,
+    #disqus-switch-to-direct,
+    #disqus-loadmore-button {
+        background: #727e96;
+        border-color: #727e96;
+        color: #fff;
+    }
+
+    #post-toc a.post-toc-link,
+    #post-toc a.post-toc-link:visited,
+    .share-menu.menu .menu-item>a {
+        color: #727e96;
+    }
+
+    .share-menu.menu .menu-item>a:hover,
+    .share-menu.menu .menu-item>a:focus,
+    .share-menu.menu .menu-item>a:visited {
+        color: #50596c;
+        background: #f8f9fa;
+        opacity: .85;
+    }
+</style><link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/sukkaw/hexo-theme-suka@latest/source/css/style.min.css">
+
+
+    
+        <!-- Import DisqusJS Default Theme -->
+        <link rel="preload" href="https://cdn.jsdelivr.net/npm/disqusjs@1.2.5/dist/disqusjs.css" as="style" onload="this.onload=null;this.rel='stylesheet'"><noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/disqusjs@1.2.5/dist/disqusjs.css"></noscript>
+
+    
+
+
+
+
+
+
+
+    <!-- Prettify Theme -->
+    
+    <link rel="preload" href="https://cdn.jsdelivr.net/gh/sukkaw/hexo-theme-suka@latest/source/css/highlight/tomorrow-night-eighties.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'"><noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/sukkaw/hexo-theme-suka@latest/source/css/highlight/tomorrow-night-eighties.min.css"></noscript>
+
+
+
+
+
+<script>
+/*! loadCSS. [c]2017 Filament Group, Inc. MIT License */
+!function(t){"use strict";t.loadCSS||(t.loadCSS=function(){});var e=loadCSS.relpreload={};if(e.support=function(){var e;try{e=t.document.createElement("link").relList.supports("preload")}catch(t){e=!1}return function(){return e}}(),e.bindMediaToggle=function(t){var e=t.media||"all";function a(){t.addEventListener?t.removeEventListener("load",a):t.attachEvent&&t.detachEvent("onload",a),t.setAttribute("onload",null),t.media=e}t.addEventListener?t.addEventListener("load",a):t.attachEvent&&t.attachEvent("onload",a),setTimeout(function(){t.rel="stylesheet",t.media="only x"}),setTimeout(a,3e3)},e.poly=function(){if(!e.support())for(var a=t.document.getElementsByTagName("link"),n=0;n<a.length;n++){var o=a[n];"preload"!==o.rel||"style"!==o.getAttribute("as")||o.getAttribute("data-loadcss")||(o.setAttribute("data-loadcss",!0),e.bindMediaToggle(o))}},!e.support()){e.poly();var a=t.setInterval(e.poly,500);t.addEventListener?t.addEventListener("load",function(){e.poly(),t.clearInterval(a)}):t.attachEvent&&t.attachEvent("onload",function(){e.poly(),t.clearInterval(a)})}"undefined"!=typeof exports?exports.loadCSS=loadCSS:t.loadCSS=loadCSS}("undefined"!=typeof global?global:this);
+</script>
+
+    <!-- ### Site Verification ### -->
+    
+
+
+    <link rel="alternate" type="application/atom+xml" href="/atom.xml"><meta name="mobile-web-app-capable" content="yes"><meta name="application-name" content="Vigorous Pro"><meta name="msapplication-starturl" content="https://www.wevg.org"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-title" content="Vigorous Pro"><meta name="apple-mobile-web-app-status-bar-style" content="black-translucent"><link rel="manifest" href="/manifest.json"><link rel="search" type="application/opensearchdescription+xml" href="/opensearch.xml" title="Vigorous Pro">
+
+    <!-- ### The Open Graph & Twitter Card Protocol ### -->
+    <meta property="og:title" content="为 Telegram Desktop 替换字体 | Vigorous Pro"><meta property="og:site_name" content="Vigorous Pro"><meta property="og:type" content="article"><meta property="og:url" content="https://www.wevg.org/archives/change-telegram-fonts/"><meta property="og:locale" content="zh-CN"><meta name="description" content="无需 MacType，替换 Telegram 字体。本文旨在指导诸位通过 TGFont 来提升 Telegram 的使用体验。 - Edison Jwa - Vigorous Pro"><meta name="keywords" content="字体, Font, Github, edisonjwa,game,blog,Web,Html,edison"><meta property="og:image" content="https://cdn.jsdelivr.net/gh/EdisonJwa/Blog@master/source/thumbnail/change-telegram-fonts.jpg"><meta property="og:image" content="https://i.yecdn.com/images/2019/01/05/6b7e79d1aa44a3ffbdab13ff01e4fbfc.png"><meta property="og:image" content="https://i.yecdn.com/images/2019/01/05/460427592ae21174bb470f9255207cfd.png"><meta property="article:published_time" content="2017-12-20T06:46:10.000Z"><meta property="article:modified_time" content="2019-03-12T15:00:00.000Z"><meta property="og:updated_time" content="2019-03-12T15:00:00.000Z"><meta property="article:author" content="Edison Jwa"><meta property="article:tag" content="字体, Font, Github, edisonjwa,game,blog,Web,Html,edison"><meta name="twitter:card" content="summary_large_image"><meta name="twitter:image" content="https://cdn.jsdelivr.net/gh/EdisonJwa/Blog@master/source/thumbnail/change-telegram-fonts.jpg">
+
+    
+
+    <!-- ### Canonical link ### -->
+    <link rel="canonical" href="https://www.wevg.org/archives/change-telegram-fonts/">
+
+    <meta name="generator" content="Hexo 5.4.0">
+
+    <!-- ### Analytics ### -->
+    
+
+
+
+
+
+
+
+    <!-- ### Structured Data ### -->
+    
+
+
+
+<script type="application/ld+json">
+{
+    "@context": "http://schema.org",
+    "url": "https://www.wevg.org/archives/change-telegram-fonts/",
+    "@type": "BlogPosting",
+    "logo": "https://www.wevg.org/source/favicon/android-chrome-192x192.png",
+    "mainEntityOfPage": {
+        "@type": "WebPage",
+        "@id": "https://www.wevg.org/archives/change-telegram-fonts/"
+    },
+    "headline": "为 Telegram Desktop 替换字体 | Vigorous Pro",
+    
+    "image": {
+        "@type": "ImageObject",
+        "url": "https://cdn.jsdelivr.net/gh/EdisonJwa/Blog@master/source/thumbnail/change-telegram-fonts.jpg"
+    },
+    
+    "datePublished": "2017-12-20T06:46:10.000Z",
+    "dateModified": "2019-03-12T15:00:00.000Z",
+    "author": {
+        "@type": "Person",
+        "name": "Edison Jwa",
+        "image": {
+            "@type": "ImageObject",
+            "url": "https://cdn.jsdelivr.net/gh/EdisonJwa/Blog@master/source/image/avatar.jpg"
+        },
+        "description": "The world can always use more heroes."
+    },
+    "publisher": {
+        "@type": "Organization",
+        "name": "Vigorous Pro",
+        "logo": {
+            "@type": "ImageObject",
+            "url": "https://www.wevg.org/source/favicon/android-chrome-192x192.png"
+        }
+    },
+    
+    "potentialAction": {
+        "@type": "SearchAction",
+        "target": "https://www.wevg.org/search?s={search_term_string}",
+        "query-input": "required name=search_term_string"
+    },
+    
+    "keywords": "字体, Font, Github, edisonjwa,game,blog,Web,Html,edison",
+    "description": "无需 MacType，替换 Telegram 字体。本文旨在指导诸位通过 TGFont 来提升 Telegram 的使用体验。 - Edison Jwa - Vigorous Pro"
+}
+</script>
+
+
+
+    <!-- ### Custom Head ### -->
+    <!-- EdisonJwas Blog --><script data-ad-client="ca-pub-2345785306567671" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script><link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/EdisonJwa/Blog@latest/css/darkmode.min.css"><script src="https://cdn.jsdelivr.net/gh/EdisonJwa/Blog@master/js/edison-main.min.js"></script><script type="module" async="" src="https://cdn.jsdelivr.net/npm/instant.page@3.0.0/instantpage.min.js"></script><link rel="manifest" href="/site.webmanifest"><meta name="msapplication-TileColor" content="#d43d3d"><meta name="msapplication-TileImage" content="/source/favicon/mstile-144x144.png"><meta name="theme-color" content="#ffffff"><script type="text/javascript">function downloadJSAtOnload(){var d=document.createElement("script");d.src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js",document.body.appendChild(d)}window.addEventListener?window.addEventListener("load",downloadJSAtOnload,!1):window.attachEvent?window.attachEvent("onload",downloadJSAtOnload):window.onload=downloadJSAtOnload;</script><!-- Global site tag (gtag.js) - Google Analytics --><script async src="https://www.googletagmanager.com/gtag/js?id=G-S2SFLD81VT"></script><script>window.dataLayer = window.dataLayer || [];function gtag(){dataLayer.push(arguments);} gtag('js', new Date()); gtag('config', 'G-S2SFLD81VT');</script><!-- Cloudflare Web Analytics --><script defer src=https://static.cloudflareinsights.com/beacon.min.js ; data-cf-beacon="{&quot;token&quot;: 1ebb36a2c023408484ff114c409377b8}"></script><!-- End Cloudflare Web Analytics -->
+<style type="text/css">
+.spoiler {
+  display: inline-flex;
+}
+p.spoiler {
+  display: flex;
+}
+.spoiler a {
+  pointer-events: none;
+}
+.spoiler-blur, .spoiler-blur > * {
+  transition: text-shadow .5s ease;
+}
+.spoiler .spoiler-blur, .spoiler .spoiler-blur > * {
+  color: rgba(0, 0, 0, 0);
+  background-color: rgba(0, 0, 0, 0);
+  text-shadow: 0 0 10px grey;
+  cursor: pointer;
+}
+.spoiler .spoiler-blur:hover, .spoiler .spoiler-blur:hover > * {
+  text-shadow: 0 0 5px grey;
+}
+.spoiler-box, .spoiler-box > * {
+  transition: color .5s ease,
+  background-color .5s ease;
+}
+.spoiler .spoiler-box, .spoiler .spoiler-box > * {
+  color: black;
+  background-color: black;
+  text-shadow: none;
+}</style></head>
+
+    <body>
+            
+
+            <!-- ### Main content ### -->
+            <!-- ## Header ##-->
+<header>
+    <h1 class="header-title text-center"><a href="/">Vigorous Pro</a></h1>
+
+    <p class="text-center header-slogan">
+        
+            
+                The world can always use more heroes.
+            
+        
+    </p>
+
+    <nav class="navbar-section text-center">
+    
+        <a href="/" class="navbar-link">首页</a>
+    
+    
+        <a href="/archives/" class="navbar-link">归档</a>
+    
+    
+        <a href="/search" class="navbar-link">搜索</a>
+    
+    
+        <a target="_blank" rel="noopener" href="https://uv.uy" class="navbar-link">关于</a>
+    
+        <a href="/friends/" class="navbar-link">友链</a>
+    
+    
+    
+</nav>
+</header>
+
+            
+    <!-- ## Post ## -->
+    <div class="post-container">
+    <div id="post-card" class="card">
+        
+            <div class="card-image lazyload" data-bg="url('https://cdn.jsdelivr.net/gh/EdisonJwa/Blog@master/source/thumbnail/change-telegram-fonts.jpg')"></div>
+        
+        <div class="card-item-container">
+            <div class="card-inner-cell">
+                <!-- # Post Header Info # -->
+                <div class="card-header">
+                    
+    <h1 class="card-title h3 mb-2">为 Telegram Desktop 替换字体</h1>
+
+
+
+
+<div class="post-header-info">
+    <p class="post-header-info-left text-gray">
+        <img class="author-thumb lazyload" data-src="https://cdn.jsdelivr.net/gh/EdisonJwa/Blog@master/source/image/avatar.jpg" src="https://cdn.jsdelivr.net/gh/sukkaw/hexo-theme-suka@latest/source/img/suka-lazyload.gif" alt="Edison Jwa's Avatar">
+        <span>2017-12-20</span>
+        
+            <span class="suka-devide-dot"></span>
+            <a class="category-link" href="/categories/Tech/">Tech</a>
+        
+        
+        
+    </p>
+    <div class="post-header-info-right">
+        
+            <div class="dropdown dropdown-right">
+<a class="dropdown-toggle" tabindex="0">分享本文</a>
+<ul class="menu share-menu">
+    <!-- Share Weibo -->
+    
+    <li class="menu-item">
+        <a href="http://service.weibo.com/share/share.php?appkey=&title=为 Telegram Desktop 替换字体&url=https://www.wevg.org/archives/change-telegram-fonts/&pic=https://cdn.jsdelivr.net/gh/EdisonJwa/Blog@master/source/thumbnail/change-telegram-fonts.jpg&searchPic=false&style=simple" target="_blank" rel="external noopener noreferrer nofollow">分享到微博</a>
+    </li>
+    
+
+    <!-- Share Twitter -->
+    
+    <li class="menu-item">
+        <a href="https://twitter.com/intent/tweet?text=为 Telegram Desktop 替换字体&url=https://www.wevg.org/archives/change-telegram-fonts/&via=Edison Jwa" target="_blank" rel="external noopener noreferrer nofollow">分享到 Twitter</a>
+    </li>
+    
+
+    <!-- Share Facebook -->
+    
+    <li class="menu-item">
+        <a href="https://www.facebook.com/sharer/sharer.php?u=https://www.wevg.org/archives/change-telegram-fonts/" target="_blank" rel="external noopener noreferrer nofollow">分享到 Facebook</a>
+    </li>
+    
+
+    <!-- Share Google+ -->
+    
+    <li class="menu-item">
+        <a href="https://plus.google.com/share?url=https://www.wevg.org/archives/change-telegram-fonts/" target="_blank" rel="external noopener noreferrer nofollow">分享到 Google+</a>
+    </li>
+    
+
+    <!-- Share LinkedIn -->
+    
+    <li class="menu-item">
+        <a href="https://www.linkedin.com/shareArticle?mini=true&url=https://www.wevg.org/archives/change-telegram-fonts/&title=Vigorous Pro" target="_blank" rel="external noopener noreferrer nofollow">分享到 LinkedIn</a>
+    </li>
+    
+
+    <!-- Share QQ -->
+    
+    <li class="menu-item">
+        <a href="http://connect.qq.com/widget/shareqq/index.html?site=Vigorous Pro&title=Vigorous Pro&summary=The world can always use more heroes.&pics=https://cdn.jsdelivr.net/gh/EdisonJwa/Blog@master/source/thumbnail/change-telegram-fonts.jpg&url=https://www.wevg.org/archives/change-telegram-fonts/" target="_blank" rel="external noopener noreferrer nofollow"> 分享到 QQ</a>
+    </li>
+    
+
+    <!-- Share Telegram -->
+    
+    <li class="menu-item">
+        <a href="https://t.me/share/url?url=https://www.wevg.org/archives/change-telegram-fonts/&text=Vigorous Pro" target="_blank" rel="external noopener noreferrer nofollow">分享到 Telegram</a>
+    </li>
+    
+
+    <!-- QRCode -->
+    
+    <li class="menu-item">
+        <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAJQAAACUCAAAAABQV18IAAAB30lEQVR42u3awa7CMAxE0f7/T/O2KIpnrnldNO50AwLRHiQ3qSe5Pg88rqCCCiqoDeoSx/aHm++q363v3XWCmoOqLl59Jk9c/ClynaBmodaTrZ+vn6lCV0VfXSeo96EUhN4cQQWling34VaQoN6JcgWqBkp6Y9z2lBDU41GkmO94va2bCerRKBs6LMDde9WUVgX+r9QlqEejSINZQekETc8f1AwUKWx1MheSkRsmqHkoOui5C1WNgWogykIP6mgUuagaQLuDannTBDUCRR/8VdGSCVg1qkHNQ5GTkwna/SE3gAY1C0UL3E3ULthQQVpQc1CqiXCLQ26xUk3cdkQP6kiUA7mHfbqxQgVtQc1CdZpPGqC5IK61MhrUcSjaaNLgSwVotuiDGoGiC4+dhzi6KG6b0aCORLnwtBN40Ea0/C6oESgSmnYWiOimL/uUENTRKLopggT5NKRFAUdQo1Cd4JWG+i7gD2oWyk3E3TCN3BAoiA3qOBQNz1Qz4Ba66fmCmoFCG41NGOaaVNfgBjUP9WuBk4GyNZgGNQqlCrMbiHUeFNGTZ1DjUGQjjgrEaBMb1HtQanLuNAx2gTyoUSiyiEg36ZAALajZqE5Rkg1eJOy3qUtQx6KedAQVVFBBfR1/qIORIFvjXIEAAAAASUVORK5CYII=" alt="QRCode">
+    </li>
+    
+
+</ul>
+</div>
+        
+    </div>
+</div>
+                </div>
+                <div class="card-body">
+                    
+                        
+                        
+                    
+                    <article id="post-content">
+                        <p>无需 MacType，替换 Telegram 字体。本文旨在指导诸位通过 TGFont 来提升 <strong>Telegram</strong> 的使用体验。<span id="more"></span></p>
+<blockquote>
+<p><strong>⚠️⚠️请转步至 2.0 版本 <a href="https://www.wevg.org/archives/change-fonts-with-fontmod/">替换 Telegram 字体 (新玩具)</a></strong></p>
+</blockquote>
+<p>Telegram 的客户端一直有一个问题——就是字体，它默认使用的字体是 Simsun(宋体)，看起来非常的不舒服，先来对比一下修改前后的效果<br>
+<strong>修改前：</strong><br>
+<img src="https://i.yecdn.com/images/2019/01/05/6b7e79d1aa44a3ffbdab13ff01e4fbfc.png" alt="修改前"><br>
+<strong>修改后：</strong><br>
+<img src="https://i.yecdn.com/images/2019/01/05/460427592ae21174bb470f9255207cfd.png" alt=""></p>
+<p>下面是<strong>修改方法</strong>：</p>
+<ol>
+<li>
+<p>下载 <a target="_blank" rel="noopener" href="https://github.com/ysc3839/FontMod/releases/tag/1.7">TGFont.dll</a> (下载地址 <a target="_blank" rel="noopener" href="https://github.com/ysc3839/FontMod/releases/tag/1.7">https://github.com/ysc3839/FontMod/releases/tag/1.7</a>), 改名为 <code>winmm.dll</code> 并放入 Telegram Desktop 的根目录(可_直接在资源管理器地址栏输入_ <code>%AppData%\Telegram Desktop</code> )。</p>
+</li>
+<li>
+<p><strong>重启 Telegram</strong>，这时 Telegram Desktop 目录中会出现 json 文件，默认只会把宋体替换成微软雅黑，当然也可以修改 <code>TGFont.json</code> 来更换其他字体，下面的配置可以替换 TG 界面上用到的所有字体。此处推荐使用 NotePad++(下载地址 <a target="_blank" rel="noopener" href="https://notepad-plus-plus.org/download/">https://notepad-plus-plus.org/download/</a> )，使用记事本的话，所有的代码都挤在了一起つ﹏⊂</p>
+</li>
+</ol>
+<figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br></pre></td><td class="code"><pre><code class="hljs json"> &#123; <span class="hljs-attr">&quot;fonts&quot;</span>: <br>    &#123; <span class="hljs-attr">&quot;SimSun&quot;</span>: <br>        &#123; <span class="hljs-attr">&quot;replace&quot;</span>: <br>            <span class="hljs-string">&quot;Microsoft YaHei UI&quot;</span>, <br>            <span class="hljs-attr">&quot;#size&quot;</span>: <span class="hljs-number">0</span>, <br>            <span class="hljs-attr">&quot;#width&quot;</span>: <span class="hljs-number">0</span>, <br>            <span class="hljs-attr">&quot;#weight&quot;</span>: <span class="hljs-number">0</span>, <br>            <span class="hljs-attr">&quot;#italic&quot;</span>: <span class="hljs-literal">false</span>, <br>            <span class="hljs-attr">&quot;#underLine&quot;</span>: <span class="hljs-literal">false</span>, <br>            <span class="hljs-attr">&quot;#strikeOut&quot;</span>: <span class="hljs-literal">false</span> <br>        &#125;, <br><br>        <span class="hljs-attr">&quot;Open Sans&quot;</span>: &#123; <br>            <span class="hljs-attr">&quot;replace&quot;</span>: <span class="hljs-string">&quot;Microsoft YaHei UI&quot;</span>, <br>            <span class="hljs-attr">&quot;#size&quot;</span>: <span class="hljs-number">0</span>, <br>            <span class="hljs-attr">&quot;#width&quot;</span>: <span class="hljs-number">0</span>, <br>            <span class="hljs-attr">&quot;#weight&quot;</span>: <span class="hljs-number">0</span>, <br>            <span class="hljs-attr">&quot;#italic&quot;</span>: <span class="hljs-literal">false</span>, <br>            <span class="hljs-attr">&quot;#underLine&quot;</span>: <span class="hljs-literal">false</span>, <br>            <span class="hljs-attr">&quot;#strikeOut&quot;</span>: <span class="hljs-literal">false</span> <br>        &#125;, <br>        <span class="hljs-attr">&quot;Open Sans Semibold&quot;</span>: &#123; <br>            <span class="hljs-attr">&quot;replace&quot;</span>: <span class="hljs-string">&quot;Microsoft YaHei UI&quot;</span>, <br>            <span class="hljs-attr">&quot;#size&quot;</span>: <span class="hljs-number">0</span>, <br>            <span class="hljs-attr">&quot;#width&quot;</span>: <span class="hljs-number">0</span>, <br>            <span class="hljs-attr">&quot;#weight&quot;</span>: <span class="hljs-number">0</span>, <br>            <span class="hljs-attr">&quot;#italic&quot;</span>: <span class="hljs-literal">false</span>, <br>            <span class="hljs-attr">&quot;#underLine&quot;</span>: <span class="hljs-literal">false</span>, <br>            <span class="hljs-attr">&quot;#strikeOut&quot;</span>: <span class="hljs-literal">false</span> <br>        &#125;, <br>        <span class="hljs-attr">&quot;Arial&quot;</span>: &#123; <br>            <span class="hljs-attr">&quot;replace&quot;</span>: <span class="hljs-string">&quot;Microsoft YaHei UI&quot;</span>, <br>            <span class="hljs-attr">&quot;#size&quot;</span>: <span class="hljs-number">0</span>, <br>            <span class="hljs-attr">&quot;#width&quot;</span>: <span class="hljs-number">0</span>, <br>            <span class="hljs-attr">&quot;#weight&quot;</span>: <span class="hljs-number">0</span>, <br>            <span class="hljs-attr">&quot;#italic&quot;</span>: <span class="hljs-literal">false</span>, <br>            <span class="hljs-attr">&quot;#underLine&quot;</span>: <span class="hljs-literal">false</span>, <br>            <span class="hljs-attr">&quot;#strikeOut&quot;</span>: <span class="hljs-literal">false</span> <br>        &#125; <br>            &#125;, <br>            <span class="hljs-attr">&quot;debug&quot;</span>: <span class="hljs-literal">false</span> <br>&#125;<br></code></pre></td></tr></table></figure>
+<blockquote>
+<p>** 参数说明 **<br>
+<strong>replace</strong>: 要替换的字体<br>
+<strong>debug</strong>: Debug 模式 (将会创建 TGFont.log)<br>
+<strong>以下为可选参数</strong><br>
+<strong>size</strong>: 控制字体大小<br>
+<strong>width</strong>: 控制字体宽度<br>
+<strong>weight</strong> : 控制字体字重<br>
+<strong>italic</strong> :是否开启斜体<br>
+<strong>underLine</strong> :是否加入下划线<br>
+<strong>strikeOut</strong> :是否加入删除线</p>
+</blockquote>
+<p>至此，字体替换完成</p>
+
+                    </article>
+                    
+    <blockquote class="post-license">
+        <p>
+            <strong>本文作者&nbsp;:&nbsp;Edison Jwa</strong>
+            <br>
+            <strong>
+            
+                本文使用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">署名-非商业性使用-相同方式共享 4.0 国际 (CC BY-NC-SA 4.0)</a> 协议
+            </strong>
+            <br>
+            <strong>本文链接&nbsp;:&nbsp;</strong><a href="https://www.wevg.org/archives/change-telegram-fonts/">https://www.wevg.org/archives/change-telegram-fonts/</a>
+        </p>
+    </blockquote>
+
+
+
+    <blockquote id="date-expire-notification" class="post-expired-notify">本文最后更新于 <span id="date-expire-num"></span> 天前，文中所描述的信息可能已发生改变</blockquote>
+    <script>
+    (function() {
+        var dateUpdate = Date.parse("2019-03-13");
+        var nowDate = new Date();
+        var a = nowDate.getTime();
+        var b = a - dateUpdate;
+        var daysUpdateExpire = Math.floor(b/(24*3600*1000));
+        if (daysUpdateExpire >= 120) {
+            document.getElementById('date-expire-num').innerHTML = daysUpdateExpire;
+        } else {
+            document.getElementById('date-expire-notification').style.display = 'none';
+        }
+    })();
+    </script>
+
+
+<p class="post-footer-info mb-0 pt-0">本文发表于&nbsp;<time datetime="2017-12-20T06:46:10.000Z" itemprop="datePublished">2017-12-20</time>
+
+    , 最后修改于&nbsp;<time datetime="2019-03-12T15:00:00.000Z" itemprop="dateModified">2019-03-13</time>
+
+</p>
+<p class="post-footer-info mb-0 pt-2">
+
+<span class="post-categories-list mt-2">
+
+<a class="post-categories-list-item" href='/categories/Tech/'>Tech</a>
+
+</span>
+
+
+
+<span class="post-tags-list mt-2">
+
+<a class="post-tags-list-item" href="/tags/%E5%AD%97%E4%BD%93/" rel="tag">#&nbsp;字体</a>
+
+<a class="post-tags-list-item" href="/tags/Font/" rel="tag">#&nbsp;Font</a>
+
+<a class="post-tags-list-item" href="/tags/Github/" rel="tag">#&nbsp;Github</a>
+
+</span>
+
+
+</p>
+
+                </div>
+                <div class="post-nav px-2 bg-gray">
+<ul class="pagination">
+    <!-- Prev Nav -->
+    
+        <li class="page-item page-prev">
+            <a href="/archives/csgo-fps-optimized/" rel="prev">
+                <div class="page-item-title"><i class="icon icon-back" aria-hidden="true"></i></div>
+                <div class="page-item-subtitle">CSGO FPS 终极优化指南</div>
+            </a>
+        </li>
+    
+
+    <!-- Next Nav -->
+    
+        <li class="page-item page-next">
+            <a href="/archives/teamspeak-server-build/" rel="next">
+                <div class="page-item-title"><i class="icon icon-forward" aria-hidden="true"></i></div>
+                <div class="page-item-subtitle">TeamSpeak 服务器搭建方法</div>
+            </a>
+        </li>
+    
+</ul>
+</div>
+
+                
+                    <!-- # Comment # -->
+                    
+                        <div class="card-footer post-comment">
+                            <div id="disqus_thread"></div>
+
+<script id="js-disqusjs" src="https://cdn.jsdelivr.net/npm/disqusjs@1.2.5/dist/disqus.js" async></script>
+<script>
+document.getElementById('js-disqusjs').addEventListener('load', function () {
+    function loadDisqusJS() {
+        new DisqusJS({
+            shortname: 'edisonj',
+            
+            siteName: 'Vigorous Pro',
+            
+            identifier: 'https://www.wevg.org/archives/change-telegram-fonts/',
+            url: 'https://www.wevg.org/archives/change-telegram-fonts/',
+            api: 'https://disqus.uv.uy/api/',
+            apikey: 'vBTqc5gYirQfuj9STIAANtQCArVi9MN8UZ72UUucwnhus4AhpgpbVJMIn3Ojl4O7',
+            
+            
+        })
+    }
+    if (document.readyState === 'complete') {
+        loadDisqusJS();
+    } else {
+        window.addEventListener('load', loadDisqusJS);
+    }
+});
+</script>
+
+                        </div>
+                    
+                
+            </div>
+        </div>
+    </div>
+</div>
+
+            <!-- ### Footer ### -->
+            <footer class="text-center">
+    <!-- footer copyright -->
+    
+        <p class="footer-copyright mb-0">Copyright&nbsp;©&nbsp;<span id="copyright-year"></span>
+            <a class="footer-copyright-a" href="https://www.wevg.org">Vigorous Pro</a>
+        </p>
+
+    <!-- footer custom text -->
+    <p class="footer-text mb-0">
+    <a href="/atom.xml" target="_blank" class="footer-develop-a" rel="nofollow noopener noreferrer">RSS</a><span class="footer-develop-divider"></span><a href="https://donate.edison.do" target="_blank" class="footer-develop-a" rel="nofollow noopener noreferrer">Donate</a><span class="footer-develop-divider"></span><a href="/privacy-policy" target="_blank" class="footer-develop-a" rel="nofollow noopener noreferrer">Privacy Policy</a>
+    </p>
+    <!-- footer develop info -->
+    <p class="footer-develop mb-0">
+        
+
+        
+        Powered by&nbsp;<!--
+         --><a href="https://hexo.io" target="_blank" class="footer-develop-a" rel="external nofollow noopener noreferrer">Hexo</a><span class="footer-develop-divider"></span>Theme&nbsp;-&nbsp;<!--
+         --><a href="https://github.com/SukkaW/hexo-theme-suka" target="_blank" class="footer-develop-a" rel="external noopener">Suka</a>
+    </p>
+</footer>
+
+
+        <!-- ### Import File ### -->
+        <!-- ### Footer JS Import ### -->
+
+<script>
+
+    
+window.lazyLoadOptions = {
+    elements_selector: ".lazyload",
+    threshold: 50
+};
+
+(function() {
+    var copyrightNow = new Date().getFullYear();
+    var copyrightContent = document.getElementById('copyright-year');
+    var copyrightSince = 2015;
+    if (copyrightSince === copyrightNow) {
+        copyrightContent.textContent = copyrightNow;
+    } else {
+        copyrightContent.textContent = copyrightSince + ' - ' + copyrightNow;
+    }
+})();
+console.log('\n %c Suka Theme (hexo-theme-suka) | © SukkaW | Verision 1.3.3 %c https://github.com/SukkaW/hexo-theme-suka \n', 'color: #fff; background: #444; padding:5px 0;', 'background: #bbb; padding:5px 0;');
+
+</script>
+
+<script src="https://cdn.jsdelivr.net/npm/vanilla-lazyload@12.3.0" async></script>
+
+
+
+<!-- Comment -->
+
+    
+        <!-- No need for DisqusJS -->
+    
+
+
+<!-- ### Custom Footer ### -->
+<script> if ('serviceWorker' in navigator) { window.addEventListener('load', () => { navigator.serviceWorker.register('/sw.js'); }) } </script><script>window.ga_tid = "UA-106121780-1";window.ga_api = "https://ga.cdn.uv.uy/jquery.js"; </script><script src="https://cdn.jsdelivr.net/gh/EdisonJwa/Blog@master/js/main.js" async></script>
+    </body>
+
+</html>

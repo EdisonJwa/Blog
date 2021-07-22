@@ -1,0 +1,751 @@
+<!DOCTYPE html>
+
+<html lang="zh-CN">
+    <head>
+    <meta charset="utf-8">
+    <!--
+        hexo-theme-suka © SukkaW
+        GitHub: https://github.com/SukkaW/hexo-theme-suka
+    -->
+
+    <!-- ### Resource Hint ### -->
+
+    <!-- ## DNS Prefetch ## -->
+    <meta http-equiv="x-dns-prefetch-control" content="on">
+
+<!-- busuanzi -->
+
+
+<!-- comment -->
+
+
+
+
+
+
+
+<!-- analytics -->
+
+
+
+
+
+
+
+    <!-- ## Preload ## -->
+    
+
+
+
+
+    <!-- ### Meta & Title & Info ### -->
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, minimum-scale=1, initial-scale=1, maximum-scale=5, viewport-fit=cover">
+    <meta name="renderer" content="webkit">
+
+    <!-- Title -->
+    <title>CSGO FPS 终极优化指南 | Vigorous Pro</title>
+
+    <!-- Favicons -->
+    <link rel="icon" type="image&#x2F;ico" href="/favicon.ico"><link rel="apple-touch-icon" sizes="180x180" href="/source/favicon/apple-touch-icon.png"><link rel="icon" typt="image&#x2F;png" sizes="192x192" href="/source/favicon/android-chrome-192x192.png"><link rel="icon" typt="image&#x2F;png" sizes="32x32" href="/source/favicon/favicon-32x32.png"><link rel="icon" typt="image&#x2F;png" sizes="16x16" href="/source/favicon/favicon-16x16.png"><link rel="mask-icon" href="/safari-pinned-tab.svg" color="">
+
+    <!-- ### Import File ### -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/spectre.css@0.5.3"><style>
+    body {
+        background-color: #f8f9fa;
+    }
+
+    a, a:visited {
+        color: #0070ff;
+    }
+
+    a:active, a:focus, a:hover {
+        color: #0070ff;
+        opacity: .75;
+    }
+
+    #post-content a,
+    #post-content a:hover,
+    #post-content a:focus,
+    #post-content a:visited {
+        color: #005eb9;
+        opacity: 1;
+    }
+
+    
+
+    .post-entry .card-body a {
+        color: #0070ff;
+    }
+
+    .avatar {
+        background: #444;
+    }
+
+    .navbar-link,
+    .navbar-link:visited,
+    .timeline .timeline-item .timeline-icon.icon-lg {
+        color: #0070ff;
+    }
+
+    .navbar-link:hover {
+        color: #0070ff;
+        opacity: .8;
+    }
+
+    #search-input .btn,
+    #disqus_click_btn,
+    #disqus-switch-to-direct,
+    #disqus-loadmore-button {
+        background: #727e96;
+        border-color: #727e96;
+        color: #fff;
+    }
+
+    #post-toc a.post-toc-link,
+    #post-toc a.post-toc-link:visited,
+    .share-menu.menu .menu-item>a {
+        color: #727e96;
+    }
+
+    .share-menu.menu .menu-item>a:hover,
+    .share-menu.menu .menu-item>a:focus,
+    .share-menu.menu .menu-item>a:visited {
+        color: #50596c;
+        background: #f8f9fa;
+        opacity: .85;
+    }
+</style><link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/sukkaw/hexo-theme-suka@latest/source/css/style.min.css">
+
+
+    
+        <!-- Import DisqusJS Default Theme -->
+        <link rel="preload" href="https://cdn.jsdelivr.net/npm/disqusjs@1.2.5/dist/disqusjs.css" as="style" onload="this.onload=null;this.rel='stylesheet'"><noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/disqusjs@1.2.5/dist/disqusjs.css"></noscript>
+
+    
+
+
+
+
+
+
+
+    <!-- Prettify Theme -->
+    
+    <link rel="preload" href="https://cdn.jsdelivr.net/gh/sukkaw/hexo-theme-suka@latest/source/css/highlight/tomorrow-night-eighties.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'"><noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/sukkaw/hexo-theme-suka@latest/source/css/highlight/tomorrow-night-eighties.min.css"></noscript>
+
+
+
+
+
+<script>
+/*! loadCSS. [c]2017 Filament Group, Inc. MIT License */
+!function(t){"use strict";t.loadCSS||(t.loadCSS=function(){});var e=loadCSS.relpreload={};if(e.support=function(){var e;try{e=t.document.createElement("link").relList.supports("preload")}catch(t){e=!1}return function(){return e}}(),e.bindMediaToggle=function(t){var e=t.media||"all";function a(){t.addEventListener?t.removeEventListener("load",a):t.attachEvent&&t.detachEvent("onload",a),t.setAttribute("onload",null),t.media=e}t.addEventListener?t.addEventListener("load",a):t.attachEvent&&t.attachEvent("onload",a),setTimeout(function(){t.rel="stylesheet",t.media="only x"}),setTimeout(a,3e3)},e.poly=function(){if(!e.support())for(var a=t.document.getElementsByTagName("link"),n=0;n<a.length;n++){var o=a[n];"preload"!==o.rel||"style"!==o.getAttribute("as")||o.getAttribute("data-loadcss")||(o.setAttribute("data-loadcss",!0),e.bindMediaToggle(o))}},!e.support()){e.poly();var a=t.setInterval(e.poly,500);t.addEventListener?t.addEventListener("load",function(){e.poly(),t.clearInterval(a)}):t.attachEvent&&t.attachEvent("onload",function(){e.poly(),t.clearInterval(a)})}"undefined"!=typeof exports?exports.loadCSS=loadCSS:t.loadCSS=loadCSS}("undefined"!=typeof global?global:this);
+</script>
+
+    <!-- ### Site Verification ### -->
+    
+
+
+    <link rel="alternate" type="application/atom+xml" href="/atom.xml"><meta name="mobile-web-app-capable" content="yes"><meta name="application-name" content="Vigorous Pro"><meta name="msapplication-starturl" content="https://www.wevg.org"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-title" content="Vigorous Pro"><meta name="apple-mobile-web-app-status-bar-style" content="black-translucent"><link rel="manifest" href="/manifest.json"><link rel="search" type="application/opensearchdescription+xml" href="/opensearch.xml" title="Vigorous Pro">
+
+    <!-- ### The Open Graph & Twitter Card Protocol ### -->
+    <meta property="og:title" content="CSGO FPS 终极优化指南 | Vigorous Pro"><meta property="og:site_name" content="Vigorous Pro"><meta property="og:type" content="article"><meta property="og:url" content="https://www.wevg.org/archives/csgo-fps-optimized/"><meta property="og:locale" content="zh-CN"><meta name="description" content="本教程将会通过修改和优化等等方式提升游戏帧数，进而提升游戏体验，且不仅限于 CS:GO ，亦可用于优化其他游戏。 - Edison Jwa - Vigorous Pro"><meta name="keywords" content="优化, 设置, Steam, fps, Xbox DVR, Nvidia, 启动项, edisonjwa,game,blog,Web,Html,edison"><meta property="og:image" content="https://cdn.jsdelivr.net/gh/EdisonJwa/Blog@master/source/thumbnail/csgo-fps-optimized.jpg"><meta property="og:image" content="https://i.yecdn.com/images/2019/01/05/aab765e1536a6ae2809ef254e728cc69.png"><meta property="og:image" content="https://i.yecdn.com/images/2019/01/05/268c520649c26249f5fc0b7dae1d7d29.png"><meta property="og:image" content="https://i.yecdn.com/images/2019/01/05/5049715d308e274e868c2ea3b3181f93.png"><meta property="og:image" content="https://cdn.jsdelivr.net/gh/EdisonJwa/Blog@master/images/uploads/ApplicationFrameHost.png"><meta property="og:image" content="https://cdn.jsdelivr.net/gh/EdisonJwa/Blog@master/images/uploads/chrome.png"><meta property="og:image" content="https://i.yecdn.com/images/2019/01/05/10e56f793e3ca8fd6a6e3bb729965cde.png"><meta property="og:image" content="https://i.yecdn.com/images/2019/01/05/0efa242d369b9c763d095d3f6e392777.png"><meta property="og:image" content="https://i.yecdn.com/images/2019/01/05/b5d9dcd587ebd9302ed803d6db777492.jpg"><meta property="og:image" content="https://i.yecdn.com/images/2019/01/05/356f1e8fd6ab853c9e87a8d70825345d.jpg"><meta property="og:image" content="https://i.yecdn.com/images/2019/01/05/23392f1a61816b5cd4384e52c7ec63aa.png"><meta property="og:image" content="https://i.yecdn.com/images/2019/02/26/8bd6b031819a495ab3012dda0cafb73f.png"><meta property="og:image" content="https://i.yecdn.com/images/2019/01/05/2a79e12187d4e7dddb38596d1a72cbd8.png"><meta property="article:published_time" content="2018-12-04T07:16:39.000Z"><meta property="article:modified_time" content="2020-06-07T01:34:17.000Z"><meta property="og:updated_time" content="2020-06-07T01:34:17.000Z"><meta property="article:author" content="Edison Jwa"><meta property="article:tag" content="优化, 设置, Steam, fps, Xbox DVR, Nvidia, 启动项, edisonjwa,game,blog,Web,Html,edison"><meta name="twitter:card" content="summary_large_image"><meta name="twitter:image" content="https://cdn.jsdelivr.net/gh/EdisonJwa/Blog@master/source/thumbnail/csgo-fps-optimized.jpg">
+
+    
+
+    <!-- ### Canonical link ### -->
+    <link rel="canonical" href="https://www.wevg.org/archives/csgo-fps-optimized/">
+
+    <meta name="generator" content="Hexo 5.4.0">
+
+    <!-- ### Analytics ### -->
+    
+
+
+
+
+
+
+
+    <!-- ### Structured Data ### -->
+    
+
+
+
+<script type="application/ld+json">
+{
+    "@context": "http://schema.org",
+    "url": "https://www.wevg.org/archives/csgo-fps-optimized/",
+    "@type": "BlogPosting",
+    "logo": "https://www.wevg.org/source/favicon/android-chrome-192x192.png",
+    "mainEntityOfPage": {
+        "@type": "WebPage",
+        "@id": "https://www.wevg.org/archives/csgo-fps-optimized/"
+    },
+    "headline": "CSGO FPS 终极优化指南 | Vigorous Pro",
+    
+    "image": {
+        "@type": "ImageObject",
+        "url": "https://cdn.jsdelivr.net/gh/EdisonJwa/Blog@master/source/thumbnail/csgo-fps-optimized.jpg"
+    },
+    
+    "datePublished": "2018-12-04T07:16:39.000Z",
+    "dateModified": "2020-06-07T01:34:17.000Z",
+    "author": {
+        "@type": "Person",
+        "name": "Edison Jwa",
+        "image": {
+            "@type": "ImageObject",
+            "url": "https://cdn.jsdelivr.net/gh/EdisonJwa/Blog@master/source/image/avatar.jpg"
+        },
+        "description": "The world can always use more heroes."
+    },
+    "publisher": {
+        "@type": "Organization",
+        "name": "Vigorous Pro",
+        "logo": {
+            "@type": "ImageObject",
+            "url": "https://www.wevg.org/source/favicon/android-chrome-192x192.png"
+        }
+    },
+    
+    "potentialAction": {
+        "@type": "SearchAction",
+        "target": "https://www.wevg.org/search?s={search_term_string}",
+        "query-input": "required name=search_term_string"
+    },
+    
+    "keywords": "优化, 设置, Steam, fps, Xbox DVR, Nvidia, 启动项, edisonjwa,game,blog,Web,Html,edison",
+    "description": "本教程将会通过修改和优化等等方式提升游戏帧数，进而提升游戏体验，且不仅限于 CS:GO ，亦可用于优化其他游戏。 - Edison Jwa - Vigorous Pro"
+}
+</script>
+
+
+
+    <!-- ### Custom Head ### -->
+    <!-- EdisonJwas Blog --><script data-ad-client="ca-pub-2345785306567671" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script><link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/EdisonJwa/Blog@latest/css/darkmode.min.css"><script src="https://cdn.jsdelivr.net/gh/EdisonJwa/Blog@master/js/edison-main.min.js"></script><script type="module" async="" src="https://cdn.jsdelivr.net/npm/instant.page@3.0.0/instantpage.min.js"></script><link rel="manifest" href="/site.webmanifest"><meta name="msapplication-TileColor" content="#d43d3d"><meta name="msapplication-TileImage" content="/source/favicon/mstile-144x144.png"><meta name="theme-color" content="#ffffff"><script type="text/javascript">function downloadJSAtOnload(){var d=document.createElement("script");d.src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js",document.body.appendChild(d)}window.addEventListener?window.addEventListener("load",downloadJSAtOnload,!1):window.attachEvent?window.attachEvent("onload",downloadJSAtOnload):window.onload=downloadJSAtOnload;</script><!-- Global site tag (gtag.js) - Google Analytics --><script async src="https://www.googletagmanager.com/gtag/js?id=G-S2SFLD81VT"></script><script>window.dataLayer = window.dataLayer || [];function gtag(){dataLayer.push(arguments);} gtag('js', new Date()); gtag('config', 'G-S2SFLD81VT');</script><!-- Cloudflare Web Analytics --><script defer src=https://static.cloudflareinsights.com/beacon.min.js ; data-cf-beacon="{&quot;token&quot;: 1ebb36a2c023408484ff114c409377b8}"></script><!-- End Cloudflare Web Analytics -->
+<style type="text/css">
+.spoiler {
+  display: inline-flex;
+}
+p.spoiler {
+  display: flex;
+}
+.spoiler a {
+  pointer-events: none;
+}
+.spoiler-blur, .spoiler-blur > * {
+  transition: text-shadow .5s ease;
+}
+.spoiler .spoiler-blur, .spoiler .spoiler-blur > * {
+  color: rgba(0, 0, 0, 0);
+  background-color: rgba(0, 0, 0, 0);
+  text-shadow: 0 0 10px grey;
+  cursor: pointer;
+}
+.spoiler .spoiler-blur:hover, .spoiler .spoiler-blur:hover > * {
+  text-shadow: 0 0 5px grey;
+}
+.spoiler-box, .spoiler-box > * {
+  transition: color .5s ease,
+  background-color .5s ease;
+}
+.spoiler .spoiler-box, .spoiler .spoiler-box > * {
+  color: black;
+  background-color: black;
+  text-shadow: none;
+}</style></head>
+
+    <body>
+            
+
+            <!-- ### Main content ### -->
+            <!-- ## Header ##-->
+<header>
+    <h1 class="header-title text-center"><a href="/">Vigorous Pro</a></h1>
+
+    <p class="text-center header-slogan">
+        
+            
+                The world can always use more heroes.
+            
+        
+    </p>
+
+    <nav class="navbar-section text-center">
+    
+        <a href="/" class="navbar-link">首页</a>
+    
+    
+        <a href="/archives/" class="navbar-link">归档</a>
+    
+    
+        <a href="/search" class="navbar-link">搜索</a>
+    
+    
+        <a target="_blank" rel="noopener" href="https://uv.uy" class="navbar-link">关于</a>
+    
+        <a href="/friends/" class="navbar-link">友链</a>
+    
+    
+    
+</nav>
+</header>
+
+            
+    <!-- ## Post ## -->
+    <div class="post-container">
+    <div id="post-card" class="card">
+        
+            <div class="card-image lazyload" data-bg="url('https://cdn.jsdelivr.net/gh/EdisonJwa/Blog@master/source/thumbnail/csgo-fps-optimized.jpg')"></div>
+        
+        <div class="card-item-container">
+            <div class="card-inner-cell">
+                <!-- # Post Header Info # -->
+                <div class="card-header">
+                    
+    <h1 class="card-title h3 mb-2">CSGO FPS 终极优化指南</h1>
+
+
+
+
+<div class="post-header-info">
+    <p class="post-header-info-left text-gray">
+        <img class="author-thumb lazyload" data-src="https://cdn.jsdelivr.net/gh/EdisonJwa/Blog@master/source/image/avatar.jpg" src="https://cdn.jsdelivr.net/gh/sukkaw/hexo-theme-suka@latest/source/img/suka-lazyload.gif" alt="Edison Jwa's Avatar">
+        <span>2018-12-04</span>
+        
+            <span class="suka-devide-dot"></span>
+            <a class="category-link" href="/categories/Gaming/">Gaming</a><span class="suka-devide-dot"></span><a class="category-link" href="/categories/Gaming/CS-GO/">CS:GO</a>
+        
+        
+        
+    </p>
+    <div class="post-header-info-right">
+        
+            <div class="dropdown dropdown-right">
+<a class="dropdown-toggle" tabindex="0">分享本文</a>
+<ul class="menu share-menu">
+    <!-- Share Weibo -->
+    
+    <li class="menu-item">
+        <a href="http://service.weibo.com/share/share.php?appkey=&title=CSGO FPS 终极优化指南&url=https://www.wevg.org/archives/csgo-fps-optimized/&pic=https://cdn.jsdelivr.net/gh/EdisonJwa/Blog@master/source/thumbnail/csgo-fps-optimized.jpg&searchPic=false&style=simple" target="_blank" rel="external noopener noreferrer nofollow">分享到微博</a>
+    </li>
+    
+
+    <!-- Share Twitter -->
+    
+    <li class="menu-item">
+        <a href="https://twitter.com/intent/tweet?text=CSGO FPS 终极优化指南&url=https://www.wevg.org/archives/csgo-fps-optimized/&via=Edison Jwa" target="_blank" rel="external noopener noreferrer nofollow">分享到 Twitter</a>
+    </li>
+    
+
+    <!-- Share Facebook -->
+    
+    <li class="menu-item">
+        <a href="https://www.facebook.com/sharer/sharer.php?u=https://www.wevg.org/archives/csgo-fps-optimized/" target="_blank" rel="external noopener noreferrer nofollow">分享到 Facebook</a>
+    </li>
+    
+
+    <!-- Share Google+ -->
+    
+    <li class="menu-item">
+        <a href="https://plus.google.com/share?url=https://www.wevg.org/archives/csgo-fps-optimized/" target="_blank" rel="external noopener noreferrer nofollow">分享到 Google+</a>
+    </li>
+    
+
+    <!-- Share LinkedIn -->
+    
+    <li class="menu-item">
+        <a href="https://www.linkedin.com/shareArticle?mini=true&url=https://www.wevg.org/archives/csgo-fps-optimized/&title=Vigorous Pro" target="_blank" rel="external noopener noreferrer nofollow">分享到 LinkedIn</a>
+    </li>
+    
+
+    <!-- Share QQ -->
+    
+    <li class="menu-item">
+        <a href="http://connect.qq.com/widget/shareqq/index.html?site=Vigorous Pro&title=Vigorous Pro&summary=The world can always use more heroes.&pics=https://cdn.jsdelivr.net/gh/EdisonJwa/Blog@master/source/thumbnail/csgo-fps-optimized.jpg&url=https://www.wevg.org/archives/csgo-fps-optimized/" target="_blank" rel="external noopener noreferrer nofollow"> 分享到 QQ</a>
+    </li>
+    
+
+    <!-- Share Telegram -->
+    
+    <li class="menu-item">
+        <a href="https://t.me/share/url?url=https://www.wevg.org/archives/csgo-fps-optimized/&text=Vigorous Pro" target="_blank" rel="external noopener noreferrer nofollow">分享到 Telegram</a>
+    </li>
+    
+
+    <!-- QRCode -->
+    
+    <li class="menu-item">
+        <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAJQAAACUCAAAAABQV18IAAAB0klEQVR42u3bwY7DIAyE4bz/S7fXqsKecemBTP5ctmo25FsJMBjv9TrwukCBAgVqgbqaa3W/bHDxO9+fu/eAykJVL/lsbPX5+7sK6rwHVB5q1cGdTrpCdqj2PaAegeo6agXongcFqptMq0AMCpQMlE1w7hZ+aqCAykVNAu3Oz7/uZkAdi5JJh64R897fsy6gjkY5E2MVcLsg3W1Gy+dARaCcBZ67YVAbCYkFFYFSnVslZFVHdt4BKgulEvhVst7dZLh/AKhMlJpQp4kNZ/CUK09Qt0WpAyDVsBoMzmESqCyU6pxOsmxyrzu4BJWBcg+qnQMjp0iibQ9UBGqS0HCAvwwUUJkoVeDQJcfcw0qZbAMVhXIKaSYLPTWBWos8UBEolcB3ir3cwQEqF+U8/EsCdhK0QeWgJkXwVsMbnR1UBkoVSLhBuyuecCZnUFkopzE3weEUoZaTK6gIlFMk7xwCOQdPcoIGFYFSl5uwdwaDGjygMlBOQfPkoHIaxEFlotyNgkJOilZl5T6o26O64pguKDuDRCXVQD0LNVnY7RSqgnoWyln8ORNqF4xB5aHc4hp1aD1O6F+b/10L6kjUNKg6BTfuIfnWbgbUkaiTLlCgQIH6uN6FRLEAu4WxVAAAAABJRU5ErkJggg==" alt="QRCode">
+    </li>
+    
+
+</ul>
+</div>
+        
+    </div>
+</div>
+                </div>
+                <div class="card-body">
+                    
+                        
+                        
+                            <div id="post-toc"><ol class="post-toc"><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#win10-xbox-dvr-%E7%9A%84%E5%85%B3%E9%97%AD%E5%8F%8A%E7%B3%BB%E7%BB%9F%E8%AE%BE%E7%BD%AE"><span class="post-toc-number">1.</span> <span class="post-toc-text">WIN10 XBOX DVR 的关闭及系统设置</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#%E5%85%B3%E9%97%AD-xbox-dvr"><span class="post-toc-number">1.1.</span> <span class="post-toc-text">关闭 XBOX DVR</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#%E7%94%B5%E6%BA%90%E8%AE%BE%E7%BD%AE"><span class="post-toc-number">1.2.</span> <span class="post-toc-text">电源设置</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#%E7%B3%BB%E7%BB%9F%E4%BC%98%E5%8C%96%E8%AE%BE%E7%BD%AE"><span class="post-toc-number">1.3.</span> <span class="post-toc-text">系统优化设置:</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E5%85%B3%E9%97%AD%E5%8D%A0%E7%94%A8%E7%B3%BB%E7%BB%9F%E8%B5%84%E6%BA%90%E7%9A%84%E6%9C%8D%E5%8A%A1"><span class="post-toc-number">1.3.1.</span> <span class="post-toc-text">关闭占用系统资源的服务</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E5%85%B3%E9%97%AD%E7%95%8C%E9%9D%A2%E7%89%B9%E6%95%88"><span class="post-toc-number">1.3.2.</span> <span class="post-toc-text">关闭界面特效</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E5%85%B3%E9%97%AD%E7%B3%BB%E7%BB%9F%E8%AE%BE%E7%BD%AE%E4%B8%AD%E7%9A%84%E5%90%8E%E5%8F%B0%E5%BA%94%E7%94%A8"><span class="post-toc-number">1.3.3.</span> <span class="post-toc-text">关闭系统设置中的后台应用</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E6%9B%B4%E6%96%B0%E9%A9%B1%E5%8A%A8"><span class="post-toc-number">1.3.4.</span> <span class="post-toc-text">更新驱动</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E5%9C%A8-bios-%E4%B8%AD%E7%A6%81%E7%94%A8-hpet-%E9%AB%98%E7%B2%BE%E5%BA%A6%E4%BA%8B%E4%BB%B6%E8%AE%A1%E6%97%B6%E5%99%A8"><span class="post-toc-number">1.3.5.</span> <span class="post-toc-text">在 BIOS 中禁用 HPET（高精度事件计时器）</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E5%9C%A8-discord-%E4%B8%AD%E7%A6%81%E7%94%A8%E7%A1%AC%E4%BB%B6%E5%8A%A0%E9%80%9F"><span class="post-toc-number">1.3.6.</span> <span class="post-toc-text">在 Discord 中禁用硬件加速</span></a></li></ol></li></ol></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#nvidia-%E6%98%BE%E5%8D%A1%E9%A9%B1%E5%8A%A8%E5%86%85%E4%BC%98%E5%8C%96"><span class="post-toc-number">2.</span> <span class="post-toc-text">NVIDIA 显卡驱动内优化</span></a></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#csgo-%E5%90%AF%E5%8A%A8%E9%A1%B9%E4%BB%A5%E5%8F%8A%E6%B8%B8%E6%88%8F%E5%86%85%E8%AE%BE%E7%BD%AE"><span class="post-toc-number">3.</span> <span class="post-toc-text">CSGO 启动项以及游戏内设置</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#csgo-%E5%90%AF%E5%8A%A8%E9%A1%B9%E6%8E%A8%E8%8D%90%E8%AE%BE%E7%BD%AE"><span class="post-toc-number">3.1.</span> <span class="post-toc-text">CSGO 启动项推荐设置</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#%E6%B8%B8%E6%88%8F%E5%86%85%E8%AE%BE%E7%BD%AE"><span class="post-toc-number">3.2.</span> <span class="post-toc-text">游戏内设置</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E8%A7%86%E9%A2%91%E8%AE%BE%E7%BD%AE"><span class="post-toc-number">3.2.1.</span> <span class="post-toc-text">视频设置</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E9%9F%B3%E9%A2%91%E8%AE%BE%E7%BD%AE"><span class="post-toc-number">3.2.2.</span> <span class="post-toc-text">音频设置</span></a></li></ol></li></ol></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#%E5%85%B3%E4%BA%8E%E6%B8%B8%E6%88%8F%E6%9B%B4%E6%96%B0%E5%90%8E-fps-%E5%8F%98%E4%BD%8E%E6%88%96-fps-%E4%B8%8D%E4%BD%8E%E4%BD%86%E6%9C%89%E5%8D%A1%E9%A1%BF%E6%84%9F%E7%9A%84%E8%A7%A3%E5%86%B3%E5%8A%9E%E6%B3%95"><span class="post-toc-number">4.</span> <span class="post-toc-text">关于游戏更新后 FPS 变低或 FPS 不低但有卡顿感的解决办法</span></a></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#%E6%9C%80%E5%90%8E%E6%98%AF%E4%B8%80%E4%BA%9B%E5%B0%8F%E6%8A%80%E5%B7%A7"><span class="post-toc-number">5.</span> <span class="post-toc-text">最后是一些小技巧</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#%E5%85%B3%E9%97%AD%E9%BC%A0%E6%A0%87%E5%8A%A0%E9%80%9F%E5%BA%A6"><span class="post-toc-number">5.1.</span> <span class="post-toc-text">关闭鼠标加速度</span></a></li></ol></li></ol></div>
+                        
+                    
+                    <article id="post-content">
+                        <p>本教程将会通过修改和优化等等方式提升游戏帧数，进而提升游戏体验，且不仅限于 CS:GO ，亦可用于优化其他游戏。<span id="more"></span></p>
+<blockquote>
+<p>​前言: 此教程只针对于目前还使用 Source 2012引擎且优化并不算特别好的正式版 CSGO 游戏本体，日后游戏更新可能会发生一定变化。目录均采用超链接，可直接跳转。<br>
+如果希望掌握更多有关CSGO的调试知识可以参考另一篇<a href="https://www.wevg.org/archives/csgo-config-guide/">CSGO CFG 修改指南</a>对游戏进行更个人化的修改。<br>
+本文原作者为 SLA1NE 并由 POBJ 进行整理总结</p>
+</blockquote>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.13.0/css/all.min.css">
+<h1 id="win10-xbox-dvr-的关闭及系统设置">WIN10 XBOX DVR 的关闭及系统设置</h1>
+<h2 id="关闭-xbox-dvr">关闭 XBOX DVR</h2>
+<p>首先我们知道，在 Win10 更新了版本后，出现了 Xbox DVR 这个功能且默认开启。本意是为了方便记录游戏时的精彩瞬间，相当于录制截图工具的存在，但是对于 CSGO、DOTA2 这一类游戏却会导致帧数被锁定，而 CSGO 对FPS的要求极为严苛，个人认为没有 300 FPS 无法顺畅游戏。</p>
+<p>那么因为 Win10 默认开启此功能，我们要如何关闭呢？</p>
+<p>第一种就是就是登陆微软账户并打开 XBOX 软件<strong>关闭 DVR 滑钮</strong>，这里不做教程。</p>
+<p>第二种就是使用我们提供好的一键关闭XBOX DVR脚本，运行并重启电脑后生效。</p>
+<p><strong>2018-10-18</strong> 提供一键关闭 DVR 脚本 <a target="_blank" rel="noopener" href="https://cdn.jsdelivr.net/gh/EdisonJwa/markets@master/disableDVR.zip"><strong>点此下载</strong></a></p>
+<figure class="highlight ini"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs ini">Windows Registry Editor Version 5.00<br><span class="hljs-section">[HKEY_CURRENT_USER\System\GameConfigStore]</span><br><span class="hljs-attr">&quot;GameDVR_Enabled&quot;</span>=dword:<span class="hljs-number">0</span><br><span class="hljs-section">[HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\GameDVR]</span><br><span class="hljs-attr">&quot;AllowGameDVR&quot;</span>=dword:<span class="hljs-number">0</span><br><span class="hljs-section">[HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\PolicyManager\default\ApplicationManagement\AllowGameDVR]</span><br><span class="hljs-attr">&quot;value&quot;</span>=dword:<span class="hljs-number">0</span><br></code></pre></td></tr></table></figure>
+<p>至此，有关 Xbox 的关闭与卸载结束，我们接着说 Windows 系统的一些设置。</p>
+<h2 id="电源设置">电源设置</h2>
+<p>首先是电源设置，我们右键左下角 <i class="fab fa-windows"></i> Windows 菜单，点击<strong>电源选项</strong>。</p>
+<p><img src="https://i.yecdn.com/images/2019/01/05/aab765e1536a6ae2809ef254e728cc69.png" alt="电源选项"></p>
+<p>然后会出现如此界面，这时我们点击<strong>其他电源设置</strong>，会出现电源选项的窗口，如图。</p>
+<p><img src="https://i.yecdn.com/images/2019/01/05/268c520649c26249f5fc0b7dae1d7d29.png" alt="其他电源设置"></p>
+<p><img src="https://i.yecdn.com/images/2019/01/05/5049715d308e274e868c2ea3b3181f93.png" alt="高性能"></p>
+<p>我们直接切换到<strong>高性能</strong>即可，如果没有发现高性能，通常在下方的隐藏附加计划内。</p>
+<p>​	值得一提的是，使用一些国产软件的朋友可能会发现默认在使用X大师节能计划，这是很毒瘤很垃圾很差劲的东西，<strong>请务必不要使用！<strong>此类电源计划表面标称能在节能的同时保留完整的性能，但当我们打开编辑选项查看时，发现它直接</strong>将 CPU 限制到75%的状态</strong>，此时就会造成游戏卡顿，帧数低的状况。</p>
+<h2 id="系统优化设置">系统优化设置:</h2>
+<h3 id="关闭占用系统资源的服务">关闭占用系统资源的服务</h3>
+<p>关闭服务的方法是，<kbd><i class="fab fa-windows"></i> Win</kbd> 和 <kbd>R</kbd> 调出运行对话框，输入 “<code>services.msc</code>” 启动服务面板，接下来输入要禁用的服务首字母，最后双击“<strong>禁用</strong>”即可。</p>
+<ul>
+<li>Connected User Experiences and Telemetry: 用于收集错误信息，对于硬盘消耗较大，是很多低配电脑卡顿的元凶。</li>
+<li>Diagnostic Execution Service: 诊断执行服务，用以执行故障诊断支持的诊断操作，效果类似 Connected User Experiences and Telemetry 。</li>
+<li>SysMain: 即以前的<br>
+SuperFetch，对于机械硬盘有一定作用，但固态硬盘作用不大，而且常常是导致 CPU 占用飙升 100% 的元凶。如果您使用的硬盘是且仅为 SSD 的话，且物理内存较大，可以考虑关闭。</li>
+<li>Windows Search: Windows<br>
+搜索服务，作用是实现文件的快速搜索。不过这是一项经常在系统后台”查水表”的服务，很多时候电脑待机时硬盘灯长亮就是它的“功劳”。此外 Win10 新版中的“活动历史记录”也依赖于该服务。如果安装的是 SSD ，且对“ 活动历史记录 ”无感可以考虑关闭，尤其对于低配电脑，性能提升非常明显。</li>
+</ul>
+<h3 id="关闭界面特效">关闭界面特效</h3>
+<p>Windows 10 中加入了很多特效，这使得一些低端机在运行这款操作系统时非常卡顿。其实很多特效并不需要完全加载，尤其是一些淡入淡出效果，在实际使用中视觉感差异不大，反而相当消耗资源。关闭它们，可以在保持系统外观基本不变的情况下，大幅提升流畅度。</p>
+<p>关闭方法: 此电脑-属性-高级系统设置-高级-性能-设置</p>
+<h3 id="关闭系统设置中的后台应用">关闭系统设置中的后台应用</h3>
+<p>打开 Windows 设置 - 隐私 - 后台应用<br>
+在这里关闭绝大多数的后台应用，这里我稳妥起见留下了NVIDIA control panel, Realtek Audio Console 等。此处具体的开关因人而异。</p>
+<p><img src="https://cdn.jsdelivr.net/gh/EdisonJwa/Blog@master/images/uploads/ApplicationFrameHost.png" alt="后台应用设置"></p>
+<p>禁止关闭 Google Chrome 后继续运行后台应用<br>
+<img src="https://cdn.jsdelivr.net/gh/EdisonJwa/Blog@master/images/uploads/chrome.png" alt="后台应用设置"></p>
+<h3 id="更新驱动">更新驱动</h3>
+<p>从官方网站下载你最新的主板芯片组驱动，虽然 Windows 10 会装一部分驱动，能保证系统的基本运行，但是为了更好的性能，还是建议自行去官方网站下载最新的驱动。</p>
+<blockquote>
+<p>绝对绝对不要使用驱动精灵等程序安装驱动，可能导致您的系统不稳定</p>
+</blockquote>
+<p>在 Intel 官方网站下载最新的 Intel Management Engine Driver，这将会给你的 CPU 带来更多的稳定性与性能，我经常忘记装 ME，这也就导致了 CSGO 的卡顿。</p>
+<blockquote>
+<p>仅适用于 Intel 的处理器</p>
+</blockquote>
+<h3 id="在-bios-中禁用-hpet-高精度事件计时器">在 BIOS 中禁用 HPET（高精度事件计时器）</h3>
+<p>​	HPET 是现代 Windows 版本中的硬件计时器。这是一项在 Bios 中的选项，具体的作用可以自行查询，这里推荐是在 Windows 7 下禁用 HPET，在 Windows 10 下启用 HPET。（默认即为启用）</p>
+<h3 id="在-discord-中禁用硬件加速">在 Discord 中禁用硬件加速</h3>
+<p>如果使用 <strong>Discord overlay</strong> ，请单击齿轮 turn（应用程序设置）&gt; 外观 &gt; 硬件加速关闭硬件加速</p>
+<h1 id="nvidia-显卡驱动内优化">NVIDIA 显卡驱动内优化</h1>
+<p>​	Nvidia显卡驱动内的调试相对比较简单，部分选项可能会因为显卡高低端型号，而有差别，但大致一样。</p>
+<p>​	首先我们打开 <strong>NVIDIA 控制面板</strong>选择<strong>管理 3D 设置</strong>，然后切换到<strong>程序设置</strong>，这样是为了<strong>只修改 CSGO 的设置而不影响其他程序</strong>。</p>
+<p>​	这里直接放出笔者修改过后的图，然后再逐一讲解。</p>
+<p><img src="https://i.yecdn.com/images/2019/01/05/10e56f793e3ca8fd6a6e3bb729965cde.png" alt="NVIDIA 控制面板"></p>
+<p><img src="https://i.yecdn.com/images/2019/01/05/0efa242d369b9c763d095d3f6e392777.png" alt="NVIDIA 控制面板"></p>
+<p>​	那么现在来逐一讲解。</p>
+<ol>
+<li>”CUDA-GPUs” 是使用CUDA流处理器的选择，一般大家都是单显卡，所以默认是<strong>全部</strong>，如果是多卡交火，全部选上就可以了。</li>
+<li>“三重缓冲” : <strong>关闭</strong>。</li>
+<li>“各项异性过滤” : <strong>关闭</strong>。</li>
+<li>“垂直同步” : <strong>关闭</strong>。</li>
+<li>“多帧采样AA（MFAA）” : <strong>关闭</strong>。</li>
+<li>“平滑处理-模式” : 我们选择<strong>应用程序控制</strong>的，这样在游戏里的一些抗锯齿设置就会生效。</li>
+<li>“平滑处理-灰度纠正” : <strong>关闭</strong>。</li>
+<li>“平滑处理-透明度” : <strong>关闭</strong>。</li>
+<li>“低延迟模式/最大预渲染帧数(旧版本驱动)”: 在较新的驱动中 NVIDIA 将最大预渲染帧数改为了低延迟模式, 以前的预渲染帧数选项 <code>1</code> 变为了现在的低延迟模式 <code>开</code> ，新加入的极致选项为预渲染帧数 <code>0</code> ，这并不稳定所以推荐大家改为 <strong>开</strong> 。</li>
+<li>“环境光吸收” : <strong>关闭</strong>。</li>
+<li>“电源管理模式” : <strong>最高性能优先</strong></li>
+<li>“着色缓存器” : 开/关<strong>视情况而定</strong>，显卡默认的着色缓存是位于我们的系统盘也就是C盘的。所以如果你的系统盘是固态硬盘（即SSD）打开这个选项将会提升FPS，如果你的系统盘是普通机械硬盘那么建议关闭此选项。（有争议，可以选择自行调试）</li>
+<li>“纹理过滤-三线性优化” : <strong>开启</strong>。</li>
+<li>“纹理过滤-各向异性采样优化” : <strong>开启</strong>。</li>
+<li>“纹理过滤-负LOD偏移” : 此项开启关闭<strong>对游戏无影响</strong>，默认为关闭。</li>
+<li>“纹理过滤-质量” : <strong>高性能</strong>。</li>
+<li>“线程优化” : <strong>开</strong>，现在主流的游戏电脑都已经使用i5、i7的CPU，基本上都是4线程或线程CPU，而CSGO的FPS主要取决于CPU。所以开启此项利用CPU所有线程将提高FPS。</li>
+<li>“虚拟现实预渲染帧数” : <strong>建议调为1</strong>，很显然CSGO不是VR游戏，所以没有开高的必要。</li>
+<li>“首选刷新率” : <strong>最高可用/由应用控制的</strong>”</li>
+</ol>
+<p>CSGO 是一款12年发行的采用 DirectX9 的游戏，现如今主流的中高端显卡的性能玩 CSGO 完全够用甚至饱和。所以显卡不愿意工作，会出现在游戏时显卡始终处于低负载导致的FPS低下。</p>
+<p>解决问题的方法就是将<strong>电源管理模式</strong>调为<strong>最高性能优先</strong>，这样在游戏时就能强制显卡工作，达到相应的性能，提升FPS明显。</p>
+<p>现在很多玩家的显示器都是 144hz 甚至 240hz 的电竞显示器，但是当你的输出FPS达不到显示器的需要 FPS（60HZ-150FPS,120HZ-280FPS,144HZ-300FPS,240HZ-300+FPS 为需求）的情况下可以考虑降低显示器的刷新率以达到更稳定的输入延迟与体验，在此种情况下会在启动项中加入 <code>-freq</code> 为开头的指令，使用由应用控制的这个选项的话更为适合。</p>
+<p>至此，关于显卡设置的章节结束。</p>
+<h1 id="csgo-启动项以及游戏内设置">CSGO 启动项以及游戏内设置</h1>
+<h2 id="csgo-启动项推荐设置">CSGO 启动项推荐设置</h2>
+<p>​	目前的启动项基本上已经没有几条是有有效的，有效的参数只有下面这些</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs conf">-freq 144 -tickrate 128 -novid -nojoy  -language english<br></code></pre></td></tr></table></figure>
+<p>​	老的三条/四条去加速指令在 CSGO 初期其实就已经无效了，在近几年的职业选手中也会发现，越来越少的人会使用这几条参数了</p>
+<blockquote>
+<p>-novid : <strong>禁用开场动画</strong>: 能够节省你生命中宝贵的几秒钟</p>
+<p>-no-browser : <strong>禁用游戏内浏览器</strong></p>
+<p>-freq : <strong>锁定</strong>你的<strong>刷新率</strong></p>
+<p>-nojoy : 禁用摇杆，没什么用，能够使<strong>小幅度释放内存</strong></p>
+<p>+fps_max XXX (1-999) : <strong>修改</strong>你的 <strong>FPS 上限</strong>，999 是最高，比0在某些时候更高一些，也有一些职业选手会锁定为300或500</p>
+<p>-tickrate 128 : 在你单机开图或者是5E对战的时候<strong>变成 128 tick</strong></p>
+<p>-console : 当你在打开游戏试<strong>自动打开控制台</strong></p>
+<p>-high / -highpriority : 可以<strong>提升</strong>你 <strong>CSGO</strong> 的处理<strong>优先等级</strong>，和在任务管理器中把优先级调高，有时候会导致系统错乱（我没遇到过）但是的确可以提高游戏稳定性</p>
+<p>-language english : 将游戏的<strong>语言改为英文</strong>，CSGO 对于其他语言的兼容性有一定问题，在换了英文输入法之后感觉游戏的流畅度有一定提升，排版也更加正常了。</p>
+</blockquote>
+<h2 id="游戏内设置">游戏内设置</h2>
+<p><img src="https://i.yecdn.com/images/2019/01/05/b5d9dcd587ebd9302ed803d6db777492.jpg" alt="游戏内设置"></p>
+<h3 id="视频设置">视频设置</h3>
+<p>​	先来说视频设置。</p>
+<p>​	首先，纵横比和分辨率主要看个人喜好。但是对低配的玩家来说，还是建议 4:3 的分辨率之下选择自己看着舒服的分辨率。</p>
+<p>​	因为分辨率低了可以减少要渲染的画面点数，会提升 FPS 。</p>
+<p>​	接着，我们说说显示模式，想达到最高的FPS肯定是以<strong>全屏模式</strong>运行最好，如果使用窗口化（包括全屏窗口）会自动强制打开三重缓冲和8X的过滤，会大幅度增加输入延迟，想要好好玩游戏必须关闭</p>
+<p>​	笔记本<strong>节能模式</strong>，是必须<strong>关掉</strong>的，想必也不会有人开。</p>
+<p>​	接着来说下面的高级视频效果。</p>
+<ol>
+<li>“全局阴影效果” : <strong>非常低</strong>，这个开啥都没区别。</li>
+<li>“模型/贴图细节” : 这个可以开高，基本<strong>不影响FPS</strong>，强迫症也可以关闭。</li>
+<li>“效果细节” : 建议<strong>最低</strong>，这个主要是玻璃木板碎掉的一些特效，开低玩根本感觉不出什么。</li>
+<li>“光影细节” : [针对全景UI更新]建议开最低以降低游戏时的掉帧感，针对老旧配置尤其有效。</li>
+<li>“多核渲染” : 一定要<strong>开启</strong>， CSGO 这个游戏比较依赖CPU，所以一定要全利用上。</li>
+<li>“多重采样抗锯齿模式” : 这里可以选择<strong>关到最低</strong>以提高FPS，因为笔者配置比较高且很受不了狗牙效应所以开了8X MSAA。值得一提的是，刚才显卡设置内的“平滑处理-模式”选择<strong>应用程序控制</strong>的就会体现在这。</li>
+<li>“贴图过滤模式” : 推荐设为最低，也就是<strong>双线性</strong>，这也是为什么在显卡设置中关闭三线性的原因。</li>
+<li>“快速近似抗锯齿” : 建议<strong>禁用</strong>，虽然在现在电脑配置都不低的情况下这个选开启并不会降低很多FPS，但是可能会引起游戏卡顿，故关闭。</li>
+<li>“等待垂直同步” : 必须<strong>关闭</strong>（增加输入延迟）。</li>
+<li>“动态模糊” : 建议<strong>禁用</strong>，看着头晕并且确实会让你玩不好这个游戏。</li>
+</ol>
+<h3 id="音频设置">音频设置</h3>
+<p>​	接下来说音频设置里需要注意的一个地方。</p>
+<p><img src="https://i.yecdn.com/images/2019/01/05/356f1e8fd6ab853c9e87a8d70825345d.jpg" alt="音频设置"></p>
+<p>​	想获得最大 FPS , <strong>请不要将音频输出配置的 HRTF 音效开启。</strong></p>
+<p>​	这种新技术占用的系统资源还比较多，虽然确实可以改善在上下结的声音辨识度吗，但是立体声耳机听声辩位能力也很好。但如果电脑配置很好的话也可以开启。</p>
+<p>​	至此，CSGO 启动项以及游戏内设置章节结束。</p>
+<h1 id="关于游戏更新后-fps-变低或-fps-不低但有卡顿感的解决办法">关于游戏更新后 FPS 变低或 FPS 不低但有卡顿感的解决办法</h1>
+<p>​	很多时候，我们经常遇见 CSGO 更新后FPS突然变低，但下一次更新或一段时间过后又变回去的情况。</p>
+<p>​	虽然这种情况大多是因为更新了新内容过后游戏开发人员没有去做一下优化（又称修复了 FPS 过高的 BUG XD），但我们依然有一些或多或少能缓解的办法。</p>
+<p>​	首先，我们还是将键盘上的 <kbd><i class="fab fa-windows"></i> Win</kbd> 和 <kbd>R</kbd> 键一起按下，呼出运行对话框。只不过这次我们输入的是<code>steam://flushconfig</code></p>
+<p><img src="https://i.yecdn.com/images/2019/01/05/23392f1a61816b5cd4384e52c7ec63aa.png" alt="steam://flushconfig"></p>
+<p>​	如图。在我们单击确定后， Steam 会自动重启并询问是否要清除下载缓存。我们只要单击并重新登陆 Steam 即可，游戏内可以发现，画面流畅感明显（也可能不明显）比操作之前提升了。</p>
+<p>​</p>
+<p>​	至此，关于游戏更新后FPS变低或FPS不低但有卡顿感的解决办法教程结束。</p>
+<h1 id="最后是一些小技巧">最后是一些小技巧</h1>
+<h2 id="关闭鼠标加速度">关闭鼠标加速度</h2>
+<p>​	关于去掉鼠标加速的问题，即使在开启鼠标原始输入的情况下，CSGO 还是会受到很多 Windows 设置的影响，所以说我们尽量要减小系统等因素对游戏准星移动的影响来达到更好的发挥</p>
+<p>​	在 Win10 中在搜索里输入控制面板，打开之后打开<strong>鼠标</strong></p>
+<p><img src="https://i.yecdn.com/images/2019/02/26/8bd6b031819a495ab3012dda0cafb73f.png" alt="鼠标"></p>
+<p>​	像我这样设置，桌面鼠标速度会影响你游戏内的轨迹，速度要在默认档位 6/11，高了会带有加速度，向更低的档位移动没有问题，<strong>提高精准度关闭</strong>。<br>
+另外的部分在我们的另一篇<a href="https://www.wevg.org/archives/csgo-config-guide/">CSGO CFG 修改指南</a>中有说明。</p>
+<p>​	在<strong>轻松访问中心</strong>里将设置确认为这样</p>
+<p><img src="https://i.yecdn.com/images/2019/01/05/2a79e12187d4e7dddb38596d1a72cbd8.png" alt="轻松访问中心"></p>
+<p>​	注：以上所有情况均由笔者反复调试，摸索得出，可能不会100%符合每个人的情况，但90%的情况下有一定作用。</p>
+<p>​	部分方法与图片来源于互联网，在这里表示感谢。</p>
+
+                    </article>
+                    
+    <blockquote class="post-license">
+        <p>
+            <strong>本文作者&nbsp;:&nbsp;Edison Jwa</strong>
+            <br>
+            <strong>
+            
+                本文使用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">署名-非商业性使用-相同方式共享 4.0 国际 (CC BY-NC-SA 4.0)</a> 协议
+            </strong>
+            <br>
+            <strong>本文链接&nbsp;:&nbsp;</strong><a href="https://www.wevg.org/archives/csgo-fps-optimized/">https://www.wevg.org/archives/csgo-fps-optimized/</a>
+        </p>
+    </blockquote>
+
+
+
+    <blockquote id="date-expire-notification" class="post-expired-notify">本文最后更新于 <span id="date-expire-num"></span> 天前，文中所描述的信息可能已发生改变</blockquote>
+    <script>
+    (function() {
+        var dateUpdate = Date.parse("2020-06-07");
+        var nowDate = new Date();
+        var a = nowDate.getTime();
+        var b = a - dateUpdate;
+        var daysUpdateExpire = Math.floor(b/(24*3600*1000));
+        if (daysUpdateExpire >= 120) {
+            document.getElementById('date-expire-num').innerHTML = daysUpdateExpire;
+        } else {
+            document.getElementById('date-expire-notification').style.display = 'none';
+        }
+    })();
+    </script>
+
+
+<p class="post-footer-info mb-0 pt-0">本文发表于&nbsp;<time datetime="2018-12-04T07:16:39.000Z" itemprop="datePublished">2018-12-04</time>
+
+    , 最后修改于&nbsp;<time datetime="2020-06-07T01:34:17.000Z" itemprop="dateModified">2020-06-07</time>
+
+</p>
+<p class="post-footer-info mb-0 pt-2">
+
+<span class="post-categories-list mt-2">
+
+<a class="post-categories-list-item" href='/categories/Gaming/'>Gaming</a>
+
+<a class="post-categories-list-item" href='/categories/Gaming/CS-GO/'>CS:GO</a>
+
+</span>
+
+
+
+<span class="post-tags-list mt-2">
+
+<a class="post-tags-list-item" href="/tags/%E4%BC%98%E5%8C%96/" rel="tag">#&nbsp;优化</a>
+
+<a class="post-tags-list-item" href="/tags/%E8%AE%BE%E7%BD%AE/" rel="tag">#&nbsp;设置</a>
+
+<a class="post-tags-list-item" href="/tags/Steam/" rel="tag">#&nbsp;Steam</a>
+
+<a class="post-tags-list-item" href="/tags/fps/" rel="tag">#&nbsp;fps</a>
+
+<a class="post-tags-list-item" href="/tags/Xbox-DVR/" rel="tag">#&nbsp;Xbox DVR</a>
+
+<a class="post-tags-list-item" href="/tags/Nvidia/" rel="tag">#&nbsp;Nvidia</a>
+
+<a class="post-tags-list-item" href="/tags/%E5%90%AF%E5%8A%A8%E9%A1%B9/" rel="tag">#&nbsp;启动项</a>
+
+</span>
+
+
+</p>
+
+                </div>
+                <div class="post-nav px-2 bg-gray">
+<ul class="pagination">
+    <!-- Prev Nav -->
+    
+        <li class="page-item page-prev">
+            <a href="/archives/ssh-add-mfa/" rel="prev">
+                <div class="page-item-title"><i class="icon icon-back" aria-hidden="true"></i></div>
+                <div class="page-item-subtitle">为 SSH 连接添加两步认证</div>
+            </a>
+        </li>
+    
+
+    <!-- Next Nav -->
+    
+        <li class="page-item page-next">
+            <a href="/archives/change-telegram-fonts/" rel="next">
+                <div class="page-item-title"><i class="icon icon-forward" aria-hidden="true"></i></div>
+                <div class="page-item-subtitle">为 Telegram Desktop 替换字体</div>
+            </a>
+        </li>
+    
+</ul>
+</div>
+
+                
+                    <!-- # Comment # -->
+                    
+                        <div class="card-footer post-comment">
+                            <div id="disqus_thread"></div>
+
+<script id="js-disqusjs" src="https://cdn.jsdelivr.net/npm/disqusjs@1.2.5/dist/disqus.js" async></script>
+<script>
+document.getElementById('js-disqusjs').addEventListener('load', function () {
+    function loadDisqusJS() {
+        new DisqusJS({
+            shortname: 'edisonj',
+            
+            siteName: 'Vigorous Pro',
+            
+            identifier: 'https://www.wevg.org/archives/csgo-fps-optimized/',
+            url: 'https://www.wevg.org/archives/csgo-fps-optimized/',
+            api: 'https://disqus.uv.uy/api/',
+            apikey: 'vBTqc5gYirQfuj9STIAANtQCArVi9MN8UZ72UUucwnhus4AhpgpbVJMIn3Ojl4O7',
+            
+            
+        })
+    }
+    if (document.readyState === 'complete') {
+        loadDisqusJS();
+    } else {
+        window.addEventListener('load', loadDisqusJS);
+    }
+});
+</script>
+
+                        </div>
+                    
+                
+            </div>
+        </div>
+    </div>
+</div>
+
+            <!-- ### Footer ### -->
+            <footer class="text-center">
+    <!-- footer copyright -->
+    
+        <p class="footer-copyright mb-0">Copyright&nbsp;©&nbsp;<span id="copyright-year"></span>
+            <a class="footer-copyright-a" href="https://www.wevg.org">Vigorous Pro</a>
+        </p>
+
+    <!-- footer custom text -->
+    <p class="footer-text mb-0">
+    <a href="/atom.xml" target="_blank" class="footer-develop-a" rel="nofollow noopener noreferrer">RSS</a><span class="footer-develop-divider"></span><a href="https://donate.edison.do" target="_blank" class="footer-develop-a" rel="nofollow noopener noreferrer">Donate</a><span class="footer-develop-divider"></span><a href="/privacy-policy" target="_blank" class="footer-develop-a" rel="nofollow noopener noreferrer">Privacy Policy</a>
+    </p>
+    <!-- footer develop info -->
+    <p class="footer-develop mb-0">
+        
+
+        
+        Powered by&nbsp;<!--
+         --><a href="https://hexo.io" target="_blank" class="footer-develop-a" rel="external nofollow noopener noreferrer">Hexo</a><span class="footer-develop-divider"></span>Theme&nbsp;-&nbsp;<!--
+         --><a href="https://github.com/SukkaW/hexo-theme-suka" target="_blank" class="footer-develop-a" rel="external noopener">Suka</a>
+    </p>
+</footer>
+
+
+        <!-- ### Import File ### -->
+        <!-- ### Footer JS Import ### -->
+
+<script>
+
+    
+window.lazyLoadOptions = {
+    elements_selector: ".lazyload",
+    threshold: 50
+};
+
+(function() {
+    var copyrightNow = new Date().getFullYear();
+    var copyrightContent = document.getElementById('copyright-year');
+    var copyrightSince = 2015;
+    if (copyrightSince === copyrightNow) {
+        copyrightContent.textContent = copyrightNow;
+    } else {
+        copyrightContent.textContent = copyrightSince + ' - ' + copyrightNow;
+    }
+})();
+console.log('\n %c Suka Theme (hexo-theme-suka) | © SukkaW | Verision 1.3.3 %c https://github.com/SukkaW/hexo-theme-suka \n', 'color: #fff; background: #444; padding:5px 0;', 'background: #bbb; padding:5px 0;');
+
+</script>
+
+<script src="https://cdn.jsdelivr.net/npm/vanilla-lazyload@12.3.0" async></script>
+
+
+
+<!-- Comment -->
+
+    
+        <!-- No need for DisqusJS -->
+    
+
+
+<!-- ### Custom Footer ### -->
+<script> if ('serviceWorker' in navigator) { window.addEventListener('load', () => { navigator.serviceWorker.register('/sw.js'); }) } </script><script>window.ga_tid = "UA-106121780-1";window.ga_api = "https://ga.cdn.uv.uy/jquery.js"; </script><script src="https://cdn.jsdelivr.net/gh/EdisonJwa/Blog@master/js/main.js" async></script>
+    </body>
+
+</html>

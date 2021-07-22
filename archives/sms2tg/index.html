@@ -1,0 +1,732 @@
+<!DOCTYPE html>
+
+<html lang="zh-CN">
+    <head>
+    <meta charset="utf-8">
+    <!--
+        hexo-theme-suka © SukkaW
+        GitHub: https://github.com/SukkaW/hexo-theme-suka
+    -->
+
+    <!-- ### Resource Hint ### -->
+
+    <!-- ## DNS Prefetch ## -->
+    <meta http-equiv="x-dns-prefetch-control" content="on">
+
+<!-- busuanzi -->
+
+
+<!-- comment -->
+
+
+
+
+
+
+
+<!-- analytics -->
+
+
+
+
+
+
+
+    <!-- ## Preload ## -->
+    
+
+
+
+
+    <!-- ### Meta & Title & Info ### -->
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, minimum-scale=1, initial-scale=1, maximum-scale=5, viewport-fit=cover">
+    <meta name="renderer" content="webkit">
+
+    <!-- Title -->
+    <title>接收短信并转发至 Telegram | Vigorous Pro</title>
+
+    <!-- Favicons -->
+    <link rel="icon" type="image&#x2F;ico" href="/favicon.ico"><link rel="apple-touch-icon" sizes="180x180" href="/source/favicon/apple-touch-icon.png"><link rel="icon" typt="image&#x2F;png" sizes="192x192" href="/source/favicon/android-chrome-192x192.png"><link rel="icon" typt="image&#x2F;png" sizes="32x32" href="/source/favicon/favicon-32x32.png"><link rel="icon" typt="image&#x2F;png" sizes="16x16" href="/source/favicon/favicon-16x16.png"><link rel="mask-icon" href="/safari-pinned-tab.svg" color="">
+
+    <!-- ### Import File ### -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/spectre.css@0.5.3"><style>
+    body {
+        background-color: #f8f9fa;
+    }
+
+    a, a:visited {
+        color: #0070ff;
+    }
+
+    a:active, a:focus, a:hover {
+        color: #0070ff;
+        opacity: .75;
+    }
+
+    #post-content a,
+    #post-content a:hover,
+    #post-content a:focus,
+    #post-content a:visited {
+        color: #005eb9;
+        opacity: 1;
+    }
+
+    
+
+    .post-entry .card-body a {
+        color: #0070ff;
+    }
+
+    .avatar {
+        background: #444;
+    }
+
+    .navbar-link,
+    .navbar-link:visited,
+    .timeline .timeline-item .timeline-icon.icon-lg {
+        color: #0070ff;
+    }
+
+    .navbar-link:hover {
+        color: #0070ff;
+        opacity: .8;
+    }
+
+    #search-input .btn,
+    #disqus_click_btn,
+    #disqus-switch-to-direct,
+    #disqus-loadmore-button {
+        background: #727e96;
+        border-color: #727e96;
+        color: #fff;
+    }
+
+    #post-toc a.post-toc-link,
+    #post-toc a.post-toc-link:visited,
+    .share-menu.menu .menu-item>a {
+        color: #727e96;
+    }
+
+    .share-menu.menu .menu-item>a:hover,
+    .share-menu.menu .menu-item>a:focus,
+    .share-menu.menu .menu-item>a:visited {
+        color: #50596c;
+        background: #f8f9fa;
+        opacity: .85;
+    }
+</style><link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/sukkaw/hexo-theme-suka@latest/source/css/style.min.css">
+
+
+    
+        <!-- Import DisqusJS Default Theme -->
+        <link rel="preload" href="https://cdn.jsdelivr.net/npm/disqusjs@1.2.5/dist/disqusjs.css" as="style" onload="this.onload=null;this.rel='stylesheet'"><noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/disqusjs@1.2.5/dist/disqusjs.css"></noscript>
+
+    
+
+
+
+
+
+
+
+    <!-- Prettify Theme -->
+    
+    <link rel="preload" href="https://cdn.jsdelivr.net/gh/sukkaw/hexo-theme-suka@latest/source/css/highlight/tomorrow-night-eighties.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'"><noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/sukkaw/hexo-theme-suka@latest/source/css/highlight/tomorrow-night-eighties.min.css"></noscript>
+
+
+
+
+
+<script>
+/*! loadCSS. [c]2017 Filament Group, Inc. MIT License */
+!function(t){"use strict";t.loadCSS||(t.loadCSS=function(){});var e=loadCSS.relpreload={};if(e.support=function(){var e;try{e=t.document.createElement("link").relList.supports("preload")}catch(t){e=!1}return function(){return e}}(),e.bindMediaToggle=function(t){var e=t.media||"all";function a(){t.addEventListener?t.removeEventListener("load",a):t.attachEvent&&t.detachEvent("onload",a),t.setAttribute("onload",null),t.media=e}t.addEventListener?t.addEventListener("load",a):t.attachEvent&&t.attachEvent("onload",a),setTimeout(function(){t.rel="stylesheet",t.media="only x"}),setTimeout(a,3e3)},e.poly=function(){if(!e.support())for(var a=t.document.getElementsByTagName("link"),n=0;n<a.length;n++){var o=a[n];"preload"!==o.rel||"style"!==o.getAttribute("as")||o.getAttribute("data-loadcss")||(o.setAttribute("data-loadcss",!0),e.bindMediaToggle(o))}},!e.support()){e.poly();var a=t.setInterval(e.poly,500);t.addEventListener?t.addEventListener("load",function(){e.poly(),t.clearInterval(a)}):t.attachEvent&&t.attachEvent("onload",function(){e.poly(),t.clearInterval(a)})}"undefined"!=typeof exports?exports.loadCSS=loadCSS:t.loadCSS=loadCSS}("undefined"!=typeof global?global:this);
+</script>
+
+    <!-- ### Site Verification ### -->
+    
+
+
+    <link rel="alternate" type="application/atom+xml" href="/atom.xml"><meta name="mobile-web-app-capable" content="yes"><meta name="application-name" content="Vigorous Pro"><meta name="msapplication-starturl" content="https://www.wevg.org"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-title" content="Vigorous Pro"><meta name="apple-mobile-web-app-status-bar-style" content="black-translucent"><link rel="manifest" href="/manifest.json"><link rel="search" type="application/opensearchdescription+xml" href="/opensearch.xml" title="Vigorous Pro">
+
+    <!-- ### The Open Graph & Twitter Card Protocol ### -->
+    <meta property="og:title" content="接收短信并转发至 Telegram | Vigorous Pro"><meta property="og:site_name" content="Vigorous Pro"><meta property="og:type" content="article"><meta property="og:url" content="https://www.wevg.org/archives/sms2tg/"><meta property="og:locale" content="zh-CN"><meta name="description" content="尽管可以利用闲置安卓手机加 IFTTT 实现接收短信并转发至 Telegram 的操作，但是还是没有自己制作的更让自己满意，毕竟自己的一些奇思妙想是其无法直接实现的。 - Edison Jwa - Vigorous Pro"><meta name="keywords" content="Linux, 搭建, Tools, Gammu, SMS, Telegam, RaspberryPi, edisonjwa,game,blog,Web,Html,edison"><meta property="og:image" content="https://i.yecdn.com/images/2020/01/13/4a7e4256a677b6ce8be03138fa0dda84.jpg"><meta property="og:image" content="https://i.yecdn.com/images/2020/01/13/e615ac425de6726037549bd232218ec8.png"><meta property="og:image" content="https://i.yecdn.com/images/2020/01/13/398c9e9887a39cef6f690c0063d326fa.png"><meta property="article:published_time" content="2020-01-13T08:15:34.000Z"><meta property="article:modified_time" content="2020-01-13T08:15:34.000Z"><meta property="og:updated_time" content="2020-01-13T08:15:34.000Z"><meta property="article:author" content="Edison Jwa"><meta property="article:tag" content="Linux, 搭建, Tools, Gammu, SMS, Telegam, RaspberryPi, edisonjwa,game,blog,Web,Html,edison"><meta name="twitter:card" content="summary_large_image"><meta name="twitter:image" content="https://i.yecdn.com/images/2020/01/13/4a7e4256a677b6ce8be03138fa0dda84.jpg">
+
+    
+
+    <!-- ### Canonical link ### -->
+    <link rel="canonical" href="https://www.wevg.org/archives/sms2tg/">
+
+    <meta name="generator" content="Hexo 5.4.0">
+
+    <!-- ### Analytics ### -->
+    
+
+
+
+
+
+
+
+    <!-- ### Structured Data ### -->
+    
+
+
+
+<script type="application/ld+json">
+{
+    "@context": "http://schema.org",
+    "url": "https://www.wevg.org/archives/sms2tg/",
+    "@type": "BlogPosting",
+    "logo": "https://www.wevg.org/source/favicon/android-chrome-192x192.png",
+    "mainEntityOfPage": {
+        "@type": "WebPage",
+        "@id": "https://www.wevg.org/archives/sms2tg/"
+    },
+    "headline": "接收短信并转发至 Telegram | Vigorous Pro",
+    
+    "image": {
+        "@type": "ImageObject",
+        "url": "https://i.yecdn.com/images/2020/01/13/4a7e4256a677b6ce8be03138fa0dda84.jpg"
+    },
+    
+    "datePublished": "2020-01-13T08:15:34.000Z",
+    "dateModified": "2020-01-13T08:15:34.000Z",
+    "author": {
+        "@type": "Person",
+        "name": "Edison Jwa",
+        "image": {
+            "@type": "ImageObject",
+            "url": "https://cdn.jsdelivr.net/gh/EdisonJwa/Blog@master/source/image/avatar.jpg"
+        },
+        "description": "The world can always use more heroes."
+    },
+    "publisher": {
+        "@type": "Organization",
+        "name": "Vigorous Pro",
+        "logo": {
+            "@type": "ImageObject",
+            "url": "https://www.wevg.org/source/favicon/android-chrome-192x192.png"
+        }
+    },
+    
+    "potentialAction": {
+        "@type": "SearchAction",
+        "target": "https://www.wevg.org/search?s={search_term_string}",
+        "query-input": "required name=search_term_string"
+    },
+    
+    "keywords": "Linux, 搭建, Tools, Gammu, SMS, Telegam, RaspberryPi, edisonjwa,game,blog,Web,Html,edison",
+    "description": "尽管可以利用闲置安卓手机加 IFTTT 实现接收短信并转发至 Telegram 的操作，但是还是没有自己制作的更让自己满意，毕竟自己的一些奇思妙想是其无法直接实现的。 - Edison Jwa - Vigorous Pro"
+}
+</script>
+
+
+
+    <!-- ### Custom Head ### -->
+    <!-- EdisonJwas Blog --><script data-ad-client="ca-pub-2345785306567671" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script><link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/EdisonJwa/Blog@latest/css/darkmode.min.css"><script src="https://cdn.jsdelivr.net/gh/EdisonJwa/Blog@master/js/edison-main.min.js"></script><script type="module" async="" src="https://cdn.jsdelivr.net/npm/instant.page@3.0.0/instantpage.min.js"></script><link rel="manifest" href="/site.webmanifest"><meta name="msapplication-TileColor" content="#d43d3d"><meta name="msapplication-TileImage" content="/source/favicon/mstile-144x144.png"><meta name="theme-color" content="#ffffff"><script type="text/javascript">function downloadJSAtOnload(){var d=document.createElement("script");d.src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js",document.body.appendChild(d)}window.addEventListener?window.addEventListener("load",downloadJSAtOnload,!1):window.attachEvent?window.attachEvent("onload",downloadJSAtOnload):window.onload=downloadJSAtOnload;</script><!-- Global site tag (gtag.js) - Google Analytics --><script async src="https://www.googletagmanager.com/gtag/js?id=G-S2SFLD81VT"></script><script>window.dataLayer = window.dataLayer || [];function gtag(){dataLayer.push(arguments);} gtag('js', new Date()); gtag('config', 'G-S2SFLD81VT');</script><!-- Cloudflare Web Analytics --><script defer src=https://static.cloudflareinsights.com/beacon.min.js ; data-cf-beacon="{&quot;token&quot;: 1ebb36a2c023408484ff114c409377b8}"></script><!-- End Cloudflare Web Analytics -->
+<style type="text/css">
+.spoiler {
+  display: inline-flex;
+}
+p.spoiler {
+  display: flex;
+}
+.spoiler a {
+  pointer-events: none;
+}
+.spoiler-blur, .spoiler-blur > * {
+  transition: text-shadow .5s ease;
+}
+.spoiler .spoiler-blur, .spoiler .spoiler-blur > * {
+  color: rgba(0, 0, 0, 0);
+  background-color: rgba(0, 0, 0, 0);
+  text-shadow: 0 0 10px grey;
+  cursor: pointer;
+}
+.spoiler .spoiler-blur:hover, .spoiler .spoiler-blur:hover > * {
+  text-shadow: 0 0 5px grey;
+}
+.spoiler-box, .spoiler-box > * {
+  transition: color .5s ease,
+  background-color .5s ease;
+}
+.spoiler .spoiler-box, .spoiler .spoiler-box > * {
+  color: black;
+  background-color: black;
+  text-shadow: none;
+}</style></head>
+
+    <body>
+            
+
+            <!-- ### Main content ### -->
+            <!-- ## Header ##-->
+<header>
+    <h1 class="header-title text-center"><a href="/">Vigorous Pro</a></h1>
+
+    <p class="text-center header-slogan">
+        
+            
+                The world can always use more heroes.
+            
+        
+    </p>
+
+    <nav class="navbar-section text-center">
+    
+        <a href="/" class="navbar-link">首页</a>
+    
+    
+        <a href="/archives/" class="navbar-link">归档</a>
+    
+    
+        <a href="/search" class="navbar-link">搜索</a>
+    
+    
+        <a target="_blank" rel="noopener" href="https://uv.uy" class="navbar-link">关于</a>
+    
+        <a href="/friends/" class="navbar-link">友链</a>
+    
+    
+    
+</nav>
+</header>
+
+            
+    <!-- ## Post ## -->
+    <div class="post-container">
+    <div id="post-card" class="card">
+        
+            <div class="card-image lazyload" data-bg="url('https://i.yecdn.com/images/2020/01/13/4a7e4256a677b6ce8be03138fa0dda84.jpg')"></div>
+        
+        <div class="card-item-container">
+            <div class="card-inner-cell">
+                <!-- # Post Header Info # -->
+                <div class="card-header">
+                    
+    <h1 class="card-title h3 mb-2">接收短信并转发至 Telegram</h1>
+
+
+
+
+<div class="post-header-info">
+    <p class="post-header-info-left text-gray">
+        <img class="author-thumb lazyload" data-src="https://cdn.jsdelivr.net/gh/EdisonJwa/Blog@master/source/image/avatar.jpg" src="https://cdn.jsdelivr.net/gh/sukkaw/hexo-theme-suka@latest/source/img/suka-lazyload.gif" alt="Edison Jwa's Avatar">
+        <span>2020-01-13</span>
+        
+            <span class="suka-devide-dot"></span>
+            <a class="category-link" href="/categories/Tech/">Tech</a>
+        
+        
+        
+    </p>
+    <div class="post-header-info-right">
+        
+            <div class="dropdown dropdown-right">
+<a class="dropdown-toggle" tabindex="0">分享本文</a>
+<ul class="menu share-menu">
+    <!-- Share Weibo -->
+    
+    <li class="menu-item">
+        <a href="http://service.weibo.com/share/share.php?appkey=&title=接收短信并转发至 Telegram&url=https://www.wevg.org/archives/sms2tg/&pic=https://i.yecdn.com/images/2020/01/13/4a7e4256a677b6ce8be03138fa0dda84.jpg&searchPic=false&style=simple" target="_blank" rel="external noopener noreferrer nofollow">分享到微博</a>
+    </li>
+    
+
+    <!-- Share Twitter -->
+    
+    <li class="menu-item">
+        <a href="https://twitter.com/intent/tweet?text=接收短信并转发至 Telegram&url=https://www.wevg.org/archives/sms2tg/&via=Edison Jwa" target="_blank" rel="external noopener noreferrer nofollow">分享到 Twitter</a>
+    </li>
+    
+
+    <!-- Share Facebook -->
+    
+    <li class="menu-item">
+        <a href="https://www.facebook.com/sharer/sharer.php?u=https://www.wevg.org/archives/sms2tg/" target="_blank" rel="external noopener noreferrer nofollow">分享到 Facebook</a>
+    </li>
+    
+
+    <!-- Share Google+ -->
+    
+    <li class="menu-item">
+        <a href="https://plus.google.com/share?url=https://www.wevg.org/archives/sms2tg/" target="_blank" rel="external noopener noreferrer nofollow">分享到 Google+</a>
+    </li>
+    
+
+    <!-- Share LinkedIn -->
+    
+    <li class="menu-item">
+        <a href="https://www.linkedin.com/shareArticle?mini=true&url=https://www.wevg.org/archives/sms2tg/&title=Vigorous Pro" target="_blank" rel="external noopener noreferrer nofollow">分享到 LinkedIn</a>
+    </li>
+    
+
+    <!-- Share QQ -->
+    
+    <li class="menu-item">
+        <a href="http://connect.qq.com/widget/shareqq/index.html?site=Vigorous Pro&title=Vigorous Pro&summary=The world can always use more heroes.&pics=https://i.yecdn.com/images/2020/01/13/4a7e4256a677b6ce8be03138fa0dda84.jpg&url=https://www.wevg.org/archives/sms2tg/" target="_blank" rel="external noopener noreferrer nofollow"> 分享到 QQ</a>
+    </li>
+    
+
+    <!-- Share Telegram -->
+    
+    <li class="menu-item">
+        <a href="https://t.me/share/url?url=https://www.wevg.org/archives/sms2tg/&text=Vigorous Pro" target="_blank" rel="external noopener noreferrer nofollow">分享到 Telegram</a>
+    </li>
+    
+
+    <!-- QRCode -->
+    
+    <li class="menu-item">
+        <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAIQAAACECAAAAAB0L9x7AAABh0lEQVR42u3aQW7DMAxEUd//0u02NcyZYWI4JPq9KdA41CugSqSo42fAc4AAAWIF4hDPny+8/O78WfWOiwtiLqIKeDWAC55AQexAqGBXgd2gLi6I3YgzpoKA+L+IaoKqiQ1iH8JNrGozq4C37qIgHkd0kpTOz9uybRCPImzRahat88JVTciPqnIQjyLUROoUvFcbm40HYiRCDaSSk2qwapOTGxiIcYg0KZEBTTJjV0wQYxCqoFGT7I7kF8RMRKfoVZuUS4zsBgZiDCI5EFMNGFXo2AUOxFjEO4HcO+6gBcRchCtw3ORKmnfl5yBGIpID8W7R89F/B4hxiPTQTCU5SRMHxHyEO+xKmi9pggxiB8JOorAAdn8IiD2IdICkkVslwq0LgCC+hkgacWrhSotnEHsQ6SLTeS9p1oCYjUgb9cl30uIZxHxEeglcNezV4tQ+vQMxHqEu8yQN2yizArEOkRY7yWYHYj5CHZYnzfjkYgeIPYh3LgonyUzrFiKIMYhvPiBAgBiN+AXXiNlZ8vytMwAAAABJRU5ErkJggg==" alt="QRCode">
+    </li>
+    
+
+</ul>
+</div>
+        
+    </div>
+</div>
+                </div>
+                <div class="card-body">
+                    
+                        
+                        
+                            <div id="post-toc"><ol class="post-toc"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#%E4%BD%BF%E7%94%A8%E7%9A%84%E8%AE%BE%E5%A4%87"><span class="post-toc-number">1.</span> <span class="post-toc-text">使用的设备</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#%E4%BD%BF%E7%94%A8%E7%9A%84%E7%A8%8B%E5%BA%8F"><span class="post-toc-number">2.</span> <span class="post-toc-text">使用的程序</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#%E4%BD%BF%E7%94%A8%E7%9A%84%E6%8E%A5%E5%8F%A3"><span class="post-toc-number">3.</span> <span class="post-toc-text">使用的接口</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#%E5%87%86%E5%A4%87%E8%BF%87%E7%A8%8B"><span class="post-toc-number">4.</span> <span class="post-toc-text">准备过程</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E5%AE%89%E8%A3%85%E4%B8%8E%E9%85%8D%E7%BD%AE-gammu"><span class="post-toc-number">4.1.</span> <span class="post-toc-text">安装与配置 Gammu</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E5%AE%89%E8%A3%85-nodejs"><span class="post-toc-number">4.2.</span> <span class="post-toc-text">安装 NodeJS</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E5%AE%89%E8%A3%85%E4%B8%8E%E9%85%8D%E7%BD%AE-gammu-smsd"><span class="post-toc-number">4.3.</span> <span class="post-toc-text">安装与配置 Gammu-smsd</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#%E5%8E%9F%E6%9C%AC%E7%9A%84%E6%89%A7%E8%A1%8C%E6%96%B9%E5%BC%8F-%E8%BF%87%E6%97%B6"><span class="post-toc-number">5.</span> <span class="post-toc-text">原本的执行方式(过时)</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E4%BD%BF%E7%94%A8%E7%9A%84%E7%A8%8B%E5%BA%8F-v2"><span class="post-toc-number">5.1.</span> <span class="post-toc-text">使用的程序</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E5%AE%89%E8%A3%85%E5%BF%85%E8%A6%81%E6%A8%A1%E5%9D%97"><span class="post-toc-number">5.2.</span> <span class="post-toc-text">安装必要模块</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E4%BF%AE%E6%94%B9-python-package"><span class="post-toc-number">5.3.</span> <span class="post-toc-text">修改 Python package</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#python-%E6%96%87%E4%BB%B6%E9%83%A8%E5%88%86"><span class="post-toc-number">5.4.</span> <span class="post-toc-text">Python 文件部分</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#%E5%8F%82%E8%80%83%E9%93%BE%E6%8E%A5"><span class="post-toc-number">6.</span> <span class="post-toc-text">参考链接</span></a></li></ol></div>
+                        
+                    
+                    <article id="post-content">
+                        <p>尽管可以利用闲置安卓手机加 IFTTT 实现接收短信并转发至 Telegram 的操作，但是还是没有自己制作的更让自己满意，毕竟自己的一些奇思妙想是其无法直接实现的。<span id="more"></span></p>
+<h2 id="使用的设备">使用的设备</h2>
+<ul>
+<li>Raspberry 3B+</li>
+<li>Air720H (理论上同样支持其他模块)</li>
+</ul>
+<blockquote>
+<p>树莓派是白嫖 Peter 的  ヽ(‘ ∇‘ )ノ</p>
+</blockquote>
+<h2 id="使用的程序">使用的程序</h2>
+<ul>
+<li>NodeJS</li>
+<li>Yarn</li>
+<li>Gammu</li>
+</ul>
+<p>树莓派的系统版本为 <code>Raspbian</code></p>
+<p><img src="https://i.yecdn.com/images/2020/01/13/e615ac425de6726037549bd232218ec8.png" alt="e615ac425de6726037549bd232218ec8.png"></p>
+<h2 id="使用的接口">使用的接口</h2>
+<ul>
+<li>Telegram Bot</li>
+<li>腾讯云短信接口 (可移除，或替换为其他平台)</li>
+</ul>
+<h2 id="准备过程">准备过程</h2>
+<p>首先将模块与树莓派连接好之后，<code>lsusb</code> 就会看到相应的设备了因为我是用 USB2TTL 来进行连接，所以此处看到的设备为</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">Bus 001 Device 038: ID 1a86:7523 QinHeng Electronics HL-340 USB-Serial adapter<br></code></pre></td></tr></table></figure>
+<p>接下来，在 <code>/dev</code> 目录下找到对应的 <code>ttyUSB</code></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">ls /dev/ttyUSB*<br></code></pre></td></tr></table></figure>
+<p>因为我只插了这一个 USB 设备，所以很容易确定对应的地址为 <code>/dev/ttyUSB0</code></p>
+<blockquote>
+<p>从此处开始，以 root 身份进行操作</p>
+</blockquote>
+<h3 id="安装与配置-gammu">安装与配置 Gammu</h3>
+<blockquote>
+<p>从此处开始，以 root 身份进行操作</p>
+</blockquote>
+<p>接下来，开始安装 Gammu</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">apt install gammu<br></code></pre></td></tr></table></figure>
+<p>使用 <code>gammu-config</code> 来进行配置</p>
+<blockquote>
+<p>根据设备的不同配置可能会略有不同</p>
+</blockquote>
+<p>将 <code>Port</code> 修改为 <code>/dev/ttyUSB0</code><br>
+将 <code>Connection</code> 修改为 <code>at115200</code></p>
+<p><img src="https://i.yecdn.com/images/2020/01/13/398c9e9887a39cef6f690c0063d326fa.png" alt="398c9e9887a39cef6f690c0063d326fa.png"></p>
+<p>现在，我们来验证配置是否成功</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs bash">gammu --identify<br><br>Device               : /dev/ttyUSB0<br>Manufacturer         : <span class="hljs-string">&quot;AirM2M&quot;</span><br>Model                : unknown (Air720H)<br>Firmware             : <span class="hljs-string">&quot;AirM2M_720H_V1381_LTE_AT&quot;</span><br>IMEI                 : ×××××××××××××××<br>SIM IMSI             : ×××××××××××××××<br></code></pre></td></tr></table></figure>
+<p>接下来，测试发送短信</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-built_in">echo</span> <span class="hljs-string">&quot;test&quot;</span> | gammu sendsms TEXT 手机号<br><br>If you want <span class="hljs-built_in">break</span>, press Ctrl+C...<br>Sending SMS 1/1....waiting <span class="hljs-keyword">for</span> network answer..OK, message reference=44<br></code></pre></td></tr></table></figure>
+<p>如果没问题的话，你应该会顺利收到自己发出的短信了</p>
+<h3 id="安装-nodejs">安装 NodeJS</h3>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs bash">curl -sL https://deb.nodesource.com/setup_12.x | sudo -E bash -<br>apt install gcc g++ make<br>curl -sL https://dl.yarnpkg.com/debian/pubkey.gpg | apt add -<br><span class="hljs-built_in">echo</span> <span class="hljs-string">&quot;deb https://dl.yarnpkg.com/debian/ stable main&quot;</span> | sudo tee /etc/apt/sources.list.d/yarn.list<br>apt update<br>apt install yarn nodejs<br></code></pre></td></tr></table></figure>
+<h3 id="安装与配置-gammu-smsd">安装与配置 Gammu-smsd</h3>
+<p>安装 <code>gammu-smsd</code></p>
+<figure class="highlight routeros"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs routeros">apt-<span class="hljs-builtin-name">get</span> install gammu-smsd -y<br></code></pre></td></tr></table></figure>
+<p>启动并设置开机启动</p>
+<figure class="highlight pgsql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs pgsql">systemctl <span class="hljs-keyword">start</span> gammu-smsd<br>systemctl <span class="hljs-keyword">enable</span> gammu-smsd<br></code></pre></td></tr></table></figure>
+<p>编辑 <code>/etc/gammu-smsdrc</code> 文件</p>
+<blockquote>
+<p>其中部分内容需要根据个人情况进行修改</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><code class="hljs conf">[gammu]<br><br>port &#x3D; &#x2F;dev&#x2F;ttyUSB0<br>connection &#x3D; at115200<br># Debugging<br>#logformat &#x3D; textall<br><br># SMSD configuration, see gammu-smsdrc(5)<br>[smsd]<br>service &#x3D; files<br>logfile &#x3D; syslog<br># Increase for debugging information<br>debuglevel &#x3D; 0<br>RunOnReceive&#x3D;&#x2F;root&#x2F;gammu&#x2F;index.js<br>hangupcalls &#x3D; 1<br>RunOnIncomingCall&#x3D;&#x2F;root&#x2F;gammu&#x2F;call.js<br><br><br># Paths where messages are stored<br>inboxpath &#x3D; &#x2F;var&#x2F;spool&#x2F;gammu&#x2F;inbox&#x2F;<br>outboxpath &#x3D; &#x2F;var&#x2F;spool&#x2F;gammu&#x2F;outbox&#x2F;<br>sentsmspath &#x3D; &#x2F;var&#x2F;spool&#x2F;gammu&#x2F;sent&#x2F;<br>errorsmspath &#x3D; &#x2F;var&#x2F;spool&#x2F;gammu&#x2F;error&#x2F;<br></code></pre></td></tr></table></figure>
+<p>接下来，在 <code>/root/gammu</code> 下创建 <code>package.json</code></p>
+<figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><code class="hljs json">&#123;<br>  <span class="hljs-attr">&quot;name&quot;</span>: <span class="hljs-string">&quot;gammu-telegram&quot;</span>,<br>  <span class="hljs-attr">&quot;version&quot;</span>: <span class="hljs-string">&quot;1.0.0&quot;</span>,<br>  <span class="hljs-attr">&quot;main&quot;</span>: <span class="hljs-string">&quot;index.js&quot;</span>,<br>  <span class="hljs-attr">&quot;license&quot;</span>: <span class="hljs-string">&quot;MIT&quot;</span>,<br>  <span class="hljs-attr">&quot;dependencies&quot;</span>: &#123;<br>    <span class="hljs-attr">&quot;axios&quot;</span>: <span class="hljs-string">&quot;^0.18.0&quot;</span>,<br>    <span class="hljs-attr">&quot;qcloudsms_js&quot;</span>: <span class="hljs-string">&quot;^0.1.1&quot;</span>,<br>    <span class="hljs-attr">&quot;socks-proxy-agent&quot;</span>: <span class="hljs-string">&quot;^4.0.1&quot;</span><br>  &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
+<p>创建并编辑 <code>index.js</code> 文件</p>
+<blockquote>
+<p>其中部分内容需要根据个人情况进行修改</p>
+</blockquote>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-meta">#!/usr/bin/node</span><br><span class="hljs-keyword">const</span> fs = <span class="hljs-built_in">require</span>(<span class="hljs-string">&#x27;fs&#x27;</span>)<br><span class="hljs-keyword">const</span> path = <span class="hljs-built_in">require</span>(<span class="hljs-string">&#x27;path&#x27;</span>)<br><span class="hljs-keyword">const</span> axios = <span class="hljs-built_in">require</span>(<span class="hljs-string">&#x27;axios&#x27;</span>)<br><span class="hljs-keyword">const</span> SocksProxyAgent = <span class="hljs-built_in">require</span>(<span class="hljs-string">&#x27;socks-proxy-agent&#x27;</span>)<br><span class="hljs-keyword">const</span> botToken = <span class="hljs-string">&quot;*****[REPLACE×THIS×PART]*****&quot;</span><br><span class="hljs-keyword">const</span> chatId = *****[REPLACE×THIS×PART]*****<br><span class="hljs-keyword">const</span> proxyOptions = <span class="hljs-string">&#x27;socks5://127.0.0.1:1080&#x27;</span><br><span class="hljs-keyword">const</span> httpsAgent = <span class="hljs-keyword">new</span> SocksProxyAgent(proxyOptions)<br><span class="hljs-keyword">const</span> client = axios.create(&#123; <span class="hljs-attr">baseURL</span>: <span class="hljs-string">`https://api.telegram.org/bot<span class="hljs-subst">$&#123;botToken&#125;</span>`</span>, httpsAgent&#125;)<br><span class="hljs-keyword">const</span> &#123; SMS_1_NUMBER, SMS_1_TEXT, DECODED_0_TEXT &#125; = process.env<br><br><span class="hljs-keyword">let</span> smsData<br><br><span class="hljs-keyword">if</span> (DECODED_0_TEXT) &#123;<br>  smsData = DECODED_0_TEXT<br>&#125; <span class="hljs-keyword">else</span> &#123;<br>  smsData = SMS_1_TEXT<br>&#125;<br><br><span class="hljs-keyword">async</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">main</span>(<span class="hljs-params"></span>) </span>&#123;<br>  <span class="hljs-keyword">await</span> client.post(<span class="hljs-string">&#x27;/sendMessage&#x27;</span>, &#123;<br>    chat_id: chatId,<br>    text: <span class="hljs-string">&quot;Phone Number: `&quot;</span> + SMS_1_NUMBER + <span class="hljs-string">&quot;`\n&quot;</span> + <span class="hljs-string">&quot;Tag: #sms\nData: `&quot;</span> + smsData + <span class="hljs-string">&quot;`&quot;</span>,<br>    parse_mode: <span class="hljs-string">&#x27;Markdown&#x27;</span><br>  &#125;)<br>&#125;<br><br>main()<br>  .catch(<span class="hljs-function"><span class="hljs-params">err</span> =&gt;</span> <span class="hljs-built_in">console</span>.log(err))<br></code></pre></td></tr></table></figure>
+<p>创建并编辑 <code>call.js</code> 文件</p>
+<blockquote>
+<p>其中部分内容需要根据个人情况进行修改</p>
+</blockquote>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-meta">#!/usr/bin/node</span><br><br><span class="hljs-keyword">var</span> QcloudSms = <span class="hljs-built_in">require</span>(<span class="hljs-string">&quot;qcloudsms_js&quot;</span>);<br><span class="hljs-keyword">const</span> fs = <span class="hljs-built_in">require</span>(<span class="hljs-string">&#x27;fs&#x27;</span>)<br><span class="hljs-keyword">const</span> path = <span class="hljs-built_in">require</span>(<span class="hljs-string">&#x27;path&#x27;</span>)<br><span class="hljs-keyword">const</span> axios = <span class="hljs-built_in">require</span>(<span class="hljs-string">&#x27;axios&#x27;</span>)<br><span class="hljs-keyword">const</span> SocksProxyAgent = <span class="hljs-built_in">require</span>(<span class="hljs-string">&#x27;socks-proxy-agent&#x27;</span>)<br><span class="hljs-keyword">const</span> botToken = <span class="hljs-string">&quot;*****[REPLACE×THIS×PART]*****&quot;</span><br><span class="hljs-keyword">const</span> chatId = *****[REPLACE×THIS×PART]*****<br><span class="hljs-keyword">const</span> proxyOptions = <span class="hljs-string">&#x27;socks5://127.0.0.1:1080&#x27;</span><br><span class="hljs-keyword">const</span> httpsAgent = <span class="hljs-keyword">new</span> SocksProxyAgent(proxyOptions)<br><span class="hljs-keyword">const</span> client = axios.create(&#123; <span class="hljs-attr">baseURL</span>: <span class="hljs-string">`https://api.telegram.org/bot<span class="hljs-subst">$&#123;botToken&#125;</span>`</span>, httpsAgent&#125;)<br><span class="hljs-keyword">const</span> INCOMING_NUMBER = process.argv.slice()[<span class="hljs-number">2</span>];<br><br><span class="hljs-keyword">var</span> appid = *****[REPLACE×THIS×PART]*****;<br><span class="hljs-keyword">var</span> appkey = <span class="hljs-string">&quot;*****[REPLACE×THIS×PART]*****&quot;</span>;<br><span class="hljs-keyword">var</span> templateId = *****[REPLACE×THIS×PART]*****;<br><span class="hljs-keyword">var</span> smsSign = <span class="hljs-string">&quot;*****[REPLACE×THIS×PART]*****&quot;</span>;<br><span class="hljs-keyword">var</span> qcloudsms = QcloudSms(appid, appkey);<br><span class="hljs-keyword">var</span> ssender = qcloudsms.SmsSingleSender();<br><span class="hljs-keyword">var</span> params = [];<br><span class="hljs-keyword">async</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">main</span>(<span class="hljs-params"></span>) </span>&#123;<br>  <span class="hljs-keyword">await</span> client.post(<span class="hljs-string">&#x27;/sendMessage&#x27;</span>, &#123;<br>    chat_id: chatId,<br>    text: <span class="hljs-string">&quot;Phone Number: `&quot;</span> + INCOMING_NUMBER + <span class="hljs-string">&quot;`\n&quot;</span> + <span class="hljs-string">&quot;Tag: #call&quot;</span>,<br>    parse_mode: <span class="hljs-string">&#x27;Markdown&#x27;</span><br>  &#125;)<br>ssender.sendWithParam(<span class="hljs-string">&quot;86&quot;</span>, INCOMING_NUMBER, templateId,<br>params, smsSign, <span class="hljs-string">&quot;&quot;</span>, <span class="hljs-string">&quot;&quot;</span>, callback);<br><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">callback</span>(<span class="hljs-params">err, res, resData</span>) </span>&#123;<br>  <span class="hljs-keyword">if</span> (err) &#123;<br>        client.post(<span class="hljs-string">&#x27;/sendMessage&#x27;</span>, &#123;<br>    chat_id: chatId,<br>    text: <span class="hljs-string">&quot;Err: `&quot;</span> + err + <span class="hljs-string">&quot;`\n&quot;</span> + <span class="hljs-string">&quot;Tag: #error&quot;</span>,<br>    parse_mode: <span class="hljs-string">&#x27;Markdown&#x27;</span><br>  &#125;)<br>  &#125;<br>&#125;<br>&#125;<br><br>main()<br>  .catch(<span class="hljs-function"><span class="hljs-params">err</span> =&gt;</span> <span class="hljs-built_in">console</span>.log(err))<br></code></pre></td></tr></table></figure>
+<p>接下来，安装 dependence</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs bash">yarn install<br><br>chmod +x index.js<br>chmod +x call.js<br></code></pre></td></tr></table></figure>
+<p>然后收到短信时，自动将短信转发至 Telegram。来电时，挂断电话，将来电人信息转发至 Telegram，并通过短信接口给来电者返回短信通知。</p>
+<h2 id="原本的执行方式-过时">原本的执行方式(过时)</h2>
+<blockquote>
+<p>因为 Python 2 已经于 2020年1月1日寿命已经终结，所以此部分理论上已经过时</p>
+</blockquote>
+<blockquote>
+<p>感谢 @Peter 提供技术支持</p>
+</blockquote>
+<h3 id="使用的程序-v2">使用的程序</h3>
+<ul>
+<li>Python 2</li>
+<li>python-pip</li>
+</ul>
+<h3 id="安装必要模块">安装必要模块</h3>
+<figure class="highlight cmake"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs cmake">pip <span class="hljs-keyword">install</span> python-gsmmodem-new<br>pip <span class="hljs-keyword">install</span> qcloudsms_py<br></code></pre></td></tr></table></figure>
+<h3 id="修改-python-package">修改 Python package</h3>
+<p>因为这个包已经很久不更新，而且在 Python 3 下运行存在问题，所以我们需要做一些修改</p>
+<p><code>/usr/local/lib/python2.7/dist-packages/gsmmodem</code></p>
+<p>修改 <code>modem.py</code> 文件的以下部分，当然我也在下方提供了修改后的版本，替换即可</p>
+<p>57 行</p>
+<figure class="highlight reasonml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs reasonml">def <span class="hljs-constructor">__init__(<span class="hljs-params">self</span>, <span class="hljs-params">gsmModem</span>, <span class="hljs-params">status</span>, <span class="hljs-params">number</span>, <span class="hljs-params">time</span>, <span class="hljs-params">text</span>, <span class="hljs-params">smsc</span>=None, <span class="hljs-params">udh</span>=[])</span>:<br>    super(ReceivedSms, self).<span class="hljs-constructor">__init__(<span class="hljs-params">number</span>, <span class="hljs-params">text</span>, <span class="hljs-params">smsc</span>)</span><br>    self._gsmModem = weakref.proxy(gsmModem)<br>    self.status = status<br>    self.time = time<br>    self.udh = udh<br></code></pre></td></tr></table></figure>
+<p>132 行</p>
+<figure class="highlight taggerscript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs taggerscript">CLIP_REGEX = re.compile(&#x27;^<span class="hljs-symbol">\+</span>CLIP:<span class="hljs-symbol">\s</span>*<span class="hljs-symbol">\+</span>&#123;0,1&#125;(<span class="hljs-symbol">\d</span>+),<span class="hljs-symbol">\s</span>*(<span class="hljs-symbol">\d</span>+).*$&#x27;)<br></code></pre></td></tr></table></figure>
+<p>1117 行</p>
+<figure class="highlight reasonml"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs reasonml">messages.append(<span class="hljs-constructor">ReceivedSms(<span class="hljs-params">self</span>, Sms.TEXT_MODE_STATUS_MAP[<span class="hljs-params">msgStatus</span>], <span class="hljs-params">number</span>, <span class="hljs-params">parseTextModeTimeStr</span>(<span class="hljs-params">msgTime</span>)</span>, msgText))<br></code></pre></td></tr></table></figure>
+<p>1127 行</p>
+<figure class="highlight reasonml"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs reasonml">messages.append(<span class="hljs-constructor">ReceivedSms(<span class="hljs-params">self</span>, Sms.TEXT_MODE_STATUS_MAP[<span class="hljs-params">msgStatus</span>], <span class="hljs-params">number</span>, <span class="hljs-params">parseTextModeTimeStr</span>(<span class="hljs-params">msgTime</span>)</span>, msgText))<br></code></pre></td></tr></table></figure>
+<p>1151 行</p>
+<figure class="highlight stylus"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs stylus">sms = ReceivedSms(self, int(msgStat), smsDict<span class="hljs-selector-attr">[<span class="hljs-string">&#x27;number&#x27;</span>]</span>, smsDict<span class="hljs-selector-attr">[<span class="hljs-string">&#x27;time&#x27;</span>]</span>, smsDict<span class="hljs-selector-attr">[<span class="hljs-string">&#x27;text&#x27;</span>]</span>, smsDict<span class="hljs-selector-attr">[<span class="hljs-string">&#x27;smsc&#x27;</span>]</span>, smsDict<span class="hljs-selector-class">.get</span>(<span class="hljs-string">&#x27;udh&#x27;</span>, <span class="hljs-selector-attr">[]</span>))<br></code></pre></td></tr></table></figure>
+<p>1245 行</p>
+<figure class="highlight vim"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs vim">lines.<span class="hljs-keyword">pop</span>(<span class="hljs-number">0</span>) # Workaround <span class="hljs-keyword">for</span> failing <span class="hljs-keyword">to</span> <span class="hljs-built_in">get</span> phone <span class="hljs-keyword">number</span><br></code></pre></td></tr></table></figure>
+<p>1266 行</p>
+<figure class="highlight ini"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs ini"><span class="hljs-attr">callerNumber</span> = clipMatch.group(<span class="hljs-number">1</span>)<br></code></pre></td></tr></table></figure>
+<p>1384 行</p>
+<figure class="highlight reasonml"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs reasonml">self.sms<span class="hljs-constructor">StatusReportCallback(<span class="hljs-params">report</span>)</span><br></code></pre></td></tr></table></figure>
+<p>1403 行</p>
+<figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs kotlin"><span class="hljs-keyword">else</span>:<br>    # <span class="hljs-built_in">Nothing</span> <span class="hljs-keyword">is</span> waiting <span class="hljs-keyword">for</span> <span class="hljs-keyword">this</span> report directly - use callback<br>    self.smsStatusReportCallback(report)<br></code></pre></td></tr></table></figure>
+<p>修改后的文件 <a href="/source/modem.py.new">下载链接</a></p>
+<h3 id="python-文件部分">Python 文件部分</h3>
+<p>将下方内容写入 <code>sms.py</code></p>
+<blockquote>
+<p>收到短信时，自动将短信转发至 Telegram。来电时，挂断电话，将来电人信息转发至 Telegram，并通过短信接口给来电者返回短信通知。</p>
+</blockquote>
+<p>此处使用的短信接口为腾讯云，可替换为其他提供商。</p>
+<blockquote>
+<p>请自行替换其中的数据部分</p>
+</blockquote>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">from</span> gsmmodem.exceptions <span class="hljs-keyword">import</span> InterruptedException <br><span class="hljs-keyword">import</span> logging <br><span class="hljs-keyword">import</span> telegram <br><span class="hljs-keyword">import</span> time<br><span class="hljs-keyword">from</span> qcloudsms_py <span class="hljs-keyword">import</span> SmsSingleSender<br><span class="hljs-keyword">from</span> qcloudsms_py.httpclient <span class="hljs-keyword">import</span> HTTPError<br><br><br>bot = telegram.Bot(token=<span class="hljs-string">&#x27;*****[REPLACE×THIS×PART]*****&#x27;</span>, base_url=<span class="hljs-string">&#x27;https://api.telegram.org/bot&#x27;</span>)<br>appid = *****[REPLACE×THIS×PART]*****<br>appkey = <span class="hljs-string">&quot;*****[REPLACE×THIS×PART]*****&quot;</span><br>phone_number = <span class="hljs-number">0</span><br><br><br>PORT = <span class="hljs-string">&#x27;/dev/ttyUSB0&#x27;</span><br>BAUDRATE = <span class="hljs-number">115200</span><br>PIN = <span class="hljs-literal">None</span> <span class="hljs-comment"># SIM card PIN (if any)</span><br><br><span class="hljs-keyword">from</span> gsmmodem.modem <span class="hljs-keyword">import</span> GsmModem<br><br><span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">handleSms</span>(<span class="hljs-params">sms</span>):</span><br>    logging.info(<span class="hljs-string">b&#x27;== SMS message received ==\nFrom: &#123;0&#125;\nTime: &#123;1&#125;\nMessage:\n&#123;2&#125;\n&#x27;</span>.<span class="hljs-built_in">format</span>(sms.number, sms.time, sms.text.encode(<span class="hljs-string">&#x27;utf-8&#x27;</span>)))<br>    bot.send_message(<span class="hljs-string">&quot;*****[REPLACE×THIS×PART]*****&quot;</span>, <span class="hljs-string">b&#x27;&#123;0&#125;\n\nFrom &#123;1&#125;\n&#x27;</span>.<span class="hljs-built_in">format</span>(sms.text.encode(<span class="hljs-string">&#x27;utf-8&#x27;</span>), sms.number, sms.time))<br><br><span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">handleIncomingCall</span>(<span class="hljs-params">call</span>):</span><br>    logging.info(<span class="hljs-string">b&#x27;Incoming call from &#123;0&#125;&#x27;</span>.<span class="hljs-built_in">format</span>(call.number))<br>    call.hangup()<br>    bot.send_message(<span class="hljs-string">&quot;*****[REPLACE×THIS×PART]*****&quot;</span>, <span class="hljs-string">b&#x27;Incoming call from &#123;0&#125;&#x27;</span>.<span class="hljs-built_in">format</span>(call.number))<br>    sms_sign = <span class="hljs-string">&quot;*****[REPLACE×THIS×PART]*****&quot;</span><br>    template_id = *****[REPLACE×THIS×PART]*****<br>    phone_number = call.number<br>    sms_type = <span class="hljs-number">0</span><br>    ssender = SmsSingleSender(appid, appkey)<br>    params = []<br>    <span class="hljs-keyword">try</span>:<br>      result = ssender.send_with_param(<span class="hljs-number">86</span>, phone_number,<br>          template_id, params, sign=sms_sign, extend=<span class="hljs-string">&quot;&quot;</span>, ext=<span class="hljs-string">&quot;&quot;</span>) <br>    <span class="hljs-keyword">except</span> HTTPError <span class="hljs-keyword">as</span> e:<br>      print(e)<br>      bot.send_message(<span class="hljs-string">&quot;*****[REPLACE×THIS×PART]*****&quot;</span>, <span class="hljs-string">b&#x27;Error &#123;0&#125;&#x27;</span>.<span class="hljs-built_in">format</span>(e))<br>    <span class="hljs-keyword">except</span> Exception <span class="hljs-keyword">as</span> e:<br>      bot.send_message(<span class="hljs-string">&quot;*****[REPLACE×THIS×PART]*****&quot;</span>, <span class="hljs-string">b&#x27;Error &#123;0&#125;&#x27;</span>.<span class="hljs-built_in">format</span>(e))<br>    print(result)<br><br><br><span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">main</span>():</span><br>    logging.basicConfig(<span class="hljs-built_in">format</span>=<span class="hljs-string">&#x27;%(levelname)s: %(message)s&#x27;</span>, level=logging.DEBUG)<br>    logging.info(<span class="hljs-string">&#x27;Initializing modem...&#x27;</span>)<br>    <span class="hljs-comment"># Uncomment the following line to see what the modem is doing:</span><br>    modem = GsmModem(PORT, BAUDRATE, smsReceivedCallbackFunc=handleSms, incomingCallCallbackFunc=handleIncomingCall)<br>    modem.smsTextMode = <span class="hljs-literal">False</span><br>    modem.connect(PIN)<br>    allSms = modem.listStoredSms()<br>    <span class="hljs-keyword">for</span> sms <span class="hljs-keyword">in</span> allSms:<br>        handleSms(sms)<br>    modem.deleteMultipleStoredSms()<br><br>    logging.info(<span class="hljs-string">&#x27;Waiting for SMS message...&#x27;</span>)<br>    <span class="hljs-keyword">try</span>:<br>        modem.rxThread.join(<span class="hljs-number">2</span>**<span class="hljs-number">31</span>) <span class="hljs-comment"># Specify a (huge) timeout so that it essentially blocks indefinitely, but still receives CTRL+C interrupt signal</span><br>    <span class="hljs-keyword">finally</span>:<br>        modem.close()<br><br><span class="hljs-keyword">if</span> __name__ == <span class="hljs-string">&#x27;__main__&#x27;</span>:<br>    main()<br><br></code></pre></td></tr></table></figure>
+<p>接下来，运行 <code>sms.py</code> 即可</p>
+<h2 id="参考链接">参考链接</h2>
+<ul>
+<li><a target="_blank" rel="noopener" href="https://mby.pw/2019/08/30/sms2tg/">sms2tg - Forward SMS messages from a CDMA Modem to Telegram </a></li>
+<li><a target="_blank" rel="noopener" href="https://blog.indexyz.me/archives/recv-and-send-sms-in-raspberry-pi/">使用树莓派来收发短信 - Indexyz Blog</a></li>
+<li><a target="_blank" rel="noopener" href="https://github.com/qcloudsms/qcloudsms_js">qcloudsms/qcloudsms_js: qcloudsms Node.js SDK </a></li>
+<li><a target="_blank" rel="noopener" href="https://gammu.readthedocs.io/en/latest/config/index.html">Gammu Documentation Contents » Gammu Configuration File</a></li>
+<li><a target="_blank" rel="noopener" href="https://readthedocs.org/projects/gammu/downloads/pdf/stable/">Gammu Manual</a></li>
+<li><a target="_blank" rel="noopener" href="https://nodejs.org/en/knowledge/command-line/how-to-parse-command-line-arguments/">How to parse command line arguments | Node.js</a></li>
+<li><a target="_blank" rel="noopener" href="https://wammu.eu/docs/manual/gammu/index.html">Gammu Utility — Gammu 1.41.0 documentation</a></li>
+<li><a target="_blank" rel="noopener" href="https://github.com/gammu/gammu/issues/376">gammu 1.38.6 - HangupCalls and RunOnIncomingCall not working #376</a></li>
+<li><a target="_blank" rel="noopener" href="https://gammu.readthedocs.io/en/latest/smsd/config.html">SMSD Configuration File — Gammu @GAMMU_VERSION@ documentation</a></li>
+</ul>
+
+                    </article>
+                    
+    <blockquote class="post-license">
+        <p>
+            <strong>本文作者&nbsp;:&nbsp;Edison Jwa</strong>
+            <br>
+            <strong>
+            
+                本文使用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">署名-非商业性使用-相同方式共享 4.0 国际 (CC BY-NC-SA 4.0)</a> 协议
+            </strong>
+            <br>
+            <strong>本文链接&nbsp;:&nbsp;</strong><a href="https://www.wevg.org/archives/sms2tg/">https://www.wevg.org/archives/sms2tg/</a>
+        </p>
+    </blockquote>
+
+
+
+    <blockquote id="date-expire-notification" class="post-expired-notify">本文最后更新于 <span id="date-expire-num"></span> 天前，文中所描述的信息可能已发生改变</blockquote>
+    <script>
+    (function() {
+        var dateUpdate = Date.parse("2020-01-13");
+        var nowDate = new Date();
+        var a = nowDate.getTime();
+        var b = a - dateUpdate;
+        var daysUpdateExpire = Math.floor(b/(24*3600*1000));
+        if (daysUpdateExpire >= 120) {
+            document.getElementById('date-expire-num').innerHTML = daysUpdateExpire;
+        } else {
+            document.getElementById('date-expire-notification').style.display = 'none';
+        }
+    })();
+    </script>
+
+
+<p class="post-footer-info mb-0 pt-0">本文发表于&nbsp;<time datetime="2020-01-13T08:15:34.000Z" itemprop="datePublished">2020-01-13</time>
+
+</p>
+<p class="post-footer-info mb-0 pt-2">
+
+<span class="post-categories-list mt-2">
+
+<a class="post-categories-list-item" href='/categories/Tech/'>Tech</a>
+
+</span>
+
+
+
+<span class="post-tags-list mt-2">
+
+<a class="post-tags-list-item" href="/tags/Linux/" rel="tag">#&nbsp;Linux</a>
+
+<a class="post-tags-list-item" href="/tags/%E6%90%AD%E5%BB%BA/" rel="tag">#&nbsp;搭建</a>
+
+<a class="post-tags-list-item" href="/tags/Tools/" rel="tag">#&nbsp;Tools</a>
+
+<a class="post-tags-list-item" href="/tags/Gammu/" rel="tag">#&nbsp;Gammu</a>
+
+<a class="post-tags-list-item" href="/tags/SMS/" rel="tag">#&nbsp;SMS</a>
+
+<a class="post-tags-list-item" href="/tags/Telegam/" rel="tag">#&nbsp;Telegam</a>
+
+<a class="post-tags-list-item" href="/tags/RaspberryPi/" rel="tag">#&nbsp;RaspberryPi</a>
+
+</span>
+
+
+</p>
+
+                </div>
+                <div class="post-nav px-2 bg-gray">
+<ul class="pagination">
+    <!-- Prev Nav -->
+    
+        <li class="page-item page-prev">
+            <a href="/archives/hexo-with-netlify-cms/" rel="prev">
+                <div class="page-item-title"><i class="icon icon-back" aria-hidden="true"></i></div>
+                <div class="page-item-subtitle">给你的 Hexo 博客添加 CMS</div>
+            </a>
+        </li>
+    
+
+    <!-- Next Nav -->
+    
+        <li class="page-item page-next">
+            <a href="/archives/lenovo-yoga-900-linux-touchpad-toggle/" rel="next">
+                <div class="page-item-title"><i class="icon icon-forward" aria-hidden="true"></i></div>
+                <div class="page-item-subtitle">解决 Linux 下 Lenovo Yoga 900 触摸板开关键失效问题</div>
+            </a>
+        </li>
+    
+</ul>
+</div>
+
+                
+                    <!-- # Comment # -->
+                    
+                        <div class="card-footer post-comment">
+                            <div id="disqus_thread"></div>
+
+<script id="js-disqusjs" src="https://cdn.jsdelivr.net/npm/disqusjs@1.2.5/dist/disqus.js" async></script>
+<script>
+document.getElementById('js-disqusjs').addEventListener('load', function () {
+    function loadDisqusJS() {
+        new DisqusJS({
+            shortname: 'edisonj',
+            
+            siteName: 'Vigorous Pro',
+            
+            identifier: 'https://www.wevg.org/archives/sms2tg/',
+            url: 'https://www.wevg.org/archives/sms2tg/',
+            api: 'https://disqus.uv.uy/api/',
+            apikey: 'vBTqc5gYirQfuj9STIAANtQCArVi9MN8UZ72UUucwnhus4AhpgpbVJMIn3Ojl4O7',
+            
+            
+        })
+    }
+    if (document.readyState === 'complete') {
+        loadDisqusJS();
+    } else {
+        window.addEventListener('load', loadDisqusJS);
+    }
+});
+</script>
+
+                        </div>
+                    
+                
+            </div>
+        </div>
+    </div>
+</div>
+
+            <!-- ### Footer ### -->
+            <footer class="text-center">
+    <!-- footer copyright -->
+    
+        <p class="footer-copyright mb-0">Copyright&nbsp;©&nbsp;<span id="copyright-year"></span>
+            <a class="footer-copyright-a" href="https://www.wevg.org">Vigorous Pro</a>
+        </p>
+
+    <!-- footer custom text -->
+    <p class="footer-text mb-0">
+    <a href="/atom.xml" target="_blank" class="footer-develop-a" rel="nofollow noopener noreferrer">RSS</a><span class="footer-develop-divider"></span><a href="https://donate.edison.do" target="_blank" class="footer-develop-a" rel="nofollow noopener noreferrer">Donate</a><span class="footer-develop-divider"></span><a href="/privacy-policy" target="_blank" class="footer-develop-a" rel="nofollow noopener noreferrer">Privacy Policy</a>
+    </p>
+    <!-- footer develop info -->
+    <p class="footer-develop mb-0">
+        
+
+        
+        Powered by&nbsp;<!--
+         --><a href="https://hexo.io" target="_blank" class="footer-develop-a" rel="external nofollow noopener noreferrer">Hexo</a><span class="footer-develop-divider"></span>Theme&nbsp;-&nbsp;<!--
+         --><a href="https://github.com/SukkaW/hexo-theme-suka" target="_blank" class="footer-develop-a" rel="external noopener">Suka</a>
+    </p>
+</footer>
+
+
+        <!-- ### Import File ### -->
+        <!-- ### Footer JS Import ### -->
+
+<script>
+
+    
+window.lazyLoadOptions = {
+    elements_selector: ".lazyload",
+    threshold: 50
+};
+
+(function() {
+    var copyrightNow = new Date().getFullYear();
+    var copyrightContent = document.getElementById('copyright-year');
+    var copyrightSince = 2015;
+    if (copyrightSince === copyrightNow) {
+        copyrightContent.textContent = copyrightNow;
+    } else {
+        copyrightContent.textContent = copyrightSince + ' - ' + copyrightNow;
+    }
+})();
+console.log('\n %c Suka Theme (hexo-theme-suka) | © SukkaW | Verision 1.3.3 %c https://github.com/SukkaW/hexo-theme-suka \n', 'color: #fff; background: #444; padding:5px 0;', 'background: #bbb; padding:5px 0;');
+
+</script>
+
+<script src="https://cdn.jsdelivr.net/npm/vanilla-lazyload@12.3.0" async></script>
+
+
+
+<!-- Comment -->
+
+    
+        <!-- No need for DisqusJS -->
+    
+
+
+<!-- ### Custom Footer ### -->
+<script> if ('serviceWorker' in navigator) { window.addEventListener('load', () => { navigator.serviceWorker.register('/sw.js'); }) } </script><script>window.ga_tid = "UA-106121780-1";window.ga_api = "https://ga.cdn.uv.uy/jquery.js"; </script><script src="https://cdn.jsdelivr.net/gh/EdisonJwa/Blog@master/js/main.js" async></script>
+    </body>
+
+</html>

@@ -1,0 +1,739 @@
+<!DOCTYPE html>
+
+<html lang="zh-CN">
+    <head>
+    <meta charset="utf-8">
+    <!--
+        hexo-theme-suka © SukkaW
+        GitHub: https://github.com/SukkaW/hexo-theme-suka
+    -->
+
+    <!-- ### Resource Hint ### -->
+
+    <!-- ## DNS Prefetch ## -->
+    <meta http-equiv="x-dns-prefetch-control" content="on">
+
+<!-- busuanzi -->
+
+
+<!-- comment -->
+
+
+
+
+
+
+
+<!-- analytics -->
+
+
+
+
+
+
+
+    <!-- ## Preload ## -->
+    
+
+
+
+
+    <!-- ### Meta & Title & Info ### -->
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, minimum-scale=1, initial-scale=1, maximum-scale=5, viewport-fit=cover">
+    <meta name="renderer" content="webkit">
+
+    <!-- Title -->
+    <title>Apex英雄 游戏优化指南 | Vigorous Pro</title>
+
+    <!-- Favicons -->
+    <link rel="icon" type="image&#x2F;ico" href="/favicon.ico"><link rel="apple-touch-icon" sizes="180x180" href="/source/favicon/apple-touch-icon.png"><link rel="icon" typt="image&#x2F;png" sizes="192x192" href="/source/favicon/android-chrome-192x192.png"><link rel="icon" typt="image&#x2F;png" sizes="32x32" href="/source/favicon/favicon-32x32.png"><link rel="icon" typt="image&#x2F;png" sizes="16x16" href="/source/favicon/favicon-16x16.png"><link rel="mask-icon" href="/safari-pinned-tab.svg" color="">
+
+    <!-- ### Import File ### -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/spectre.css@0.5.3"><style>
+    body {
+        background-color: #f8f9fa;
+    }
+
+    a, a:visited {
+        color: #0070ff;
+    }
+
+    a:active, a:focus, a:hover {
+        color: #0070ff;
+        opacity: .75;
+    }
+
+    #post-content a,
+    #post-content a:hover,
+    #post-content a:focus,
+    #post-content a:visited {
+        color: #005eb9;
+        opacity: 1;
+    }
+
+    
+
+    .post-entry .card-body a {
+        color: #0070ff;
+    }
+
+    .avatar {
+        background: #444;
+    }
+
+    .navbar-link,
+    .navbar-link:visited,
+    .timeline .timeline-item .timeline-icon.icon-lg {
+        color: #0070ff;
+    }
+
+    .navbar-link:hover {
+        color: #0070ff;
+        opacity: .8;
+    }
+
+    #search-input .btn,
+    #disqus_click_btn,
+    #disqus-switch-to-direct,
+    #disqus-loadmore-button {
+        background: #727e96;
+        border-color: #727e96;
+        color: #fff;
+    }
+
+    #post-toc a.post-toc-link,
+    #post-toc a.post-toc-link:visited,
+    .share-menu.menu .menu-item>a {
+        color: #727e96;
+    }
+
+    .share-menu.menu .menu-item>a:hover,
+    .share-menu.menu .menu-item>a:focus,
+    .share-menu.menu .menu-item>a:visited {
+        color: #50596c;
+        background: #f8f9fa;
+        opacity: .85;
+    }
+</style><link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/sukkaw/hexo-theme-suka@latest/source/css/style.min.css">
+
+
+    
+        <!-- Import DisqusJS Default Theme -->
+        <link rel="preload" href="https://cdn.jsdelivr.net/npm/disqusjs@1.2.5/dist/disqusjs.css" as="style" onload="this.onload=null;this.rel='stylesheet'"><noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/disqusjs@1.2.5/dist/disqusjs.css"></noscript>
+
+    
+
+
+
+
+
+
+
+    <!-- Prettify Theme -->
+    
+    <link rel="preload" href="https://cdn.jsdelivr.net/gh/sukkaw/hexo-theme-suka@latest/source/css/highlight/tomorrow-night-eighties.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'"><noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/sukkaw/hexo-theme-suka@latest/source/css/highlight/tomorrow-night-eighties.min.css"></noscript>
+
+
+
+
+
+<script>
+/*! loadCSS. [c]2017 Filament Group, Inc. MIT License */
+!function(t){"use strict";t.loadCSS||(t.loadCSS=function(){});var e=loadCSS.relpreload={};if(e.support=function(){var e;try{e=t.document.createElement("link").relList.supports("preload")}catch(t){e=!1}return function(){return e}}(),e.bindMediaToggle=function(t){var e=t.media||"all";function a(){t.addEventListener?t.removeEventListener("load",a):t.attachEvent&&t.detachEvent("onload",a),t.setAttribute("onload",null),t.media=e}t.addEventListener?t.addEventListener("load",a):t.attachEvent&&t.attachEvent("onload",a),setTimeout(function(){t.rel="stylesheet",t.media="only x"}),setTimeout(a,3e3)},e.poly=function(){if(!e.support())for(var a=t.document.getElementsByTagName("link"),n=0;n<a.length;n++){var o=a[n];"preload"!==o.rel||"style"!==o.getAttribute("as")||o.getAttribute("data-loadcss")||(o.setAttribute("data-loadcss",!0),e.bindMediaToggle(o))}},!e.support()){e.poly();var a=t.setInterval(e.poly,500);t.addEventListener?t.addEventListener("load",function(){e.poly(),t.clearInterval(a)}):t.attachEvent&&t.attachEvent("onload",function(){e.poly(),t.clearInterval(a)})}"undefined"!=typeof exports?exports.loadCSS=loadCSS:t.loadCSS=loadCSS}("undefined"!=typeof global?global:this);
+</script>
+
+    <!-- ### Site Verification ### -->
+    
+
+
+    <link rel="alternate" type="application/atom+xml" href="/atom.xml"><meta name="mobile-web-app-capable" content="yes"><meta name="application-name" content="Vigorous Pro"><meta name="msapplication-starturl" content="https://www.wevg.org"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-title" content="Vigorous Pro"><meta name="apple-mobile-web-app-status-bar-style" content="black-translucent"><link rel="manifest" href="/manifest.json"><link rel="search" type="application/opensearchdescription+xml" href="/opensearch.xml" title="Vigorous Pro">
+
+    <!-- ### The Open Graph & Twitter Card Protocol ### -->
+    <meta property="og:title" content="Apex英雄 游戏优化指南 | Vigorous Pro"><meta property="og:site_name" content="Vigorous Pro"><meta property="og:type" content="article"><meta property="og:url" content="https://www.wevg.org/archives/best-optimize-apex/"><meta property="og:locale" content="zh-CN"><meta name="description" content="Apex 英雄是由艺电推出的免费大逃杀类多人在线角色扮演第一人称射击游戏，该游戏自今年2月4日发布时开始，便受到了广大玩家的喜爱。 - Edison Jwa - Vigorous Pro"><meta name="keywords" content="优化, 设置, Origin, Apex, fps, Xbox DVR, Nvidia, 启动项, edisonjwa,game,blog,Web,Html,edison"><meta property="og:image" content="https://cdn.jsdelivr.net/gh/EdisonJwa/Blog@master/source/thumbnail/49f53d5de8e237e8a16ac26f8f124bea.jpg"><meta property="og:image" content="https://i.yecdn.com/images/2019/02/24/23bec10b1ef3e591a0c3cd212dd2c4e2.png"><meta property="og:image" content="https://i.yecdn.com/images/2019/02/24/2a7f97b707c2cd98f3411128998122e8.png"><meta property="og:image" content="https://i.yecdn.com/images/2019/02/24/fcde678689bcb9d06ce81a034d9061a9.png"><meta property="og:image" content="https://i.yecdn.com/images/2019/02/24/da0e3df1a5cbbea301072e219e40792a.png"><meta property="og:image" content="https://i.yecdn.com/images/2019/02/24/82634d3ec92773bf2fb6b78b071afb1f.png"><meta property="og:image" content="https://i.yecdn.com/images/2019/01/05/aab765e1536a6ae2809ef254e728cc69.png"><meta property="og:image" content="https://i.yecdn.com/images/2019/01/05/268c520649c26249f5fc0b7dae1d7d29.png"><meta property="og:image" content="https://i.yecdn.com/images/2019/01/05/5049715d308e274e868c2ea3b3181f93.png"><meta property="og:image" content="https://i.yecdn.com/images/2019/01/05/c71e82371c69db104d21737b20b51615.png"><meta property="og:image" content="https://i.yecdn.com/images/2019/01/05/7de77b2eb090a1a386b445781a69cd3d.png"><meta property="og:image" content="https://i.yecdn.com/images/2019/02/26/8ea26f6b98f55e809904b3286a0b98b6.png"><meta property="og:image" content="https://i.yecdn.com/images/2019/02/24/45ed1daa8b8ca7e3e245f8d8f724ee7a.png"><meta property="og:image" content="https://i.yecdn.com/images/2019/02/24/3918f2222847666cd3388a9f425621f6.png"><meta property="og:image" content="https://i.yecdn.com/images/2019/02/26/8bd6b031819a495ab3012dda0cafb73f.png"><meta property="og:image" content="https://i.yecdn.com/images/2019/01/05/2a79e12187d4e7dddb38596d1a72cbd8.png"><meta property="article:published_time" content="2019-02-24T10:03:28.000Z"><meta property="article:modified_time" content="2019-04-01T10:17:22.000Z"><meta property="og:updated_time" content="2019-04-01T10:17:22.000Z"><meta property="article:author" content="Edison Jwa"><meta property="article:tag" content="优化, 设置, Origin, Apex, fps, Xbox DVR, Nvidia, 启动项, edisonjwa,game,blog,Web,Html,edison"><meta name="twitter:card" content="summary_large_image"><meta name="twitter:image" content="https://cdn.jsdelivr.net/gh/EdisonJwa/Blog@master/source/thumbnail/49f53d5de8e237e8a16ac26f8f124bea.jpg">
+
+    
+
+    <!-- ### Canonical link ### -->
+    <link rel="canonical" href="https://www.wevg.org/archives/best-optimize-apex/">
+
+    <meta name="generator" content="Hexo 5.4.0">
+
+    <!-- ### Analytics ### -->
+    
+
+
+
+
+
+
+
+    <!-- ### Structured Data ### -->
+    
+
+
+
+<script type="application/ld+json">
+{
+    "@context": "http://schema.org",
+    "url": "https://www.wevg.org/archives/best-optimize-apex/",
+    "@type": "BlogPosting",
+    "logo": "https://www.wevg.org/source/favicon/android-chrome-192x192.png",
+    "mainEntityOfPage": {
+        "@type": "WebPage",
+        "@id": "https://www.wevg.org/archives/best-optimize-apex/"
+    },
+    "headline": "Apex英雄 游戏优化指南 | Vigorous Pro",
+    
+    "image": {
+        "@type": "ImageObject",
+        "url": "https://cdn.jsdelivr.net/gh/EdisonJwa/Blog@master/source/thumbnail/49f53d5de8e237e8a16ac26f8f124bea.jpg"
+    },
+    
+    "datePublished": "2019-02-24T10:03:28.000Z",
+    "dateModified": "2019-04-01T10:17:22.000Z",
+    "author": {
+        "@type": "Person",
+        "name": "Edison Jwa",
+        "image": {
+            "@type": "ImageObject",
+            "url": "https://cdn.jsdelivr.net/gh/EdisonJwa/Blog@master/source/image/avatar.jpg"
+        },
+        "description": "The world can always use more heroes."
+    },
+    "publisher": {
+        "@type": "Organization",
+        "name": "Vigorous Pro",
+        "logo": {
+            "@type": "ImageObject",
+            "url": "https://www.wevg.org/source/favicon/android-chrome-192x192.png"
+        }
+    },
+    
+    "potentialAction": {
+        "@type": "SearchAction",
+        "target": "https://www.wevg.org/search?s={search_term_string}",
+        "query-input": "required name=search_term_string"
+    },
+    
+    "keywords": "优化, 设置, Origin, Apex, fps, Xbox DVR, Nvidia, 启动项, edisonjwa,game,blog,Web,Html,edison",
+    "description": "Apex 英雄是由艺电推出的免费大逃杀类多人在线角色扮演第一人称射击游戏，该游戏自今年2月4日发布时开始，便受到了广大玩家的喜爱。 - Edison Jwa - Vigorous Pro"
+}
+</script>
+
+
+
+    <!-- ### Custom Head ### -->
+    <!-- EdisonJwas Blog --><script data-ad-client="ca-pub-2345785306567671" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script><link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/EdisonJwa/Blog@latest/css/darkmode.min.css"><script src="https://cdn.jsdelivr.net/gh/EdisonJwa/Blog@master/js/edison-main.min.js"></script><script type="module" async="" src="https://cdn.jsdelivr.net/npm/instant.page@3.0.0/instantpage.min.js"></script><link rel="manifest" href="/site.webmanifest"><meta name="msapplication-TileColor" content="#d43d3d"><meta name="msapplication-TileImage" content="/source/favicon/mstile-144x144.png"><meta name="theme-color" content="#ffffff"><script type="text/javascript">function downloadJSAtOnload(){var d=document.createElement("script");d.src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js",document.body.appendChild(d)}window.addEventListener?window.addEventListener("load",downloadJSAtOnload,!1):window.attachEvent?window.attachEvent("onload",downloadJSAtOnload):window.onload=downloadJSAtOnload;</script><!-- Global site tag (gtag.js) - Google Analytics --><script async src="https://www.googletagmanager.com/gtag/js?id=G-S2SFLD81VT"></script><script>window.dataLayer = window.dataLayer || [];function gtag(){dataLayer.push(arguments);} gtag('js', new Date()); gtag('config', 'G-S2SFLD81VT');</script><!-- Cloudflare Web Analytics --><script defer src=https://static.cloudflareinsights.com/beacon.min.js ; data-cf-beacon="{&quot;token&quot;: 1ebb36a2c023408484ff114c409377b8}"></script><!-- End Cloudflare Web Analytics -->
+<style type="text/css">
+.spoiler {
+  display: inline-flex;
+}
+p.spoiler {
+  display: flex;
+}
+.spoiler a {
+  pointer-events: none;
+}
+.spoiler-blur, .spoiler-blur > * {
+  transition: text-shadow .5s ease;
+}
+.spoiler .spoiler-blur, .spoiler .spoiler-blur > * {
+  color: rgba(0, 0, 0, 0);
+  background-color: rgba(0, 0, 0, 0);
+  text-shadow: 0 0 10px grey;
+  cursor: pointer;
+}
+.spoiler .spoiler-blur:hover, .spoiler .spoiler-blur:hover > * {
+  text-shadow: 0 0 5px grey;
+}
+.spoiler-box, .spoiler-box > * {
+  transition: color .5s ease,
+  background-color .5s ease;
+}
+.spoiler .spoiler-box, .spoiler .spoiler-box > * {
+  color: black;
+  background-color: black;
+  text-shadow: none;
+}</style></head>
+
+    <body>
+            
+
+            <!-- ### Main content ### -->
+            <!-- ## Header ##-->
+<header>
+    <h1 class="header-title text-center"><a href="/">Vigorous Pro</a></h1>
+
+    <p class="text-center header-slogan">
+        
+            
+                The world can always use more heroes.
+            
+        
+    </p>
+
+    <nav class="navbar-section text-center">
+    
+        <a href="/" class="navbar-link">首页</a>
+    
+    
+        <a href="/archives/" class="navbar-link">归档</a>
+    
+    
+        <a href="/search" class="navbar-link">搜索</a>
+    
+    
+        <a target="_blank" rel="noopener" href="https://uv.uy" class="navbar-link">关于</a>
+    
+        <a href="/friends/" class="navbar-link">友链</a>
+    
+    
+    
+</nav>
+</header>
+
+            
+    <!-- ## Post ## -->
+    <div class="post-container">
+    <div id="post-card" class="card">
+        
+            <div class="card-image lazyload" data-bg="url('https://cdn.jsdelivr.net/gh/EdisonJwa/Blog@master/source/thumbnail/49f53d5de8e237e8a16ac26f8f124bea.jpg')"></div>
+        
+        <div class="card-item-container">
+            <div class="card-inner-cell">
+                <!-- # Post Header Info # -->
+                <div class="card-header">
+                    
+    <h1 class="card-title h3 mb-2">Apex英雄 游戏优化指南</h1>
+
+
+
+
+<div class="post-header-info">
+    <p class="post-header-info-left text-gray">
+        <img class="author-thumb lazyload" data-src="https://cdn.jsdelivr.net/gh/EdisonJwa/Blog@master/source/image/avatar.jpg" src="https://cdn.jsdelivr.net/gh/sukkaw/hexo-theme-suka@latest/source/img/suka-lazyload.gif" alt="Edison Jwa's Avatar">
+        <span>2019-02-24</span>
+        
+            <span class="suka-devide-dot"></span>
+            <a class="category-link" href="/categories/Gaming/">Gaming</a>
+        
+        
+        
+    </p>
+    <div class="post-header-info-right">
+        
+            <div class="dropdown dropdown-right">
+<a class="dropdown-toggle" tabindex="0">分享本文</a>
+<ul class="menu share-menu">
+    <!-- Share Weibo -->
+    
+    <li class="menu-item">
+        <a href="http://service.weibo.com/share/share.php?appkey=&title=Apex英雄 游戏优化指南&url=https://www.wevg.org/archives/best-optimize-apex/&pic=https://cdn.jsdelivr.net/gh/EdisonJwa/Blog@master/source/thumbnail/49f53d5de8e237e8a16ac26f8f124bea.jpg&searchPic=false&style=simple" target="_blank" rel="external noopener noreferrer nofollow">分享到微博</a>
+    </li>
+    
+
+    <!-- Share Twitter -->
+    
+    <li class="menu-item">
+        <a href="https://twitter.com/intent/tweet?text=Apex英雄 游戏优化指南&url=https://www.wevg.org/archives/best-optimize-apex/&via=Edison Jwa" target="_blank" rel="external noopener noreferrer nofollow">分享到 Twitter</a>
+    </li>
+    
+
+    <!-- Share Facebook -->
+    
+    <li class="menu-item">
+        <a href="https://www.facebook.com/sharer/sharer.php?u=https://www.wevg.org/archives/best-optimize-apex/" target="_blank" rel="external noopener noreferrer nofollow">分享到 Facebook</a>
+    </li>
+    
+
+    <!-- Share Google+ -->
+    
+    <li class="menu-item">
+        <a href="https://plus.google.com/share?url=https://www.wevg.org/archives/best-optimize-apex/" target="_blank" rel="external noopener noreferrer nofollow">分享到 Google+</a>
+    </li>
+    
+
+    <!-- Share LinkedIn -->
+    
+    <li class="menu-item">
+        <a href="https://www.linkedin.com/shareArticle?mini=true&url=https://www.wevg.org/archives/best-optimize-apex/&title=Vigorous Pro" target="_blank" rel="external noopener noreferrer nofollow">分享到 LinkedIn</a>
+    </li>
+    
+
+    <!-- Share QQ -->
+    
+    <li class="menu-item">
+        <a href="http://connect.qq.com/widget/shareqq/index.html?site=Vigorous Pro&title=Vigorous Pro&summary=The world can always use more heroes.&pics=https://cdn.jsdelivr.net/gh/EdisonJwa/Blog@master/source/thumbnail/49f53d5de8e237e8a16ac26f8f124bea.jpg&url=https://www.wevg.org/archives/best-optimize-apex/" target="_blank" rel="external noopener noreferrer nofollow"> 分享到 QQ</a>
+    </li>
+    
+
+    <!-- Share Telegram -->
+    
+    <li class="menu-item">
+        <a href="https://t.me/share/url?url=https://www.wevg.org/archives/best-optimize-apex/&text=Vigorous Pro" target="_blank" rel="external noopener noreferrer nofollow">分享到 Telegram</a>
+    </li>
+    
+
+    <!-- QRCode -->
+    
+    <li class="menu-item">
+        <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAJQAAACUCAAAAABQV18IAAAB30lEQVR42u3a0bLCIAyE4b7/S+uto2R3o15A+vfGM/ZYPmaggYTrseF1gQIFCtQCdYlrdb98YPHbtB1Qs1BVI++fqwYVtgKu2gE1D+UGqRqsq05UKNkOqFugPl5w4u+qI6BArV52DlP9P6j7omSgXAz6ZOFXvVR/XiWA2h7VCbS/fP51NwNqW5RNOqiHhPf+nnUBtTUqeTGqRt0CL9mIgJqHUgM2WfC5hZzqNKiZqPhHxXfVIm7VGTlBQI1AVQkKlbTvbDJcB0DNRiWbCbcZVZPFdg7UCFSSHEtfoCqR4doCNQeVFILUgq37wpRoUCNQahCrBZlL+Ltgvwz+oEagVNK0c/AhCcQuKIOah1IJi6RQmRTEZTAHNQKVJLw6gbdq2CU3QM1HpQE6KV66A6mg5qKSYJokwJIDrdHKE9TxKJWc7STNOkmQaPaBOgr1bcB1BSEXfKOCEahjUckhCFvsadyPKg6gjkV9c0g+TawlBzFAzUPZw3tmc9oZ7K3ZB+pYVHdTmQRiN3Gi2QfqaFRn4+gASZGp3OCCGoVyiXt3cCLFykUjqFug1APV5sIdnAB1b1SSBHEwV7wENQ+lDvV1BrB7jjzEA2oMqnNQMCmEJwUDWzACdSxqpwsUKFCgXq4nbapxQMtKUwUAAAAASUVORK5CYII=" alt="QRCode">
+    </li>
+    
+
+</ul>
+</div>
+        
+    </div>
+</div>
+                </div>
+                <div class="card-body">
+                    
+                        
+                        
+                            <div id="post-toc"><ol class="post-toc"><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#apex-%E6%B8%B8%E6%88%8F%E4%BC%98%E5%8C%96"><span class="post-toc-number">1.</span> <span class="post-toc-text">Apex 游戏优化</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6"><span class="post-toc-number">1.1.</span> <span class="post-toc-text">配置文件</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#%E7%AC%AC%E4%B8%80%E6%AD%A5%EF%BC%9A%E6%B8%B8%E6%88%8F%E7%9B%AE%E5%BD%95%E5%A4%96"><span class="post-toc-number">1.2.</span> <span class="post-toc-text">第一步：游戏目录外</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#%E7%AC%AC%E4%BA%8C%E6%AD%A5%EF%BC%9A%E6%B8%B8%E6%88%8F%E7%9B%AE%E5%BD%95%E5%86%85%E4%BC%98%E5%8C%96"><span class="post-toc-number">1.3.</span> <span class="post-toc-text">第二步：游戏目录内优化</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#%E7%AC%AC%E4%B8%89%E6%AD%A5%EF%BC%9A%E5%90%AF%E5%8A%A8%E5%8F%82%E6%95%B0%E4%BC%98%E5%8C%96"><span class="post-toc-number">1.4.</span> <span class="post-toc-text">第三步：启动参数优化</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#%E6%B8%B8%E6%88%8F%E5%86%85%E8%AE%BE%E7%BD%AE"><span class="post-toc-number">1.5.</span> <span class="post-toc-text">游戏内设置</span></a></li></ol></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#win10-xbox-dvr-%E7%9A%84%E5%85%B3%E9%97%AD%E5%8F%8A%E7%B3%BB%E7%BB%9F%E8%AE%BE%E7%BD%AE"><span class="post-toc-number">2.</span> <span class="post-toc-text">WIN10 XBOX DVR 的关闭及系统设置</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#%E5%85%B3%E9%97%AD-xbox-dvr"><span class="post-toc-number">2.1.</span> <span class="post-toc-text">关闭 XBOX DVR</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#%E7%94%B5%E6%BA%90%E8%AE%BE%E7%BD%AE"><span class="post-toc-number">2.2.</span> <span class="post-toc-text">电源设置</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#%E5%85%B3%E9%97%AD%E6%B8%B8%E6%88%8F%E6%A8%A1%E5%BC%8F"><span class="post-toc-number">2.3.</span> <span class="post-toc-text">关闭游戏模式</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#%E5%90%AF%E7%94%A8-windows-10-%E5%8D%93%E8%B6%8A%E6%80%A7%E8%83%BD-%E5%8F%AF%E9%80%89"><span class="post-toc-number">2.4.</span> <span class="post-toc-text">启用 Windows 10 卓越性能 (可选)</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#%E5%85%B6%E4%BB%96%E6%9D%82%E9%A1%B9%E8%AE%BE%E7%BD%AE%EF%BC%9A"><span class="post-toc-number">2.5.</span> <span class="post-toc-text">其他杂项设置：</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E5%9C%A8-bios-%E4%B8%AD%E7%A6%81%E7%94%A8-hpet-%E9%AB%98%E7%B2%BE%E5%BA%A6%E4%BA%8B%E4%BB%B6%E8%AE%A1%E6%97%B6%E5%99%A8"><span class="post-toc-number">2.5.1.</span> <span class="post-toc-text">在 BIOS 中禁用 HPET（高精度事件计时器）</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E5%9C%A8-discord-%E4%B8%AD%E7%A6%81%E7%94%A8%E7%A1%AC%E4%BB%B6%E5%8A%A0%E9%80%9F"><span class="post-toc-number">2.5.2.</span> <span class="post-toc-text">在 Discord 中禁用硬件加速</span></a></li></ol></li></ol></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#nvidia-%E6%98%BE%E5%8D%A1%E9%A9%B1%E5%8A%A8%E5%86%85%E4%BC%98%E5%8C%96"><span class="post-toc-number">3.</span> <span class="post-toc-text">NVIDIA 显卡驱动内优化</span></a></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#%E9%BC%A0%E6%A0%87%E7%81%B5%E6%95%8F%E5%BA%A6"><span class="post-toc-number">4.</span> <span class="post-toc-text">鼠标灵敏度</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#%E5%85%B3%E9%97%AD%E9%BC%A0%E6%A0%87%E5%8A%A0%E9%80%9F%E5%BA%A6"><span class="post-toc-number">4.1.</span> <span class="post-toc-text">关闭鼠标加速度</span></a></li></ol></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#%E5%8F%82%E8%80%83%E9%93%BE%E6%8E%A5"><span class="post-toc-number">5.</span> <span class="post-toc-text">参考链接</span></a></li></ol></div>
+                        
+                    
+                    <article id="post-content">
+                        <p>Apex 英雄是由艺电推出的免费大逃杀类多人在线角色扮演第一人称射击游戏，该游戏自今年2月4日发布时开始，便受到了广大玩家的喜爱。<span id="more"></span></p>
+<p>本教程将会通过修改和优化等等方式提升游戏帧数与稳定性，并降低帧生成时间，进而提升游戏体验。</p>
+<h1 id="apex-游戏优化">Apex 游戏优化</h1>
+<h2 id="配置文件">配置文件</h2>
+<p>请在此处下载下文所需的配置文件<br>
+<strong>下载地址</strong> <a target="_blank" rel="noopener" href="https://cloud.wevg.org/Blog/Apex/">https://cloud.wevg.org/Blog/Apex/</a></p>
+<h2 id="第一步：游戏目录外">第一步：游戏目录外</h2>
+<p>首先，打开目录 <code>C:\Users\用户名\Saved Games\Respawn\Apex\local</code><br>
+此处<strong>需要注意</strong>的是，中文系统会将 <strong>Saved Games</strong> 显示为 <strong>保存的游戏</strong>。</p>
+<p>将上方提供的配置文件 <code>videoconfig.txt</code> ，下载并覆盖此文件夹中现有的同名文件。</p>
+<p><strong>需要注意的以下两点：</strong></p>
+<ol>
+<li>请根据自己的显示器分辨率修改 <strong>videoconfig.txt</strong> 文件中的以下两项(此处以 1920x1080 为例)，提供的配置文件已经设置为1920x1080。</li>
+</ol>
+  <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs conf">&quot;setting.defaultres&quot;		&quot;1920&quot;<br>&quot;setting.defaultresheight&quot;		&quot;1080&quot;<br></code></pre></td></tr></table></figure>
+<ol start="2">
+<li>配置完成后，请务必将 <strong>videoconfig.txt</strong> 文件设置为 <strong>只读</strong>，否则启动游戏时，修改的内容将会被覆写。</li>
+</ol>
+<p>这个修改主要核心调整参数为&quot;setting.dvs_gpuframetime_min&quot; “6000”，“setting.dvs_gpuframetime_max” “7000”，酌情提升参数则提高画质，降低参数则降低画质。Apex 的默认值 分别为 15000 和 16500。<br>
+同时&quot;setting.r_lod_switch_scale&quot; &quot;0.4000&quot;建议在0.3至0.5之间调整，默认为0.6</p>
+<blockquote>
+<p><strong>配置文件部分说明</strong><br>
+<strong>&quot;setting.dvs_gpuframetime_min&quot;</strong>  最小帧生成时间<br>
+<strong>&quot;setting.dvs_gpuframetime_max&quot;</strong>  最大帧生成时间<br>
+降低帧生成时间与输入延迟会显著的提升你所见到的敌人位置的准确性，这个时间/延迟越高，你眼中的敌人与敌人的实际位置之间的偏差就会越大，就会出现明明瞄的很准却打不到敌人的情况.<br>
+在通常情况下，游戏厂商会通过延长这个时间为手段使游戏看上去更流畅，从而达到看上去优化很好的效果，在硬件条件允许的条件下，我们会牺牲一部分流畅度与清晰度达到更高的准确度，这就是富有竞技性的选择。</p>
+</blockquote>
+<h2 id="第二步：游戏目录内优化">第二步：游戏目录内优化</h2>
+<p>打开游戏安装目录下的 <strong>cfg 文件夹</strong>，(此处以我自己的安装目录为例 <strong>E:\Origin Games\Apex</strong>)<br>
+将上方我已经制作好的 autoexec.cfg 文件拷贝进去即可。</p>
+<p>为了让游戏能成功读取 autoexec.cfg 文件，<br>
+<strong>请务必配置第三步的启动参数优化！！！</strong></p>
+<blockquote>
+<p><strong>配置文件部分说明</strong><br>
+<strong>cl_forcepreload 0</strong> 关闭预加载，在前些日子被证明会带来负优化，会延长帧生成时间并且可能会出现不可预料的卡顿<br>
+<strong>fps_max 0</strong> 关闭FPS上限，改为999也可以，在CSGO中999的情况下会比0的高，APEX中尚未测试，为了保证稳定，选用0</p>
+</blockquote>
+<p><s><strong>2019-03-28</strong> 近期发现有些情况下会出现无法解除fps帧数限制的问题，正在寻找解决办法，请关注后期更新</s><br>
+<strong>2019.04.12</strong> 此问题已解决</p>
+<h2 id="第三步：启动参数优化">第三步：启动参数优化</h2>
+<p>打开 <strong>Origin</strong>，点击界面左侧的 <strong>游戏库</strong> 找到并右键点击 <strong>Apex</strong> 并打开菜单中的 <strong>游戏属性</strong> 选项。</p>
+<p><img src="https://i.yecdn.com/images/2019/02/24/23bec10b1ef3e591a0c3cd212dd2c4e2.png" alt=""></p>
+<p>点击 <strong>进阶启动选项</strong> 在 <strong>命令行引数</strong> 中 填写以下内容</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs json">+exec autoexec +cl_showfps 4 -fullscreen -novid -forcenovsync<br></code></pre></td></tr></table></figure>
+<p>2019.04.12 最近本人在电脑上重新安装 Apex 时发现，有时候会出现在进入游戏的界面未响应（非性能问题），后发现可通过删除启动项中的 <code>-fullscreen</code> 解决此问题，但造成的问题是，进入游戏时为窗口化，目前在寻找解决办法，请关注后期更新~~</p>
+<blockquote>
+<p><strong>部分参数说明</strong><br>
+<strong>+cl_showfps 4</strong> 加号开头的启动项的意思为在游戏开始时会在控制台输入以下指令，后面的意思为在位置4显示FPS等参数（包括当前FPS,帧生成时间等）<br>
+<strong>-fullscreen</strong> 减号开头的启动项意思为只有在启动项中生效的指令 意义为强制全屏<br>
+<strong>-novid</strong>  去除过场动画<br>
+<strong>-forcenovsync</strong> 强制关闭垂直同步</p>
+</blockquote>
+<p><img src="https://i.yecdn.com/images/2019/02/24/2a7f97b707c2cd98f3411128998122e8.png" alt=""></p>
+<h2 id="游戏内设置">游戏内设置</h2>
+<p><strong>可以根据系统配置酌情提高模型细节，特效细节，纹理过滤，纹理串流预算的设置</strong></p>
+<p><img src="https://i.yecdn.com/images/2019/02/24/fcde678689bcb9d06ce81a034d9061a9.png" alt=""></p>
+<p><img src="https://i.yecdn.com/images/2019/02/24/da0e3df1a5cbbea301072e219e40792a.png" alt=""></p>
+<p><img src="https://i.yecdn.com/images/2019/02/24/82634d3ec92773bf2fb6b78b071afb1f.png" alt=""></p>
+<h1 id="win10-xbox-dvr-的关闭及系统设置">WIN10 XBOX DVR 的关闭及系统设置</h1>
+<h2 id="关闭-xbox-dvr">关闭 XBOX DVR</h2>
+<p>首先我们知道，在 Win10 更新了版本后，出现了 Xbox DVR 这个功能且默认开启。本意是为了方便记录游戏时的精彩瞬间，相当于录制截图工具的存在，但是对于 CSGO、DOTA2 这一类游戏却会导致帧数被锁定。</p>
+<p>那么因为 Win10 默认开启此功能，我们要如何关闭呢？</p>
+<p>第一种就是就是登陆微软账户并打开 XBOX 软件<strong>关闭 DVR 滑钮</strong>，这里不做教程。</p>
+<p>第二种就是使用我们提供好的一键关闭 XBOX DVR 脚本，运行并重启电脑后生效。</p>
+<p><strong>2018-10-18</strong> 提供一键关闭 DVR 脚本 <a target="_blank" rel="noopener" href="https://cloud.wevg.org/Blog/CS-GO/disableDVR.reg"><strong>点此下载</strong></a></p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs json">Windows Registry Editor Version 5.00<br>[HKEY_CURRENT_USER\System\GameConfigStore]<br>&quot;GameDVR_Enabled&quot;=dword:0<br>[HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\GameDVR]<br>&quot;AllowGameDVR&quot;=dword:0<br>[HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\PolicyManager\default\ApplicationManagement\AllowGameDVR]<br>&quot;value&quot;=dword:0<br></code></pre></td></tr></table></figure>
+<p>至此，有关 Xbox 的关闭与卸载结束，我们接着说 Windows 系统的一些设置。</p>
+<h2 id="电源设置">电源设置</h2>
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css">
+<p>首先是电源设置，我们右键左下角 <i class="fab fa-windows"> Windows 键，点击<strong>电源选项</strong>。</p>
+<p><img src="https://i.yecdn.com/images/2019/01/05/aab765e1536a6ae2809ef254e728cc69.png" alt="电源选项"></p>
+<p>然后会出现如此界面，这时我们点击<strong>其他电源设置</strong>，会出现电源选项的窗口，如图。</p>
+<p><img src="https://i.yecdn.com/images/2019/01/05/268c520649c26249f5fc0b7dae1d7d29.png" alt="其他电源设置"></p>
+<p><img src="https://i.yecdn.com/images/2019/01/05/5049715d308e274e868c2ea3b3181f93.png" alt="高性能"></p>
+<p>我们直接切换到<strong>高性能</strong>即可，如果没有发现高性能，通常在下方的隐藏附加计划内。</p>
+<p>​	值得一提的是，使用一些国产软件的朋友可能会发现默认在使用X大师节能计划，这是很毒瘤很垃圾很差劲的东西，<strong>请务必不要使用！<strong>此类电源计划表面标称能在节能的同时保留完整的性能，但当我们打开编辑选项查看时，发现它直接</strong>将 CPU 限制到75%的状态</strong>，此时就会造成游戏卡顿，帧数低的状况。</p>
+<h2 id="关闭游戏模式">关闭游戏模式</h2>
+<p>​	下面要说的是，微软在 Windows 10 版本为1703的创意者更新中首次加入了“游戏模式”这个东西。但当我根据实测（YouTube知名科技频道 LinusTechTips 也做过测试）后发现，这个游戏模式并没有提升甚至有一些负面影响，所以这里教大家如何关闭游戏模式。</p>
+<p>​	首先我们进入 <strong>Windows 设置</strong>， 然后点击<strong>游戏</strong>选项，</p>
+<p><img src="https://i.yecdn.com/images/2019/01/05/c71e82371c69db104d21737b20b51615.png" alt="3e7b741244cfa2aca5dda6dbf6807809.png"></p>
+<p><img src="https://i.yecdn.com/images/2019/01/05/7de77b2eb090a1a386b445781a69cd3d.png" alt="79318037469f6c83c315d3bcdc89fc68.png"></p>
+<p>​	然后直接切换到<strong>游戏模式</strong>选项并<strong>关闭</strong>开关即可。</p>
+<p>​	至此，有关 WIN10 XBOX DVR 的关闭及系统设置章节结束。</p>
+<h2 id="启用-windows-10-卓越性能-可选">启用 Windows 10 卓越性能 (可选)</h2>
+<p>左下角开始菜单点击右键，以管理员方式运行 Powershell，输入以下内容</p>
+<figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs powershell">powercfg <span class="hljs-literal">-duplicatescheme</span> e9a42b02<span class="hljs-literal">-d5df</span><span class="hljs-literal">-448d</span><span class="hljs-literal">-aa00</span><span class="hljs-literal">-03f14749eb61</span><br></code></pre></td></tr></table></figure>
+<p>此时，再打开 <strong>设置</strong> - <strong>系统</strong> - <strong>电源</strong> - <strong>其他电源设置</strong> ，即可在电源计划中看到 <strong>卓越性能</strong> 模式。</p>
+<p><img src="https://i.yecdn.com/images/2019/02/26/8ea26f6b98f55e809904b3286a0b98b6.png" alt=""></p>
+<h2 id="其他杂项设置：">其他杂项设置：</h2>
+<h3 id="在-bios-中禁用-hpet-高精度事件计时器">在 BIOS 中禁用 HPET（高精度事件计时器）</h3>
+<p>​	HPET 是现代 Windows 版本中的硬件计时器。由于计时器不断向上计数，它可能会导致中断，让您在玩游戏时感觉“迟钝”。建议您在 BIOS 中禁用它以获得更好的延迟和 FPS！</p>
+<h3 id="在-discord-中禁用硬件加速">在 Discord 中禁用硬件加速</h3>
+<p>如果使用 <strong>Discord overlay</strong> ，请单击齿轮 turn（应用程序设置）&gt; 外观 &gt; 硬件加速关闭硬件加速</p>
+<h1 id="nvidia-显卡驱动内优化">NVIDIA 显卡驱动内优化</h1>
+<p>​	Nvidia显卡驱动内的调试相对比较简单，部分选项可能会因为显卡高低端型号，而有差别，但大致一样。</p>
+<p>​	首先我们打开 <strong>Nvidia 控制面板</strong>选择<strong>管理 3D 设置</strong>，然后切换到<strong>程序设置</strong>，这样是为了<strong>只修改 Apex英雄 的设置而不影响其他程序</strong>。</p>
+<p><img src="https://i.yecdn.com/images/2019/02/24/45ed1daa8b8ca7e3e245f8d8f724ee7a.png" alt=""></p>
+<p><img src="https://i.yecdn.com/images/2019/02/24/3918f2222847666cd3388a9f425621f6.png" alt=""></p>
+<blockquote>
+<p><strong>配置说明</strong></p>
+</blockquote>
+<ol>
+<li>”CUDA-GPUs” 是使用CUDA流处理器的选择，一般大家都是单显卡，所以默认是<strong>全部</strong>，如果是多卡交火，全部选上就可以了。</li>
+<li>“三重缓冲” : <strong>关闭</strong>。</li>
+<li>“各项异性过滤” : <strong>关闭</strong>。</li>
+<li>“垂直同步” : <strong>关闭</strong>。</li>
+<li>“多帧采样AA（MFAA）” : <strong>关闭</strong>。</li>
+<li>“平滑处理-模式” : 我们选择<strong>应用程序控制</strong>的，这样在游戏里的一些抗锯齿设置就会生效。</li>
+<li>“平滑处理-灰度纠正” : <strong>关闭</strong>。</li>
+<li>“平滑处理-透明度” : <strong>关闭</strong>。</li>
+<li>“最大预渲染帧数” : 是用缓存为GPU储存数据，提高这个值会让低FPS的电脑有更平滑的游戏体验，但是同时会增加一定的输入延迟，所以<strong>推荐调为1</strong>，尤其是当你的电脑FPS较高的情况下。（当然，在游戏卡顿或者FPS较低的情况下可以选择调整为2/3/4）</li>
+<li>“环境光吸收” : <strong>关闭</strong>。</li>
+<li>“电源管理模式” : <strong>最高性能优先</strong></li>
+<li>“着色缓存器” : 开/关<strong>视情况而定</strong>，显卡默认的着色缓存是位于我们的系统盘也就是C盘的。所以如果你的系统盘是固态硬盘（即SSD）打开这个选项将会提升FPS，如果你的系统盘是普通机械硬盘那么建议关闭此选项。（有争议，可以选择自行调试）</li>
+<li>“纹理过滤-三线性优化” : <strong>开启</strong>。</li>
+<li>“纹理过滤-各向异性采样优化” : <strong>开启</strong>。</li>
+<li>“纹理过滤-负LOD偏移” : 此项开启关闭<strong>对游戏无影响</strong>，默认为关闭。</li>
+<li>“纹理过滤-质量” : <strong>高性能</strong>。</li>
+<li>“线程优化” : <strong>开</strong>。</li>
+<li>“虚拟现实预渲染帧数” : <strong>建议调为1</strong>，很显然Apex英雄不是VR游戏，所以没有开高的必要。</li>
+<li>“首选刷新率” : <strong>最高可用/由应用控制的</strong>”</li>
+</ol>
+<h1 id="鼠标灵敏度">鼠标灵敏度</h1>
+<p>因为 Apex 使用的是 Source 起源引擎，所以鼠标灵敏度的计算方法与 CS:GO 完全相同。所以也可以通过此网站进行灵敏度的换算</p>
+<p><a target="_blank" rel="noopener" href="https://www.mouse-sensitivity.com/">Mouse Sensitivity | Same Aim - Different Game</a></p>
+<h2 id="关闭鼠标加速度">关闭鼠标加速度</h2>
+<p>在 WIN10 中在搜索里输入控制面板，打开之后打开鼠标</p>
+<p><img src="https://i.yecdn.com/images/2019/02/26/8bd6b031819a495ab3012dda0cafb73f.png" alt="27427a5962eaa383442ace6446b1c643.png"></p>
+<p>像我这样设置，桌面鼠标速度会影响你游戏内的轨迹，速度要在默认档位 6/11，高了会带有加速度，向更低的档位移动没有问题，<strong>提高精准度关闭</strong>。</p>
+<p>​	在<strong>轻松访问中心</strong>里将设置确认为这样</p>
+<p><img src="https://i.yecdn.com/images/2019/01/05/2a79e12187d4e7dddb38596d1a72cbd8.png" alt="7e19ee824c920145519572428d197e7d.png"></p>
+<h1 id="参考链接">参考链接</h1>
+<ul>
+<li><a href="https://www.wevg.org/archives/csgo-fps-optimized/">CSGO FPS 终极优化指南</a></li>
+<li><a target="_blank" rel="noopener" href="https://www.reddit.com/r/lowendgaming/comments/aq4uhl/apex_legends_maximum_fps_guide_launch_options/">Apex Legends Maximum FPS guide, Launch options, autoexec.cfg, video, Crossfire and SLI settings</a></li>
+<li><a target="_blank" rel="noopener" href="https://www.reddit.com/r/apexlegends/comments/ap9cw8/apex_legends_real_fps_boost_tutorial/">Apex Legends Real Fps Boost Tutorial</a></li>
+<li><a target="_blank" rel="noopener" href="https://yuba.douyu.com/p/116106401550983009">Apex优化设置</a></li>
+<li><a target="_blank" rel="noopener" href="https://www.youtube.com/watch?v=RFcD2lltSNE&amp;feature=youtu.be">Apex Legends TRYHARD Settings Guide - Nvidia, ingame and more!</a></li>
+</ul>
+
+                    </article>
+                    
+    <blockquote class="post-license">
+        <p>
+            <strong>本文作者&nbsp;:&nbsp;Edison Jwa</strong>
+            <br>
+            <strong>
+            
+                本文使用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">署名-非商业性使用-相同方式共享 4.0 国际 (CC BY-NC-SA 4.0)</a> 协议
+            </strong>
+            <br>
+            <strong>本文链接&nbsp;:&nbsp;</strong><a href="https://www.wevg.org/archives/best-optimize-apex/">https://www.wevg.org/archives/best-optimize-apex/</a>
+        </p>
+    </blockquote>
+
+
+
+    <blockquote id="date-expire-notification" class="post-expired-notify">本文最后更新于 <span id="date-expire-num"></span> 天前，文中所描述的信息可能已发生改变</blockquote>
+    <script>
+    (function() {
+        var dateUpdate = Date.parse("2019-04-01");
+        var nowDate = new Date();
+        var a = nowDate.getTime();
+        var b = a - dateUpdate;
+        var daysUpdateExpire = Math.floor(b/(24*3600*1000));
+        if (daysUpdateExpire >= 120) {
+            document.getElementById('date-expire-num').innerHTML = daysUpdateExpire;
+        } else {
+            document.getElementById('date-expire-notification').style.display = 'none';
+        }
+    })();
+    </script>
+
+
+<p class="post-footer-info mb-0 pt-0">本文发表于&nbsp;<time datetime="2019-02-24T10:03:28.000Z" itemprop="datePublished">2019-02-24</time>
+
+    , 最后修改于&nbsp;<time datetime="2019-04-01T10:17:22.000Z" itemprop="dateModified">2019-04-01</time>
+
+</p>
+<p class="post-footer-info mb-0 pt-2">
+
+<span class="post-categories-list mt-2">
+
+<a class="post-categories-list-item" href='/categories/Gaming/'>Gaming</a>
+
+</span>
+
+
+
+<span class="post-tags-list mt-2">
+
+<a class="post-tags-list-item" href="/tags/%E4%BC%98%E5%8C%96/" rel="tag">#&nbsp;优化</a>
+
+<a class="post-tags-list-item" href="/tags/%E8%AE%BE%E7%BD%AE/" rel="tag">#&nbsp;设置</a>
+
+<a class="post-tags-list-item" href="/tags/Origin/" rel="tag">#&nbsp;Origin</a>
+
+<a class="post-tags-list-item" href="/tags/Apex/" rel="tag">#&nbsp;Apex</a>
+
+<a class="post-tags-list-item" href="/tags/fps/" rel="tag">#&nbsp;fps</a>
+
+<a class="post-tags-list-item" href="/tags/Xbox-DVR/" rel="tag">#&nbsp;Xbox DVR</a>
+
+<a class="post-tags-list-item" href="/tags/Nvidia/" rel="tag">#&nbsp;Nvidia</a>
+
+<a class="post-tags-list-item" href="/tags/%E5%90%AF%E5%8A%A8%E9%A1%B9/" rel="tag">#&nbsp;启动项</a>
+
+</span>
+
+
+</p>
+
+                </div>
+                <div class="post-nav px-2 bg-gray">
+<ul class="pagination">
+    <!-- Prev Nav -->
+    
+        <li class="page-item page-prev">
+            <a href="/archives/enable-retpoline-win10/" rel="prev">
+                <div class="page-item-title"><i class="icon icon-back" aria-hidden="true"></i></div>
+                <div class="page-item-subtitle">解决 Win10 “幽灵”漏洞补丁性能问题</div>
+            </a>
+        </li>
+    
+
+    <!-- Next Nav -->
+    
+        <li class="page-item page-next">
+            <a href="/archives/get-steam-game-icon/" rel="next">
+                <div class="page-item-title"><i class="icon icon-forward" aria-hidden="true"></i></div>
+                <div class="page-item-subtitle">获取 Steam 游戏图标文件方法</div>
+            </a>
+        </li>
+    
+</ul>
+</div>
+
+                
+                    <!-- # Comment # -->
+                    
+                        <div class="card-footer post-comment">
+                            <div id="disqus_thread"></div>
+
+<script id="js-disqusjs" src="https://cdn.jsdelivr.net/npm/disqusjs@1.2.5/dist/disqus.js" async></script>
+<script>
+document.getElementById('js-disqusjs').addEventListener('load', function () {
+    function loadDisqusJS() {
+        new DisqusJS({
+            shortname: 'edisonj',
+            
+            siteName: 'Vigorous Pro',
+            
+            identifier: 'https://www.wevg.org/archives/best-optimize-apex/',
+            url: 'https://www.wevg.org/archives/best-optimize-apex/',
+            api: 'https://disqus.uv.uy/api/',
+            apikey: 'vBTqc5gYirQfuj9STIAANtQCArVi9MN8UZ72UUucwnhus4AhpgpbVJMIn3Ojl4O7',
+            
+            
+        })
+    }
+    if (document.readyState === 'complete') {
+        loadDisqusJS();
+    } else {
+        window.addEventListener('load', loadDisqusJS);
+    }
+});
+</script>
+
+                        </div>
+                    
+                
+            </div>
+        </div>
+    </div>
+</div>
+
+            <!-- ### Footer ### -->
+            <footer class="text-center">
+    <!-- footer copyright -->
+    
+        <p class="footer-copyright mb-0">Copyright&nbsp;©&nbsp;<span id="copyright-year"></span>
+            <a class="footer-copyright-a" href="https://www.wevg.org">Vigorous Pro</a>
+        </p>
+
+    <!-- footer custom text -->
+    <p class="footer-text mb-0">
+    <a href="/atom.xml" target="_blank" class="footer-develop-a" rel="nofollow noopener noreferrer">RSS</a><span class="footer-develop-divider"></span><a href="https://donate.edison.do" target="_blank" class="footer-develop-a" rel="nofollow noopener noreferrer">Donate</a><span class="footer-develop-divider"></span><a href="/privacy-policy" target="_blank" class="footer-develop-a" rel="nofollow noopener noreferrer">Privacy Policy</a>
+    </p>
+    <!-- footer develop info -->
+    <p class="footer-develop mb-0">
+        
+
+        
+        Powered by&nbsp;<!--
+         --><a href="https://hexo.io" target="_blank" class="footer-develop-a" rel="external nofollow noopener noreferrer">Hexo</a><span class="footer-develop-divider"></span>Theme&nbsp;-&nbsp;<!--
+         --><a href="https://github.com/SukkaW/hexo-theme-suka" target="_blank" class="footer-develop-a" rel="external noopener">Suka</a>
+    </p>
+</footer>
+
+
+        <!-- ### Import File ### -->
+        <!-- ### Footer JS Import ### -->
+
+<script>
+
+    
+window.lazyLoadOptions = {
+    elements_selector: ".lazyload",
+    threshold: 50
+};
+
+(function() {
+    var copyrightNow = new Date().getFullYear();
+    var copyrightContent = document.getElementById('copyright-year');
+    var copyrightSince = 2015;
+    if (copyrightSince === copyrightNow) {
+        copyrightContent.textContent = copyrightNow;
+    } else {
+        copyrightContent.textContent = copyrightSince + ' - ' + copyrightNow;
+    }
+})();
+console.log('\n %c Suka Theme (hexo-theme-suka) | © SukkaW | Verision 1.3.3 %c https://github.com/SukkaW/hexo-theme-suka \n', 'color: #fff; background: #444; padding:5px 0;', 'background: #bbb; padding:5px 0;');
+
+</script>
+
+<script src="https://cdn.jsdelivr.net/npm/vanilla-lazyload@12.3.0" async></script>
+
+
+
+<!-- Comment -->
+
+    
+        <!-- No need for DisqusJS -->
+    
+
+
+<!-- ### Custom Footer ### -->
+<script> if ('serviceWorker' in navigator) { window.addEventListener('load', () => { navigator.serviceWorker.register('/sw.js'); }) } </script><script>window.ga_tid = "UA-106121780-1";window.ga_api = "https://ga.cdn.uv.uy/jquery.js"; </script><script src="https://cdn.jsdelivr.net/gh/EdisonJwa/Blog@master/js/main.js" async></script>
+    </body>
+
+</html>

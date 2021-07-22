@@ -1,0 +1,730 @@
+<!DOCTYPE html>
+
+<html lang="zh-CN">
+    <head>
+    <meta charset="utf-8">
+    <!--
+        hexo-theme-suka © SukkaW
+        GitHub: https://github.com/SukkaW/hexo-theme-suka
+    -->
+
+    <!-- ### Resource Hint ### -->
+
+    <!-- ## DNS Prefetch ## -->
+    <meta http-equiv="x-dns-prefetch-control" content="on">
+
+<!-- busuanzi -->
+
+
+<!-- comment -->
+
+
+
+
+
+
+
+<!-- analytics -->
+
+
+
+
+
+
+
+    <!-- ## Preload ## -->
+    
+
+
+
+
+    <!-- ### Meta & Title & Info ### -->
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, minimum-scale=1, initial-scale=1, maximum-scale=5, viewport-fit=cover">
+    <meta name="renderer" content="webkit">
+
+    <!-- Title -->
+    <title>定制 Windows 系统安装镜像 | Vigorous Pro</title>
+
+    <!-- Favicons -->
+    <link rel="icon" type="image&#x2F;ico" href="/favicon.ico"><link rel="apple-touch-icon" sizes="180x180" href="/source/favicon/apple-touch-icon.png"><link rel="icon" typt="image&#x2F;png" sizes="192x192" href="/source/favicon/android-chrome-192x192.png"><link rel="icon" typt="image&#x2F;png" sizes="32x32" href="/source/favicon/favicon-32x32.png"><link rel="icon" typt="image&#x2F;png" sizes="16x16" href="/source/favicon/favicon-16x16.png"><link rel="mask-icon" href="/safari-pinned-tab.svg" color="">
+
+    <!-- ### Import File ### -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/spectre.css@0.5.3"><style>
+    body {
+        background-color: #f8f9fa;
+    }
+
+    a, a:visited {
+        color: #0070ff;
+    }
+
+    a:active, a:focus, a:hover {
+        color: #0070ff;
+        opacity: .75;
+    }
+
+    #post-content a,
+    #post-content a:hover,
+    #post-content a:focus,
+    #post-content a:visited {
+        color: #005eb9;
+        opacity: 1;
+    }
+
+    
+
+    .post-entry .card-body a {
+        color: #0070ff;
+    }
+
+    .avatar {
+        background: #444;
+    }
+
+    .navbar-link,
+    .navbar-link:visited,
+    .timeline .timeline-item .timeline-icon.icon-lg {
+        color: #0070ff;
+    }
+
+    .navbar-link:hover {
+        color: #0070ff;
+        opacity: .8;
+    }
+
+    #search-input .btn,
+    #disqus_click_btn,
+    #disqus-switch-to-direct,
+    #disqus-loadmore-button {
+        background: #727e96;
+        border-color: #727e96;
+        color: #fff;
+    }
+
+    #post-toc a.post-toc-link,
+    #post-toc a.post-toc-link:visited,
+    .share-menu.menu .menu-item>a {
+        color: #727e96;
+    }
+
+    .share-menu.menu .menu-item>a:hover,
+    .share-menu.menu .menu-item>a:focus,
+    .share-menu.menu .menu-item>a:visited {
+        color: #50596c;
+        background: #f8f9fa;
+        opacity: .85;
+    }
+</style><link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/sukkaw/hexo-theme-suka@latest/source/css/style.min.css">
+
+
+    
+        <!-- Import DisqusJS Default Theme -->
+        <link rel="preload" href="https://cdn.jsdelivr.net/npm/disqusjs@1.2.5/dist/disqusjs.css" as="style" onload="this.onload=null;this.rel='stylesheet'"><noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/disqusjs@1.2.5/dist/disqusjs.css"></noscript>
+
+    
+
+
+
+
+
+
+
+    <!-- Prettify Theme -->
+    
+    <link rel="preload" href="https://cdn.jsdelivr.net/gh/sukkaw/hexo-theme-suka@latest/source/css/highlight/tomorrow-night-eighties.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'"><noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/sukkaw/hexo-theme-suka@latest/source/css/highlight/tomorrow-night-eighties.min.css"></noscript>
+
+
+
+
+
+<script>
+/*! loadCSS. [c]2017 Filament Group, Inc. MIT License */
+!function(t){"use strict";t.loadCSS||(t.loadCSS=function(){});var e=loadCSS.relpreload={};if(e.support=function(){var e;try{e=t.document.createElement("link").relList.supports("preload")}catch(t){e=!1}return function(){return e}}(),e.bindMediaToggle=function(t){var e=t.media||"all";function a(){t.addEventListener?t.removeEventListener("load",a):t.attachEvent&&t.detachEvent("onload",a),t.setAttribute("onload",null),t.media=e}t.addEventListener?t.addEventListener("load",a):t.attachEvent&&t.attachEvent("onload",a),setTimeout(function(){t.rel="stylesheet",t.media="only x"}),setTimeout(a,3e3)},e.poly=function(){if(!e.support())for(var a=t.document.getElementsByTagName("link"),n=0;n<a.length;n++){var o=a[n];"preload"!==o.rel||"style"!==o.getAttribute("as")||o.getAttribute("data-loadcss")||(o.setAttribute("data-loadcss",!0),e.bindMediaToggle(o))}},!e.support()){e.poly();var a=t.setInterval(e.poly,500);t.addEventListener?t.addEventListener("load",function(){e.poly(),t.clearInterval(a)}):t.attachEvent&&t.attachEvent("onload",function(){e.poly(),t.clearInterval(a)})}"undefined"!=typeof exports?exports.loadCSS=loadCSS:t.loadCSS=loadCSS}("undefined"!=typeof global?global:this);
+</script>
+
+    <!-- ### Site Verification ### -->
+    
+
+
+    <link rel="alternate" type="application/atom+xml" href="/atom.xml"><meta name="mobile-web-app-capable" content="yes"><meta name="application-name" content="Vigorous Pro"><meta name="msapplication-starturl" content="https://www.wevg.org"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-title" content="Vigorous Pro"><meta name="apple-mobile-web-app-status-bar-style" content="black-translucent"><link rel="manifest" href="/manifest.json"><link rel="search" type="application/opensearchdescription+xml" href="/opensearch.xml" title="Vigorous Pro">
+
+    <!-- ### The Open Graph & Twitter Card Protocol ### -->
+    <meta property="og:title" content="定制 Windows 系统安装镜像 | Vigorous Pro"><meta property="og:site_name" content="Vigorous Pro"><meta property="og:type" content="article"><meta property="og:url" content="https://www.wevg.org/archives/design-my-windows-iso/"><meta property="og:locale" content="zh-CN"><meta name="description" content="有没有想过像 OEM 厂商一样制作一个已经预装好软件的  Windows 安装镜像呢? 除了 Ghost 的异端外，有没有其他方法呢? 本文旨在将带您定制一个属于自己的 Windows 系统安装镜像。 - Edison Jwa - Vigorous Pro"><meta name="keywords" content="Windows, System, edisonjwa,game,blog,Web,Html,edison"><meta property="og:image" content="https://cdn.jsdelivr.net/gh/EdisonJwa/Blog@master/source/thumbnail/bcbab7b06583a354d3e1c6015f8ffbae.jpg"><meta property="og:image" content="https://cdn.jsdelivr.net/gh/EdisonJwa/Blog@latest/source/build-iso/VirtualBoxVM_190511_214031.png"><meta property="og:image" content="https://cdn.jsdelivr.net/gh/EdisonJwa/Blog@latest/source/build-iso/VirtualBoxVM_190511_214105.png"><meta property="og:image" content="https://cdn.jsdelivr.net/gh/EdisonJwa/Blog@latest/source/build-iso/VirtualBoxVM_190511_214234.png"><meta property="og:image" content="https://cdn.jsdelivr.net/gh/EdisonJwa/Blog@latest/source/build-iso/VirtualBoxVM_190511_214254.png"><meta property="og:image" content="https://cdn.jsdelivr.net/gh/EdisonJwa/Blog@latest/source/build-iso/VirtualBoxVM_soIpGXaAAQ.png"><meta property="og:image" content="https://cdn.jsdelivr.net/gh/EdisonJwa/Blog@latest/source/build-iso/photo_2019-05-12_13-48-54.jpg"><meta property="og:image" content="https://cdn.jsdelivr.net/gh/EdisonJwa/Blog@latest/source/build-iso/VirtualBoxVM_190511_214642.png"><meta property="og:image" content="https://cdn.jsdelivr.net/gh/EdisonJwa/Blog@latest/source/build-iso/VirtualBoxVM_190511_214853.png"><meta property="og:image" content="https://cdn.jsdelivr.net/gh/EdisonJwa/Blog@latest/source/build-iso/VirtualBoxVM_190511_215055.png"><meta property="og:image" content="https://cdn.jsdelivr.net/gh/EdisonJwa/Blog@latest/source/build-iso/VirtualBoxVM_190511_221541.png"><meta property="og:image" content="https://cdn.jsdelivr.net/gh/EdisonJwa/Blog@latest/source/build-iso/VirtualBoxVM_190511_221634.png"><meta property="og:image" content="https://cdn.jsdelivr.net/gh/EdisonJwa/Blog@latest/source/build-iso/VirtualBoxVM_190511_224033.png"><meta property="og:image" content="https://cdn.jsdelivr.net/gh/EdisonJwa/Blog@latest/source/build-iso/explorer_190512_141327.png"><meta property="og:image" content="https://cdn.jsdelivr.net/gh/EdisonJwa/Blog@latest/source/build-iso/img_57bdf571e579b.png"><meta property="og:image" content="https://cdn.jsdelivr.net/gh/EdisonJwa/Blog@latest/source/build-iso/VirtualBoxVM_1W51tUNdrf.png"><meta property="og:image" content="https://cdn.jsdelivr.net/gh/EdisonJwa/Blog@latest/source/build-iso/VirtualBoxVM_190511_224344.png"><meta property="og:image" content="https://cdn.jsdelivr.net/gh/EdisonJwa/Blog@latest/source/build-iso/VirtualBoxVM_190511_234455.png"><meta property="og:image" content="https://cdn.jsdelivr.net/gh/EdisonJwa/Blog@latest/source/build-iso/VirtualBoxVM_190511_235402.png"><meta property="og:image" content="https://cdn.jsdelivr.net/gh/EdisonJwa/Blog@latest/source/build-iso/powershell_190512_001848.png"><meta property="og:image" content="https://cdn.jsdelivr.net/gh/EdisonJwa/Blog@latest/source/build-iso/g9hIMxhMyQIBlX4Q.jpg"><meta property="og:image" content="https://cdn.jsdelivr.net/gh/EdisonJwa/Blog@latest/source/build-iso/adksetup_190512_151237.png"><meta property="og:image" content="https://cdn.jsdelivr.net/gh/EdisonJwa/Blog@latest/source/build-iso/powershell_190512_151743.png"><meta property="og:image" content="https://cdn.jsdelivr.net/gh/EdisonJwa/Blog@latest/source/build-iso/VirtualBoxVM_190512_154758.png"><meta property="article:published_time" content="2019-05-12T04:03:52.000Z"><meta property="article:modified_time" content="2019-05-12T04:03:52.000Z"><meta property="og:updated_time" content="2019-05-12T04:03:52.000Z"><meta property="article:author" content="Edison Jwa"><meta property="article:tag" content="Windows, System, edisonjwa,game,blog,Web,Html,edison"><meta name="twitter:card" content="summary_large_image"><meta name="twitter:image" content="https://cdn.jsdelivr.net/gh/EdisonJwa/Blog@master/source/thumbnail/bcbab7b06583a354d3e1c6015f8ffbae.jpg">
+
+    
+
+    <!-- ### Canonical link ### -->
+    <link rel="canonical" href="https://www.wevg.org/archives/design-my-windows-iso/">
+
+    <meta name="generator" content="Hexo 5.4.0">
+
+    <!-- ### Analytics ### -->
+    
+
+
+
+
+
+
+
+    <!-- ### Structured Data ### -->
+    
+
+
+
+<script type="application/ld+json">
+{
+    "@context": "http://schema.org",
+    "url": "https://www.wevg.org/archives/design-my-windows-iso/",
+    "@type": "BlogPosting",
+    "logo": "https://www.wevg.org/source/favicon/android-chrome-192x192.png",
+    "mainEntityOfPage": {
+        "@type": "WebPage",
+        "@id": "https://www.wevg.org/archives/design-my-windows-iso/"
+    },
+    "headline": "定制 Windows 系统安装镜像 | Vigorous Pro",
+    
+    "image": {
+        "@type": "ImageObject",
+        "url": "https://cdn.jsdelivr.net/gh/EdisonJwa/Blog@master/source/thumbnail/bcbab7b06583a354d3e1c6015f8ffbae.jpg"
+    },
+    
+    "datePublished": "2019-05-12T04:03:52.000Z",
+    "dateModified": "2019-05-12T04:03:52.000Z",
+    "author": {
+        "@type": "Person",
+        "name": "Edison Jwa",
+        "image": {
+            "@type": "ImageObject",
+            "url": "https://cdn.jsdelivr.net/gh/EdisonJwa/Blog@master/source/image/avatar.jpg"
+        },
+        "description": "The world can always use more heroes."
+    },
+    "publisher": {
+        "@type": "Organization",
+        "name": "Vigorous Pro",
+        "logo": {
+            "@type": "ImageObject",
+            "url": "https://www.wevg.org/source/favicon/android-chrome-192x192.png"
+        }
+    },
+    
+    "potentialAction": {
+        "@type": "SearchAction",
+        "target": "https://www.wevg.org/search?s={search_term_string}",
+        "query-input": "required name=search_term_string"
+    },
+    
+    "keywords": "Windows, System, edisonjwa,game,blog,Web,Html,edison",
+    "description": "有没有想过像 OEM 厂商一样制作一个已经预装好软件的  Windows 安装镜像呢? 除了 Ghost 的异端外，有没有其他方法呢? 本文旨在将带您定制一个属于自己的 Windows 系统安装镜像。 - Edison Jwa - Vigorous Pro"
+}
+</script>
+
+
+
+    <!-- ### Custom Head ### -->
+    <!-- EdisonJwas Blog --><script data-ad-client="ca-pub-2345785306567671" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script><link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/EdisonJwa/Blog@latest/css/darkmode.min.css"><script src="https://cdn.jsdelivr.net/gh/EdisonJwa/Blog@master/js/edison-main.min.js"></script><script type="module" async="" src="https://cdn.jsdelivr.net/npm/instant.page@3.0.0/instantpage.min.js"></script><link rel="manifest" href="/site.webmanifest"><meta name="msapplication-TileColor" content="#d43d3d"><meta name="msapplication-TileImage" content="/source/favicon/mstile-144x144.png"><meta name="theme-color" content="#ffffff"><script type="text/javascript">function downloadJSAtOnload(){var d=document.createElement("script");d.src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js",document.body.appendChild(d)}window.addEventListener?window.addEventListener("load",downloadJSAtOnload,!1):window.attachEvent?window.attachEvent("onload",downloadJSAtOnload):window.onload=downloadJSAtOnload;</script><!-- Global site tag (gtag.js) - Google Analytics --><script async src="https://www.googletagmanager.com/gtag/js?id=G-S2SFLD81VT"></script><script>window.dataLayer = window.dataLayer || [];function gtag(){dataLayer.push(arguments);} gtag('js', new Date()); gtag('config', 'G-S2SFLD81VT');</script><!-- Cloudflare Web Analytics --><script defer src=https://static.cloudflareinsights.com/beacon.min.js ; data-cf-beacon="{&quot;token&quot;: 1ebb36a2c023408484ff114c409377b8}"></script><!-- End Cloudflare Web Analytics -->
+<style type="text/css">
+.spoiler {
+  display: inline-flex;
+}
+p.spoiler {
+  display: flex;
+}
+.spoiler a {
+  pointer-events: none;
+}
+.spoiler-blur, .spoiler-blur > * {
+  transition: text-shadow .5s ease;
+}
+.spoiler .spoiler-blur, .spoiler .spoiler-blur > * {
+  color: rgba(0, 0, 0, 0);
+  background-color: rgba(0, 0, 0, 0);
+  text-shadow: 0 0 10px grey;
+  cursor: pointer;
+}
+.spoiler .spoiler-blur:hover, .spoiler .spoiler-blur:hover > * {
+  text-shadow: 0 0 5px grey;
+}
+.spoiler-box, .spoiler-box > * {
+  transition: color .5s ease,
+  background-color .5s ease;
+}
+.spoiler .spoiler-box, .spoiler .spoiler-box > * {
+  color: black;
+  background-color: black;
+  text-shadow: none;
+}</style></head>
+
+    <body>
+            
+
+            <!-- ### Main content ### -->
+            <!-- ## Header ##-->
+<header>
+    <h1 class="header-title text-center"><a href="/">Vigorous Pro</a></h1>
+
+    <p class="text-center header-slogan">
+        
+            
+                The world can always use more heroes.
+            
+        
+    </p>
+
+    <nav class="navbar-section text-center">
+    
+        <a href="/" class="navbar-link">首页</a>
+    
+    
+        <a href="/archives/" class="navbar-link">归档</a>
+    
+    
+        <a href="/search" class="navbar-link">搜索</a>
+    
+    
+        <a target="_blank" rel="noopener" href="https://uv.uy" class="navbar-link">关于</a>
+    
+        <a href="/friends/" class="navbar-link">友链</a>
+    
+    
+    
+</nav>
+</header>
+
+            
+    <!-- ## Post ## -->
+    <div class="post-container">
+    <div id="post-card" class="card">
+        
+            <div class="card-image lazyload" data-bg="url('https://cdn.jsdelivr.net/gh/EdisonJwa/Blog@master/source/thumbnail/bcbab7b06583a354d3e1c6015f8ffbae.jpg')"></div>
+        
+        <div class="card-item-container">
+            <div class="card-inner-cell">
+                <!-- # Post Header Info # -->
+                <div class="card-header">
+                    
+    <h1 class="card-title h3 mb-2">定制 Windows 系统安装镜像</h1>
+
+
+
+
+<div class="post-header-info">
+    <p class="post-header-info-left text-gray">
+        <img class="author-thumb lazyload" data-src="https://cdn.jsdelivr.net/gh/EdisonJwa/Blog@master/source/image/avatar.jpg" src="https://cdn.jsdelivr.net/gh/sukkaw/hexo-theme-suka@latest/source/img/suka-lazyload.gif" alt="Edison Jwa's Avatar">
+        <span>2019-05-12</span>
+        
+            <span class="suka-devide-dot"></span>
+            <a class="category-link" href="/categories/Tech/">Tech</a><span class="suka-devide-dot"></span><a class="category-link" href="/categories/Tech/Windows/">Windows</a>
+        
+        
+        
+    </p>
+    <div class="post-header-info-right">
+        
+            <div class="dropdown dropdown-right">
+<a class="dropdown-toggle" tabindex="0">分享本文</a>
+<ul class="menu share-menu">
+    <!-- Share Weibo -->
+    
+    <li class="menu-item">
+        <a href="http://service.weibo.com/share/share.php?appkey=&title=定制 Windows 系统安装镜像&url=https://www.wevg.org/archives/design-my-windows-iso/&pic=https://cdn.jsdelivr.net/gh/EdisonJwa/Blog@master/source/thumbnail/bcbab7b06583a354d3e1c6015f8ffbae.jpg&searchPic=false&style=simple" target="_blank" rel="external noopener noreferrer nofollow">分享到微博</a>
+    </li>
+    
+
+    <!-- Share Twitter -->
+    
+    <li class="menu-item">
+        <a href="https://twitter.com/intent/tweet?text=定制 Windows 系统安装镜像&url=https://www.wevg.org/archives/design-my-windows-iso/&via=Edison Jwa" target="_blank" rel="external noopener noreferrer nofollow">分享到 Twitter</a>
+    </li>
+    
+
+    <!-- Share Facebook -->
+    
+    <li class="menu-item">
+        <a href="https://www.facebook.com/sharer/sharer.php?u=https://www.wevg.org/archives/design-my-windows-iso/" target="_blank" rel="external noopener noreferrer nofollow">分享到 Facebook</a>
+    </li>
+    
+
+    <!-- Share Google+ -->
+    
+    <li class="menu-item">
+        <a href="https://plus.google.com/share?url=https://www.wevg.org/archives/design-my-windows-iso/" target="_blank" rel="external noopener noreferrer nofollow">分享到 Google+</a>
+    </li>
+    
+
+    <!-- Share LinkedIn -->
+    
+    <li class="menu-item">
+        <a href="https://www.linkedin.com/shareArticle?mini=true&url=https://www.wevg.org/archives/design-my-windows-iso/&title=Vigorous Pro" target="_blank" rel="external noopener noreferrer nofollow">分享到 LinkedIn</a>
+    </li>
+    
+
+    <!-- Share QQ -->
+    
+    <li class="menu-item">
+        <a href="http://connect.qq.com/widget/shareqq/index.html?site=Vigorous Pro&title=Vigorous Pro&summary=The world can always use more heroes.&pics=https://cdn.jsdelivr.net/gh/EdisonJwa/Blog@master/source/thumbnail/bcbab7b06583a354d3e1c6015f8ffbae.jpg&url=https://www.wevg.org/archives/design-my-windows-iso/" target="_blank" rel="external noopener noreferrer nofollow"> 分享到 QQ</a>
+    </li>
+    
+
+    <!-- Share Telegram -->
+    
+    <li class="menu-item">
+        <a href="https://t.me/share/url?url=https://www.wevg.org/archives/design-my-windows-iso/&text=Vigorous Pro" target="_blank" rel="external noopener noreferrer nofollow">分享到 Telegram</a>
+    </li>
+    
+
+    <!-- QRCode -->
+    
+    <li class="menu-item">
+        <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAJQAAACUCAAAAABQV18IAAAB4ElEQVR42u3bQW7DMAxEUd//0u2qgFNIM0PHC4n63gSIG+u1YESJYq+fBa8LFChQoAaoS1x/9z8+eLs3e8b9/XQcUL1Qw6D7h7q/jgZWgGQcUP1QaYDPBlfBnY4D6gzUCJeC1BcF1LmoNzGgzkLJRDlZ2I0+kzzv61UCqOVRycbhjdfXdzOglkTZokMhwN0C8LWqC6ilUaNN5ijYZSItJGi5sQXVCuUWdLPAVYOpjWl5kQdqG1R14e+CVU2csy8QqDNQamJUAZ9MqtOJFlQLlEq+aqJLf5nkwAlUL5RMkMUCvyvkqoQNqhfKJdxkEeg2oGqhCKoXKjl4Toto6mcjOKhWKPWQpOAvC6ygjkMlBQwFjgpi5n1QfVAu2T5pqEiScbTIA7UlygV3mmgfNXG5k1FQW6IqxbIkmF0RQ90H1QNVORBKFn1PvxCg+qBcI5cL9qSYETdDg2qDcok3gVYn1+HzQbVAPdkUVJqbXbCD6odyl9pIVg6JyoeQoLZFJQ3NSXNXZXM6/QOAaoNKi2cuYNPGwtKJA6htUa64pYoYlX+ykMkc1BGoZFORJOvokBPUUSjXRJMGu1xQgmqFSpu8XJNWshmNTttBbY1yifNJw41K6tPCCagWqJUuUKBAgbpdv76OUG8sJmOxAAAAAElFTkSuQmCC" alt="QRCode">
+    </li>
+    
+
+</ul>
+</div>
+        
+    </div>
+</div>
+                </div>
+                <div class="card-body">
+                    
+                        
+                        
+                            <div id="post-toc"><ol class="post-toc"><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#%E5%BF%85%E8%A6%81%E9%A3%9F%E6%9D%90"><span class="post-toc-number">1.</span> <span class="post-toc-text">必要食材</span></a></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#%E5%AE%89%E8%A3%85%E7%B3%BB%E7%BB%9F"><span class="post-toc-number">2.</span> <span class="post-toc-text">安装系统</span></a></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#%E9%85%8D%E7%BD%AE%E7%B3%BB%E7%BB%9F"><span class="post-toc-number">3.</span> <span class="post-toc-text">配置系统</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#part-1-%E5%AE%89%E8%A3%85%E7%B3%BB%E7%BB%9F%E6%9B%B4%E6%96%B0%E5%92%8C%E4%B8%80%E9%83%A8%E5%88%86%E5%9F%BA%E7%A1%80%E7%9A%84%E8%BD%AF%E4%BB%B6-%E8%BF%90%E8%A1%8C%E5%BA%93"><span class="post-toc-number">3.1.</span> <span class="post-toc-text">Part 1.安装系统更新和一部分基础的软件、运行库</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#part-2-%E6%B8%85%E7%90%86%E7%B3%BB%E7%BB%9F%E6%9B%B4%E6%96%B0%E5%90%8E%E8%A2%AB%E6%9B%BF%E6%8D%A2%E4%B8%8B%E6%9D%A5%E7%9A%84%E6%97%A7%E7%B3%BB%E7%BB%9F%E6%96%87%E4%BB%B6%E5%86%97%E4%BD%99"><span class="post-toc-number">3.2.</span> <span class="post-toc-text">Part 2.清理系统更新后被替换下来的旧系统文件冗余</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#part-3-%E5%AE%89%E8%A3%85%E5%89%A9%E4%BD%99%E4%BD%A0%E6%83%B3%E5%AE%89%E8%A3%85%E7%9A%84%E8%BD%AF%E4%BB%B6"><span class="post-toc-number">3.3.</span> <span class="post-toc-text">Part 3.安装剩余你想安装的软件</span></a></li></ol></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#%E6%89%93%E5%8C%85%E4%B8%8E%E5%8E%8B%E7%BC%A9"><span class="post-toc-number">4.</span> <span class="post-toc-text">打包与压缩</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#part-1-%E4%BD%BF%E7%94%A8%E7%B3%BB%E7%BB%9F%E5%87%86%E5%A4%87%E5%B7%A5%E5%85%B7%E5%AF%B9%E7%B3%BB%E7%BB%9F%E8%BF%9B%E8%A1%8C%E5%A4%84%E7%90%86"><span class="post-toc-number">4.1.</span> <span class="post-toc-text">Part 1.使用系统准备工具对系统进行处理</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#part-2-%E5%BF%AB%E9%80%9F%E6%89%93%E5%8C%85"><span class="post-toc-number">4.2.</span> <span class="post-toc-text">Part 2.快速打包</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#part-3-%E5%BF%AB%E9%80%9F%E5%8E%8B%E7%BC%A9"><span class="post-toc-number">4.3.</span> <span class="post-toc-text">Part 3.快速压缩</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#part-4-%E5%88%B6%E6%88%90%E5%85%89%E7%9B%98%E9%95%9C%E5%83%8F"><span class="post-toc-number">4.4.</span> <span class="post-toc-text">Part 4.制成光盘镜像</span></a></li></ol></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#%E6%9C%80%E5%90%8E%E7%9A%84%E4%B8%80%E7%82%B9%E8%AF%B4%E6%98%8E"><span class="post-toc-number">5.</span> <span class="post-toc-text">最后的一点说明</span></a></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#%E5%8F%82%E8%80%83%E9%93%BE%E6%8E%A5"><span class="post-toc-number">6.</span> <span class="post-toc-text">参考链接</span></a></li></ol></div>
+                        
+                    
+                    <article id="post-content">
+                        <p>有没有想过像 OEM 厂商一样制作一个已经预装好软件的  Windows 安装镜像呢? 除了 Ghost 的异端外，有没有其他方法呢? 本文旨在将带您定制一个属于自己的 Windows 系统安装镜像。<span id="more"></span></p>
+<h1 id="必要食材">必要食材</h1>
+<ul>
+<li>一份新鲜的 <strong>Windows</strong> 镜像 (可以从 <a target="_blank" rel="noopener" href="https://msdn.itellyou.cn">MSDN,我告诉你</a>，<a target="_blank" rel="noopener" href="https://tb.rg-adguard.net/">TechBench</a> 等处获取)</li>
+<li>一份新鲜的 PE 镜像</li>
+<li>一只成年的计算鸡</li>
+<li>确保你的计算鸡已经吃掉了一份 64 位的 Windows 系统</li>
+<li>确保你的计算鸡已经吃掉了 Vmware , Hyper-V 或者 Virtualbox 等虚拟化程序</li>
+<li>其他您想要烹(yu)饪(zhuang)的食材(软件)</li>
+</ul>
+<h1 id="安装系统">安装系统</h1>
+<p>首先，配置一份虚拟机(此过程我认为是不需要讲解的，不要打我)，并挂载你已经下载好的系统镜像。在安装前确保给虚拟机分配了足够的空间。</p>
+<p><img src="https://cdn.jsdelivr.net/gh/EdisonJwa/Blog@latest/source/build-iso/VirtualBoxVM_190511_214031.png" alt=""></p>
+<p>我怕空间不够，所以在此处给硬盘分配了 <strong>80 GB</strong>。 此处需要两个分区，一个用来安装系统，另一个拿来存放我们稍后制作出来的安装盘。分配完成后点击<strong>下一步</strong>。</p>
+<p><img src="https://cdn.jsdelivr.net/gh/EdisonJwa/Blog@latest/source/build-iso/VirtualBoxVM_190511_214105.png" alt=""></p>
+<p>制作 Windows 8 及以上版本的系统镜像时，需要提前安装 .Net 3.5</p>
+<p>在安装 Windows 的时候，点击 <kbd>Shift</kbd> + <kbd>F10</kbd> 呼出 命令提示符。输入 <code>taskmgr</code> 调用任务管理器。</p>
+<p><img src="https://cdn.jsdelivr.net/gh/EdisonJwa/Blog@latest/source/build-iso/VirtualBoxVM_190511_214234.png" alt=""></p>
+<p>在 Windows 安装程序上点击 <code>Go To Progress</code></p>
+<p><img src="https://cdn.jsdelivr.net/gh/EdisonJwa/Blog@latest/source/build-iso/VirtualBoxVM_190511_214254.png" alt=""><br>
+<img src="https://cdn.jsdelivr.net/gh/EdisonJwa/Blog@latest/source/build-iso/VirtualBoxVM_soIpGXaAAQ.png" alt=""></p>
+<p>直到显示&quot;Windows 需要重启才能继续&quot; 时，点击 End Progress 结束掉安装程序。(建议在提示重启前提前准备好前面的操作，除非您的手速够快)</p>
+<blockquote>
+<p><strong>如果提前关闭，会提示错误 50</strong></p>
+</blockquote>
+<p><img src="https://cdn.jsdelivr.net/gh/EdisonJwa/Blog@latest/source/build-iso/photo_2019-05-12_13-48-54.jpg" alt="错误 50"></p>
+<p>结束掉之后，会发现已经回到了最开始的地方</p>
+<p><img src="https://cdn.jsdelivr.net/gh/EdisonJwa/Blog@latest/source/build-iso/VirtualBoxVM_190511_214642.png" alt=""></p>
+<p>现在在命令提示符中输入</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">dism /image:E:\ /enable-feature /featurename:netfx3 /<span class="hljs-built_in">source</span>:D:\sources\sxs /all<br></code></pre></td></tr></table></figure>
+<blockquote>
+<p>如果您要定制的系统版本低于 Windows Server 2012 那么请输入</p>
+</blockquote>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">dism /image:E:\ /enable-feature /featurename:netfx3 /<span class="hljs-built_in">source</span>:D:\sources\sxs<br></code></pre></td></tr></table></figure>
+<p>来安装 .Net 3.5 ,此处的E盘为系统安装盘，D盘为光盘所在分区。可以通过在命令提示符中输入 notepad 来确定盘符。</p>
+<p><img src="https://cdn.jsdelivr.net/gh/EdisonJwa/Blog@latest/source/build-iso/VirtualBoxVM_190511_214853.png" alt=""></p>
+<p>如果没有问题的话，应该会显示这个界面，在安装完成后，重启虚拟机。</p>
+<p><img src="https://cdn.jsdelivr.net/gh/EdisonJwa/Blog@latest/source/build-iso/VirtualBoxVM_190511_215055.png" alt=""></p>
+<h1 id="配置系统">配置系统</h1>
+<p>重启之后，应该会见到熟悉的系统配置界面。在出现小娜(如果没有麦克风)，会直接显示选择地区的界面。此处不要进行配置。<br>
+同时按下 <strong><kbd>Ctrl</kbd> + <kbd>Shift</kbd> + <kbd>F3</kbd></strong> 现在会进入 审核模式(Audit Mode)</p>
+<blockquote>
+<p>这就是从Vista起，微软专门给OEM厂商和一些有需要的人提供的封装定制模式——审核模式。在这个模式下，一旦注销Administrator会被锁死，只能重启。从Windows 8起，在这个模式下，请勿使用开始菜单的命令关机，否则下次开机必须重启一次。<br>
+如果需要关机，请重启然后赶快进入BIOS设置，然后用虚拟机的功能强制关机。</p>
+</blockquote>
+<p><img src="https://cdn.jsdelivr.net/gh/EdisonJwa/Blog@latest/source/build-iso/VirtualBoxVM_190511_221541.png" alt=""></p>
+<p>在完成定制前，直接关掉系统准备工具即可。</p>
+<p><img src="https://cdn.jsdelivr.net/gh/EdisonJwa/Blog@latest/source/build-iso/VirtualBoxVM_190511_221634.png" alt=""></p>
+<h2 id="part-1-安装系统更新和一部分基础的软件-运行库">Part 1.安装系统更新和一部分基础的软件、运行库</h2>
+<p>进入审核模式之后，打开开始——设置，更新和安全，检查更新来把近期的更新都安装上去。<br>
+<img src="https://cdn.jsdelivr.net/gh/EdisonJwa/Blog@latest/source/build-iso/VirtualBoxVM_190511_224033.png" alt=""></p>
+<p>在此过程中，可以安装一部分基础的软件、运行库，但是不建议现在就安装 Office。</p>
+<p>为了保证定制出来的镜像尽可能干净无残留，请不要在虚拟机内使用浏览器下载安装包。所以，将需要的软件通过 UltraISO 或其他工具打包成 iso 镜像，并在虚拟机内挂载。</p>
+<p><img src="https://cdn.jsdelivr.net/gh/EdisonJwa/Blog@latest/source/build-iso/explorer_190512_141327.png" alt=""></p>
+<p>你可能会发现C盘有两个文件夹， <code>$WINDOWS.~BT</code> 和 <code>$WINDOWS.~LS</code> 将他们删除(我这里直接删除，忘记截图了，贴图是从网上找来的)</p>
+<p><img src="https://cdn.jsdelivr.net/gh/EdisonJwa/Blog@latest/source/build-iso/img_57bdf571e579b.png" alt=""></p>
+<p>安装完 Windows 更新之后重启虚拟机，在重启前挂在你的 PE 镜像。在重启后，疯狂点击虚拟机BIOS设置的热键(VirtualBox 是F12)<br>
+设置成光盘启动优先或选择进入PE 镜像，我这里使用的是光卡大佬制作的<a target="_blank" rel="noopener" href="https://hikaricalyx.com/hikaripe/">HIKARI PE</a><br>
+如果使用其他PE 请自行准备DISM++，并确保该PE至少是Win8内核，并且位数要和你要定制的系统一致。</p>
+<h2 id="part-2-清理系统更新后被替换下来的旧系统文件冗余">Part 2.清理系统更新后被替换下来的旧系统文件冗余</h2>
+<p>进入PE之后，打开dism++，选择顶部的Windows 10并打开会话，然后点左边的<strong>空间回收</strong>，按照下图所示勾上“<strong>被取代的WinSxS组件（非常慢）</strong>”和“<strong>Windows报告</strong>”、“<strong>Windows事件</strong>”、“<strong>零售演示离线内容</strong>”，并将<strong>缓存文件</strong>和<strong>临时文件</strong>所有的项目勾上，就可以开始清理了。</p>
+<blockquote>
+<p>可能是因为我这次使用的系统镜像是19H1的原因在清理WinSxS组件时，提示出错，清理出来的空间也比其他版本少，个人认为是我选择的镜像原因</p>
+</blockquote>
+<p><img src="https://cdn.jsdelivr.net/gh/EdisonJwa/Blog@latest/source/build-iso/VirtualBoxVM_1W51tUNdrf.png" alt=""></p>
+<p>清理完成之后就可以再次重启了。重启之前别忘了更换光盘镜像，避免再次重启回PE。</p>
+<h2 id="part-3-安装剩余你想安装的软件">Part 3.安装剩余你想安装的软件</h2>
+<p>现在你就可以随心所欲的安装剩下的你需要的软件了。</p>
+<blockquote>
+<p>但是这里不建议安装<br>
+打印机、摄像头等的驱动配套软件、防病毒软件、防火墙软件、影子还原（比如Shadow Defender）、PDF虚拟打印机程序、依赖Ghost的备份还原程序（如一键Ghost）、各种专业软件（特别是像Visual Studio这样的IDE）。</p>
+</blockquote>
+<p><img src="https://cdn.jsdelivr.net/gh/EdisonJwa/Blog@latest/source/build-iso/VirtualBoxVM_190511_224344.png" alt=""></p>
+<p>将你要安装的软件安装完成之后，请再次<strong>重启</strong>虚拟机以确保一些软件顺利预装进去。</p>
+<h1 id="打包与压缩">打包与压缩</h1>
+<h2 id="part-1-使用系统准备工具对系统进行处理">Part 1.使用系统准备工具对系统进行处理</h2>
+<p>重启回来之后，这次请勾上系统准备工具窗口里的<strong>通用</strong>，放入PE的启动光盘镜像之后，点<strong>确定</strong>。<br>
+稍后程序会自动对Windows进行处理，处理完成之后会自动重启。<br>
+重启之后请立即进入PE对成品进行备份。</p>
+<h2 id="part-2-快速打包">Part 2.快速打包</h2>
+<p>在命令提示符中输入下面命令对系统进行备份</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">dism /capture-image /capturedir:D:\ /imagefile:E:\Edison_Windows10_19H1_X64.wim /name:<span class="hljs-string">&quot;Edison Windows10 19H1 X64&quot;</span> /compress:fast<br></code></pre></td></tr></table></figure>
+<p>此处和之前安装 .Net3.5 比较类似，<code>capturedir</code> 为系统盘符，<code>imagefile</code> 的位置为我们之前新建出来的第二个分区，名称可以随意。<br>
+<img src="https://cdn.jsdelivr.net/gh/EdisonJwa/Blog@latest/source/build-iso/VirtualBoxVM_190511_234455.png" alt=""></p>
+<p>打包的过程将会消耗一定的时间，在打包完成后，你会在指定的盘符中看到打包好的文件。</p>
+<p><img src="https://cdn.jsdelivr.net/gh/EdisonJwa/Blog@latest/source/build-iso/VirtualBoxVM_190511_235402.png" alt=""></p>
+<h2 id="part-3-快速压缩">Part 3.快速压缩</h2>
+<p>下面，我们需要将打包的 wim文件拷贝出来，可以通过 7-zip打开VMDK镜像，然后双击2.NTFS就可以解压出里面的镜像了。</p>
+<p>接下来还是以这个镜像为例，以管理员权限打开命令提示符或是PowerShell，输入下面的命令，将镜像进行高度压缩。</p>
+<figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs powershell">dism /<span class="hljs-built_in">export-image</span> /sourceimagefile:E:\Edison_Windows10_19H1_X64.wim /sourceindex:<span class="hljs-number">1</span> /destinationimagefile:E:\Edison_Windows10_19H1_X64.esd /compress:recovery<br></code></pre></td></tr></table></figure>
+<p><img src="https://cdn.jsdelivr.net/gh/EdisonJwa/Blog@latest/source/build-iso/powershell_190512_001848.png" alt=""></p>
+<p>你可以发现这个过程非常的吃内存和CPU，所以建议你在不用电脑的过程中进行这个操作。我昨晚在电脑上压缩的过程大概耗费了差不多20分钟左右。不过压缩出来的成果也是比较喜人的。</p>
+<p><img src="https://cdn.jsdelivr.net/gh/EdisonJwa/Blog@latest/source/build-iso/g9hIMxhMyQIBlX4Q.jpg" alt=""></p>
+<p>你可以配合PE的dism或WinNTSetup来安装，能同时支持UEFI和Secure Boot以及Legacy启动模式。</p>
+<h2 id="part-4-制成光盘镜像">Part 4.制成光盘镜像</h2>
+<p>如果你想把它做成光盘镜像，那你还需要做这些操作：<br>
+解压原版win10 64位安装镜像，删除里面sources文件夹的install.wim，将最终成品重命名成install.esd复制进去。<br>
+并新建一直文本文档，命名为 <code>ei.cfg</code></p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><code class="hljs ini"><span class="hljs-section">[EditionID]</span><br>Home<br>Professional<br>ProfessionalWorkstation<br>Enterprise<br><span class="hljs-section">[Channel]</span><br>Retail<br><span class="hljs-section">[VL]</span><br>2<br></code></pre></td></tr></table></figure>
+<p>保存之后，将它重新打包回ISO即可。<br>
+可以在此处下载 <a target="_blank" rel="noopener" href="https://go.microsoft.com/fwlink/?linkid=2086042">Windows ADK 1903</a><br>
+此处我只安装了部署工具。</p>
+<p><img src="https://cdn.jsdelivr.net/gh/EdisonJwa/Blog@latest/source/build-iso/adksetup_190512_151237.png" alt=""></p>
+<p>为了支持UEFI，请使用oscdimg命令打包。</p>
+<p>切换到 oscdimg 目录下<br>
+<code>C:\Program Files (x86)\Windows Kits\10\Assessment and Deployment Kit\Deployment Tools\amd64\Oscdimg</code></p>
+<p>在 PowerShell 中输入</p>
+<figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs powershell">.\oscdimg.exe <span class="hljs-literal">-m</span> <span class="hljs-literal">-o</span> <span class="hljs-literal">-u2</span> <span class="hljs-literal">-udfver102</span> <span class="hljs-literal">-bootdata</span>:<span class="hljs-number">2</span><span class="hljs-comment">#p0,e,bEtfsboot.com#pEF,e,bEfisys.bin -l&quot;Edison Windows 10 19H1 X64&quot; E:\Edison_WIN10_19H1 E:\Edison_WIN10_19H1.iso</span><br></code></pre></td></tr></table></figure>
+<blockquote>
+<p>此处的 <code>E:\Edison_WIN10_19H1</code> 为安装程序所在文件夹，<code>E:\Edison_WIN10_19H1.iso</code> 为输出文件夹</p>
+</blockquote>
+<p><img src="https://cdn.jsdelivr.net/gh/EdisonJwa/Blog@latest/source/build-iso/powershell_190512_151743.png" alt=""></p>
+<p>完成后的成品可以在虚拟机中进行一下测试。</p>
+<h1 id="最后的一点说明">最后的一点说明</h1>
+<p>这个过程可能会消耗较长的时间，不过之后在装系统的时候节约下来的时间就远远超过现在所耗费的时间了。</p>
+<p>这么装完的系统确实是没激活的，因为没整合非法激活工具。这里确实考虑到了版权因素，还考虑到了一些非法激活工具给系统带来的安全隐患问题。</p>
+<p>再加上Win10本身激活的机制那么好，有伴随主板终身的数字许可证，还能转移到下一台电脑上，还有什么理由再去用非法激活工具呢？</p>
+<p>我自己在镜像中压缩了 <a target="_blank" rel="noopener" href="https://www.bandisoft.com/bandizip/">Bandizip</a>,<a target="_blank" rel="noopener" href="https://potplayer.daum.net/">Potplayer</a>,<a target="_blank" rel="noopener" href="https://www.ccleaner.com/download">CCleaner</a>,Chrome,Office 和<a target="_blank" rel="noopener" href="https://www.majorgeeks.com/files/details/visual_c_redistributable_runtimes_aio_repack.html">基础运行库</a></p>
+<blockquote>
+<p>PS: Potplayer 是韩国 Daum 公司的一款良心产品，而前不久 Daum 网站已经被墙。你可以在这里下载我的转存版本，但不能保证实时更新 <a target="_blank" rel="noopener" href="https://cloud.wevg.org/software/potplayer">点击下载</a></p>
+</blockquote>
+<p>至此，属于我们自己的 Windows 系统安装镜像就创建完成了。</p>
+<p><img src="https://cdn.jsdelivr.net/gh/EdisonJwa/Blog@latest/source/build-iso/VirtualBoxVM_190512_154758.png" alt=""></p>
+<h1 id="参考链接">参考链接</h1>
+<p><a target="_blank" rel="noopener" href="https://docs.microsoft.com/en-us/windows-hardware/get-started/adk-install">Download and install the Windows ADK</a></p>
+<p><a target="_blank" rel="noopener" href="https://finalthought.org/2018/01/11/creating-customized-windows-10-version-1709-media-iso-wim-flash-drive/">Creating Customized Windows 10 Version 1709 Media (ISO, WIM, Flash Drive)</a></p>
+<p><a target="_blank" rel="noopener" href="https://answers.microsoft.com/en-us/windows/forum/windows_7-windows_install/where-is-oscdimgexe/b6ccd22e-b478-4222-b370-d5aaf021f575">Where is oscdimg.exe</a></p>
+<p><a target="_blank" rel="noopener" href="https://docs.microsoft.com/en-us/windows-hardware/manufacture/desktop/oscdimg-command-line-options#oscdimg-command-line-options-1">Oscdimg Command-Line Options</a></p>
+<p><a target="_blank" rel="noopener" href="https://docs.microsoft.com/en-us/windows-hardware/manufacture/desktop/windows-setup-edition-configuration-and-product-id-files--eicfg-and-pidtxt">Windows Setup Edition Configuration and Product ID Files (EI.cfg and PID.txt)</a></p>
+<p><a target="_blank" rel="noopener" href="https://docs.microsoft.com/en-us/windows-hardware/manufacture/desktop/dism-windows-edition-servicing-command-line-options">DISM Windows Edition-Servicing Command-Line Options</a></p>
+<p><a target="_blank" rel="noopener" href="https://msdn.microsoft.com/en-us/library/windows/hardware/dn898486(v=vs.85).aspx">审核模式概述(Audit Mode Overview)</a></p>
+<p><a target="_blank" rel="noopener" href="https://www.ithome.com/html/win10/312311.htm">IT之家学院：如何定制一个预装好基本软件的Win10</a></p>
+<p><a target="_blank" rel="noopener" href="https://docs.microsoft.com/en-us/windows-hardware/manufacture/desktop/system-builder-deployment-of-windows-10-for-desktop-editions">System builder deployment of Windows 10 for desktop editions</a></p>
+<p><a target="_blank" rel="noopener" href="http://bbs.pcbeta.com/viewthread-1810688-1-1.html">18362的哈希出来了，大家来看看，UUP文件的</a></p>
+<p><a target="_blank" rel="noopener" href="https://docs.microsoft.com/en-us/windows-hardware/manufacture/desktop/deploy-net-framework-35-by-using-deployment-image-servicing-and-management--dism">Deploy .NET Framework 3.5 by using Deployment Image Servicing and Management (DISM)</a></p>
+<p><a target="_blank" rel="noopener" href="https://docs.microsoft.com/en-us/previous-versions/windows/it-pro/windows-8.1-and-8/hh825262(v%3dwin.10)">https://docs.microsoft.com/en-us/previous-versions/windows/it-pro/windows-8.1-and-8/hh825262%28v%3dwin.10%29</a></p>
+<p><a target="_blank" rel="noopener" href="http://www.virtubytes.com/2017/02/03/install-net-framework-3-5-server-2016/">INSTALL .NET FRAMEWORK 3.5 ON WINDOWS SERVER 2016 – ALTERNATE PATH ERROR</a></p>
+<p><a target="_blank" rel="noopener" href="https://windowsreport.com/net-framework-3-5-missing-windows-10/">Fix: .NET Framework 3.5 is Missing From Windows 10</a></p>
+<p><a target="_blank" rel="noopener" href="https://www.raymond.cc/blog/access-virtual-hard-disks-easily-in-windows-7/">7 Ways To Open Virtual Hard Disk Images For Read And Write Access</a></p>
+<blockquote>
+<p>Thumbnail by Microsoft</p>
+</blockquote>
+
+                    </article>
+                    
+    <blockquote class="post-license">
+        <p>
+            <strong>本文作者&nbsp;:&nbsp;Edison Jwa</strong>
+            <br>
+            <strong>
+            
+                本文使用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">署名-非商业性使用-相同方式共享 4.0 国际 (CC BY-NC-SA 4.0)</a> 协议
+            </strong>
+            <br>
+            <strong>本文链接&nbsp;:&nbsp;</strong><a href="https://www.wevg.org/archives/design-my-windows-iso/">https://www.wevg.org/archives/design-my-windows-iso/</a>
+        </p>
+    </blockquote>
+
+
+
+    <blockquote id="date-expire-notification" class="post-expired-notify">本文最后更新于 <span id="date-expire-num"></span> 天前，文中所描述的信息可能已发生改变</blockquote>
+    <script>
+    (function() {
+        var dateUpdate = Date.parse("2019-05-12");
+        var nowDate = new Date();
+        var a = nowDate.getTime();
+        var b = a - dateUpdate;
+        var daysUpdateExpire = Math.floor(b/(24*3600*1000));
+        if (daysUpdateExpire >= 120) {
+            document.getElementById('date-expire-num').innerHTML = daysUpdateExpire;
+        } else {
+            document.getElementById('date-expire-notification').style.display = 'none';
+        }
+    })();
+    </script>
+
+
+<p class="post-footer-info mb-0 pt-0">本文发表于&nbsp;<time datetime="2019-05-12T04:03:52.000Z" itemprop="datePublished">2019-05-12</time>
+
+</p>
+<p class="post-footer-info mb-0 pt-2">
+
+<span class="post-categories-list mt-2">
+
+<a class="post-categories-list-item" href='/categories/Tech/'>Tech</a>
+
+<a class="post-categories-list-item" href='/categories/Tech/Windows/'>Windows</a>
+
+</span>
+
+
+
+<span class="post-tags-list mt-2">
+
+<a class="post-tags-list-item" href="/tags/Windows/" rel="tag">#&nbsp;Windows</a>
+
+<a class="post-tags-list-item" href="/tags/System/" rel="tag">#&nbsp;System</a>
+
+</span>
+
+
+</p>
+
+                </div>
+                <div class="post-nav px-2 bg-gray">
+<ul class="pagination">
+    <!-- Prev Nav -->
+    
+        <li class="page-item page-prev">
+            <a href="/archives/nginx-http-basic-auth/" rel="prev">
+                <div class="page-item-title"><i class="icon icon-back" aria-hidden="true"></i></div>
+                <div class="page-item-subtitle">为网站启用 HTTP Basic Auth</div>
+            </a>
+        </li>
+    
+
+    <!-- Next Nav -->
+    
+        <li class="page-item page-next">
+            <a href="/archives/git-gpg-sign-commit/" rel="next">
+                <div class="page-item-title"><i class="icon icon-forward" aria-hidden="true"></i></div>
+                <div class="page-item-subtitle">为你的 Commit 加上 GPG 的签名</div>
+            </a>
+        </li>
+    
+</ul>
+</div>
+
+                
+                    <!-- # Comment # -->
+                    
+                        <div class="card-footer post-comment">
+                            <div id="disqus_thread"></div>
+
+<script id="js-disqusjs" src="https://cdn.jsdelivr.net/npm/disqusjs@1.2.5/dist/disqus.js" async></script>
+<script>
+document.getElementById('js-disqusjs').addEventListener('load', function () {
+    function loadDisqusJS() {
+        new DisqusJS({
+            shortname: 'edisonj',
+            
+            siteName: 'Vigorous Pro',
+            
+            identifier: 'https://www.wevg.org/archives/design-my-windows-iso/',
+            url: 'https://www.wevg.org/archives/design-my-windows-iso/',
+            api: 'https://disqus.uv.uy/api/',
+            apikey: 'vBTqc5gYirQfuj9STIAANtQCArVi9MN8UZ72UUucwnhus4AhpgpbVJMIn3Ojl4O7',
+            
+            
+        })
+    }
+    if (document.readyState === 'complete') {
+        loadDisqusJS();
+    } else {
+        window.addEventListener('load', loadDisqusJS);
+    }
+});
+</script>
+
+                        </div>
+                    
+                
+            </div>
+        </div>
+    </div>
+</div>
+
+            <!-- ### Footer ### -->
+            <footer class="text-center">
+    <!-- footer copyright -->
+    
+        <p class="footer-copyright mb-0">Copyright&nbsp;©&nbsp;<span id="copyright-year"></span>
+            <a class="footer-copyright-a" href="https://www.wevg.org">Vigorous Pro</a>
+        </p>
+
+    <!-- footer custom text -->
+    <p class="footer-text mb-0">
+    <a href="/atom.xml" target="_blank" class="footer-develop-a" rel="nofollow noopener noreferrer">RSS</a><span class="footer-develop-divider"></span><a href="https://donate.edison.do" target="_blank" class="footer-develop-a" rel="nofollow noopener noreferrer">Donate</a><span class="footer-develop-divider"></span><a href="/privacy-policy" target="_blank" class="footer-develop-a" rel="nofollow noopener noreferrer">Privacy Policy</a>
+    </p>
+    <!-- footer develop info -->
+    <p class="footer-develop mb-0">
+        
+
+        
+        Powered by&nbsp;<!--
+         --><a href="https://hexo.io" target="_blank" class="footer-develop-a" rel="external nofollow noopener noreferrer">Hexo</a><span class="footer-develop-divider"></span>Theme&nbsp;-&nbsp;<!--
+         --><a href="https://github.com/SukkaW/hexo-theme-suka" target="_blank" class="footer-develop-a" rel="external noopener">Suka</a>
+    </p>
+</footer>
+
+
+        <!-- ### Import File ### -->
+        <!-- ### Footer JS Import ### -->
+
+<script>
+
+    
+window.lazyLoadOptions = {
+    elements_selector: ".lazyload",
+    threshold: 50
+};
+
+(function() {
+    var copyrightNow = new Date().getFullYear();
+    var copyrightContent = document.getElementById('copyright-year');
+    var copyrightSince = 2015;
+    if (copyrightSince === copyrightNow) {
+        copyrightContent.textContent = copyrightNow;
+    } else {
+        copyrightContent.textContent = copyrightSince + ' - ' + copyrightNow;
+    }
+})();
+console.log('\n %c Suka Theme (hexo-theme-suka) | © SukkaW | Verision 1.3.3 %c https://github.com/SukkaW/hexo-theme-suka \n', 'color: #fff; background: #444; padding:5px 0;', 'background: #bbb; padding:5px 0;');
+
+</script>
+
+<script src="https://cdn.jsdelivr.net/npm/vanilla-lazyload@12.3.0" async></script>
+
+
+
+<!-- Comment -->
+
+    
+        <!-- No need for DisqusJS -->
+    
+
+
+<!-- ### Custom Footer ### -->
+<script> if ('serviceWorker' in navigator) { window.addEventListener('load', () => { navigator.serviceWorker.register('/sw.js'); }) } </script><script>window.ga_tid = "UA-106121780-1";window.ga_api = "https://ga.cdn.uv.uy/jquery.js"; </script><script src="https://cdn.jsdelivr.net/gh/EdisonJwa/Blog@master/js/main.js" async></script>
+    </body>
+
+</html>

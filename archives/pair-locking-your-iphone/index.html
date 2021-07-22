@@ -1,0 +1,728 @@
+<!DOCTYPE html>
+
+<html lang="zh-CN">
+    <head>
+    <meta charset="utf-8">
+    <!--
+        hexo-theme-suka © SukkaW
+        GitHub: https://github.com/SukkaW/hexo-theme-suka
+    -->
+
+    <!-- ### Resource Hint ### -->
+
+    <!-- ## DNS Prefetch ## -->
+    <meta http-equiv="x-dns-prefetch-control" content="on">
+
+<!-- busuanzi -->
+
+
+<!-- comment -->
+
+
+
+
+
+
+
+<!-- analytics -->
+
+
+
+
+
+
+
+    <!-- ## Preload ## -->
+    
+
+
+
+
+    <!-- ### Meta & Title & Info ### -->
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, minimum-scale=1, initial-scale=1, maximum-scale=5, viewport-fit=cover">
+    <meta name="renderer" content="webkit">
+
+    <!-- Title -->
+    <title>利用 Pair Locking 保证 iOS 设备数据安全 | Vigorous Pro</title>
+
+    <!-- Favicons -->
+    <link rel="icon" type="image&#x2F;ico" href="/favicon.ico"><link rel="apple-touch-icon" sizes="180x180" href="/source/favicon/apple-touch-icon.png"><link rel="icon" typt="image&#x2F;png" sizes="192x192" href="/source/favicon/android-chrome-192x192.png"><link rel="icon" typt="image&#x2F;png" sizes="32x32" href="/source/favicon/favicon-32x32.png"><link rel="icon" typt="image&#x2F;png" sizes="16x16" href="/source/favicon/favicon-16x16.png"><link rel="mask-icon" href="/safari-pinned-tab.svg" color="">
+
+    <!-- ### Import File ### -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/spectre.css@0.5.3"><style>
+    body {
+        background-color: #f8f9fa;
+    }
+
+    a, a:visited {
+        color: #0070ff;
+    }
+
+    a:active, a:focus, a:hover {
+        color: #0070ff;
+        opacity: .75;
+    }
+
+    #post-content a,
+    #post-content a:hover,
+    #post-content a:focus,
+    #post-content a:visited {
+        color: #005eb9;
+        opacity: 1;
+    }
+
+    
+
+    .post-entry .card-body a {
+        color: #0070ff;
+    }
+
+    .avatar {
+        background: #444;
+    }
+
+    .navbar-link,
+    .navbar-link:visited,
+    .timeline .timeline-item .timeline-icon.icon-lg {
+        color: #0070ff;
+    }
+
+    .navbar-link:hover {
+        color: #0070ff;
+        opacity: .8;
+    }
+
+    #search-input .btn,
+    #disqus_click_btn,
+    #disqus-switch-to-direct,
+    #disqus-loadmore-button {
+        background: #727e96;
+        border-color: #727e96;
+        color: #fff;
+    }
+
+    #post-toc a.post-toc-link,
+    #post-toc a.post-toc-link:visited,
+    .share-menu.menu .menu-item>a {
+        color: #727e96;
+    }
+
+    .share-menu.menu .menu-item>a:hover,
+    .share-menu.menu .menu-item>a:focus,
+    .share-menu.menu .menu-item>a:visited {
+        color: #50596c;
+        background: #f8f9fa;
+        opacity: .85;
+    }
+</style><link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/sukkaw/hexo-theme-suka@latest/source/css/style.min.css">
+
+
+    
+        <!-- Import DisqusJS Default Theme -->
+        <link rel="preload" href="https://cdn.jsdelivr.net/npm/disqusjs@1.2.5/dist/disqusjs.css" as="style" onload="this.onload=null;this.rel='stylesheet'"><noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/disqusjs@1.2.5/dist/disqusjs.css"></noscript>
+
+    
+
+
+
+
+
+
+
+    <!-- Prettify Theme -->
+    
+    <link rel="preload" href="https://cdn.jsdelivr.net/gh/sukkaw/hexo-theme-suka@latest/source/css/highlight/tomorrow-night-eighties.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'"><noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/sukkaw/hexo-theme-suka@latest/source/css/highlight/tomorrow-night-eighties.min.css"></noscript>
+
+
+
+
+
+<script>
+/*! loadCSS. [c]2017 Filament Group, Inc. MIT License */
+!function(t){"use strict";t.loadCSS||(t.loadCSS=function(){});var e=loadCSS.relpreload={};if(e.support=function(){var e;try{e=t.document.createElement("link").relList.supports("preload")}catch(t){e=!1}return function(){return e}}(),e.bindMediaToggle=function(t){var e=t.media||"all";function a(){t.addEventListener?t.removeEventListener("load",a):t.attachEvent&&t.detachEvent("onload",a),t.setAttribute("onload",null),t.media=e}t.addEventListener?t.addEventListener("load",a):t.attachEvent&&t.attachEvent("onload",a),setTimeout(function(){t.rel="stylesheet",t.media="only x"}),setTimeout(a,3e3)},e.poly=function(){if(!e.support())for(var a=t.document.getElementsByTagName("link"),n=0;n<a.length;n++){var o=a[n];"preload"!==o.rel||"style"!==o.getAttribute("as")||o.getAttribute("data-loadcss")||(o.setAttribute("data-loadcss",!0),e.bindMediaToggle(o))}},!e.support()){e.poly();var a=t.setInterval(e.poly,500);t.addEventListener?t.addEventListener("load",function(){e.poly(),t.clearInterval(a)}):t.attachEvent&&t.attachEvent("onload",function(){e.poly(),t.clearInterval(a)})}"undefined"!=typeof exports?exports.loadCSS=loadCSS:t.loadCSS=loadCSS}("undefined"!=typeof global?global:this);
+</script>
+
+    <!-- ### Site Verification ### -->
+    
+
+
+    <link rel="alternate" type="application/atom+xml" href="/atom.xml"><meta name="mobile-web-app-capable" content="yes"><meta name="application-name" content="Vigorous Pro"><meta name="msapplication-starturl" content="https://www.wevg.org"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-title" content="Vigorous Pro"><meta name="apple-mobile-web-app-status-bar-style" content="black-translucent"><link rel="manifest" href="/manifest.json"><link rel="search" type="application/opensearchdescription+xml" href="/opensearch.xml" title="Vigorous Pro">
+
+    <!-- ### The Open Graph & Twitter Card Protocol ### -->
+    <meta property="og:title" content="利用 Pair Locking 保证 iOS 设备数据安全 | Vigorous Pro"><meta property="og:site_name" content="Vigorous Pro"><meta property="og:type" content="article"><meta property="og:url" content="https://www.wevg.org/archives/pair-locking-your-iphone/"><meta property="og:locale" content="zh-CN"><meta name="description" content="通过配置Pair Locking，保护隐私，防止执法人员对您的设备进行取证。 - Edison Jwa - Vigorous Pro"><meta name="keywords" content="Secure, iPhone, Exploit, Apple, 配置, edisonjwa,game,blog,Web,Html,edison"><meta property="og:image" content="https://cdn.jsdelivr.net/gh/EdisonJwa/Blog@master/source/thumbnail/1dd9181b3b9a626135fa70a2b7e84364.jpg"><meta property="og:image" content="https://cdn.jsdelivr.net/gh/EdisonJwa/Blog@latest/source/pair-locking/AppleConfigurator.png"><meta property="og:image" content="https://cdn.jsdelivr.net/gh/EdisonJwa/Blog@latest/source/pair-locking/7.png"><meta property="og:image" content="https://cdn.jsdelivr.net/gh/EdisonJwa/Blog@latest/source/pair-locking/8.png"><meta property="og:image" content="https://cdn.jsdelivr.net/gh/EdisonJwa/Blog@latest/source/pair-locking/9.png"><meta property="og:image" content="https://cdn.jsdelivr.net/gh/EdisonJwa/Blog@latest/source/pair-locking/10.png"><meta property="og:image" content="https://cdn.jsdelivr.net/gh/EdisonJwa/Blog@latest/source/pair-locking/PICSEW_C980.jpg"><meta property="og:image" content="https://cdn.jsdelivr.net/gh/EdisonJwa/Blog@latest/source/pair-locking/11.png"><meta property="og:image" content="https://cdn.jsdelivr.net/gh/EdisonJwa/Blog@latest/source/pair-locking/12.png"><meta property="og:image" content="https://cdn.jsdelivr.net/gh/EdisonJwa/Blog@latest/source/pair-locking/13.png"><meta property="og:image" content="https://cdn.jsdelivr.net/gh/EdisonJwa/Blog@latest/source/pair-locking/Snipaste_2019-10-12_23-20-56.png"><meta property="og:image" content="https://cdn.jsdelivr.net/gh/EdisonJwa/Blog@latest/source/pair-locking/Snipaste_2019-10-12_23-21-58.png"><meta property="og:image" content="https://cdn.jsdelivr.net/gh/EdisonJwa/Blog@latest/source/pair-locking/16.png"><meta property="og:image" content="https://cdn.jsdelivr.net/gh/EdisonJwa/Blog@latest/source/pair-locking/18.png"><meta property="og:image" content="https://cdn.jsdelivr.net/gh/EdisonJwa/Blog@latest/source/pair-locking/Snipaste_2019-10-12_23-54-26.png"><meta property="og:image" content="https://cdn.jsdelivr.net/gh/EdisonJwa/Blog@latest/source/pair-locking/22.png"><meta property="article:published_time" content="2019-10-12T10:48:16.000Z"><meta property="article:modified_time" content="2019-10-12T10:58:00.000Z"><meta property="og:updated_time" content="2019-10-12T10:58:00.000Z"><meta property="article:author" content="Edison Jwa"><meta property="article:tag" content="Secure, iPhone, Exploit, Apple, 配置, edisonjwa,game,blog,Web,Html,edison"><meta name="twitter:card" content="summary_large_image"><meta name="twitter:image" content="https://cdn.jsdelivr.net/gh/EdisonJwa/Blog@master/source/thumbnail/1dd9181b3b9a626135fa70a2b7e84364.jpg">
+
+    
+
+    <!-- ### Canonical link ### -->
+    <link rel="canonical" href="https://www.wevg.org/archives/pair-locking-your-iphone/">
+
+    <meta name="generator" content="Hexo 5.4.0">
+
+    <!-- ### Analytics ### -->
+    
+
+
+
+
+
+
+
+    <!-- ### Structured Data ### -->
+    
+
+
+
+<script type="application/ld+json">
+{
+    "@context": "http://schema.org",
+    "url": "https://www.wevg.org/archives/pair-locking-your-iphone/",
+    "@type": "BlogPosting",
+    "logo": "https://www.wevg.org/source/favicon/android-chrome-192x192.png",
+    "mainEntityOfPage": {
+        "@type": "WebPage",
+        "@id": "https://www.wevg.org/archives/pair-locking-your-iphone/"
+    },
+    "headline": "利用 Pair Locking 保证 iOS 设备数据安全 | Vigorous Pro",
+    
+    "image": {
+        "@type": "ImageObject",
+        "url": "https://cdn.jsdelivr.net/gh/EdisonJwa/Blog@master/source/thumbnail/1dd9181b3b9a626135fa70a2b7e84364.jpg"
+    },
+    
+    "datePublished": "2019-10-12T10:48:16.000Z",
+    "dateModified": "2019-10-12T10:58:00.000Z",
+    "author": {
+        "@type": "Person",
+        "name": "Edison Jwa",
+        "image": {
+            "@type": "ImageObject",
+            "url": "https://cdn.jsdelivr.net/gh/EdisonJwa/Blog@master/source/image/avatar.jpg"
+        },
+        "description": "The world can always use more heroes."
+    },
+    "publisher": {
+        "@type": "Organization",
+        "name": "Vigorous Pro",
+        "logo": {
+            "@type": "ImageObject",
+            "url": "https://www.wevg.org/source/favicon/android-chrome-192x192.png"
+        }
+    },
+    
+    "potentialAction": {
+        "@type": "SearchAction",
+        "target": "https://www.wevg.org/search?s={search_term_string}",
+        "query-input": "required name=search_term_string"
+    },
+    
+    "keywords": "Secure, iPhone, Exploit, Apple, 配置, edisonjwa,game,blog,Web,Html,edison",
+    "description": "通过配置Pair Locking，保护隐私，防止执法人员对您的设备进行取证。 - Edison Jwa - Vigorous Pro"
+}
+</script>
+
+
+
+    <!-- ### Custom Head ### -->
+    <!-- EdisonJwas Blog --><script data-ad-client="ca-pub-2345785306567671" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script><link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/EdisonJwa/Blog@latest/css/darkmode.min.css"><script src="https://cdn.jsdelivr.net/gh/EdisonJwa/Blog@master/js/edison-main.min.js"></script><script type="module" async="" src="https://cdn.jsdelivr.net/npm/instant.page@3.0.0/instantpage.min.js"></script><link rel="manifest" href="/site.webmanifest"><meta name="msapplication-TileColor" content="#d43d3d"><meta name="msapplication-TileImage" content="/source/favicon/mstile-144x144.png"><meta name="theme-color" content="#ffffff"><script type="text/javascript">function downloadJSAtOnload(){var d=document.createElement("script");d.src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js",document.body.appendChild(d)}window.addEventListener?window.addEventListener("load",downloadJSAtOnload,!1):window.attachEvent?window.attachEvent("onload",downloadJSAtOnload):window.onload=downloadJSAtOnload;</script><!-- Global site tag (gtag.js) - Google Analytics --><script async src="https://www.googletagmanager.com/gtag/js?id=G-S2SFLD81VT"></script><script>window.dataLayer = window.dataLayer || [];function gtag(){dataLayer.push(arguments);} gtag('js', new Date()); gtag('config', 'G-S2SFLD81VT');</script><!-- Cloudflare Web Analytics --><script defer src=https://static.cloudflareinsights.com/beacon.min.js ; data-cf-beacon="{&quot;token&quot;: 1ebb36a2c023408484ff114c409377b8}"></script><!-- End Cloudflare Web Analytics -->
+<style type="text/css">
+.spoiler {
+  display: inline-flex;
+}
+p.spoiler {
+  display: flex;
+}
+.spoiler a {
+  pointer-events: none;
+}
+.spoiler-blur, .spoiler-blur > * {
+  transition: text-shadow .5s ease;
+}
+.spoiler .spoiler-blur, .spoiler .spoiler-blur > * {
+  color: rgba(0, 0, 0, 0);
+  background-color: rgba(0, 0, 0, 0);
+  text-shadow: 0 0 10px grey;
+  cursor: pointer;
+}
+.spoiler .spoiler-blur:hover, .spoiler .spoiler-blur:hover > * {
+  text-shadow: 0 0 5px grey;
+}
+.spoiler-box, .spoiler-box > * {
+  transition: color .5s ease,
+  background-color .5s ease;
+}
+.spoiler .spoiler-box, .spoiler .spoiler-box > * {
+  color: black;
+  background-color: black;
+  text-shadow: none;
+}</style></head>
+
+    <body>
+            
+
+            <!-- ### Main content ### -->
+            <!-- ## Header ##-->
+<header>
+    <h1 class="header-title text-center"><a href="/">Vigorous Pro</a></h1>
+
+    <p class="text-center header-slogan">
+        
+            
+                The world can always use more heroes.
+            
+        
+    </p>
+
+    <nav class="navbar-section text-center">
+    
+        <a href="/" class="navbar-link">首页</a>
+    
+    
+        <a href="/archives/" class="navbar-link">归档</a>
+    
+    
+        <a href="/search" class="navbar-link">搜索</a>
+    
+    
+        <a target="_blank" rel="noopener" href="https://uv.uy" class="navbar-link">关于</a>
+    
+        <a href="/friends/" class="navbar-link">友链</a>
+    
+    
+    
+</nav>
+</header>
+
+            
+    <!-- ## Post ## -->
+    <div class="post-container">
+    <div id="post-card" class="card">
+        
+            <div class="card-image lazyload" data-bg="url('https://cdn.jsdelivr.net/gh/EdisonJwa/Blog@master/source/thumbnail/1dd9181b3b9a626135fa70a2b7e84364.jpg')"></div>
+        
+        <div class="card-item-container">
+            <div class="card-inner-cell">
+                <!-- # Post Header Info # -->
+                <div class="card-header">
+                    
+    <h1 class="card-title h3 mb-2">利用 Pair Locking 保证 iOS 设备数据安全</h1>
+
+
+
+
+<div class="post-header-info">
+    <p class="post-header-info-left text-gray">
+        <img class="author-thumb lazyload" data-src="https://cdn.jsdelivr.net/gh/EdisonJwa/Blog@master/source/image/avatar.jpg" src="https://cdn.jsdelivr.net/gh/sukkaw/hexo-theme-suka@latest/source/img/suka-lazyload.gif" alt="Edison Jwa's Avatar">
+        <span>2019-10-12</span>
+        
+            <span class="suka-devide-dot"></span>
+            <a class="category-link" href="/categories/Tech/">Tech</a><span class="suka-devide-dot"></span><a class="category-link" href="/categories/Tech/Apple/">Apple</a>
+        
+        
+        
+    </p>
+    <div class="post-header-info-right">
+        
+            <div class="dropdown dropdown-right">
+<a class="dropdown-toggle" tabindex="0">分享本文</a>
+<ul class="menu share-menu">
+    <!-- Share Weibo -->
+    
+    <li class="menu-item">
+        <a href="http://service.weibo.com/share/share.php?appkey=&title=利用 Pair Locking 保证 iOS 设备数据安全&url=https://www.wevg.org/archives/pair-locking-your-iphone/&pic=https://cdn.jsdelivr.net/gh/EdisonJwa/Blog@master/source/thumbnail/1dd9181b3b9a626135fa70a2b7e84364.jpg&searchPic=false&style=simple" target="_blank" rel="external noopener noreferrer nofollow">分享到微博</a>
+    </li>
+    
+
+    <!-- Share Twitter -->
+    
+    <li class="menu-item">
+        <a href="https://twitter.com/intent/tweet?text=利用 Pair Locking 保证 iOS 设备数据安全&url=https://www.wevg.org/archives/pair-locking-your-iphone/&via=Edison Jwa" target="_blank" rel="external noopener noreferrer nofollow">分享到 Twitter</a>
+    </li>
+    
+
+    <!-- Share Facebook -->
+    
+    <li class="menu-item">
+        <a href="https://www.facebook.com/sharer/sharer.php?u=https://www.wevg.org/archives/pair-locking-your-iphone/" target="_blank" rel="external noopener noreferrer nofollow">分享到 Facebook</a>
+    </li>
+    
+
+    <!-- Share Google+ -->
+    
+    <li class="menu-item">
+        <a href="https://plus.google.com/share?url=https://www.wevg.org/archives/pair-locking-your-iphone/" target="_blank" rel="external noopener noreferrer nofollow">分享到 Google+</a>
+    </li>
+    
+
+    <!-- Share LinkedIn -->
+    
+    <li class="menu-item">
+        <a href="https://www.linkedin.com/shareArticle?mini=true&url=https://www.wevg.org/archives/pair-locking-your-iphone/&title=Vigorous Pro" target="_blank" rel="external noopener noreferrer nofollow">分享到 LinkedIn</a>
+    </li>
+    
+
+    <!-- Share QQ -->
+    
+    <li class="menu-item">
+        <a href="http://connect.qq.com/widget/shareqq/index.html?site=Vigorous Pro&title=Vigorous Pro&summary=The world can always use more heroes.&pics=https://cdn.jsdelivr.net/gh/EdisonJwa/Blog@master/source/thumbnail/1dd9181b3b9a626135fa70a2b7e84364.jpg&url=https://www.wevg.org/archives/pair-locking-your-iphone/" target="_blank" rel="external noopener noreferrer nofollow"> 分享到 QQ</a>
+    </li>
+    
+
+    <!-- Share Telegram -->
+    
+    <li class="menu-item">
+        <a href="https://t.me/share/url?url=https://www.wevg.org/archives/pair-locking-your-iphone/&text=Vigorous Pro" target="_blank" rel="external noopener noreferrer nofollow">分享到 Telegram</a>
+    </li>
+    
+
+    <!-- QRCode -->
+    
+    <li class="menu-item">
+        <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAJQAAACUCAAAAABQV18IAAAB50lEQVR42u3aywrDMAxE0fz/T7erQkktzSikYCk3m0If8QmotiXreG14HaBAgQK1QB3J9fn8/N2fmy1+F/02GgfULNQy6L5QK2T0GiHVOKDmodRNzp+tAjX7YzjjgHoGKp3sRLBHr6CejYqCPgtmUKDUQqk2bdkm8C+7BFDbo5zE4Y7X27MZUFuiZNHBmDjdoL+t6gJqa9Q5EKNFMxs02/ypxdraJYBqh8qSy2ziU4OphwA1G+Vs6KKgjjZ30Xt2oIMagVKBrhZu52HCJALUCFS1yOoU09wibJiMgmqNUomnE6xX3/t5EFAjUO7Ep4plDkRO0qBGoFShLAvyrDFCLeigZqNUk4S6WaWAlia9oEag3EaJbODKZGklo6Dao9SAWYKaBX+luAFqDirbwDkTqZuUOs2soGagnIXZLYCpP4cs3oIagXITTafgUS2IWF1BoNqh1MKsNnvugaXTUAFqDqpyAO0urtUJF9QclFN8VZOrWzCT3wU1AlVtFKwU+TOkPNgG1RblNDS7TYOqAKuKIaDmoFRDjdr0u5u6yycOoFqiSsWtwp9DHQhYXdagRqFUs6kDVodGoJ6Jcm+ugr3ULAGqNSpLGOTNLhRu7QIHqJYoZ3F1NnjuYVO50wxUK9ROFyhQoEB9XW/TxjGAGHKJ4QAAAABJRU5ErkJggg==" alt="QRCode">
+    </li>
+    
+
+</ul>
+</div>
+        
+    </div>
+</div>
+                </div>
+                <div class="card-body">
+                    
+                        
+                        
+                            <div id="post-toc"><ol class="post-toc"><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#%E4%BB%80%E4%B9%88%E6%98%AF-checkm8-%E6%BC%8F%E6%B4%9E%EF%BC%9F"><span class="post-toc-number">1.</span> <span class="post-toc-text">什么是 checkm8 漏洞？</span></a></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#%E4%B8%BA%E4%BB%80%E4%B9%88%E8%A6%81%E9%85%8D%E5%AF%B9%E9%94%81%E5%AE%9A%E6%88%91%E7%9A%84%E6%89%8B%E6%9C%BA%EF%BC%9F"><span class="post-toc-number">2.</span> <span class="post-toc-text">为什么要配对锁定我的手机？</span></a></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#pair-locking-%E6%98%AF%E5%A6%82%E4%BD%95%E5%B7%A5%E4%BD%9C%E7%9A%84%EF%BC%9F"><span class="post-toc-number">3.</span> <span class="post-toc-text">Pair Locking 是如何工作的？</span></a></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#span-style-color-db4d6d-%E9%9C%80%E8%A6%81%E6%B3%A8%E6%84%8F%E7%9A%84%E6%98%AF%EF%BC%9A-span"><span class="post-toc-number">4.</span> <span class="post-toc-text">需要注意的是：</span></a></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#%E7%9B%91%E7%AE%A1%E5%B9%B6%E9%94%81%E5%AE%9A%E9%85%8D%E5%AF%B9%E6%82%A8%E7%9A%84%E8%AE%BE%E5%A4%87"><span class="post-toc-number">5.</span> <span class="post-toc-text">监管并锁定配对您的设备</span></a></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#%E6%80%BB%E7%BB%93"><span class="post-toc-number">6.</span> <span class="post-toc-text">总结</span></a></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#%E5%8F%82%E8%80%83%E9%93%BE%E6%8E%A5"><span class="post-toc-number">7.</span> <span class="post-toc-text">参考链接</span></a></li></ol></div>
+                        
+                    
+                    <article id="post-content">
+                        <p>通过配置Pair Locking，保护隐私，防止执法人员对您的设备进行取证。<span id="more"></span> 但因对于受 checkm8 影响的设备的设备无效。</p>
+<h1 id="什么是-checkm8-漏洞？">什么是 checkm8 漏洞？</h1>
+<p><strong>checkm8</strong> 是由 Twitter 用户 <a target="_blank" rel="noopener" href="https://twitter.com/axi0mX/status/1177542201670168576">@axi0mX</a> 发现并命名的 bootrom 漏洞 。它让永久越狱变成了可能，同时也带来了极大的安全隐患。举例来说，捡到或盗取你手机的不法人士，将可以通过越狱的方式开机，绕过 iCloud 的保护，同时你存放在中的个人数据也有被窥视的危险。<br>
+从使用 A5 芯片的 iPhone4S 到 使用了 A11 芯片的 iPhone8 iPhoneX 都可能受到这个漏洞的影响。<br>
+由于 bootrom 是存在于手机的硬件之中，无法通过软件去修改，意思也就是说苹果将无法通过软件更新的方式去将这个漏洞堵上，只要是拥有这个漏洞的硬件，无论 iOS 怎么升级都能被破解。目前基本上只要是使用 A11 或更早的芯片的 iPhone 机种都在受影响的范围内，也就是除了今年最新 iPhone 11 / 11 Pro / 11 Pro Max 和去年的 XS / XS Max / XR之外，剩下来所有的机种都有这个漏洞了。</p>
+<p><a target="_blank" rel="noopener" href="https://github.com/axi0mX/ipwndfu">https://github.com/axi0mX/ipwndfu</a></p>
+<h1 id="为什么要配对锁定我的手机？">为什么要配对锁定我的手机？</h1>
+<p>处于信息化社会的今天，我们的数字隐私日益收到执法机构，政府等等方面的攻击，尤其是在抗议活动，机场和过境点时，这个问题更为明显。
+  <span class="spoiler" onclick="this.classList.toggle('spoiler')">
+    <span class="spoiler-blur ">而且想必对于手机取证这种事情都或多或少有所耳闻。</span>
+  </span></p>
+<p>通过配置 Pair Locking ，即使您被执法部门强迫，也会阻止 iPhone 取证工具连接到您的设备，读取您的聊天记录，相册，联系人，通话记录等行为。即使你被法律强制执行,也迫使你打开你的装置! 他们也只能 <em>手动</em> 查看您的手机内容，但他们无法复制并进行离线分析，他们无法运行自动扫描的扫描程序，而且他们也无法获取到您的各种 App 认证 token。</p>
+<h1 id="pair-locking-是如何工作的？">Pair Locking 是如何工作的？</h1>
+<p>取证工具使用名为pairing的概念从iPhone提取数据，Jonathan最好地解释了这一点：</p>
+<blockquote>
+<p>A pairing is a trusted relationship with another device, where a computer is granted privileged, trusted access on the iPhone. In order to have the level of control to backup the phone, download personal data, install applications, or perform other such tasks on an iOS device, the machine it’s connected to must be paired with the device. This is what iTunes and Xcode do to talk to the phone, but also what forensic imaging tools and a number of free hacking tools do as well.</p>
+</blockquote>
+<blockquote>
+<p>配对，是与另一个设备相匹配的一种信任关系。在另一台设备上，计算机被赋予权限 ——在 iPhone 上受信任的访问。为了能够控制 iOS 设备进行备份手机，下载个人数据，安装应用程序或执行其他类似任务的控制级别，必须将与其连接的计算机与该设备配对。这是 iTunes 和 Xcode 与设备进行信息传输的方式，但是取证工具和许多黑客工具也是如此。</p>
+</blockquote>
+<p>通过 <em>锁定</em> 配对设备，让您的 iPhone 设备<strong>不会</strong>与其他的连接的设备去创建新的信任，<strong>除了</strong>锁定配对的设备，副作用便是阻止了所有的取证设备。在存在配对锁定的情况下，从手机中收集数据的唯一方法是存在硬件漏洞（例如本博文开头部分提到的 bootrom ）。</p>
+<p>要启用配对锁定，我们需要将手机设置成受监管的状态，从而可以对手机的功能和行为施加大量限制。它是专为企业实施其员工手机上的安全控制而设计的，但对我们来说也一样。</p>
+<h1 id="span-style-color-db4d6d-需要注意的是：-span"><span style="color:#DB4D6D;">需要注意的是：</span></h1>
+<ul>
+<li>建议在执行前，先完整阅读一遍此文章，再决定是否进行此操作。</li>
+<li>将手机设置成受监管状态会 <span style="color:#DB4D6D;"><strong>完全擦除手机</strong></span>，尽管擦除之后，您可以重新登录到您的 iCloud，所有同步过的设置，应用程序等项目都会再次出现。<br>
+<span style="color:#DB4D6D;"><strong>但是，不能先对手机进行备份，再将手机设置成受监管状态，然后再恢复备份！！！(因为恢复备份的同时也会将设备还原到不受监管的状态)</strong></span></li>
+<li>任何能够使用您的笔记本电脑的人都可以从中获得配对记录，并且可以完全访问您手机上的所有内容（在物理连接到笔记本电脑之后）。</li>
+<li><span style="color:#DB4D6D;">如果您无法访问笔记本电脑或丢失配对记录，那么您也将无法连接手机。</span></li>
+</ul>
+<h1 id="监管并锁定配对您的设备">监管并锁定配对您的设备</h1>
+<ol>
+<li>
+<p>下载并安装 <a target="_blank" rel="noopener" href="https://apps.apple.com/us/app/apple-configurator-2/id1037126344">Apple Configurator 2</a></p>
+</li>
+<li>
+<p>将您的设备与电脑通过 USB 连接</p>
+</li>
+<li>
+<p>打开 <strong>Apple Configurator 2</strong>，选择设备后，点击 <code>Prepare</code> 按钮<br>
+<img src="https://cdn.jsdelivr.net/gh/EdisonJwa/Blog@latest/source/pair-locking/AppleConfigurator.png" alt="Select Prepare"></p>
+</li>
+<li>
+<p>在 <code>Prepare Devices</code> 页面中：</p>
+<ul>
+<li>勾选 <strong><code>Supervise devices</code></strong></li>
+<li>勾选 <strong><code>Allow devices to pair with other computers</code></strong></li>
+<li>然后点击 <kbd>Next</kbd><br>
+<img src="https://cdn.jsdelivr.net/gh/EdisonJwa/Blog@latest/source/pair-locking/7.png" alt="Prepare Devices"></li>
+</ul>
+<p>配对锁定可以在两个不同的级别中执行：在监管级别或者在描述文件的级别执行（描述文件是执行一个iPhone设置的合集）</p>
+<p>根据 Jonathan 的建议我们在这里勾选 <code>Allow devices to pair with other computers</code>，我们在监管级别允许它，稍后将在描述文件级别来阻止他。因为如果您需要更换到新的笔记本或者台式机，不需要去清除您的手机。</p>
+</li>
+<li>
+<p>在 <code>Enroll in MDM Server</code> 页面中选择 <strong><code>Do not enroll in MDM</code></strong>，然后点击 <kbd>Next</kbd><br>
+<img src="https://cdn.jsdelivr.net/gh/EdisonJwa/Blog@latest/source/pair-locking/8.png" alt="Enroll in MDM Server"></p>
+</li>
+<li>
+<p>在 <code>Assign to Organization</code> 页面中，点击 <strong><code>New Organization</code></strong>，然后点击 <kbd>Next</kbd></p>
+</li>
+<li>
+<p>在 <code>Devices Enrollment Program</code> 界面，我们<strong>直接点击</strong> <kbd>Skip</kbd> 跳过即可<br>
+<img src="https://cdn.jsdelivr.net/gh/EdisonJwa/Blog@latest/source/pair-locking/9.png" alt="Devices Enrollment Program"></p>
+</li>
+<li>
+<p>接下来，在 <code>Create an Organization</code> 页面中填写您组织的名称，<strong>除名称外，其他项目均可留空</strong><br>
+<img src="https://cdn.jsdelivr.net/gh/EdisonJwa/Blog@latest/source/pair-locking/10.png" alt="Organization"><br>
+此处填写的名称将会在您的设备中显示，效果如下图：<br>
+<img src="https://cdn.jsdelivr.net/gh/EdisonJwa/Blog@latest/source/pair-locking/PICSEW_C980.jpg" alt=""></p>
+</li>
+</ol>
+<p>填写完成后，点击 <kbd>Next</kbd> 进行下一步操作</p>
+<ol start="9">
+<li>
+<p>在接下来下页面中，点击 <strong><code>Generate a new supervision identity</code></strong> ，然后点击 <kbd>Next</kbd><br>
+<img src="https://cdn.jsdelivr.net/gh/EdisonJwa/Blog@latest/source/pair-locking/11.png" alt=""></p>
+</li>
+<li>
+<p>在 <code>Configure iOS Setup Assistant</code> 页面，不进行修改，直接点击 <kbd>Prepare</kbd> 按钮<br>
+<img src="https://cdn.jsdelivr.net/gh/EdisonJwa/Blog@latest/source/pair-locking/12.png" alt=""><br>
+此时会弹出提示，要求输入密码，以便于更新证书设置，输入密码后，点击 Update Settings 。</p>
+<p>接下来，擦除和监管手机的过程。如果您的设备已经受到监管，则会出现有关需要首先还原设备的错误。</p>
+<p><img src="https://cdn.jsdelivr.net/gh/EdisonJwa/Blog@latest/source/pair-locking/13.png" alt=""></p>
+</li>
+<li>
+<p>该过程完成后，您可以创建一个新的配置文件，该配置文件将具有配对锁定限制:</p>
+<p><em>之所以选择通过配置文件的方式，而非直接在监管级别进行锁定，是因为我们无法避免可能会出现的情况，比如电脑损坏，丢失等情况。为了避免在这种情况下我们无法连接自己的手机，所以选择使用配置文件的方式进行限制。</em></p>
+<ul>
+<li>
+<p>点击状态栏的 <strong><code>File</code></strong> -&gt; <strong><code>New Profile</code></strong> 并为您的新描述文件命名</p>
+<p><img src="https://cdn.jsdelivr.net/gh/EdisonJwa/Blog@latest/source/pair-locking/Snipaste_2019-10-12_23-20-56.png" alt=""><br>
+<img src="https://cdn.jsdelivr.net/gh/EdisonJwa/Blog@latest/source/pair-locking/Snipaste_2019-10-12_23-21-58.png" alt=""></p>
+</li>
+<li>
+<p>在 <code>Controls when the profile can be removed</code> 的部分下，选择 <strong><code>Never</code></strong> 或 <strong><code>With Authorization</code></strong><br>
+<img src="https://cdn.jsdelivr.net/gh/EdisonJwa/Blog@latest/source/pair-locking/16.png" alt=""><br>
+通过这项设置我们可以控制如果有人试图通过手机删除此描述文件。<br>
+如果此处保留默认设置，即 <strong><code>Always</code></strong> ，那么任何有权访问未锁定手机的人都<strong>可以</strong>删除此描述文件（这便失去了我们的目的）<br>
+设置为 <strong><code>Never</code></strong> 即表示我们<strong>无法</strong>透过手机来移除这个配置文件<br>
+设置为 <strong><code>With Authorization</code></strong> ，则只有<strong>输入</strong>正确的<strong>密钥</strong>时，才能从设备中删除此描述文件</p>
+<p><span style="color:#DB4D6D;"><em><strong>如果您居住在或者计划访问一个法院可能会迫使您删除描述文件的国家，则最好选择 <code>Never</code> ，这样便不会因为拒绝交出密码而被指控蔑视法庭或妨碍司法。</strong></em></span></p>
+</li>
+</ul>
+</li>
+<li>
+<p>点击左侧的 <code>Restrictions</code> 选项卡，首先点击 <strong><code>Configure</code></strong><br>
+<img src="https://cdn.jsdelivr.net/gh/EdisonJwa/Blog@latest/source/pair-locking/18.png" alt=""></p>
+</li>
+<li>
+<p>接下来，可以看到大量的设置，比如禁止某些应用程序，设置密码，Touch ID，Face ID 限制等等。找到并取消勾选 <strong><code>Allow pairing with non-Configurator hosts</code></strong></p>
+<p><img src="https://cdn.jsdelivr.net/gh/EdisonJwa/Blog@latest/source/pair-locking/Snipaste_2019-10-12_23-54-26.png" alt=""><br>
+也可以继续做一些您喜欢的设置</p>
+</li>
+<li>
+<p>退出并保存描述文件，在主界面中，右键点击您的 iOS 设备，选择 <strong><code>Add</code></strong> -&gt; <strong><code>Profiles...</code></strong>，选择刚刚保存的描述文件。</p>
+</li>
+</ol>
+<p>此时便成功将锁定了配对的设备，现在拿你的手机到其他电脑上去试试看吧～你会得到这样的提示<br>
+<img src="https://cdn.jsdelivr.net/gh/EdisonJwa/Blog@latest/source/pair-locking/22.png" alt=""><br>
+当然取证工具也同样无法连接到您的设备。o(<em>￣▽￣</em>)ブ🎉<br>
+如果以后要删除此限制，则可以点击 <strong><code>Remove</code></strong> -&gt; <strong><code>Profiles...</code></strong> 操作与 添加的步骤（14） 类似。</p>
+<h1 id="总结">总结</h1>
+<p>锁定配对的优点是非常好的配对安全性。实际上，为了删除监管配置文件，入侵者将需要擦除设备中的内容。如果有人为了执行取证提取或任何其他类型的分析，想解除配对锁定，则需要对同时拥有您的 iOS 设备和计算机的控制权并具有对它们的完全访问权限。</p>
+<p>但是同时缺点也十分的明显，当您出门在外时，不能简单的与其他设备进行配对连接。尽管您可以将配置文件设置成可删除的状态，但是您需要再重新使用电脑来安装配置文件来锁定配对。与其他设备配对必须是一个明智的决定，并且需要花费一些时间来验证您是否有权确认该设备的内容。</p>
+<p>配对锁定是一项有用的功能，可保护您免受侵入性设备搜索的侵害。</p>
+<p>虽然让我在手机上拥有这种保护更加安全，但是没有什么技术可以解决最终的政策问题。我们需要的是现代化的隐私法律法规。</p>
+<h1 id="参考链接">参考链接</h1>
+<ul>
+<li><a target="_blank" rel="noopener" href="https://www.zdziarski.com/blog/?p=2589">Counter-Forensics: Pair-Lock Your Device with Apple’s Configurator</a></li>
+<li><a target="_blank" rel="noopener" href="https://arkadiyt.com/2019/10/07/pair-locking-your-iphone-with-configurator-2/">Pair Locking your iPhone with Configurator 2</a></li>
+<li><a target="_blank" rel="noopener" href="https://twitter.com/axi0mX/status/1177542201670168576">axi0mX’s Twitter</a></li>
+<li><a target="_blank" rel="noopener" href="https://www.engadget.com/2019/09/27/apple-iphone-exploit-jailbreak/">iPhone exploit could allow permanent jailbreak for millions of devices</a></li>
+<li><a target="_blank" rel="noopener" href="https://cn.engadget.com/2019/09/28/apple-iphone-exploit-jailbreak/">iPhone 的 bootrom 漏洞让永久越狱成为可能</a></li>
+</ul>
+
+                    </article>
+                    
+    <blockquote class="post-license">
+        <p>
+            <strong>本文作者&nbsp;:&nbsp;Edison Jwa</strong>
+            <br>
+            <strong>
+            
+                本文使用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">署名-非商业性使用-相同方式共享 4.0 国际 (CC BY-NC-SA 4.0)</a> 协议
+            </strong>
+            <br>
+            <strong>本文链接&nbsp;:&nbsp;</strong><a href="https://www.wevg.org/archives/pair-locking-your-iphone/">https://www.wevg.org/archives/pair-locking-your-iphone/</a>
+        </p>
+    </blockquote>
+
+
+
+    <blockquote id="date-expire-notification" class="post-expired-notify">本文最后更新于 <span id="date-expire-num"></span> 天前，文中所描述的信息可能已发生改变</blockquote>
+    <script>
+    (function() {
+        var dateUpdate = Date.parse("2019-10-12");
+        var nowDate = new Date();
+        var a = nowDate.getTime();
+        var b = a - dateUpdate;
+        var daysUpdateExpire = Math.floor(b/(24*3600*1000));
+        if (daysUpdateExpire >= 120) {
+            document.getElementById('date-expire-num').innerHTML = daysUpdateExpire;
+        } else {
+            document.getElementById('date-expire-notification').style.display = 'none';
+        }
+    })();
+    </script>
+
+
+<p class="post-footer-info mb-0 pt-0">本文发表于&nbsp;<time datetime="2019-10-12T10:48:16.000Z" itemprop="datePublished">2019-10-12</time>
+
+</p>
+<p class="post-footer-info mb-0 pt-2">
+
+<span class="post-categories-list mt-2">
+
+<a class="post-categories-list-item" href='/categories/Tech/'>Tech</a>
+
+<a class="post-categories-list-item" href='/categories/Tech/Apple/'>Apple</a>
+
+</span>
+
+
+
+<span class="post-tags-list mt-2">
+
+<a class="post-tags-list-item" href="/tags/Secure/" rel="tag">#&nbsp;Secure</a>
+
+<a class="post-tags-list-item" href="/tags/iPhone/" rel="tag">#&nbsp;iPhone</a>
+
+<a class="post-tags-list-item" href="/tags/Exploit/" rel="tag">#&nbsp;Exploit</a>
+
+<a class="post-tags-list-item" href="/tags/Apple/" rel="tag">#&nbsp;Apple</a>
+
+<a class="post-tags-list-item" href="/tags/%E9%85%8D%E7%BD%AE/" rel="tag">#&nbsp;配置</a>
+
+</span>
+
+
+</p>
+
+                </div>
+                <div class="post-nav px-2 bg-gray">
+<ul class="pagination">
+    <!-- Prev Nav -->
+    
+        <li class="page-item page-prev">
+            <a href="/archives/fix-disqus-vglink-problem/" rel="prev">
+                <div class="page-item-title"><i class="icon icon-back" aria-hidden="true"></i></div>
+                <div class="page-item-subtitle">使用 Disqus 后，网页中莫名出现可点击链接</div>
+            </a>
+        </li>
+    
+
+    <!-- Next Nav -->
+    
+        <li class="page-item page-next">
+            <a href="/archives/csgo-config-guide/" rel="next">
+                <div class="page-item-title"><i class="icon icon-forward" aria-hidden="true"></i></div>
+                <div class="page-item-subtitle">CSGO cfg 文件调试指南</div>
+            </a>
+        </li>
+    
+</ul>
+</div>
+
+                
+                    <!-- # Comment # -->
+                    
+                        <div class="card-footer post-comment">
+                            <div id="disqus_thread"></div>
+
+<script id="js-disqusjs" src="https://cdn.jsdelivr.net/npm/disqusjs@1.2.5/dist/disqus.js" async></script>
+<script>
+document.getElementById('js-disqusjs').addEventListener('load', function () {
+    function loadDisqusJS() {
+        new DisqusJS({
+            shortname: 'edisonj',
+            
+            siteName: 'Vigorous Pro',
+            
+            identifier: 'https://www.wevg.org/archives/pair-locking-your-iphone/',
+            url: 'https://www.wevg.org/archives/pair-locking-your-iphone/',
+            api: 'https://disqus.uv.uy/api/',
+            apikey: 'vBTqc5gYirQfuj9STIAANtQCArVi9MN8UZ72UUucwnhus4AhpgpbVJMIn3Ojl4O7',
+            
+            
+        })
+    }
+    if (document.readyState === 'complete') {
+        loadDisqusJS();
+    } else {
+        window.addEventListener('load', loadDisqusJS);
+    }
+});
+</script>
+
+                        </div>
+                    
+                
+            </div>
+        </div>
+    </div>
+</div>
+
+            <!-- ### Footer ### -->
+            <footer class="text-center">
+    <!-- footer copyright -->
+    
+        <p class="footer-copyright mb-0">Copyright&nbsp;©&nbsp;<span id="copyright-year"></span>
+            <a class="footer-copyright-a" href="https://www.wevg.org">Vigorous Pro</a>
+        </p>
+
+    <!-- footer custom text -->
+    <p class="footer-text mb-0">
+    <a href="/atom.xml" target="_blank" class="footer-develop-a" rel="nofollow noopener noreferrer">RSS</a><span class="footer-develop-divider"></span><a href="https://donate.edison.do" target="_blank" class="footer-develop-a" rel="nofollow noopener noreferrer">Donate</a><span class="footer-develop-divider"></span><a href="/privacy-policy" target="_blank" class="footer-develop-a" rel="nofollow noopener noreferrer">Privacy Policy</a>
+    </p>
+    <!-- footer develop info -->
+    <p class="footer-develop mb-0">
+        
+
+        
+        Powered by&nbsp;<!--
+         --><a href="https://hexo.io" target="_blank" class="footer-develop-a" rel="external nofollow noopener noreferrer">Hexo</a><span class="footer-develop-divider"></span>Theme&nbsp;-&nbsp;<!--
+         --><a href="https://github.com/SukkaW/hexo-theme-suka" target="_blank" class="footer-develop-a" rel="external noopener">Suka</a>
+    </p>
+</footer>
+
+
+        <!-- ### Import File ### -->
+        <!-- ### Footer JS Import ### -->
+
+<script>
+
+    
+window.lazyLoadOptions = {
+    elements_selector: ".lazyload",
+    threshold: 50
+};
+
+(function() {
+    var copyrightNow = new Date().getFullYear();
+    var copyrightContent = document.getElementById('copyright-year');
+    var copyrightSince = 2015;
+    if (copyrightSince === copyrightNow) {
+        copyrightContent.textContent = copyrightNow;
+    } else {
+        copyrightContent.textContent = copyrightSince + ' - ' + copyrightNow;
+    }
+})();
+console.log('\n %c Suka Theme (hexo-theme-suka) | © SukkaW | Verision 1.3.3 %c https://github.com/SukkaW/hexo-theme-suka \n', 'color: #fff; background: #444; padding:5px 0;', 'background: #bbb; padding:5px 0;');
+
+</script>
+
+<script src="https://cdn.jsdelivr.net/npm/vanilla-lazyload@12.3.0" async></script>
+
+
+
+<!-- Comment -->
+
+    
+        <!-- No need for DisqusJS -->
+    
+
+
+<!-- ### Custom Footer ### -->
+<script> if ('serviceWorker' in navigator) { window.addEventListener('load', () => { navigator.serviceWorker.register('/sw.js'); }) } </script><script>window.ga_tid = "UA-106121780-1";window.ga_api = "https://ga.cdn.uv.uy/jquery.js"; </script><script src="https://cdn.jsdelivr.net/gh/EdisonJwa/Blog@master/js/main.js" async></script>
+    </body>
+
+</html>

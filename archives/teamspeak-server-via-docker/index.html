@@ -1,0 +1,682 @@
+<!DOCTYPE html>
+
+<html lang="zh-CN">
+    <head>
+    <meta charset="utf-8">
+    <!--
+        hexo-theme-suka © SukkaW
+        GitHub: https://github.com/SukkaW/hexo-theme-suka
+    -->
+
+    <!-- ### Resource Hint ### -->
+
+    <!-- ## DNS Prefetch ## -->
+    <meta http-equiv="x-dns-prefetch-control" content="on">
+
+<!-- busuanzi -->
+
+
+<!-- comment -->
+
+
+
+
+
+
+
+<!-- analytics -->
+
+
+
+
+
+
+
+    <!-- ## Preload ## -->
+    
+
+
+
+
+    <!-- ### Meta & Title & Info ### -->
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, minimum-scale=1, initial-scale=1, maximum-scale=5, viewport-fit=cover">
+    <meta name="renderer" content="webkit">
+
+    <!-- Title -->
+    <title>Docker 搭建 TeamSpeak 服务器 | Vigorous Pro</title>
+
+    <!-- Favicons -->
+    <link rel="icon" type="image&#x2F;ico" href="/favicon.ico"><link rel="apple-touch-icon" sizes="180x180" href="/source/favicon/apple-touch-icon.png"><link rel="icon" typt="image&#x2F;png" sizes="192x192" href="/source/favicon/android-chrome-192x192.png"><link rel="icon" typt="image&#x2F;png" sizes="32x32" href="/source/favicon/favicon-32x32.png"><link rel="icon" typt="image&#x2F;png" sizes="16x16" href="/source/favicon/favicon-16x16.png"><link rel="mask-icon" href="/safari-pinned-tab.svg" color="">
+
+    <!-- ### Import File ### -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/spectre.css@0.5.3"><style>
+    body {
+        background-color: #f8f9fa;
+    }
+
+    a, a:visited {
+        color: #0070ff;
+    }
+
+    a:active, a:focus, a:hover {
+        color: #0070ff;
+        opacity: .75;
+    }
+
+    #post-content a,
+    #post-content a:hover,
+    #post-content a:focus,
+    #post-content a:visited {
+        color: #005eb9;
+        opacity: 1;
+    }
+
+    
+
+    .post-entry .card-body a {
+        color: #0070ff;
+    }
+
+    .avatar {
+        background: #444;
+    }
+
+    .navbar-link,
+    .navbar-link:visited,
+    .timeline .timeline-item .timeline-icon.icon-lg {
+        color: #0070ff;
+    }
+
+    .navbar-link:hover {
+        color: #0070ff;
+        opacity: .8;
+    }
+
+    #search-input .btn,
+    #disqus_click_btn,
+    #disqus-switch-to-direct,
+    #disqus-loadmore-button {
+        background: #727e96;
+        border-color: #727e96;
+        color: #fff;
+    }
+
+    #post-toc a.post-toc-link,
+    #post-toc a.post-toc-link:visited,
+    .share-menu.menu .menu-item>a {
+        color: #727e96;
+    }
+
+    .share-menu.menu .menu-item>a:hover,
+    .share-menu.menu .menu-item>a:focus,
+    .share-menu.menu .menu-item>a:visited {
+        color: #50596c;
+        background: #f8f9fa;
+        opacity: .85;
+    }
+</style><link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/sukkaw/hexo-theme-suka@latest/source/css/style.min.css">
+
+
+    
+        <!-- Import DisqusJS Default Theme -->
+        <link rel="preload" href="https://cdn.jsdelivr.net/npm/disqusjs@1.2.5/dist/disqusjs.css" as="style" onload="this.onload=null;this.rel='stylesheet'"><noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/disqusjs@1.2.5/dist/disqusjs.css"></noscript>
+
+    
+
+
+
+
+
+
+
+    <!-- Prettify Theme -->
+    
+    <link rel="preload" href="https://cdn.jsdelivr.net/gh/sukkaw/hexo-theme-suka@latest/source/css/highlight/tomorrow-night-eighties.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'"><noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/sukkaw/hexo-theme-suka@latest/source/css/highlight/tomorrow-night-eighties.min.css"></noscript>
+
+
+
+
+
+<script>
+/*! loadCSS. [c]2017 Filament Group, Inc. MIT License */
+!function(t){"use strict";t.loadCSS||(t.loadCSS=function(){});var e=loadCSS.relpreload={};if(e.support=function(){var e;try{e=t.document.createElement("link").relList.supports("preload")}catch(t){e=!1}return function(){return e}}(),e.bindMediaToggle=function(t){var e=t.media||"all";function a(){t.addEventListener?t.removeEventListener("load",a):t.attachEvent&&t.detachEvent("onload",a),t.setAttribute("onload",null),t.media=e}t.addEventListener?t.addEventListener("load",a):t.attachEvent&&t.attachEvent("onload",a),setTimeout(function(){t.rel="stylesheet",t.media="only x"}),setTimeout(a,3e3)},e.poly=function(){if(!e.support())for(var a=t.document.getElementsByTagName("link"),n=0;n<a.length;n++){var o=a[n];"preload"!==o.rel||"style"!==o.getAttribute("as")||o.getAttribute("data-loadcss")||(o.setAttribute("data-loadcss",!0),e.bindMediaToggle(o))}},!e.support()){e.poly();var a=t.setInterval(e.poly,500);t.addEventListener?t.addEventListener("load",function(){e.poly(),t.clearInterval(a)}):t.attachEvent&&t.attachEvent("onload",function(){e.poly(),t.clearInterval(a)})}"undefined"!=typeof exports?exports.loadCSS=loadCSS:t.loadCSS=loadCSS}("undefined"!=typeof global?global:this);
+</script>
+
+    <!-- ### Site Verification ### -->
+    
+
+
+    <link rel="alternate" type="application/atom+xml" href="/atom.xml"><meta name="mobile-web-app-capable" content="yes"><meta name="application-name" content="Vigorous Pro"><meta name="msapplication-starturl" content="https://www.wevg.org"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-title" content="Vigorous Pro"><meta name="apple-mobile-web-app-status-bar-style" content="black-translucent"><link rel="manifest" href="/manifest.json"><link rel="search" type="application/opensearchdescription+xml" href="/opensearch.xml" title="Vigorous Pro">
+
+    <!-- ### The Open Graph & Twitter Card Protocol ### -->
+    <meta property="og:title" content="Docker 搭建 TeamSpeak 服务器 | Vigorous Pro"><meta property="og:site_name" content="Vigorous Pro"><meta property="og:type" content="article"><meta property="og:url" content="https://www.wevg.org/archives/teamspeak-server-via-docker/"><meta property="og:locale" content="zh-CN"><meta name="description" content="本文将介绍如何使用 Docker 搭建 TeamSpeak 服务器。 - Edison Jwa - Vigorous Pro"><meta name="keywords" content="Linux, 搭建, 服务器, VoIP, 语音, Docker, edisonjwa,game,blog,Web,Html,edison"><meta property="og:image" content="https://cdn.jsdelivr.net/gh/EdisonJwa/Blog@master/source/thumbnail/teamspeak-server-via-docker.png"><meta property="article:published_time" content="2019-12-07T06:59:55.000Z"><meta property="article:modified_time" content="2019-12-07T06:59:55.000Z"><meta property="og:updated_time" content="2019-12-07T06:59:55.000Z"><meta property="article:author" content="Edison Jwa"><meta property="article:tag" content="Linux, 搭建, 服务器, VoIP, 语音, Docker, edisonjwa,game,blog,Web,Html,edison"><meta name="twitter:card" content="summary_large_image"><meta name="twitter:image" content="https://cdn.jsdelivr.net/gh/EdisonJwa/Blog@master/source/thumbnail/teamspeak-server-via-docker.png">
+
+    
+
+    <!-- ### Canonical link ### -->
+    <link rel="canonical" href="https://www.wevg.org/archives/teamspeak-server-via-docker/">
+
+    <meta name="generator" content="Hexo 5.4.0">
+
+    <!-- ### Analytics ### -->
+    
+
+
+
+
+
+
+
+    <!-- ### Structured Data ### -->
+    
+
+
+
+<script type="application/ld+json">
+{
+    "@context": "http://schema.org",
+    "url": "https://www.wevg.org/archives/teamspeak-server-via-docker/",
+    "@type": "BlogPosting",
+    "logo": "https://www.wevg.org/source/favicon/android-chrome-192x192.png",
+    "mainEntityOfPage": {
+        "@type": "WebPage",
+        "@id": "https://www.wevg.org/archives/teamspeak-server-via-docker/"
+    },
+    "headline": "Docker 搭建 TeamSpeak 服务器 | Vigorous Pro",
+    
+    "image": {
+        "@type": "ImageObject",
+        "url": "https://cdn.jsdelivr.net/gh/EdisonJwa/Blog@master/source/thumbnail/teamspeak-server-via-docker.png"
+    },
+    
+    "datePublished": "2019-12-07T06:59:55.000Z",
+    "dateModified": "2019-12-07T06:59:55.000Z",
+    "author": {
+        "@type": "Person",
+        "name": "Edison Jwa",
+        "image": {
+            "@type": "ImageObject",
+            "url": "https://cdn.jsdelivr.net/gh/EdisonJwa/Blog@master/source/image/avatar.jpg"
+        },
+        "description": "The world can always use more heroes."
+    },
+    "publisher": {
+        "@type": "Organization",
+        "name": "Vigorous Pro",
+        "logo": {
+            "@type": "ImageObject",
+            "url": "https://www.wevg.org/source/favicon/android-chrome-192x192.png"
+        }
+    },
+    
+    "potentialAction": {
+        "@type": "SearchAction",
+        "target": "https://www.wevg.org/search?s={search_term_string}",
+        "query-input": "required name=search_term_string"
+    },
+    
+    "keywords": "Linux, 搭建, 服务器, VoIP, 语音, Docker, edisonjwa,game,blog,Web,Html,edison",
+    "description": "本文将介绍如何使用 Docker 搭建 TeamSpeak 服务器。 - Edison Jwa - Vigorous Pro"
+}
+</script>
+
+
+
+    <!-- ### Custom Head ### -->
+    <!-- EdisonJwas Blog --><script data-ad-client="ca-pub-2345785306567671" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script><link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/EdisonJwa/Blog@latest/css/darkmode.min.css"><script src="https://cdn.jsdelivr.net/gh/EdisonJwa/Blog@master/js/edison-main.min.js"></script><script type="module" async="" src="https://cdn.jsdelivr.net/npm/instant.page@3.0.0/instantpage.min.js"></script><link rel="manifest" href="/site.webmanifest"><meta name="msapplication-TileColor" content="#d43d3d"><meta name="msapplication-TileImage" content="/source/favicon/mstile-144x144.png"><meta name="theme-color" content="#ffffff"><script type="text/javascript">function downloadJSAtOnload(){var d=document.createElement("script");d.src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js",document.body.appendChild(d)}window.addEventListener?window.addEventListener("load",downloadJSAtOnload,!1):window.attachEvent?window.attachEvent("onload",downloadJSAtOnload):window.onload=downloadJSAtOnload;</script><!-- Global site tag (gtag.js) - Google Analytics --><script async src="https://www.googletagmanager.com/gtag/js?id=G-S2SFLD81VT"></script><script>window.dataLayer = window.dataLayer || [];function gtag(){dataLayer.push(arguments);} gtag('js', new Date()); gtag('config', 'G-S2SFLD81VT');</script><!-- Cloudflare Web Analytics --><script defer src=https://static.cloudflareinsights.com/beacon.min.js ; data-cf-beacon="{&quot;token&quot;: 1ebb36a2c023408484ff114c409377b8}"></script><!-- End Cloudflare Web Analytics -->
+<style type="text/css">
+.spoiler {
+  display: inline-flex;
+}
+p.spoiler {
+  display: flex;
+}
+.spoiler a {
+  pointer-events: none;
+}
+.spoiler-blur, .spoiler-blur > * {
+  transition: text-shadow .5s ease;
+}
+.spoiler .spoiler-blur, .spoiler .spoiler-blur > * {
+  color: rgba(0, 0, 0, 0);
+  background-color: rgba(0, 0, 0, 0);
+  text-shadow: 0 0 10px grey;
+  cursor: pointer;
+}
+.spoiler .spoiler-blur:hover, .spoiler .spoiler-blur:hover > * {
+  text-shadow: 0 0 5px grey;
+}
+.spoiler-box, .spoiler-box > * {
+  transition: color .5s ease,
+  background-color .5s ease;
+}
+.spoiler .spoiler-box, .spoiler .spoiler-box > * {
+  color: black;
+  background-color: black;
+  text-shadow: none;
+}</style></head>
+
+    <body>
+            
+
+            <!-- ### Main content ### -->
+            <!-- ## Header ##-->
+<header>
+    <h1 class="header-title text-center"><a href="/">Vigorous Pro</a></h1>
+
+    <p class="text-center header-slogan">
+        
+            
+                The world can always use more heroes.
+            
+        
+    </p>
+
+    <nav class="navbar-section text-center">
+    
+        <a href="/" class="navbar-link">首页</a>
+    
+    
+        <a href="/archives/" class="navbar-link">归档</a>
+    
+    
+        <a href="/search" class="navbar-link">搜索</a>
+    
+    
+        <a target="_blank" rel="noopener" href="https://uv.uy" class="navbar-link">关于</a>
+    
+        <a href="/friends/" class="navbar-link">友链</a>
+    
+    
+    
+</nav>
+</header>
+
+            
+    <!-- ## Post ## -->
+    <div class="post-container">
+    <div id="post-card" class="card">
+        
+            <div class="card-image lazyload" data-bg="url('https://cdn.jsdelivr.net/gh/EdisonJwa/Blog@master/source/thumbnail/teamspeak-server-via-docker.png')"></div>
+        
+        <div class="card-item-container">
+            <div class="card-inner-cell">
+                <!-- # Post Header Info # -->
+                <div class="card-header">
+                    
+    <h1 class="card-title h3 mb-2">Docker 搭建 TeamSpeak 服务器</h1>
+
+
+
+
+<div class="post-header-info">
+    <p class="post-header-info-left text-gray">
+        <img class="author-thumb lazyload" data-src="https://cdn.jsdelivr.net/gh/EdisonJwa/Blog@master/source/image/avatar.jpg" src="https://cdn.jsdelivr.net/gh/sukkaw/hexo-theme-suka@latest/source/img/suka-lazyload.gif" alt="Edison Jwa's Avatar">
+        <span>2019-12-07</span>
+        
+            <span class="suka-devide-dot"></span>
+            <a class="category-link" href="/categories/Tech/">Tech</a>
+        
+        
+        
+    </p>
+    <div class="post-header-info-right">
+        
+            <div class="dropdown dropdown-right">
+<a class="dropdown-toggle" tabindex="0">分享本文</a>
+<ul class="menu share-menu">
+    <!-- Share Weibo -->
+    
+    <li class="menu-item">
+        <a href="http://service.weibo.com/share/share.php?appkey=&title=Docker 搭建 TeamSpeak 服务器&url=https://www.wevg.org/archives/teamspeak-server-via-docker/&pic=https://cdn.jsdelivr.net/gh/EdisonJwa/Blog@master/source/thumbnail/teamspeak-server-via-docker.png&searchPic=false&style=simple" target="_blank" rel="external noopener noreferrer nofollow">分享到微博</a>
+    </li>
+    
+
+    <!-- Share Twitter -->
+    
+    <li class="menu-item">
+        <a href="https://twitter.com/intent/tweet?text=Docker 搭建 TeamSpeak 服务器&url=https://www.wevg.org/archives/teamspeak-server-via-docker/&via=Edison Jwa" target="_blank" rel="external noopener noreferrer nofollow">分享到 Twitter</a>
+    </li>
+    
+
+    <!-- Share Facebook -->
+    
+    <li class="menu-item">
+        <a href="https://www.facebook.com/sharer/sharer.php?u=https://www.wevg.org/archives/teamspeak-server-via-docker/" target="_blank" rel="external noopener noreferrer nofollow">分享到 Facebook</a>
+    </li>
+    
+
+    <!-- Share Google+ -->
+    
+    <li class="menu-item">
+        <a href="https://plus.google.com/share?url=https://www.wevg.org/archives/teamspeak-server-via-docker/" target="_blank" rel="external noopener noreferrer nofollow">分享到 Google+</a>
+    </li>
+    
+
+    <!-- Share LinkedIn -->
+    
+    <li class="menu-item">
+        <a href="https://www.linkedin.com/shareArticle?mini=true&url=https://www.wevg.org/archives/teamspeak-server-via-docker/&title=Vigorous Pro" target="_blank" rel="external noopener noreferrer nofollow">分享到 LinkedIn</a>
+    </li>
+    
+
+    <!-- Share QQ -->
+    
+    <li class="menu-item">
+        <a href="http://connect.qq.com/widget/shareqq/index.html?site=Vigorous Pro&title=Vigorous Pro&summary=The world can always use more heroes.&pics=https://cdn.jsdelivr.net/gh/EdisonJwa/Blog@master/source/thumbnail/teamspeak-server-via-docker.png&url=https://www.wevg.org/archives/teamspeak-server-via-docker/" target="_blank" rel="external noopener noreferrer nofollow"> 分享到 QQ</a>
+    </li>
+    
+
+    <!-- Share Telegram -->
+    
+    <li class="menu-item">
+        <a href="https://t.me/share/url?url=https://www.wevg.org/archives/teamspeak-server-via-docker/&text=Vigorous Pro" target="_blank" rel="external noopener noreferrer nofollow">分享到 Telegram</a>
+    </li>
+    
+
+    <!-- QRCode -->
+    
+    <li class="menu-item">
+        <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAJQAAACUCAAAAABQV18IAAAB4ElEQVR42u3ay27DMAxEUf//T7fbNBA5Q9cBpMn1JsjLOgEYiaR0/Wx4XaBAgQK1QF3N9f6Z1+d/blZ8d3WPdhxQMahl0C1en/yAFVyNAyoLVQXp+2urAVXAO+OA+j7U6n01WVaPoEB1ga8m1o8FOqjtUdVC2QW8Aq7u80iWAGp7lDPYE4+PVTOgtkbJpkMRqFWyVw34aNcF1NYolcy5QauKWes7oCJQamGuilBVLHSNN5nkgToa5RQBaqBqELcAAZWJUouv00CbNt5AZaLUAupinQ0C2cgFFYdyC9EqqJ3GbDeBgspDdQnZJIFzE77R5AnqKFSV1LsTorv4qjFAZaBUI6KbBCeFqSpqQWWhpgvx5ICECnRQeahuQZ1sQKqDhc4ECioHNZkg7zRi3U0BUDkoZ/F0G/xO8Vk2TEBFoJzNRtXccH+Q/KOAikI5BaST3LmJoRXooCJQanPb2RB3k77RxjaoI1HORqFqsjl/CLvrAupIlHtQ0C1epwsxqDyUc9BYNS26IuT2ARxQR6O6AJ8caHYDfbxhBOpIlFsA/Ocg6rjBASoWJTekRcJnH3oG9TWoyQa1E+Bl8ggqCnWncTHZcHo0SwC1PcpZNJ2DN+qgRFVkgMpC7XSBAgUK1Mv1C+ITcUAsHgxBAAAAAElFTkSuQmCC" alt="QRCode">
+    </li>
+    
+
+</ul>
+</div>
+        
+    </div>
+</div>
+                </div>
+                <div class="card-body">
+                    
+                        
+                        
+                            <div id="post-toc"><ol class="post-toc"><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#%E5%AE%89%E8%A3%85-docker"><span class="post-toc-number">1.</span> <span class="post-toc-text">安装 Docker</span></a></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#%E5%90%AF%E5%8A%A8%E5%AE%B9%E5%99%A8"><span class="post-toc-number">2.</span> <span class="post-toc-text">启动容器</span></a></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#%E6%94%AF%E6%8C%81%E7%9A%84%E7%8E%AF%E5%A2%83%E5%8F%98%E9%87%8F"><span class="post-toc-number">3.</span> <span class="post-toc-text">支持的环境变量</span></a></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#%E9%85%8D%E7%BD%AE%E8%AE%B8%E5%8F%AF%E8%AF%81%E6%96%87%E4%BB%B6"><span class="post-toc-number">4.</span> <span class="post-toc-text">配置许可证文件</span></a></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#%E7%9B%B8%E5%85%B3%E9%93%BE%E6%8E%A5"><span class="post-toc-number">5.</span> <span class="post-toc-text">相关链接</span></a></li></ol></div>
+                        
+                    
+                    <article id="post-content">
+                        <p>本文将介绍如何使用 Docker 搭建 TeamSpeak 服务器。 <span id="more"></span></p>
+<blockquote>
+<p>如果您想找一个最快最简单的搭建方法，请按照本文来进行搭建。除此之外的更多情况下，我更推荐按照 <a href="/archives/teamspeak-server-build/">TeamSpeak 服务器搭建方法</a> 来进行搭建。</p>
+</blockquote>
+<h1 id="安装-docker">安装 Docker</h1>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs bash">curl -fsSL https://get.docker.com -o get-docker.sh<br>sh get-docker.sh<br></code></pre></td></tr></table></figure>
+<h1 id="启动容器">启动容器</h1>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">docker run -p 9987:9987/udp -p 10011:10011 -p 30033:30033 -e TS3SERVER_LICENSE=accept teamspeak<br></code></pre></td></tr></table></figure>
+<p><strong>此时，便会发现服务器已经启动成功。</strong></p>
+<h1 id="支持的环境变量">支持的环境变量</h1>
+<ul>
+<li>
+<p><code>TS3SERVER_LICENSEPATH</code><br>
+设置TeamSpeak服务器要查找 <code>licensekey.dat</code> 的路径。此变量是 <code>licensekey.dat</code> 所在目录的路径。默认为 <code>/var/ts3server/</code> 。</p>
+</li>
+<li>
+<p><code>TS3SERVER_DB_PLUGIN</code><br>
+此变量控制 TeamSpeak 使用哪种数据库。</p>
+</li>
+<li>
+<p><code>TS3SERVER_DB_PLUGINPARAMETER</code><br>
+此变量用于为db插件发送参数。</p>
+</li>
+<li>
+<p><code>TS3SERVER_DB_SQLPATH</code><br>
+此变量控制TeamSpeak服务器在何处查找sql文件。默认为 <code>/opt/ts3server/sql/</code> 。</p>
+</li>
+<li>
+<p><code>TS3SERVER_DB_SQLCREATEPATH</code><br>
+此变量是用于初始化数据库的sql脚本的路径。这个路径关系到 <code>TS3SERVER_DB_SQLPATH</code></p>
+</li>
+<li>
+<p><code>TS3SERVER_DB_CONNECTIONS</code><br>
+这个变量控制是如何到数据库的并发连接。必须至少为2，最多为100。默认值为10。</p>
+</li>
+<li>
+<p><code>TS3SERVER_DB_CLIENTKEEPDAYS</code><br>
+此变量是 TeamSpeak 服务器将保留未使用的用户身份的天数。已添加到组中的用户将不会被删除，但来宾(Guest)将被删除。</p>
+</li>
+<li>
+<p><code>TS3SERVER_IP_WHITELIST</code><br>
+此变量用于设置白名单文件的位置。该文件包含IP地址列表，这些IP地址不受洪水保护系统的限制。<br>
+<strong>警告：请勿添加任何您不信任的IP地址，因为这将使它们淹没服务器。</strong></p>
+</li>
+<li>
+<p><code>TS3SERVER_IP_BLACKLIST</code><br>
+此变量用于设置黑名单文件的位置。该文件包含IP地址列表，即使服务器重新启动，该列表中的IP地址也无法连接到服务器的查询界面。</p>
+</li>
+<li>
+<p><code>TS3SERVER_LOG_PATH</code><br>
+此变量控制服务器存储其日志文件的文件夹。默认为 <code>/var/ts3server/logs/</code>。</p>
+</li>
+<li>
+<p><code>TS3SERVER_LOG_QUERY_COMMANDS</code><br>
+如果将此变量设置为<code>1</code>，则将记录发送到服务器的每个查询命令。<br>
+<strong>警告：虽然这在服务器出现问题时可能会有所帮助，但要注意，这可能会导致日志文件变得非常大。除非您绝对希望记录所有命令，否则我们建议大多数时候将此变量设置为0。</strong></p>
+</li>
+<li>
+<p><code>TS3SERVER_LOG_APPEND</code><br>
+如果将此变量设置为<code>1</code>，则每个虚拟服务器都会将所有新日志条目写入 Log 文件中。我们建议将此变量设置为<code>0</code>，这可以减轻你看 Log 文件时的工作量。</p>
+</li>
+<li>
+<p><code>TS3SERVER_QUERY_PROTOCOLS</code><br>
+逗号分隔的协议列表，可用于连接到ServerQuery。可用的值为<code>raw</code>和<code>ssh</code>。如果指定了raw，则默认的 ServerQuery 会通过 10011/tcp 端口进行连接。如果通过SSH进行连接，则加密的 ServerQuery 则会通过 10022/tcp 端口进行连接。可以在此参数中指定上述值的任何组合，包括将其保留为空，这将完全禁用 ServerQuery。</p>
+</li>
+<li>
+<p><code>TS3SERVER_QUERY_TIMEOUT</code><br>
+由于不活动而断开查询连接之前的秒数。 如果将值设置为零或负数，则将禁用超时。 默认值为300秒。</p>
+</li>
+<li>
+<p><code>TS3SERVER_QUERY_SSH_RSA_HOST_KEY</code><br>
+查询要使用的ssh_host_rsa_key的所在路径。如果不存在，它将在服务器启动时创建。</p>
+</li>
+</ul>
+<h1 id="配置许可证文件">配置许可证文件</h1>
+<p>当一台服务器中需要搭建人数大于32人，或一台以上TeamSpeak 服务器时，便需要许可证文件。为此，必须要服务器提供一个 licensekey.dat 文件。一种方法是将licensekey.dat挂载到/var/ts3server。<br>
+即在运行 docker 时添加 <code>-v /location/to/licensekey.dat:/var/ts3server/licensekey.dat</code> 变量到命令行中，</p>
+<blockquote>
+<p>请将 <code>/location/to/licensekey.dat</code> 替换为 licensekey.dat 实际所在的位置。</p>
+</blockquote>
+<p>举个例子:</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">docker run -p 9987:9987/udp -p 10011:10011 -p 30033:30033 -e TS3SERVER_LICENSE=accept teamspeak `-v /opt/teamspeak/licensekey.dat:/var/ts3server/licensekey.dat<br></code></pre></td></tr></table></figure>
+<p>我们的 TeamSpeak 服务器列表 <a target="_blank" rel="noopener" href="https://ts.wevg.org">服务器列表</a></p>
+<p><s>又水了一篇文章呢</s>~（误x</p>
+<h1 id="相关链接">相关链接</h1>
+<ul>
+<li><a target="_blank" rel="noopener" href="https://hub.docker.com/_/teamspeak">TeamSpeak - DockerHub</a></li>
+</ul>
+
+                    </article>
+                    
+    <blockquote class="post-license">
+        <p>
+            <strong>本文作者&nbsp;:&nbsp;Edison Jwa</strong>
+            <br>
+            <strong>
+            
+                本文使用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">署名-非商业性使用-相同方式共享 4.0 国际 (CC BY-NC-SA 4.0)</a> 协议
+            </strong>
+            <br>
+            <strong>本文链接&nbsp;:&nbsp;</strong><a href="https://www.wevg.org/archives/teamspeak-server-via-docker/">https://www.wevg.org/archives/teamspeak-server-via-docker/</a>
+        </p>
+    </blockquote>
+
+
+
+    <blockquote id="date-expire-notification" class="post-expired-notify">本文最后更新于 <span id="date-expire-num"></span> 天前，文中所描述的信息可能已发生改变</blockquote>
+    <script>
+    (function() {
+        var dateUpdate = Date.parse("2019-12-07");
+        var nowDate = new Date();
+        var a = nowDate.getTime();
+        var b = a - dateUpdate;
+        var daysUpdateExpire = Math.floor(b/(24*3600*1000));
+        if (daysUpdateExpire >= 120) {
+            document.getElementById('date-expire-num').innerHTML = daysUpdateExpire;
+        } else {
+            document.getElementById('date-expire-notification').style.display = 'none';
+        }
+    })();
+    </script>
+
+
+<p class="post-footer-info mb-0 pt-0">本文发表于&nbsp;<time datetime="2019-12-07T06:59:55.000Z" itemprop="datePublished">2019-12-07</time>
+
+</p>
+<p class="post-footer-info mb-0 pt-2">
+
+<span class="post-categories-list mt-2">
+
+<a class="post-categories-list-item" href='/categories/Tech/'>Tech</a>
+
+</span>
+
+
+
+<span class="post-tags-list mt-2">
+
+<a class="post-tags-list-item" href="/tags/Linux/" rel="tag">#&nbsp;Linux</a>
+
+<a class="post-tags-list-item" href="/tags/%E6%90%AD%E5%BB%BA/" rel="tag">#&nbsp;搭建</a>
+
+<a class="post-tags-list-item" href="/tags/%E6%9C%8D%E5%8A%A1%E5%99%A8/" rel="tag">#&nbsp;服务器</a>
+
+<a class="post-tags-list-item" href="/tags/VoIP/" rel="tag">#&nbsp;VoIP</a>
+
+<a class="post-tags-list-item" href="/tags/%E8%AF%AD%E9%9F%B3/" rel="tag">#&nbsp;语音</a>
+
+<a class="post-tags-list-item" href="/tags/Docker/" rel="tag">#&nbsp;Docker</a>
+
+</span>
+
+
+</p>
+
+                </div>
+                <div class="post-nav px-2 bg-gray">
+<ul class="pagination">
+    <!-- Prev Nav -->
+    
+        <li class="page-item page-prev">
+            <a href="/archives/bye-2019/" rel="prev">
+                <div class="page-item-title"><i class="icon icon-back" aria-hidden="true"></i></div>
+                <div class="page-item-subtitle">2019 年终总结</div>
+            </a>
+        </li>
+    
+
+    <!-- Next Nav -->
+    
+        <li class="page-item page-next">
+            <a href="/archives/add-darkmode-support/" rel="next">
+                <div class="page-item-title"><i class="icon icon-forward" aria-hidden="true"></i></div>
+                <div class="page-item-subtitle">让网站支持深色模式</div>
+            </a>
+        </li>
+    
+</ul>
+</div>
+
+                
+                    <!-- # Comment # -->
+                    
+                        <div class="card-footer post-comment">
+                            <div id="disqus_thread"></div>
+
+<script id="js-disqusjs" src="https://cdn.jsdelivr.net/npm/disqusjs@1.2.5/dist/disqus.js" async></script>
+<script>
+document.getElementById('js-disqusjs').addEventListener('load', function () {
+    function loadDisqusJS() {
+        new DisqusJS({
+            shortname: 'edisonj',
+            
+            siteName: 'Vigorous Pro',
+            
+            identifier: 'https://www.wevg.org/archives/teamspeak-server-via-docker/',
+            url: 'https://www.wevg.org/archives/teamspeak-server-via-docker/',
+            api: 'https://disqus.uv.uy/api/',
+            apikey: 'vBTqc5gYirQfuj9STIAANtQCArVi9MN8UZ72UUucwnhus4AhpgpbVJMIn3Ojl4O7',
+            
+            
+        })
+    }
+    if (document.readyState === 'complete') {
+        loadDisqusJS();
+    } else {
+        window.addEventListener('load', loadDisqusJS);
+    }
+});
+</script>
+
+                        </div>
+                    
+                
+            </div>
+        </div>
+    </div>
+</div>
+
+            <!-- ### Footer ### -->
+            <footer class="text-center">
+    <!-- footer copyright -->
+    
+        <p class="footer-copyright mb-0">Copyright&nbsp;©&nbsp;<span id="copyright-year"></span>
+            <a class="footer-copyright-a" href="https://www.wevg.org">Vigorous Pro</a>
+        </p>
+
+    <!-- footer custom text -->
+    <p class="footer-text mb-0">
+    <a href="/atom.xml" target="_blank" class="footer-develop-a" rel="nofollow noopener noreferrer">RSS</a><span class="footer-develop-divider"></span><a href="https://donate.edison.do" target="_blank" class="footer-develop-a" rel="nofollow noopener noreferrer">Donate</a><span class="footer-develop-divider"></span><a href="/privacy-policy" target="_blank" class="footer-develop-a" rel="nofollow noopener noreferrer">Privacy Policy</a>
+    </p>
+    <!-- footer develop info -->
+    <p class="footer-develop mb-0">
+        
+
+        
+        Powered by&nbsp;<!--
+         --><a href="https://hexo.io" target="_blank" class="footer-develop-a" rel="external nofollow noopener noreferrer">Hexo</a><span class="footer-develop-divider"></span>Theme&nbsp;-&nbsp;<!--
+         --><a href="https://github.com/SukkaW/hexo-theme-suka" target="_blank" class="footer-develop-a" rel="external noopener">Suka</a>
+    </p>
+</footer>
+
+
+        <!-- ### Import File ### -->
+        <!-- ### Footer JS Import ### -->
+
+<script>
+
+    
+window.lazyLoadOptions = {
+    elements_selector: ".lazyload",
+    threshold: 50
+};
+
+(function() {
+    var copyrightNow = new Date().getFullYear();
+    var copyrightContent = document.getElementById('copyright-year');
+    var copyrightSince = 2015;
+    if (copyrightSince === copyrightNow) {
+        copyrightContent.textContent = copyrightNow;
+    } else {
+        copyrightContent.textContent = copyrightSince + ' - ' + copyrightNow;
+    }
+})();
+console.log('\n %c Suka Theme (hexo-theme-suka) | © SukkaW | Verision 1.3.3 %c https://github.com/SukkaW/hexo-theme-suka \n', 'color: #fff; background: #444; padding:5px 0;', 'background: #bbb; padding:5px 0;');
+
+</script>
+
+<script src="https://cdn.jsdelivr.net/npm/vanilla-lazyload@12.3.0" async></script>
+
+
+
+<!-- Comment -->
+
+    
+        <!-- No need for DisqusJS -->
+    
+
+
+<!-- ### Custom Footer ### -->
+<script> if ('serviceWorker' in navigator) { window.addEventListener('load', () => { navigator.serviceWorker.register('/sw.js'); }) } </script><script>window.ga_tid = "UA-106121780-1";window.ga_api = "https://ga.cdn.uv.uy/jquery.js"; </script><script src="https://cdn.jsdelivr.net/gh/EdisonJwa/Blog@master/js/main.js" async></script>
+    </body>
+
+</html>

@@ -1,0 +1,363 @@
+<?xml version="1.0" encoding="UTF-8"?><?xml-stylesheet type="text/xsl" href="sitemap.xsl"?>
+<urlset xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:image="http://www.google.com/schemas/sitemap-image/1.1" xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9 http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd" xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+
+    <url>
+        <loc>https://www.wevg.org</loc>
+        <changefreq>daily</changefreq>
+        <priority>1</priority>
+    </url>
+
+    <url>
+        <loc>https://www.wevg.org/archives/geoip-with-teamspeak/</loc>
+        <lastmod>2021-03-06T10:31:27.000Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
+        <loc>https://www.wevg.org/archives/teamspeak-server-build/</loc>
+        <lastmod>2021-03-06T10:31:17.000Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
+        <loc>https://www.wevg.org/archives/cloudflare-with-openwrt-as-ipv6/</loc>
+        <lastmod>2021-02-27T04:18:32.000Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
+        <loc>https://www.wevg.org/archives/bye-2020/</loc>
+        <lastmod>2020-12-31T12:59:38.000Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
+        <loc>https://www.wevg.org/archives/export-qqmusic-playlist/</loc>
+        <lastmod>2020-07-23T01:57:46.000Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
+        <loc>https://www.wevg.org/archives/how-to-use-teamspeak3/</loc>
+        <lastmod>2020-06-24T02:56:30.000Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
+        <loc>https://www.wevg.org/archives/csgo-fps-optimized/</loc>
+        <lastmod>2020-06-07T01:34:17.000Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
+        <loc>https://www.wevg.org/archives/add-darkmode-support/</loc>
+        <lastmod>2020-05-24T18:01:30.000Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
+        <loc>https://www.wevg.org/archives/netease-to-apple-music/</loc>
+        <lastmod>2020-04-25T12:35:19.000Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
+        <loc>https://www.wevg.org/archives/fix-ts3-linux-plugin/</loc>
+        <lastmod>2020-04-25T12:35:09.000Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
+        <loc>https://www.wevg.org/archives/speed-up-battle-net/</loc>
+        <lastmod>2020-04-25T12:35:01.000Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
+        <loc>https://www.wevg.org/archives/speed-up-origin-download/</loc>
+        <lastmod>2020-04-25T12:34:54.000Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
+        <loc>https://www.wevg.org/archives/keep-edge-legacy/</loc>
+        <lastmod>2020-03-20T02:46:47.000Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
+        <loc>https://www.wevg.org/archives/gpg-yubikey-windows-no-key/</loc>
+        <lastmod>2020-03-19T01:45:00.000Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
+        <loc>https://www.wevg.org/archives/git-ssh-instead-of-https/</loc>
+        <lastmod>2020-03-19T01:14:53.000Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
+        <loc>https://www.wevg.org/archives/hexo-with-netlify-cms/</loc>
+        <lastmod>2020-01-16T21:20:48.706Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
+        <loc>https://www.wevg.org/archives/sms2tg/</loc>
+        <lastmod>2020-01-13T08:15:34.000Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
+        <loc>https://www.wevg.org/archives/bye-2019/</loc>
+        <lastmod>2020-01-10T12:07:47.000Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
+        <loc>https://www.wevg.org/archives/lenovo-yoga-900-linux-touchpad-toggle/</loc>
+        <lastmod>2020-01-10T11:34:17.000Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
+        <loc>https://www.wevg.org/archives/gpg-sign-via-yubikey/</loc>
+        <lastmod>2020-01-09T06:27:43.000Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
+        <loc>https://www.wevg.org/archives/export-passwords-from-iCloud-keychain/</loc>
+        <lastmod>2019-12-28T23:56:50.000Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
+        <loc>https://www.wevg.org/archives/fix-gpg-sign-error/</loc>
+        <lastmod>2019-12-28T09:06:49.000Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
+        <loc>https://www.wevg.org/archives/teamspeak-server-via-docker/</loc>
+        <lastmod>2019-12-07T06:59:55.000Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
+        <loc>https://www.wevg.org/archives/transfer-your-youtube-subscriptions/</loc>
+        <lastmod>2019-11-15T13:37:11.000Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
+        <loc>https://www.wevg.org/archives/fix-disqus-vglink-problem/</loc>
+        <lastmod>2019-11-08T17:58:38.000Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
+        <loc>https://www.wevg.org/archives/pair-locking-your-iphone/</loc>
+        <lastmod>2019-10-12T10:58:00.000Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
+        <loc>https://www.wevg.org/archives/debian-update-kernel/</loc>
+        <lastmod>2019-10-06T05:21:17.000Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
+        <loc>https://www.wevg.org/archives/csgo-config-guide/</loc>
+        <lastmod>2019-06-13T10:03:33.000Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
+        <loc>https://www.wevg.org/archives/nginx-mutli-rtmp/</loc>
+        <lastmod>2019-06-02T15:04:13.000Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
+        <loc>https://www.wevg.org/archives/enable-windows-sandbox/</loc>
+        <lastmod>2019-05-25T03:29:20.000Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
+        <loc>https://www.wevg.org/archives/nginx-http-basic-auth/</loc>
+        <lastmod>2019-05-23T08:18:13.000Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
+        <loc>https://www.wevg.org/archives/enable-retpoline-win10/</loc>
+        <lastmod>2019-05-15T01:00:04.000Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
+        <loc>https://www.wevg.org/archives/design-my-windows-iso/</loc>
+        <lastmod>2019-05-12T04:03:52.000Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
+        <loc>https://www.wevg.org/archives/git-always-asking-password/</loc>
+        <lastmod>2019-04-22T15:57:36.000Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
+        <loc>https://www.wevg.org/archives/git-gpg-sign-commit/</loc>
+        <lastmod>2019-04-22T15:51:12.000Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
+        <loc>https://www.wevg.org/archives/change-fonts-with-fontmod/</loc>
+        <lastmod>2019-04-07T02:26:43.000Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
+        <loc>https://www.wevg.org/archives/best-optimize-apex/</loc>
+        <lastmod>2019-04-01T10:17:22.000Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
+        <loc>https://www.wevg.org/archives/shortcut-for-uwps/</loc>
+        <lastmod>2019-04-01T10:17:22.000Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
+        <loc>https://www.wevg.org/archives/magic-word/</loc>
+        <lastmod>2019-04-01T10:17:22.000Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
+        <loc>https://www.wevg.org/archives/change-telegram-fonts/</loc>
+        <lastmod>2019-03-12T15:00:00.000Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
+        <loc>https://www.wevg.org/archives/ssh-add-mfa/</loc>
+        <lastmod>2019-03-12T15:00:00.000Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
+        <loc>https://www.wevg.org/archives/thanks-2018/</loc>
+        <lastmod>2019-03-12T15:00:00.000Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
+        <loc>https://www.wevg.org/archives/turn-off-cg-dg/</loc>
+        <lastmod>2019-03-12T15:00:00.000Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
+        <loc>https://www.wevg.org/archives/get-steam-game-icon/</loc>
+        <lastmod>2019-03-12T15:00:00.000Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+</urlset>
+<!-- XML Sitemap generated by Hexo SEO Friendly Sitemap Generator -->

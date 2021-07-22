@@ -1,0 +1,678 @@
+<!DOCTYPE html>
+
+<html lang="zh-CN">
+    <head>
+    <meta charset="utf-8">
+    <!--
+        hexo-theme-suka © SukkaW
+        GitHub: https://github.com/SukkaW/hexo-theme-suka
+    -->
+
+    <!-- ### Resource Hint ### -->
+
+    <!-- ## DNS Prefetch ## -->
+    <meta http-equiv="x-dns-prefetch-control" content="on">
+
+<!-- busuanzi -->
+
+
+<!-- comment -->
+
+
+
+
+
+
+
+<!-- analytics -->
+
+
+
+
+
+
+
+    <!-- ## Preload ## -->
+    
+
+
+
+
+    <!-- ### Meta & Title & Info ### -->
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, minimum-scale=1, initial-scale=1, maximum-scale=5, viewport-fit=cover">
+    <meta name="renderer" content="webkit">
+
+    <!-- Title -->
+    <title>在 TeamSpeak 服务器上使用 GeoIP 数据库 | Vigorous Pro</title>
+
+    <!-- Favicons -->
+    <link rel="icon" type="image&#x2F;ico" href="/favicon.ico"><link rel="apple-touch-icon" sizes="180x180" href="/source/favicon/apple-touch-icon.png"><link rel="icon" typt="image&#x2F;png" sizes="192x192" href="/source/favicon/android-chrome-192x192.png"><link rel="icon" typt="image&#x2F;png" sizes="32x32" href="/source/favicon/favicon-32x32.png"><link rel="icon" typt="image&#x2F;png" sizes="16x16" href="/source/favicon/favicon-16x16.png"><link rel="mask-icon" href="/safari-pinned-tab.svg" color="">
+
+    <!-- ### Import File ### -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/spectre.css@0.5.3"><style>
+    body {
+        background-color: #f8f9fa;
+    }
+
+    a, a:visited {
+        color: #0070ff;
+    }
+
+    a:active, a:focus, a:hover {
+        color: #0070ff;
+        opacity: .75;
+    }
+
+    #post-content a,
+    #post-content a:hover,
+    #post-content a:focus,
+    #post-content a:visited {
+        color: #005eb9;
+        opacity: 1;
+    }
+
+    
+
+    .post-entry .card-body a {
+        color: #0070ff;
+    }
+
+    .avatar {
+        background: #444;
+    }
+
+    .navbar-link,
+    .navbar-link:visited,
+    .timeline .timeline-item .timeline-icon.icon-lg {
+        color: #0070ff;
+    }
+
+    .navbar-link:hover {
+        color: #0070ff;
+        opacity: .8;
+    }
+
+    #search-input .btn,
+    #disqus_click_btn,
+    #disqus-switch-to-direct,
+    #disqus-loadmore-button {
+        background: #727e96;
+        border-color: #727e96;
+        color: #fff;
+    }
+
+    #post-toc a.post-toc-link,
+    #post-toc a.post-toc-link:visited,
+    .share-menu.menu .menu-item>a {
+        color: #727e96;
+    }
+
+    .share-menu.menu .menu-item>a:hover,
+    .share-menu.menu .menu-item>a:focus,
+    .share-menu.menu .menu-item>a:visited {
+        color: #50596c;
+        background: #f8f9fa;
+        opacity: .85;
+    }
+</style><link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/sukkaw/hexo-theme-suka@latest/source/css/style.min.css">
+
+
+    
+        <!-- Import DisqusJS Default Theme -->
+        <link rel="preload" href="https://cdn.jsdelivr.net/npm/disqusjs@1.2.5/dist/disqusjs.css" as="style" onload="this.onload=null;this.rel='stylesheet'"><noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/disqusjs@1.2.5/dist/disqusjs.css"></noscript>
+
+    
+
+
+
+
+
+
+
+    <!-- Prettify Theme -->
+    
+    <link rel="preload" href="https://cdn.jsdelivr.net/gh/sukkaw/hexo-theme-suka@latest/source/css/highlight/tomorrow-night-eighties.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'"><noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/sukkaw/hexo-theme-suka@latest/source/css/highlight/tomorrow-night-eighties.min.css"></noscript>
+
+
+
+
+
+<script>
+/*! loadCSS. [c]2017 Filament Group, Inc. MIT License */
+!function(t){"use strict";t.loadCSS||(t.loadCSS=function(){});var e=loadCSS.relpreload={};if(e.support=function(){var e;try{e=t.document.createElement("link").relList.supports("preload")}catch(t){e=!1}return function(){return e}}(),e.bindMediaToggle=function(t){var e=t.media||"all";function a(){t.addEventListener?t.removeEventListener("load",a):t.attachEvent&&t.detachEvent("onload",a),t.setAttribute("onload",null),t.media=e}t.addEventListener?t.addEventListener("load",a):t.attachEvent&&t.attachEvent("onload",a),setTimeout(function(){t.rel="stylesheet",t.media="only x"}),setTimeout(a,3e3)},e.poly=function(){if(!e.support())for(var a=t.document.getElementsByTagName("link"),n=0;n<a.length;n++){var o=a[n];"preload"!==o.rel||"style"!==o.getAttribute("as")||o.getAttribute("data-loadcss")||(o.setAttribute("data-loadcss",!0),e.bindMediaToggle(o))}},!e.support()){e.poly();var a=t.setInterval(e.poly,500);t.addEventListener?t.addEventListener("load",function(){e.poly(),t.clearInterval(a)}):t.attachEvent&&t.attachEvent("onload",function(){e.poly(),t.clearInterval(a)})}"undefined"!=typeof exports?exports.loadCSS=loadCSS:t.loadCSS=loadCSS}("undefined"!=typeof global?global:this);
+</script>
+
+    <!-- ### Site Verification ### -->
+    
+
+
+    <link rel="alternate" type="application/atom+xml" href="/atom.xml"><meta name="mobile-web-app-capable" content="yes"><meta name="application-name" content="Vigorous Pro"><meta name="msapplication-starturl" content="https://www.wevg.org"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-title" content="Vigorous Pro"><meta name="apple-mobile-web-app-status-bar-style" content="black-translucent"><link rel="manifest" href="/manifest.json"><link rel="search" type="application/opensearchdescription+xml" href="/opensearch.xml" title="Vigorous Pro">
+
+    <!-- ### The Open Graph & Twitter Card Protocol ### -->
+    <meta property="og:title" content="在 TeamSpeak 服务器上使用 GeoIP 数据库 | Vigorous Pro"><meta property="og:site_name" content="Vigorous Pro"><meta property="og:type" content="article"><meta property="og:url" content="https://www.wevg.org/archives/geoip-with-teamspeak/"><meta property="og:locale" content="zh-CN"><meta name="description" content="一直以来， TeamSpeak 服务器都在使用 IP2Location 的数据库，但是因为不能即使更新，所以准确率一直是一个问题。作为Edison 填坑系列之二，我将在本文说明如何在 TeamSpeak 服务器上使用 GeoIP 数据库。 - Edison Jwa - Vigorous Pro"><meta name="keywords" content="Linux, 搭建, 服务器, VoIP, 语音, Docker, edisonjwa,game,blog,Web,Html,edison"><meta property="og:image" content="https://i.yecdn.com/images/2021/03/06/68a18fb5773dc1ebf79b6bf976c03d43.jpg"><meta property="og:image" content="https://i.yecdn.com/images/2021/03/06/e921332af2152ed43c379fc429fb4177.png"><meta property="og:image" content="https://i.yecdn.com/images/2021/03/06/01e72c4d98a26f8f9bf9beb9a1a9cbff.png"><meta property="og:image" content="https://i.yecdn.com/images/2021/03/06/5fd7d4dd9db0e6486e6ac841b5efab6e.png"><meta property="og:image" content="https://i.yecdn.com/images/2021/03/06/7f29067d45e85c35f6fe40bcb47023dc.png"><meta property="og:image" content="https://i.yecdn.com/images/2021/03/06/38b2a616f0727b980e55dab0859e6beb.png"><meta property="og:image" content="https://i.yecdn.com/images/2021/03/06/c610bf232dd1e83652c626b43fbfc06f.png"><meta property="og:image" content="https://i.yecdn.com/images/2021/03/06/b9f124b2f7df119eb1bf6c23bbb74078.png"><meta property="og:image" content="https://i.yecdn.com/images/2021/03/06/0b72d523e41b269af5f7690aa157ee24.png"><meta property="og:image" content="https://i.yecdn.com/images/2021/03/06/357d69a528520f7daae1b5399e8f74ed.png"><meta property="og:image" content="https://i.yecdn.com/images/2021/03/06/f2f60bb4b3ee1cdb4a660c56bfc59941.png"><meta property="og:image" content="https://i.yecdn.com/images/2021/03/06/f0d7d50309113b42616ffb7cb52376be.png"><meta property="article:published_time" content="2021-03-06T08:08:51.000Z"><meta property="article:modified_time" content="2021-03-06T10:31:27.000Z"><meta property="og:updated_time" content="2021-03-06T10:31:27.000Z"><meta property="article:author" content="Edison Jwa"><meta property="article:tag" content="Linux, 搭建, 服务器, VoIP, 语音, Docker, edisonjwa,game,blog,Web,Html,edison"><meta name="twitter:card" content="summary_large_image"><meta name="twitter:image" content="https://i.yecdn.com/images/2021/03/06/68a18fb5773dc1ebf79b6bf976c03d43.jpg">
+
+    
+
+    <!-- ### Canonical link ### -->
+    <link rel="canonical" href="https://www.wevg.org/archives/geoip-with-teamspeak/">
+
+    <meta name="generator" content="Hexo 5.4.0">
+
+    <!-- ### Analytics ### -->
+    
+
+
+
+
+
+
+
+    <!-- ### Structured Data ### -->
+    
+
+
+
+<script type="application/ld+json">
+{
+    "@context": "http://schema.org",
+    "url": "https://www.wevg.org/archives/geoip-with-teamspeak/",
+    "@type": "BlogPosting",
+    "logo": "https://www.wevg.org/source/favicon/android-chrome-192x192.png",
+    "mainEntityOfPage": {
+        "@type": "WebPage",
+        "@id": "https://www.wevg.org/archives/geoip-with-teamspeak/"
+    },
+    "headline": "在 TeamSpeak 服务器上使用 GeoIP 数据库 | Vigorous Pro",
+    
+    "image": {
+        "@type": "ImageObject",
+        "url": "https://i.yecdn.com/images/2021/03/06/68a18fb5773dc1ebf79b6bf976c03d43.jpg"
+    },
+    
+    "datePublished": "2021-03-06T08:08:51.000Z",
+    "dateModified": "2021-03-06T10:31:27.000Z",
+    "author": {
+        "@type": "Person",
+        "name": "Edison Jwa",
+        "image": {
+            "@type": "ImageObject",
+            "url": "https://cdn.jsdelivr.net/gh/EdisonJwa/Blog@master/source/image/avatar.jpg"
+        },
+        "description": "The world can always use more heroes."
+    },
+    "publisher": {
+        "@type": "Organization",
+        "name": "Vigorous Pro",
+        "logo": {
+            "@type": "ImageObject",
+            "url": "https://www.wevg.org/source/favicon/android-chrome-192x192.png"
+        }
+    },
+    
+    "potentialAction": {
+        "@type": "SearchAction",
+        "target": "https://www.wevg.org/search?s={search_term_string}",
+        "query-input": "required name=search_term_string"
+    },
+    
+    "keywords": "Linux, 搭建, 服务器, VoIP, 语音, Docker, edisonjwa,game,blog,Web,Html,edison",
+    "description": "一直以来， TeamSpeak 服务器都在使用 IP2Location 的数据库，但是因为不能即使更新，所以准确率一直是一个问题。作为Edison 填坑系列之二，我将在本文说明如何在 TeamSpeak 服务器上使用 GeoIP 数据库。 - Edison Jwa - Vigorous Pro"
+}
+</script>
+
+
+
+    <!-- ### Custom Head ### -->
+    <!-- EdisonJwas Blog --><script data-ad-client="ca-pub-2345785306567671" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script><link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/EdisonJwa/Blog@latest/css/darkmode.min.css"><script src="https://cdn.jsdelivr.net/gh/EdisonJwa/Blog@master/js/edison-main.min.js"></script><script type="module" async="" src="https://cdn.jsdelivr.net/npm/instant.page@3.0.0/instantpage.min.js"></script><link rel="manifest" href="/site.webmanifest"><meta name="msapplication-TileColor" content="#d43d3d"><meta name="msapplication-TileImage" content="/source/favicon/mstile-144x144.png"><meta name="theme-color" content="#ffffff"><script type="text/javascript">function downloadJSAtOnload(){var d=document.createElement("script");d.src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js",document.body.appendChild(d)}window.addEventListener?window.addEventListener("load",downloadJSAtOnload,!1):window.attachEvent?window.attachEvent("onload",downloadJSAtOnload):window.onload=downloadJSAtOnload;</script><!-- Global site tag (gtag.js) - Google Analytics --><script async src="https://www.googletagmanager.com/gtag/js?id=G-S2SFLD81VT"></script><script>window.dataLayer = window.dataLayer || [];function gtag(){dataLayer.push(arguments);} gtag('js', new Date()); gtag('config', 'G-S2SFLD81VT');</script><!-- Cloudflare Web Analytics --><script defer src=https://static.cloudflareinsights.com/beacon.min.js ; data-cf-beacon="{&quot;token&quot;: 1ebb36a2c023408484ff114c409377b8}"></script><!-- End Cloudflare Web Analytics -->
+<style type="text/css">
+.spoiler {
+  display: inline-flex;
+}
+p.spoiler {
+  display: flex;
+}
+.spoiler a {
+  pointer-events: none;
+}
+.spoiler-blur, .spoiler-blur > * {
+  transition: text-shadow .5s ease;
+}
+.spoiler .spoiler-blur, .spoiler .spoiler-blur > * {
+  color: rgba(0, 0, 0, 0);
+  background-color: rgba(0, 0, 0, 0);
+  text-shadow: 0 0 10px grey;
+  cursor: pointer;
+}
+.spoiler .spoiler-blur:hover, .spoiler .spoiler-blur:hover > * {
+  text-shadow: 0 0 5px grey;
+}
+.spoiler-box, .spoiler-box > * {
+  transition: color .5s ease,
+  background-color .5s ease;
+}
+.spoiler .spoiler-box, .spoiler .spoiler-box > * {
+  color: black;
+  background-color: black;
+  text-shadow: none;
+}</style></head>
+
+    <body>
+            
+
+            <!-- ### Main content ### -->
+            <!-- ## Header ##-->
+<header>
+    <h1 class="header-title text-center"><a href="/">Vigorous Pro</a></h1>
+
+    <p class="text-center header-slogan">
+        
+            
+                The world can always use more heroes.
+            
+        
+    </p>
+
+    <nav class="navbar-section text-center">
+    
+        <a href="/" class="navbar-link">首页</a>
+    
+    
+        <a href="/archives/" class="navbar-link">归档</a>
+    
+    
+        <a href="/search" class="navbar-link">搜索</a>
+    
+    
+        <a target="_blank" rel="noopener" href="https://uv.uy" class="navbar-link">关于</a>
+    
+        <a href="/friends/" class="navbar-link">友链</a>
+    
+    
+    
+</nav>
+</header>
+
+            
+    <!-- ## Post ## -->
+    <div class="post-container">
+    <div id="post-card" class="card">
+        
+            <div class="card-image lazyload" data-bg="url('https://i.yecdn.com/images/2021/03/06/68a18fb5773dc1ebf79b6bf976c03d43.jpg')"></div>
+        
+        <div class="card-item-container">
+            <div class="card-inner-cell">
+                <!-- # Post Header Info # -->
+                <div class="card-header">
+                    
+    <h1 class="card-title h3 mb-2">在 TeamSpeak 服务器上使用 GeoIP 数据库</h1>
+
+
+
+
+<div class="post-header-info">
+    <p class="post-header-info-left text-gray">
+        <img class="author-thumb lazyload" data-src="https://cdn.jsdelivr.net/gh/EdisonJwa/Blog@master/source/image/avatar.jpg" src="https://cdn.jsdelivr.net/gh/sukkaw/hexo-theme-suka@latest/source/img/suka-lazyload.gif" alt="Edison Jwa's Avatar">
+        <span>2021-03-06</span>
+        
+            <span class="suka-devide-dot"></span>
+            <a class="category-link" href="/categories/Tech/">Tech</a>
+        
+        
+        
+    </p>
+    <div class="post-header-info-right">
+        
+            <div class="dropdown dropdown-right">
+<a class="dropdown-toggle" tabindex="0">分享本文</a>
+<ul class="menu share-menu">
+    <!-- Share Weibo -->
+    
+    <li class="menu-item">
+        <a href="http://service.weibo.com/share/share.php?appkey=&title=在 TeamSpeak 服务器上使用 GeoIP 数据库&url=https://www.wevg.org/archives/geoip-with-teamspeak/&pic=https://i.yecdn.com/images/2021/03/06/68a18fb5773dc1ebf79b6bf976c03d43.jpg&searchPic=false&style=simple" target="_blank" rel="external noopener noreferrer nofollow">分享到微博</a>
+    </li>
+    
+
+    <!-- Share Twitter -->
+    
+    <li class="menu-item">
+        <a href="https://twitter.com/intent/tweet?text=在 TeamSpeak 服务器上使用 GeoIP 数据库&url=https://www.wevg.org/archives/geoip-with-teamspeak/&via=Edison Jwa" target="_blank" rel="external noopener noreferrer nofollow">分享到 Twitter</a>
+    </li>
+    
+
+    <!-- Share Facebook -->
+    
+    <li class="menu-item">
+        <a href="https://www.facebook.com/sharer/sharer.php?u=https://www.wevg.org/archives/geoip-with-teamspeak/" target="_blank" rel="external noopener noreferrer nofollow">分享到 Facebook</a>
+    </li>
+    
+
+    <!-- Share Google+ -->
+    
+    <li class="menu-item">
+        <a href="https://plus.google.com/share?url=https://www.wevg.org/archives/geoip-with-teamspeak/" target="_blank" rel="external noopener noreferrer nofollow">分享到 Google+</a>
+    </li>
+    
+
+    <!-- Share LinkedIn -->
+    
+    <li class="menu-item">
+        <a href="https://www.linkedin.com/shareArticle?mini=true&url=https://www.wevg.org/archives/geoip-with-teamspeak/&title=Vigorous Pro" target="_blank" rel="external noopener noreferrer nofollow">分享到 LinkedIn</a>
+    </li>
+    
+
+    <!-- Share QQ -->
+    
+    <li class="menu-item">
+        <a href="http://connect.qq.com/widget/shareqq/index.html?site=Vigorous Pro&title=Vigorous Pro&summary=The world can always use more heroes.&pics=https://i.yecdn.com/images/2021/03/06/68a18fb5773dc1ebf79b6bf976c03d43.jpg&url=https://www.wevg.org/archives/geoip-with-teamspeak/" target="_blank" rel="external noopener noreferrer nofollow"> 分享到 QQ</a>
+    </li>
+    
+
+    <!-- Share Telegram -->
+    
+    <li class="menu-item">
+        <a href="https://t.me/share/url?url=https://www.wevg.org/archives/geoip-with-teamspeak/&text=Vigorous Pro" target="_blank" rel="external noopener noreferrer nofollow">分享到 Telegram</a>
+    </li>
+    
+
+    <!-- QRCode -->
+    
+    <li class="menu-item">
+        <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAJQAAACUCAAAAABQV18IAAAB2ElEQVR42u3awW6EMAxFUf7/p9tNFxSR52s0rcBcNqNWIjkjZZzY8fZ1w2cTJUqUqBPUFp5fL/z8ffz/2TjHd+g8ouagVpOUC3M36P4zfak0j6hZqONgq8nSJHERF/OIehfqbOGuguMq2IoSRQZdBcl//fWJui1qtYjTwGlz/tNTgqjbo9KB/pOfH8tmRN0aRZKDKlFIgZMkIKJmoehGmyZNgZYkFaJmoaqBSVJKkg30RUSNQnWSS1LIoOPEhS7qkahqA60OgNXTKqyJGoFKB7orRXxS6FgGYlGjUKvNsrpYrC4cyWWAqHkoumHSRIJs7viUIOqxKJIYkASCFPwvJaOiHoNKFzk0SaAXAWUwFjUORZpsaPE+JQmtm1FRj0ORyUji2mnOwVUXUSNQVxd69YVQo4WoUSi6ydLGwe4PRdQcVJUo0GBID30RLWoMKr1ED//dRujywkjUCBRp6CIHPfrjibdYokagyIU0KWB0G29EzULRRkESTFHCmTZtUSNQ3YJrCqRVoexSA46oR6KuLHDS6NUNpqJmodLC7B7yaGNhK3EQ9QoUCaStwpuoV6Gq4EjfS5cJomahuo2opIGQNkyImocii7KzsXaKcKLmoe70iBIlStTu+QYx81JRc+jRJQAAAABJRU5ErkJggg==" alt="QRCode">
+    </li>
+    
+
+</ul>
+</div>
+        
+    </div>
+</div>
+                </div>
+                <div class="card-body">
+                    
+                        
+                        
+                            <div id="post-toc"><ol class="post-toc"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#%E6%B3%A8%E5%86%8C-maxmind-%E8%B4%A6%E5%8F%B7"><span class="post-toc-number">1.</span> <span class="post-toc-text">注册 MaxMind 账号</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#%E8%8E%B7%E5%8F%96-geoip-%E6%95%B0%E6%8D%AE%E5%BA%93"><span class="post-toc-number">2.</span> <span class="post-toc-text">获取 GeoIP 数据库</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E8%8E%B7%E5%8F%96%E6%B0%B8%E4%B9%85%E9%93%BE%E6%8E%A5"><span class="post-toc-number">2.1.</span> <span class="post-toc-text">获取永久链接</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E8%8E%B7%E5%8F%96%E8%AE%B8%E5%8F%AF%E8%AF%81%E5%AF%86%E9%92%A5"><span class="post-toc-number">2.2.</span> <span class="post-toc-text">获取许可证密钥</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E4%B8%8B%E8%BD%BD"><span class="post-toc-number">2.3.</span> <span class="post-toc-text">下载</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#%E9%85%8D%E7%BD%AE-teamspeak-%E6%9C%8D%E5%8A%A1%E7%AB%AF"><span class="post-toc-number">3.</span> <span class="post-toc-text">配置 TeamSpeak 服务端</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E6%96%B9%E5%BC%8F%E4%B8%80-%E6%B7%BB%E5%8A%A0%E5%90%AF%E5%8A%A8%E9%A1%B9"><span class="post-toc-number">3.1.</span> <span class="post-toc-text">方式一: 添加启动项</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E6%96%B9%E5%BC%8F%E4%BA%8C-%E5%88%9B%E5%BB%BA%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6"><span class="post-toc-number">3.2.</span> <span class="post-toc-text">方式二: 创建配置文件</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#%E9%85%8D%E7%BD%AE%E8%87%AA%E5%8A%A8%E6%9B%B4%E6%96%B0-%E8%BF%9B%E9%98%B6%E6%93%8D%E4%BD%9C"><span class="post-toc-number">4.</span> <span class="post-toc-text">配置自动更新(进阶操作)</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#%E5%B8%B8%E8%A7%81%E9%97%AE%E9%A2%98"><span class="post-toc-number">5.</span> <span class="post-toc-text">常见问题</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#maxminddb-library-not-found-disabling-mmdb-usage"><span class="post-toc-number">5.1.</span> <span class="post-toc-text">maxminddb library not found, disabling MMDB usage</span></a></li></ol></li></ol></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#%E5%8F%82%E8%80%83%E9%93%BE%E6%8E%A5"><span class="post-toc-number"></span> <span class="post-toc-text">参考链接</span></a></div>
+                        
+                    
+                    <article id="post-content">
+                        <p>一直以来， TeamSpeak 服务器都在使用 IP2Location 的数据库，但是因为不能即使更新，所以准确率一直是一个问题。作为Edison 填坑系列之二，我将在本文说明如何在 TeamSpeak 服务器上使用 GeoIP 数据库。</p>
+<span id="more"></span>
+<p>终于， TeamSpeak 在 1.13.0 的版本开始支持调用 mmdb 格式的数据库了。</p>
+<p>我们想要获取 MaxMind 公司的免费版数据库 GeoLite2 ，先要注册账号。</p>
+<h2 id="注册-maxmind-账号">注册 MaxMind 账号</h2>
+<p>访问 <a target="_blank" rel="noopener" href="https://www.maxmind.com/en/geolite2/signup">https://www.maxmind.com/en/geolite2/signup</a> 注册账号。</p>
+<p>注册完成后，登录账号，点击页面左侧的 <code>Download Files</code> 选项</p>
+<p><img src="https://i.yecdn.com/images/2021/03/06/e921332af2152ed43c379fc429fb4177.png" alt="e921332af2152ed43c379fc429fb4177.png"></p>
+<h2 id="获取-geoip-数据库">获取 GeoIP 数据库</h2>
+<p>因为 TeamSpeak 只需要精确到国家，所以我们选择 <code>GeoLite2 Country</code></p>
+<p><img src="https://i.yecdn.com/images/2021/03/06/01e72c4d98a26f8f9bf9beb9a1a9cbff.png" alt="01e72c4d98a26f8f9bf9beb9a1a9cbff.png"></p>
+<h3 id="获取永久链接">获取永久链接</h3>
+<blockquote>
+<p>如果不想配置自动更新，可以忽略这一步，直接右键点击 Download GZIP 获取下载链接即可</p>
+</blockquote>
+<p>点击 <code>Get Permalinks</code> 会看到如下界面</p>
+<p><img src="https://i.yecdn.com/images/2021/03/06/5fd7d4dd9db0e6486e6ac841b5efab6e.png" alt="5fd7d4dd9db0e6486e6ac841b5efab6e.png"></p>
+<p><code>https://download.maxmind.com/app/geoip_download?edition_id=GeoLite2-Country&amp;license_key=YOUR_LICENSE_KEY&amp;suffix=tar.gz</code></p>
+<h3 id="获取许可证密钥">获取许可证密钥</h3>
+<blockquote>
+<p>如果不想配置自动更新，可以忽略这一步</p>
+</blockquote>
+<p>打开页面左侧的 Manage License Keys 选项卡，点击 Generate new license key</p>
+<p><img src="https://i.yecdn.com/images/2021/03/06/7f29067d45e85c35f6fe40bcb47023dc.png" alt="7f29067d45e85c35f6fe40bcb47023dc.png"></p>
+<p>License key description 的部分自己填写就好， 因为我们要自己配置 GeoIP Update 所以下面的选项选 No 即可</p>
+<p><img src="https://i.yecdn.com/images/2021/03/06/38b2a616f0727b980e55dab0859e6beb.png" alt="38b2a616f0727b980e55dab0859e6beb.png"></p>
+<p>点击 Confirm 之后，我们便可以获取到自己的 ID 和许可证密钥了。复制此处的 License key, 替换到上方链接中。</p>
+<p><strong>请务必妥善保管自己的许可证密钥。</strong></p>
+<p><img src="https://i.yecdn.com/images/2021/03/06/c610bf232dd1e83652c626b43fbfc06f.png" alt="c610bf232dd1e83652c626b43fbfc06f.png"></p>
+<p>举个例子，比如我的Key是 <code>AAAAAAAAAAAAA</code>, 那么链接即 <code>https://download.maxmind.com/app/geoip_download?edition_id=GeoLite2-Country&amp;license_key=AAAAAAAAAAAAA&amp;suffix=tar.gz</code></p>
+<h3 id="下载">下载</h3>
+<p>在服务器中下载这个文件</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">wget <span class="hljs-string">&#x27;https://download.maxmind.com/app/geoip_download?edition_id=GeoLite2-Country&amp;license_key=AAAAAAAAAAAAA&amp;suffix=tar.gz&#x27;</span><br></code></pre></td></tr></table></figure>
+<blockquote>
+<p>请注意替换链接</p>
+</blockquote>
+<p><img src="https://i.yecdn.com/images/2021/03/06/b9f124b2f7df119eb1bf6c23bbb74078.png" alt="b9f124b2f7df119eb1bf6c23bbb74078.png"></p>
+<p>解压该文件 <code>tar -xvf</code> + <kbd>Tab</kbd></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">tar -xvf geoip...=tar.gz<br></code></pre></td></tr></table></figure>
+<p><img src="https://i.yecdn.com/images/2021/03/06/0b72d523e41b269af5f7690aa157ee24.png" alt="0b72d523e41b269af5f7690aa157ee24.png"></p>
+<p>我们应该能获得三个文件，此处只需要里面的 <code>GeoLite2-Country.mmdb</code></p>
+<p>复制该文件到 TeamSpeak 服务器端的目录下， 此处以 <code>/opt/teamspeak3-server_linux_amd64/</code> 为例</p>
+<figure class="highlight apache"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs apache"><span class="hljs-attribute">cp</span> GeoLite<span class="hljs-number">2</span>-Country_<span class="hljs-number">20210302</span>/GeoLite<span class="hljs-number">2</span>-Country.mmdb /opt/teamspeak<span class="hljs-number">3</span>-server_linux_amd<span class="hljs-number">64</span>/<br></code></pre></td></tr></table></figure>
+<blockquote>
+<p>此处请注意替换目录地址</p>
+</blockquote>
+<h2 id="配置-teamspeak-服务端">配置 TeamSpeak 服务端</h2>
+<p>通过添加这个启动项来让服务端调用 mmdb <code>mmdbpath=</code></p>
+<p>先测试能否正常调用</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">./ts3server mmdbpath=GeoLite2-Country.mmdb<br></code></pre></td></tr></table></figure>
+<p>如果有以下提示，需要安装 maxminddb 库</p>
+<figure class="highlight apache"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs apache"><span class="hljs-attribute">2021</span>-<span class="hljs-number">03</span>-<span class="hljs-number">06</span> <span class="hljs-number">09</span>:<span class="hljs-number">02</span>:<span class="hljs-number">57</span>.<span class="hljs-number">856124</span>|WARNING |GeoIP         |   |maxminddb library not found, disabling MMDB usage<br></code></pre></td></tr></table></figure>
+<p>参见 <a href="#maxminddb-library-not-found-disabling-mmdb-usage">常见问题 - maxminddb library not found, disabling MMDB usage </a> 部分</p>
+<p>成功运行时，会看到如下的日志</p>
+<p><img src="https://i.yecdn.com/images/2021/03/06/357d69a528520f7daae1b5399e8f74ed.png" alt="357d69a528520f7daae1b5399e8f74ed.png"></p>
+<p>此时，我们先 <kbd>Ctrl</kbd> + <kbd>C</kbd> 停止服务器</p>
+<h3 id="方式一-添加启动项">方式一: 添加启动项</h3>
+<p>接下来，我们只需要在正常的启动命令后面添加刚刚的启动项即可<br>
+比如 <code>./ts3server_startscript.sh start mmdbpath=GeoLite2-Country.mmdb</code></p>
+<h3 id="方式二-创建配置文件">方式二: 创建配置文件</h3>
+<p>如果之前有引入过配置文件，或者想要创建配置文件。<br>
+创建名为 ·ts3server.ini· 的配置文件，在配置文件中添加 <code>mmdbpath=&lt;MMDB 文件&gt;</code> ，启动时，调用配置文件即可。</p>
+<p><img src="https://i.yecdn.com/images/2021/03/06/f2f60bb4b3ee1cdb4a660c56bfc59941.png" alt="f2f60bb4b3ee1cdb4a660c56bfc59941.png"></p>
+<p>为了方便演示，此处以 <code>./ts3server inifile=ts3server.ini</code> 的方式启动服务器<br>
+<code>./ts3server_startscript.sh start inifile=ts3server.ini</code></p>
+<p><img src="https://i.yecdn.com/images/2021/03/06/f0d7d50309113b42616ffb7cb52376be.png" alt="f0d7d50309113b42616ffb7cb52376be.png"></p>
+<h2 id="配置自动更新-进阶操作">配置自动更新(进阶操作)</h2>
+<p>此部分是一个可选项。</p>
+<blockquote>
+<p>每次更新后，需要重新启动服务器端才能生效</p>
+</blockquote>
+<p>我写了一个比较简单粗暴的脚本</p>
+<p>创建 /opt/geoip/ 目录 <code>mkdir /opt/geoip</code></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-meta">#!/bin/bash</span><br><span class="hljs-built_in">cd</span> /opt/geoip<br>wget -O geoip.tar.gz -N <span class="hljs-string">&#x27;https://download.maxmind.com/app/geoip_download?edition_id=GeoLite2-Country&amp;license_key=AAAAAAAAAAAA&amp;suffix=tar.gz&#x27;</span><br>tar -zxvf geoip.tar.gz<br>chown -R teamspeak:teamspeak GeoLite2-Country*<br>cp GeoLite2-Country*/GeoLite2-Country.mmdb /opt/teamspeak3-server_linux_amd64/geoip.mmdb<br>rm -r GeoLite2-Country* geoip.tar.gz<br>chown -R teamspeak:teamspeak /opt/teamspeak3-server_linux_amd64/geoip.mmdb<br>systemctl restart teamspeak<br></code></pre></td></tr></table></figure>
+<p>注意替换脚本中的下载链接，按照我的这个配置中 <code>mmdbpath</code> 也应该被替换为 <code>geoip.mmdb</code>。<br>
+如果启动或停止服务器时时通过命令行进行的，那么只需要将 <code>systemctl restart teamspeak</code> 替换为 <code>./ts3server_startscript.sh start mmdbpath=GeoLite2-Country.mmdb</code> 或其他指令即可。</p>
+<p>接下来把这个配置到 crontab 里面即可<br>
+比如，我自己的服务器设置的是时间是每月1号 4:30 自动更新。</p>
+<figure class="highlight basic"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs basic"><span class="hljs-symbol">30 </span><span class="hljs-number">4</span> <span class="hljs-number">1</span> * * /bin/bash /opt/geoip/update.sh &gt; /dev/null<br></code></pre></td></tr></table></figure>
+<p>至此，替换 IP 数据库，自动更新的操作就完成了。</p>
+<h2 id="常见问题">常见问题</h2>
+<h3 id="maxminddb-library-not-found-disabling-mmdb-usage">maxminddb library not found, disabling MMDB usage</h3>
+<p>如果有以下提示，需要安装 maxminddb 库</p>
+<figure class="highlight apache"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs apache"><span class="hljs-attribute">2021</span>-<span class="hljs-number">03</span>-<span class="hljs-number">06</span> <span class="hljs-number">09</span>:<span class="hljs-number">02</span>:<span class="hljs-number">57</span>.<span class="hljs-number">856124</span>|WARNING |GeoIP         |   |maxminddb library not found, disabling MMDB usage<br></code></pre></td></tr></table></figure>
+<p>此处以 Debian 10 x64 系统为例， 安装 libmaxminddb-dev 包即可</p>
+<blockquote>
+<p>此处需要 sudo 或 root 权限</p>
+</blockquote>
+<figure class="highlight cmake"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs cmake">sudo apt <span class="hljs-keyword">install</span> libmaxminddb-dev<br></code></pre></td></tr></table></figure>
+<h1 id="参考链接">参考链接</h1>
+<p><a target="_blank" rel="noopener" href="https://unix.stackexchange.com/questions/159531/the-geoip2-module-requires-the-maxminddb-library-but-the-library-is-installed">https://unix.stackexchange.com/questions/159531/the-geoip2-module-requires-the-maxminddb-library-but-the-library-is-installed</a></p>
+
+                    </article>
+                    
+    <blockquote class="post-license">
+        <p>
+            <strong>本文作者&nbsp;:&nbsp;Edison Jwa</strong>
+            <br>
+            <strong>
+            
+                本文使用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">署名-非商业性使用-相同方式共享 4.0 国际 (CC BY-NC-SA 4.0)</a> 协议
+            </strong>
+            <br>
+            <strong>本文链接&nbsp;:&nbsp;</strong><a href="https://www.wevg.org/archives/geoip-with-teamspeak/">https://www.wevg.org/archives/geoip-with-teamspeak/</a>
+        </p>
+    </blockquote>
+
+
+
+    <blockquote id="date-expire-notification" class="post-expired-notify">本文最后更新于 <span id="date-expire-num"></span> 天前，文中所描述的信息可能已发生改变</blockquote>
+    <script>
+    (function() {
+        var dateUpdate = Date.parse("2021-03-06");
+        var nowDate = new Date();
+        var a = nowDate.getTime();
+        var b = a - dateUpdate;
+        var daysUpdateExpire = Math.floor(b/(24*3600*1000));
+        if (daysUpdateExpire >= 120) {
+            document.getElementById('date-expire-num').innerHTML = daysUpdateExpire;
+        } else {
+            document.getElementById('date-expire-notification').style.display = 'none';
+        }
+    })();
+    </script>
+
+
+<p class="post-footer-info mb-0 pt-0">本文发表于&nbsp;<time datetime="2021-03-06T08:08:51.000Z" itemprop="datePublished">2021-03-06</time>
+
+</p>
+<p class="post-footer-info mb-0 pt-2">
+
+<span class="post-categories-list mt-2">
+
+<a class="post-categories-list-item" href='/categories/Tech/'>Tech</a>
+
+</span>
+
+
+
+<span class="post-tags-list mt-2">
+
+<a class="post-tags-list-item" href="/tags/Linux/" rel="tag">#&nbsp;Linux</a>
+
+<a class="post-tags-list-item" href="/tags/%E6%90%AD%E5%BB%BA/" rel="tag">#&nbsp;搭建</a>
+
+<a class="post-tags-list-item" href="/tags/%E6%9C%8D%E5%8A%A1%E5%99%A8/" rel="tag">#&nbsp;服务器</a>
+
+<a class="post-tags-list-item" href="/tags/VoIP/" rel="tag">#&nbsp;VoIP</a>
+
+<a class="post-tags-list-item" href="/tags/%E8%AF%AD%E9%9F%B3/" rel="tag">#&nbsp;语音</a>
+
+<a class="post-tags-list-item" href="/tags/Docker/" rel="tag">#&nbsp;Docker</a>
+
+</span>
+
+
+</p>
+
+                </div>
+                <div class="post-nav px-2 bg-gray">
+<ul class="pagination">
+    <!-- Prev Nav -->
+    
+
+    <!-- Next Nav -->
+    
+        <li class="page-item page-next">
+            <a href="/archives/cloudflare-with-openwrt-as-ipv6/" rel="next">
+                <div class="page-item-title"><i class="icon icon-forward" aria-hidden="true"></i></div>
+                <div class="page-item-subtitle">利用 Cloudflare WARP 为家里添加 IPv6 网络</div>
+            </a>
+        </li>
+    
+</ul>
+</div>
+
+                
+                    <!-- # Comment # -->
+                    
+                        <div class="card-footer post-comment">
+                            <div id="disqus_thread"></div>
+
+<script id="js-disqusjs" src="https://cdn.jsdelivr.net/npm/disqusjs@1.2.5/dist/disqus.js" async></script>
+<script>
+document.getElementById('js-disqusjs').addEventListener('load', function () {
+    function loadDisqusJS() {
+        new DisqusJS({
+            shortname: 'edisonj',
+            
+            siteName: 'Vigorous Pro',
+            
+            identifier: 'https://www.wevg.org/archives/geoip-with-teamspeak/',
+            url: 'https://www.wevg.org/archives/geoip-with-teamspeak/',
+            api: 'https://disqus.uv.uy/api/',
+            apikey: 'vBTqc5gYirQfuj9STIAANtQCArVi9MN8UZ72UUucwnhus4AhpgpbVJMIn3Ojl4O7',
+            
+            
+        })
+    }
+    if (document.readyState === 'complete') {
+        loadDisqusJS();
+    } else {
+        window.addEventListener('load', loadDisqusJS);
+    }
+});
+</script>
+
+                        </div>
+                    
+                
+            </div>
+        </div>
+    </div>
+</div>
+
+            <!-- ### Footer ### -->
+            <footer class="text-center">
+    <!-- footer copyright -->
+    
+        <p class="footer-copyright mb-0">Copyright&nbsp;©&nbsp;<span id="copyright-year"></span>
+            <a class="footer-copyright-a" href="https://www.wevg.org">Vigorous Pro</a>
+        </p>
+
+    <!-- footer custom text -->
+    <p class="footer-text mb-0">
+    <a href="/atom.xml" target="_blank" class="footer-develop-a" rel="nofollow noopener noreferrer">RSS</a><span class="footer-develop-divider"></span><a href="https://donate.edison.do" target="_blank" class="footer-develop-a" rel="nofollow noopener noreferrer">Donate</a><span class="footer-develop-divider"></span><a href="/privacy-policy" target="_blank" class="footer-develop-a" rel="nofollow noopener noreferrer">Privacy Policy</a>
+    </p>
+    <!-- footer develop info -->
+    <p class="footer-develop mb-0">
+        
+
+        
+        Powered by&nbsp;<!--
+         --><a href="https://hexo.io" target="_blank" class="footer-develop-a" rel="external nofollow noopener noreferrer">Hexo</a><span class="footer-develop-divider"></span>Theme&nbsp;-&nbsp;<!--
+         --><a href="https://github.com/SukkaW/hexo-theme-suka" target="_blank" class="footer-develop-a" rel="external noopener">Suka</a>
+    </p>
+</footer>
+
+
+        <!-- ### Import File ### -->
+        <!-- ### Footer JS Import ### -->
+
+<script>
+
+    
+window.lazyLoadOptions = {
+    elements_selector: ".lazyload",
+    threshold: 50
+};
+
+(function() {
+    var copyrightNow = new Date().getFullYear();
+    var copyrightContent = document.getElementById('copyright-year');
+    var copyrightSince = 2015;
+    if (copyrightSince === copyrightNow) {
+        copyrightContent.textContent = copyrightNow;
+    } else {
+        copyrightContent.textContent = copyrightSince + ' - ' + copyrightNow;
+    }
+})();
+console.log('\n %c Suka Theme (hexo-theme-suka) | © SukkaW | Verision 1.3.3 %c https://github.com/SukkaW/hexo-theme-suka \n', 'color: #fff; background: #444; padding:5px 0;', 'background: #bbb; padding:5px 0;');
+
+</script>
+
+<script src="https://cdn.jsdelivr.net/npm/vanilla-lazyload@12.3.0" async></script>
+
+
+
+<!-- Comment -->
+
+    
+        <!-- No need for DisqusJS -->
+    
+
+
+<!-- ### Custom Footer ### -->
+<script> if ('serviceWorker' in navigator) { window.addEventListener('load', () => { navigator.serviceWorker.register('/sw.js'); }) } </script><script>window.ga_tid = "UA-106121780-1";window.ga_api = "https://ga.cdn.uv.uy/jquery.js"; </script><script src="https://cdn.jsdelivr.net/gh/EdisonJwa/Blog@master/js/main.js" async></script>
+    </body>
+
+</html>

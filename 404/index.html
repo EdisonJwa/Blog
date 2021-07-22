@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>404</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge">
+    <meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=no">
+    <meta name="format-detection" content="telephone=no">
+    <style>
+        .container {
+            margin: 0;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif;
+            cursor: default;
+            user-select: none;
+            -webkit-font-smoothing: antialiased;
+            text-rendering: optimizeLegibility;
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            display: flex;
+            flex-direction: column;
+            padding: 0 20px
+        }
+
+        .main {
+            height: 100%;
+            display: flex;
+            -webkit-box-pack: center;
+            justify-content: center;
+            align-items: center;
+            -webkit-box-align: center;
+            flex-direction: column
+        }
+
+        section {
+            display: flex;
+            justify-content: center;
+            -webkit-box-align: center;
+            align-items: center;
+            flex-direction: column;
+            height: 40px;
+            flex-direction: row
+        }
+
+        .code {
+            font-size: 28px;
+            font-weight: 500;
+            display: block;
+            text-align: center;
+            width: 200px;
+            border-bottom: 0;
+            border-right: 1px solid #eaeaea;
+            padding: 0 20px 0 20px;
+            width: auto;
+            height: 100%;
+            line-height: 40px
+        }
+
+        .msg {
+            margin: 20px 0 0 0;
+            height: 100%;
+            line-height: 40px;
+            font-size: 14px;
+            font-weight: 400;
+            margin: 0;
+            padding-left: 20px
+        }
+
+        main {
+            text-align: center
+        }
+
+        .footer {
+            text-align: center
+        }
+
+        .footer-copyright-a:focus,
+        .footer-copyright-a:hover {
+            color: #999;
+            text-decoration: underline !important;
+        }
+
+        .footer-copyright {
+            color: #999;
+        }
+
+        .footer-copyright-a,
+        .footer-copyright-a:visited {
+            text-decoration: none;
+            color: #999;
+        }
+
+        @media (prefers-color-scheme:dark) {
+            body {
+                background-color: #121212;
+                color: #e1e1e1
+            }
+
+            .footer-copyright-a:focus,
+            .footer-copyright-a:hover {
+                color: #999;
+                text-decoration: underline !important;
+            }
+
+            .footer-copyright {
+                color: #999;
+            }
+
+            .footer-copyright-a,
+            .footer-copyright-a:visited {
+                text-decoration: none;
+                color: #999;
+            }
+
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="main">
+            <section><span class="code">404</span>
+                <p class="msg">Not Found</p>
+            </section>
+            <main>
+                <p>The requested resources <span id="loc"></span> is not available. You will be redirected to the homepage within <span id="num"></span> seconds.</p>
+            </main>
+        </div>
+        <div class="footer">
+            <p class="footer-copyright">Copyright © <span year></span> <a class="footer-copyright-a"
+                    href="https://www.wevg.org" target="_blank">Vigorous Pro</a></p>
+        </div>
+    </div>
+    <script type="text/javascript">
+        var num = 4; function redirect() { num--; document.getElementById("num").innerHTML = num; if (num < 0) { document.getElementById("num").innerHTML = 0; location.href = "/"; } } setInterval("redirect()", 1000);loc(); function loc() { document.getElementById('loc').innerHTML = window.location.pathname + window.location.search; };window.ga_tid="UA-106121780-1",window.ga_api="https://ga.cdn.uv.uy/",document.body.addEventListener("copy",function(t){var e,o,n,a=window.getSelection().anchorNode.parentNode.nodeName.toLowerCase();"code"!==a&&"pre"!==a&&16<window.getSelection().toString().length&&((e=t).preventDefault(),o=window.getSelection().toString()+"<br><br>本文采用 CC BY-NC-SA 4.0 许可协议，著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。<br>作者：Edison Jwa<br>来源："+document.title+"<br>链接："+window.location.href,n=window.getSelection().toString()+"\n\n本文采用 CC BY-NC-SA 4.0 许可协议，著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。\n作者：Edison Jwa\n来源："+document.title+"\n链接："+window.location.href,e.clipboardData?(e.clipboardData.setData("text/html",o),e.clipboardData.setData("text/plain",n)):window.clipboardData&&window.clipboardData.setData("text",n))})</script>
+    <script src="https://cdn.jsdelivr.net/gh/EdisonJwa/Blog@master/js/main.js" async=""></script>
+    <script>var copyrightNow = (new Date).getFullYear(), textContent = document.querySelector("span[year]"); copyrightSince = 2015, textContent.textContent = copyrightSince === copyrightNow ? copyrightNow : copyrightSince + " - " + copyrightNow;</script>
+</body>
+
+</html>

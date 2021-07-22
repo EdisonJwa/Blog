@@ -1,0 +1,986 @@
+<!DOCTYPE html>
+
+<html lang="zh-CN">
+    <head>
+    <meta charset="utf-8">
+    <!--
+        hexo-theme-suka © SukkaW
+        GitHub: https://github.com/SukkaW/hexo-theme-suka
+    -->
+
+    <!-- ### Resource Hint ### -->
+
+    <!-- ## DNS Prefetch ## -->
+    <meta http-equiv="x-dns-prefetch-control" content="on">
+
+<!-- busuanzi -->
+
+
+<!-- comment -->
+
+
+
+
+
+
+
+<!-- analytics -->
+
+
+
+
+
+
+
+    <!-- ## Preload ## -->
+    
+
+
+
+
+    <!-- ### Meta & Title & Info ### -->
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, minimum-scale=1, initial-scale=1, maximum-scale=5, viewport-fit=cover">
+    <meta name="renderer" content="webkit">
+
+    <!-- Title -->
+    <title>CSGO cfg 文件调试指南 | Vigorous Pro</title>
+
+    <!-- Favicons -->
+    <link rel="icon" type="image&#x2F;ico" href="/favicon.ico"><link rel="apple-touch-icon" sizes="180x180" href="/source/favicon/apple-touch-icon.png"><link rel="icon" typt="image&#x2F;png" sizes="192x192" href="/source/favicon/android-chrome-192x192.png"><link rel="icon" typt="image&#x2F;png" sizes="32x32" href="/source/favicon/favicon-32x32.png"><link rel="icon" typt="image&#x2F;png" sizes="16x16" href="/source/favicon/favicon-16x16.png"><link rel="mask-icon" href="/safari-pinned-tab.svg" color="">
+
+    <!-- ### Import File ### -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/spectre.css@0.5.3"><style>
+    body {
+        background-color: #f8f9fa;
+    }
+
+    a, a:visited {
+        color: #0070ff;
+    }
+
+    a:active, a:focus, a:hover {
+        color: #0070ff;
+        opacity: .75;
+    }
+
+    #post-content a,
+    #post-content a:hover,
+    #post-content a:focus,
+    #post-content a:visited {
+        color: #005eb9;
+        opacity: 1;
+    }
+
+    
+
+    .post-entry .card-body a {
+        color: #0070ff;
+    }
+
+    .avatar {
+        background: #444;
+    }
+
+    .navbar-link,
+    .navbar-link:visited,
+    .timeline .timeline-item .timeline-icon.icon-lg {
+        color: #0070ff;
+    }
+
+    .navbar-link:hover {
+        color: #0070ff;
+        opacity: .8;
+    }
+
+    #search-input .btn,
+    #disqus_click_btn,
+    #disqus-switch-to-direct,
+    #disqus-loadmore-button {
+        background: #727e96;
+        border-color: #727e96;
+        color: #fff;
+    }
+
+    #post-toc a.post-toc-link,
+    #post-toc a.post-toc-link:visited,
+    .share-menu.menu .menu-item>a {
+        color: #727e96;
+    }
+
+    .share-menu.menu .menu-item>a:hover,
+    .share-menu.menu .menu-item>a:focus,
+    .share-menu.menu .menu-item>a:visited {
+        color: #50596c;
+        background: #f8f9fa;
+        opacity: .85;
+    }
+</style><link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/sukkaw/hexo-theme-suka@latest/source/css/style.min.css">
+
+
+    
+        <!-- Import DisqusJS Default Theme -->
+        <link rel="preload" href="https://cdn.jsdelivr.net/npm/disqusjs@1.2.5/dist/disqusjs.css" as="style" onload="this.onload=null;this.rel='stylesheet'"><noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/disqusjs@1.2.5/dist/disqusjs.css"></noscript>
+
+    
+
+
+
+
+
+
+
+    <!-- Prettify Theme -->
+    
+    <link rel="preload" href="https://cdn.jsdelivr.net/gh/sukkaw/hexo-theme-suka@latest/source/css/highlight/tomorrow-night-eighties.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'"><noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/sukkaw/hexo-theme-suka@latest/source/css/highlight/tomorrow-night-eighties.min.css"></noscript>
+
+
+
+
+
+<script>
+/*! loadCSS. [c]2017 Filament Group, Inc. MIT License */
+!function(t){"use strict";t.loadCSS||(t.loadCSS=function(){});var e=loadCSS.relpreload={};if(e.support=function(){var e;try{e=t.document.createElement("link").relList.supports("preload")}catch(t){e=!1}return function(){return e}}(),e.bindMediaToggle=function(t){var e=t.media||"all";function a(){t.addEventListener?t.removeEventListener("load",a):t.attachEvent&&t.detachEvent("onload",a),t.setAttribute("onload",null),t.media=e}t.addEventListener?t.addEventListener("load",a):t.attachEvent&&t.attachEvent("onload",a),setTimeout(function(){t.rel="stylesheet",t.media="only x"}),setTimeout(a,3e3)},e.poly=function(){if(!e.support())for(var a=t.document.getElementsByTagName("link"),n=0;n<a.length;n++){var o=a[n];"preload"!==o.rel||"style"!==o.getAttribute("as")||o.getAttribute("data-loadcss")||(o.setAttribute("data-loadcss",!0),e.bindMediaToggle(o))}},!e.support()){e.poly();var a=t.setInterval(e.poly,500);t.addEventListener?t.addEventListener("load",function(){e.poly(),t.clearInterval(a)}):t.attachEvent&&t.attachEvent("onload",function(){e.poly(),t.clearInterval(a)})}"undefined"!=typeof exports?exports.loadCSS=loadCSS:t.loadCSS=loadCSS}("undefined"!=typeof global?global:this);
+</script>
+
+    <!-- ### Site Verification ### -->
+    
+
+
+    <link rel="alternate" type="application/atom+xml" href="/atom.xml"><meta name="mobile-web-app-capable" content="yes"><meta name="application-name" content="Vigorous Pro"><meta name="msapplication-starturl" content="https://www.wevg.org"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-title" content="Vigorous Pro"><meta name="apple-mobile-web-app-status-bar-style" content="black-translucent"><link rel="manifest" href="/manifest.json"><link rel="search" type="application/opensearchdescription+xml" href="/opensearch.xml" title="Vigorous Pro">
+
+    <!-- ### The Open Graph & Twitter Card Protocol ### -->
+    <meta property="og:title" content="CSGO cfg 文件调试指南 | Vigorous Pro"><meta property="og:site_name" content="Vigorous Pro"><meta property="og:type" content="article"><meta property="og:url" content="https://www.wevg.org/archives/csgo-config-guide/"><meta property="og:locale" content="zh-CN"><meta name="description" content="对于 CSGO 的性能优化我们在 CSGO FPS 终极优化指南 中已经做过详解，探索为什么每一名长时间游玩 CSGO 的玩家会去寻找他喜欢的选手的 CFG ，来替换自己的 CFG 。大家对职业选手的 CFG 趋之若鹜，甚至很多选手的 CFG 也从不向外公布。 - Edison Jwa - Vigorous Pro"><meta name="keywords" content="优化, 设置, 配置, fps, 启动项, config, edisonjwa,game,blog,Web,Html,edison"><meta property="og:image" content="https://cdn.jsdelivr.net/gh/EdisonJwa/Blog@master/source/thumbnail/57b4e887e8d9dc9be01e91b8ca72d6bf.jpg"><meta property="article:published_time" content="2019-06-11T10:45:33.000Z"><meta property="article:modified_time" content="2019-06-13T10:03:33.000Z"><meta property="og:updated_time" content="2019-06-13T10:03:33.000Z"><meta property="article:author" content="Edison Jwa"><meta property="article:tag" content="优化, 设置, 配置, fps, 启动项, config, edisonjwa,game,blog,Web,Html,edison"><meta name="twitter:card" content="summary_large_image"><meta name="twitter:image" content="https://cdn.jsdelivr.net/gh/EdisonJwa/Blog@master/source/thumbnail/57b4e887e8d9dc9be01e91b8ca72d6bf.jpg">
+
+    
+
+    <!-- ### Canonical link ### -->
+    <link rel="canonical" href="https://www.wevg.org/archives/csgo-config-guide/">
+
+    <meta name="generator" content="Hexo 5.4.0">
+
+    <!-- ### Analytics ### -->
+    
+
+
+
+
+
+
+
+    <!-- ### Structured Data ### -->
+    
+
+
+
+<script type="application/ld+json">
+{
+    "@context": "http://schema.org",
+    "url": "https://www.wevg.org/archives/csgo-config-guide/",
+    "@type": "BlogPosting",
+    "logo": "https://www.wevg.org/source/favicon/android-chrome-192x192.png",
+    "mainEntityOfPage": {
+        "@type": "WebPage",
+        "@id": "https://www.wevg.org/archives/csgo-config-guide/"
+    },
+    "headline": "CSGO cfg 文件调试指南 | Vigorous Pro",
+    
+    "image": {
+        "@type": "ImageObject",
+        "url": "https://cdn.jsdelivr.net/gh/EdisonJwa/Blog@master/source/thumbnail/57b4e887e8d9dc9be01e91b8ca72d6bf.jpg"
+    },
+    
+    "datePublished": "2019-06-11T10:45:33.000Z",
+    "dateModified": "2019-06-13T10:03:33.000Z",
+    "author": {
+        "@type": "Person",
+        "name": "Edison Jwa",
+        "image": {
+            "@type": "ImageObject",
+            "url": "https://cdn.jsdelivr.net/gh/EdisonJwa/Blog@master/source/image/avatar.jpg"
+        },
+        "description": "The world can always use more heroes."
+    },
+    "publisher": {
+        "@type": "Organization",
+        "name": "Vigorous Pro",
+        "logo": {
+            "@type": "ImageObject",
+            "url": "https://www.wevg.org/source/favicon/android-chrome-192x192.png"
+        }
+    },
+    
+    "potentialAction": {
+        "@type": "SearchAction",
+        "target": "https://www.wevg.org/search?s={search_term_string}",
+        "query-input": "required name=search_term_string"
+    },
+    
+    "keywords": "优化, 设置, 配置, fps, 启动项, config, edisonjwa,game,blog,Web,Html,edison",
+    "description": "对于 CSGO 的性能优化我们在 CSGO FPS 终极优化指南 中已经做过详解，探索为什么每一名长时间游玩 CSGO 的玩家会去寻找他喜欢的选手的 CFG ，来替换自己的 CFG 。大家对职业选手的 CFG 趋之若鹜，甚至很多选手的 CFG 也从不向外公布。 - Edison Jwa - Vigorous Pro"
+}
+</script>
+
+
+
+    <!-- ### Custom Head ### -->
+    <!-- EdisonJwas Blog --><script data-ad-client="ca-pub-2345785306567671" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script><link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/EdisonJwa/Blog@latest/css/darkmode.min.css"><script src="https://cdn.jsdelivr.net/gh/EdisonJwa/Blog@master/js/edison-main.min.js"></script><script type="module" async="" src="https://cdn.jsdelivr.net/npm/instant.page@3.0.0/instantpage.min.js"></script><link rel="manifest" href="/site.webmanifest"><meta name="msapplication-TileColor" content="#d43d3d"><meta name="msapplication-TileImage" content="/source/favicon/mstile-144x144.png"><meta name="theme-color" content="#ffffff"><script type="text/javascript">function downloadJSAtOnload(){var d=document.createElement("script");d.src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js",document.body.appendChild(d)}window.addEventListener?window.addEventListener("load",downloadJSAtOnload,!1):window.attachEvent?window.attachEvent("onload",downloadJSAtOnload):window.onload=downloadJSAtOnload;</script><!-- Global site tag (gtag.js) - Google Analytics --><script async src="https://www.googletagmanager.com/gtag/js?id=G-S2SFLD81VT"></script><script>window.dataLayer = window.dataLayer || [];function gtag(){dataLayer.push(arguments);} gtag('js', new Date()); gtag('config', 'G-S2SFLD81VT');</script><!-- Cloudflare Web Analytics --><script defer src=https://static.cloudflareinsights.com/beacon.min.js ; data-cf-beacon="{&quot;token&quot;: 1ebb36a2c023408484ff114c409377b8}"></script><!-- End Cloudflare Web Analytics -->
+<style type="text/css">
+.spoiler {
+  display: inline-flex;
+}
+p.spoiler {
+  display: flex;
+}
+.spoiler a {
+  pointer-events: none;
+}
+.spoiler-blur, .spoiler-blur > * {
+  transition: text-shadow .5s ease;
+}
+.spoiler .spoiler-blur, .spoiler .spoiler-blur > * {
+  color: rgba(0, 0, 0, 0);
+  background-color: rgba(0, 0, 0, 0);
+  text-shadow: 0 0 10px grey;
+  cursor: pointer;
+}
+.spoiler .spoiler-blur:hover, .spoiler .spoiler-blur:hover > * {
+  text-shadow: 0 0 5px grey;
+}
+.spoiler-box, .spoiler-box > * {
+  transition: color .5s ease,
+  background-color .5s ease;
+}
+.spoiler .spoiler-box, .spoiler .spoiler-box > * {
+  color: black;
+  background-color: black;
+  text-shadow: none;
+}</style></head>
+
+    <body>
+            
+
+            <!-- ### Main content ### -->
+            <!-- ## Header ##-->
+<header>
+    <h1 class="header-title text-center"><a href="/">Vigorous Pro</a></h1>
+
+    <p class="text-center header-slogan">
+        
+            
+                The world can always use more heroes.
+            
+        
+    </p>
+
+    <nav class="navbar-section text-center">
+    
+        <a href="/" class="navbar-link">首页</a>
+    
+    
+        <a href="/archives/" class="navbar-link">归档</a>
+    
+    
+        <a href="/search" class="navbar-link">搜索</a>
+    
+    
+        <a target="_blank" rel="noopener" href="https://uv.uy" class="navbar-link">关于</a>
+    
+        <a href="/friends/" class="navbar-link">友链</a>
+    
+    
+    
+</nav>
+</header>
+
+            
+    <!-- ## Post ## -->
+    <div class="post-container">
+    <div id="post-card" class="card">
+        
+            <div class="card-image lazyload" data-bg="url('https://cdn.jsdelivr.net/gh/EdisonJwa/Blog@master/source/thumbnail/57b4e887e8d9dc9be01e91b8ca72d6bf.jpg')"></div>
+        
+        <div class="card-item-container">
+            <div class="card-inner-cell">
+                <!-- # Post Header Info # -->
+                <div class="card-header">
+                    
+    <h1 class="card-title h3 mb-2">CSGO cfg 文件调试指南</h1>
+
+
+
+
+<div class="post-header-info">
+    <p class="post-header-info-left text-gray">
+        <img class="author-thumb lazyload" data-src="https://cdn.jsdelivr.net/gh/EdisonJwa/Blog@master/source/image/avatar.jpg" src="https://cdn.jsdelivr.net/gh/sukkaw/hexo-theme-suka@latest/source/img/suka-lazyload.gif" alt="Edison Jwa's Avatar">
+        <span>2019-06-11</span>
+        
+            <span class="suka-devide-dot"></span>
+            <a class="category-link" href="/categories/Gaming/">Gaming</a><span class="suka-devide-dot"></span><a class="category-link" href="/categories/Gaming/CS-GO/">CS:GO</a>
+        
+        
+        
+    </p>
+    <div class="post-header-info-right">
+        
+            <div class="dropdown dropdown-right">
+<a class="dropdown-toggle" tabindex="0">分享本文</a>
+<ul class="menu share-menu">
+    <!-- Share Weibo -->
+    
+    <li class="menu-item">
+        <a href="http://service.weibo.com/share/share.php?appkey=&title=CSGO cfg 文件调试指南&url=https://www.wevg.org/archives/csgo-config-guide/&pic=https://cdn.jsdelivr.net/gh/EdisonJwa/Blog@master/source/thumbnail/57b4e887e8d9dc9be01e91b8ca72d6bf.jpg&searchPic=false&style=simple" target="_blank" rel="external noopener noreferrer nofollow">分享到微博</a>
+    </li>
+    
+
+    <!-- Share Twitter -->
+    
+    <li class="menu-item">
+        <a href="https://twitter.com/intent/tweet?text=CSGO cfg 文件调试指南&url=https://www.wevg.org/archives/csgo-config-guide/&via=Edison Jwa" target="_blank" rel="external noopener noreferrer nofollow">分享到 Twitter</a>
+    </li>
+    
+
+    <!-- Share Facebook -->
+    
+    <li class="menu-item">
+        <a href="https://www.facebook.com/sharer/sharer.php?u=https://www.wevg.org/archives/csgo-config-guide/" target="_blank" rel="external noopener noreferrer nofollow">分享到 Facebook</a>
+    </li>
+    
+
+    <!-- Share Google+ -->
+    
+    <li class="menu-item">
+        <a href="https://plus.google.com/share?url=https://www.wevg.org/archives/csgo-config-guide/" target="_blank" rel="external noopener noreferrer nofollow">分享到 Google+</a>
+    </li>
+    
+
+    <!-- Share LinkedIn -->
+    
+    <li class="menu-item">
+        <a href="https://www.linkedin.com/shareArticle?mini=true&url=https://www.wevg.org/archives/csgo-config-guide/&title=Vigorous Pro" target="_blank" rel="external noopener noreferrer nofollow">分享到 LinkedIn</a>
+    </li>
+    
+
+    <!-- Share QQ -->
+    
+    <li class="menu-item">
+        <a href="http://connect.qq.com/widget/shareqq/index.html?site=Vigorous Pro&title=Vigorous Pro&summary=The world can always use more heroes.&pics=https://cdn.jsdelivr.net/gh/EdisonJwa/Blog@master/source/thumbnail/57b4e887e8d9dc9be01e91b8ca72d6bf.jpg&url=https://www.wevg.org/archives/csgo-config-guide/" target="_blank" rel="external noopener noreferrer nofollow"> 分享到 QQ</a>
+    </li>
+    
+
+    <!-- Share Telegram -->
+    
+    <li class="menu-item">
+        <a href="https://t.me/share/url?url=https://www.wevg.org/archives/csgo-config-guide/&text=Vigorous Pro" target="_blank" rel="external noopener noreferrer nofollow">分享到 Telegram</a>
+    </li>
+    
+
+    <!-- QRCode -->
+    
+    <li class="menu-item">
+        <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAJQAAACUCAAAAABQV18IAAAB3UlEQVR42u3ay27DMAxE0fz/T7fbNLBmLlUjEOnxpi+nOgZoSST1+jnwegUVVFBBXaBe4nq/58+HL352n0PjBDUGdRl0BqUgV/8TjRPUKNTnAFdfP3+387KsxgnqeSh3/wq+erigglrB1GT7tUAP6kiUGtht1twLcPsuIajjUWoxvfPrbdlMUEejbNFBTHoqeFd/u6XqEtTRKBWIq82buncngQ1qHspt6MiGr5pU2E1eUK1RLul0wVuZZNXkG9QMlFpEVWKqgpkmo3aTF1R7lBpMBe1/XgIb6EG1RJGAJni52JKHDGoMijapScOINrXR2xdUW1S1kO8mXdLAlMloUO1RtGhPN4MKpIr+Qc1CVZpGpGjvHlQWOIJqjdpZRMmBCrdoo6pLUC1R1QNbdCF2yagtcATVGuUaiaRARgsdsnkZ1AgUCVBX7Kgc6pLfBzUGtYsjiYZb6FG3PajWqOoA5AAOnUCDmoeiB7PcYR3yQuBDXUG1Q9EiBynUqgBH9wc1AkUOGpNFlTaxcdUlqNaoShHWFWfJw6GT+0G1R5HApBu73UU5qOegVMGMFD3woeegHociyUSlCHJLoAd1LMolDKQRWd0gBjUXtROU1QM4qLkU1AjUSVdQQQUV1Nv1C0ctMI/NOBQhAAAAAElFTkSuQmCC" alt="QRCode">
+    </li>
+    
+
+</ul>
+</div>
+        
+    </div>
+</div>
+                </div>
+                <div class="card-body">
+                    
+                        
+                        
+                            <div id="post-toc"><ol class="post-toc"><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#cfg-%E6%98%AF%E4%BB%80%E4%B9%88"><span class="post-toc-number">1.</span> <span class="post-toc-text">CFG 是什么</span></a></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#%E4%B8%BA%E4%BB%80%E4%B9%88%E6%88%91%E4%BB%AC%E8%A6%81%E5%AF%B9-cfg-%E8%BF%9B%E8%A1%8C%E4%BF%AE%E6%94%B9"><span class="post-toc-number">2.</span> <span class="post-toc-text">为什么我们要对 CFG 进行修改</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#%E9%94%AE%E4%BD%8D%E8%AE%BE%E7%BD%AE"><span class="post-toc-number">2.1.</span> <span class="post-toc-text">键位设置</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#%E9%BC%A0%E6%A0%87%E8%BF%90%E8%A1%8C%E8%BD%A8%E8%BF%B9"><span class="post-toc-number">2.2.</span> <span class="post-toc-text">鼠标运行轨迹</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#hud-%E4%B8%8E-viewmodel"><span class="post-toc-number">2.3.</span> <span class="post-toc-text">HUD 与 viewmodel</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#%E6%8F%90%E9%AB%98%E5%B8%A7%E6%95%B0"><span class="post-toc-number">2.4.</span> <span class="post-toc-text">提高帧数</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#%E7%BD%91%E7%BB%9C%E5%8F%82%E6%95%B0"><span class="post-toc-number">2.5.</span> <span class="post-toc-text">网络参数</span></a></li></ol></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#%E5%A6%82%E4%BD%95%E4%BF%AE%E6%94%B9-cfg"><span class="post-toc-number">3.</span> <span class="post-toc-text">如何修改 CFG</span></a></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#%E5%BC%80%E5%A7%8B%E4%BF%AE%E6%94%B9cfg"><span class="post-toc-number">4.</span> <span class="post-toc-text">开始修改CFG</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#%E9%94%AE%E4%BD%8D%E8%AE%BE%E7%BD%AE-v2"><span class="post-toc-number">4.1.</span> <span class="post-toc-text">键位设置</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E5%BF%AB%E9%80%9F%E8%B4%AD%E4%B9%B0%E6%AD%A6%E5%99%A8"><span class="post-toc-number">4.1.1.</span> <span class="post-toc-text">快速购买武器</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E5%BF%AB%E9%80%9F%E5%88%87%E5%87%BA%E9%81%93%E5%85%B7"><span class="post-toc-number">4.1.2.</span> <span class="post-toc-text">快速切出道具</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E5%8A%9F%E8%83%BD%E6%80%A7%E5%BF%AB%E6%8D%B7%E9%94%AE"><span class="post-toc-number">4.1.3.</span> <span class="post-toc-text">功能性快捷键</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E5%A4%A7%E8%B7%B3"><span class="post-toc-number">4.1.4.</span> <span class="post-toc-text">大跳</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E8%B7%B3%E6%8A%95"><span class="post-toc-number">4.1.5.</span> <span class="post-toc-text">跳投</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#%E4%B8%80%E9%94%AE%E5%BC%8F"><span class="post-toc-number">4.1.5.1.</span> <span class="post-toc-text">一键式</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#%E4%B8%A4%E9%94%AE%E5%BC%8F"><span class="post-toc-number">4.1.5.2.</span> <span class="post-toc-text">两键式</span></a></li></ol></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#alt%E9%A3%9E%E8%A1%8C"><span class="post-toc-number">4.1.6.</span> <span class="post-toc-text">alt飞行</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#%E9%BC%A0%E6%A0%87%E8%BD%A8%E8%BF%B9"><span class="post-toc-number">4.2.</span> <span class="post-toc-text">鼠标轨迹</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#hud%E4%B8%8Eviewmodel"><span class="post-toc-number">4.3.</span> <span class="post-toc-text">HUD与viewmodel</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E5%87%86%E6%98%9F%E8%B0%83%E6%95%B4"><span class="post-toc-number">4.3.1.</span> <span class="post-toc-text">准星调整</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#%E6%80%A7%E8%83%BD%E6%8F%90%E5%8D%87"><span class="post-toc-number">4.4.</span> <span class="post-toc-text">性能提升</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#%E7%BD%91%E7%BB%9C%E5%8F%82%E6%95%B0-v2"><span class="post-toc-number">4.5.</span> <span class="post-toc-text">网络参数</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#%E5%85%B6%E4%BB%96%E6%9D%82%E9%A1%B9%E8%AE%BE%E7%BD%AE"><span class="post-toc-number">4.6.</span> <span class="post-toc-text">其他杂项设置</span></a></li></ol></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#%E5%8F%82%E8%80%83%E9%93%BE%E6%8E%A5"><span class="post-toc-number">5.</span> <span class="post-toc-text">参考链接</span></a></li></ol></div>
+                        
+                    
+                    <article id="post-content">
+                        <p>对于 CSGO 的性能优化我们在 <a href="https://www.wevg.org/archives/csgo-fps-optimized/">CSGO FPS 终极优化指南</a> 中已经做过详解，探索为什么每一名长时间游玩 CSGO 的玩家会去寻找他喜欢的选手的 CFG ，来替换自己的 CFG 。大家对职业选手的 CFG 趋之若鹜，甚至很多选手的 CFG 也从不向外公布。<span id="more"></span>既然如此何不随着教程自己动手调试出适合自己的 CFG 呢?</p>
+<h1 id="cfg-是什么">CFG 是什么</h1>
+<p>简单来说，CFG 就是储存用户个人配置的文档 configuration ，记录你在游戏中的一系列设置，里面包括了玩家在游戏设置内可以调节的参数也包括了部分游戏内不可以修改的参数，其中较为典型的内容包括鼠标速度；加速度；键位；画面设置。</p>
+<h1 id="为什么我们要对-cfg-进行修改">为什么我们要对 CFG 进行修改</h1>
+<p>修改 CFG 的目的是为了让玩家以更加快速；自然地进行操作，这包括以下几个方面。</p>
+<h2 id="键位设置">键位设置</h2>
+<p>此前的人物移动键位未有统一标准。因当年一位 QUAKE 先辈在早期电子竞技比赛上大杀四方，于是玩家便向他讨教，而后他将自己的 CFG 在论坛共享，众人发现他的键位异于常人，其使用 WASD 进行移动操作，左右手分工比起以往更加合理，操作也更符合直觉。从而导致了此后的游戏几乎都以 WASD 设为默认移动键位。<br>
+而 CSGO 作为 CS 的正统续作，其引擎(起源引擎)也正是基于部分 QUAKE 代码基础上实现的。理所当然，先辈们研讨 CFG ，钻研更合理的游戏设置的基因也保留在 CSer 的体内。</p>
+<h2 id="鼠标运行轨迹">鼠标运行轨迹</h2>
+<p>在游戏的设置中，我们可以修改一些参数；比如鼠标速度与加速度，还有原始输入，当然这可以满足几乎所有人的需求，但是还是有一部分“玄学”参数会影响一些鼠标的运行轨迹。</p>
+<h2 id="hud-与-viewmodel">HUD 与 viewmodel</h2>
+<p>玩家进行游戏当然，一切的感知全靠眼睛和耳朵，所有的操作基本上都要靠眼睛来感知，所以对于 HUD 的设置也是非常重要的，他们是你的参照物，人的视觉很容易被欺骗。</p>
+<h2 id="提高帧数">提高帧数</h2>
+<p>上一篇关于 CSGO 优化的文章中提到过，由于 CSGO 引擎的特殊性，FPS 低于 300 都会产生一些输入延迟，这是很致命的，使游戏内帧数稳定处于一个合理值是非常重要的。</p>
+<h2 id="网络参数">网络参数</h2>
+<p>虽然在 CSGO 中没有像 cs1.6 那样夸张效果的 <code>EX_INTERP</code> 参数，但是 CSGO 中的 <code>RATE</code>，<code>cl_interp/cl_interp ratio</code> 这些参数对于选手的发挥也有很明显的影响。</p>
+<p>因为游戏内设置可以进行的修改是很有限的，有许多设置并不能在游戏内直接修改(当然，使用控制台大部分情况下可以达到和修改 CFG 相同的效果)或者是游戏内允许的数字并不能达到理想状态，必须要通过修改控制台或 CFG 进行修改。</p>
+<h1 id="如何修改-cfg">如何修改 CFG</h1>
+<p>config 文件存放在 <code>\Steam\userdata\(9位ID)\730\local\cfg\</code> 是对应着每个账号用来储存单个用户设置的文件(在游戏中截图后，在steam中点击在硬盘中查看截图库会跳转到<code>\Steam\userdata\(9位ID)\760\remote\730\screenshots</code>目录这样就可以确定此账号的9位ID。)<br>
+autoexec 文件放在 <code>\Steam\steamapps\common\Counter-Strike Global Offensive\csgo\cfg\</code><br>
+config，autoexec 用来储存游戏每次重新打开就会被重置的命令，是在你电脑上所有账号都通用的一个指令<br>
+要注意，<code>autoexe.cfg</code> 是在CSGO游戏启动时自动运行 autoexec 内的指令的一种文件，在 autoexec 的最后一行加入 <code>host_writeconfig</code> 之后<br>
+只要你的 <code>autoexec.cfg</code> 文件名字没有问题，他就会正常启动，不需要再启动项中重复添加。</p>
+<h1 id="开始修改cfg">开始修改CFG</h1>
+<p>开始之前要注意，CFG 的内容并非是越多越好，实现更多的功能同时也会带来更多的不可控性，容易导致出现不可预料的问题，如果出现问题也更难排查。<br>
+当游戏出现卡顿，掉帧，严重的输入延迟时，我们经常会选择重新制作 CFG 来解决，这是有效的，尽量精简的修改内容会大大地减小重置工作量。<br>
+如果不想完完全全地自己去从头制作一个CFG文件，也可以去网上寻找喜欢的选手所用的CFG，比较即时的CFG汇总网站为<a target="_blank" rel="noopener" href="https://prosettings.net/">prosettings</a>,要注意CFG也是有时效性的在一些更新后某些设置会出现不同的影响，所以如果用别人的CFG那么一定要选择最新日期的，如果网站上没有更新，可以去选手的直播间发送评论获得(Twitch).<br>
+那么开始分类讲解如何去修改CFG内容。</p>
+<h2 id="键位设置-v2">键位设置</h2>
+<p>举一个比较简单的例子，<strong>滚轮跳</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs cfg">bind &quot;MWHEELDOWN&quot; &quot;+jump&quot;<br></code></pre></td></tr></table></figure>
+<p>这样的格式 <code>bind</code> 为语法 后面接 <strong>空格 “键值” 空格 &quot;指令名&quot;</strong><br>
+这样修改较在游戏中修改的好处是允许同一个命令用多种不同按键都可以触发，即既可以用空格进行跳跃也可以用滚轮下进行跳跃。<br>
+<code>+</code> 代表着按下某个键，相应的，<code>-</code>就代表着松开某个按键，比如跳投中的<code>-attack</code> 代表松开鼠标左键。</p>
+<p>比较常见的修改键盘键位的包括几种：</p>
+<ol>
+<li><a href="#%E5%BF%AB%E9%80%9F%E8%B4%AD%E4%B9%B0%E6%AD%A6%E5%99%A8">快速购买武器</a></li>
+<li><a href="#%E5%BF%AB%E9%80%9F%E5%88%87%E5%87%BA%E9%81%93%E5%85%B7">快速切出道具</a></li>
+<li><a href="#%E5%8A%9F%E8%83%BD%E6%80%A7%E5%BF%AB%E6%8D%B7%E9%94%AE">功能性快捷键</a></li>
+</ol>
+<h3 id="快速购买武器">快速购买武器</h3>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs cfg">bind &quot;F7&quot; &quot;buy ak47;buy vesthelm;buy flashbang;buy smokegrenade&quot;<br></code></pre></td></tr></table></figure>
+<h3 id="快速切出道具">快速切出道具</h3>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs cfg">bind &quot;f&quot; &quot;use weapon_flashbang&quot;按F键切到闪光弹<br></code></pre></td></tr></table></figure>
+<h3 id="功能性快捷键">功能性快捷键</h3>
+<p>一般来说，功能性快捷键不必太过繁琐，过多的快捷键可能会让你看上去像个憨憨，分散自己太多注意力，也可能会让游戏变卡(可能)在这里推荐几个实用的指令</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs cfg">bind &quot;MOUSE5&quot; &quot;r_cleardecals&quot; &#x2F;&#x2F;用鼠标前侧键进行清血迹<br>bind shift &quot;+speed;r_cleardecals&quot;;	&#x2F;&#x2F;shift可以正常静音的同时清血迹<br></code></pre></td></tr></table></figure>
+<h3 id="大跳">大跳</h3>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs cfg">bind space +jump<br>bind v +duck<br>alias +cjump &quot;+jump; +duck&quot;<br>alias -cjump &quot;-jump; -duck&quot;<br>bind &quot;space&quot; &quot;+cjump&quot;<br></code></pre></td></tr></table></figure>
+<p>按住空格键进行大跳，也就是说这样可以按住空格跳上 MIRAGE 的A死点箱子。<br>
+此处 <code>alias</code> 语法意义为按下一个按键同时触发后面的两条指令。</p>
+<blockquote>
+<p>⚠️ 注意，<strong>所有</strong>包含 <code>alias</code> 语法的指令都要放在 <code>autoexec</code> 文件中</p>
+</blockquote>
+<p>当然，如果你需要更多的复杂指令，可以去查找 Purp1e 做的指令详解<sup class="footnote-ref"><a href="#fn1" id="fnref1">[1]</a></sup>，他在这部分做了很详尽的归纳，在此不做赘述。</p>
+<h3 id="跳投">跳投</h3>
+<p>跳投分为一键式跳投与两键式跳投在比赛中只允许两键式跳投，一键式跳投为按住左键时按下一个快捷键就可以快速投掷也就是一个按键设置为<code>-attack</code>同时<code>+jump</code>，两键式为两个相邻按键分别设置为<code>-attack</code>和<code>+jump</code>自己手动掌握时机</p>
+<h4 id="一键式">一键式</h4>
+<blockquote>
+<p>需要放到<code>autoexec</code></p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs cfg">alias &quot;+jumpthrow&quot; &quot;+jump;-attack&quot;  <br>alias &quot;-jumpthrow&quot; &quot;-jump&quot;  <br>bind &quot;n&quot; &quot;+jumpthrow&quot;<br></code></pre></td></tr></table></figure>
+<p>默认为按下 <kbd>N</kbd> 键执行</p>
+<h4 id="两键式">两键式</h4>
+<blockquote>
+<p>不需要放到<code>autoexec</code></p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs cfg">bind mouse4 &quot;-attack&quot;<br>bind mouse5 &quot;+jump&quot;<br></code></pre></td></tr></table></figure>
+<p>默认为同时按下鼠标两颗侧键执行</p>
+<h3 id="alt飞行">alt飞行</h3>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs cfg">bind alt  noclip;			&#x2F;&#x2F;alt飞行<br></code></pre></td></tr></table></figure>
+<h2 id="鼠标轨迹">鼠标轨迹</h2>
+<p>当然，在这里我不会对鼠标速度进行很深入的探讨，只会讲一些平时较少提及的部分，一般来说鼠标的 DPI 在 500-1500 之间是正常的值，也就是说 <code>dpi* sensitivity</code> 在这个区间,如果想要了解相关的数据可以参照<a target="_blank" rel="noopener" href="https://liquipedia.net/counterstrike/List_of_player_mouse_settings">liquipedia</a>这里有所有选手的鼠标速度设置，加速度设置于RAWINPUT是否开启，不同鼠标的最佳DPI是不同的，同EDPI下鼠标的轨迹也是不同的。<br>
+参照自己的操作习惯去修改是正确的，虽然不提倡一味地模仿职业选手的设置，但是前提是要知其所以然，切不可随心所欲胡乱设置，无知即力量并不可取。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs cfg">&quot;m_rawinput&quot; &quot;1&quot;<br></code></pre></td></tr></table></figure>
+<p>开启原始输入，这个参数可以将系统对鼠标移动轨迹的影响改为尽可能小得，但是他也不是绝对的，所以如果想达到更好的状态，或者在不同线下环境下达到相同的手感，还是先要参考我们写的上一篇文章，在此也不做赘述。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs cfg">&quot;m_mouseaccel1&quot; &quot;0&quot;<br>&quot;m_mouseaccel2&quot; &quot;0&quot;<br></code></pre></td></tr></table></figure>
+<p>这两条代表鼠标1与2的加速度为0，并非绝对会对你的鼠标轨迹产生影响，但是有时不可预料，几乎所有的职业选手CFG中这两项都改为0。</p>
+<h2 id="hud与viewmodel">HUD与viewmodel</h2>
+<p>这部分是CFG修改的重中之重，因为一切操作需要反应在屏幕上，他决定了玩家认为鼠标下一步应该如何移动。压枪时虽然更多的是靠肌肉记忆与感觉来的但是在潜移默化中准星、HUD或者枪模的样式会影响对下一步操作的判断，如果准星比较粗那么会对自己的准星操作更不敏感，感觉压得更稳。枪模跟后坐力一起上扬也会影响到玩家对自己压枪到底下拉了多少的判断，所以找到一套符合自己直觉/手感的HUD将会对希望让自己操作更为精准、舒适的玩家有很大的作用</p>
+<blockquote>
+<p>为了让注释部分更为直观,便把此部分的 cfg 显示为表格形式,复制时,将仅复制文本部分,后方表格同理</p>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th style="text-align:center"></th>
+<th style="text-align:center"></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center"><code>cl_hud_radar_scale 		1</code></td>
+<td style="text-align:center">//雷达大小 	&lt;0.8-1.3&gt;</td>
+</tr>
+<tr>
+<td style="text-align:center"><code>cl_radar_scale 		0.45</code></td>
+<td style="text-align:center">//雷达缩放</td>
+</tr>
+<tr>
+<td style="text-align:center"><code>cl_radar_icon_scale_min 	0.6</code></td>
+<td style="text-align:center">//雷达人物标点大小</td>
+</tr>
+<tr>
+<td style="text-align:center"><code>cl_radar_rotate 		1</code></td>
+<td style="text-align:center">//雷达随视角方向旋转，在烟雾中更容易清楚自己的方向不至于迷路</td>
+</tr>
+<tr>
+<td style="text-align:center"><code>cl_radar_always_centered 	1</code></td>
+<td style="text-align:center">//雷达以玩家为中心</td>
+</tr>
+<tr>
+<td style="text-align:center"><code>viewmodel_fov &quot;65&quot;</code></td>
+<td style="text-align:center">//决定了你的枪模FOV，并不是真正的FOV，真正的FOV在CSGO里是不可修改的，只与分辨率有关，在这里的数值决定了枪模的横向宽度，也就是数值越小枪模的贴图横向越窄，投放到屏幕上固定的宽度时也就越扁更胖，看上去大了，当然这个参数也与POS相对应，但是可以修改.(60-68/54)</td>
+</tr>
+<tr>
+<td style="text-align:center"><code>viewmodel_offset_x &quot;2&quot;</code></td>
+<td style="text-align:center">//对应枪模的X轴位置</td>
+</tr>
+<tr>
+<td style="text-align:center"><code>viewmodel_offset_y &quot;1.5&quot;</code></td>
+<td style="text-align:center">//对应枪模的Y轴位置</td>
+</tr>
+<tr>
+<td style="text-align:center"><code>viewmodel_offset_z &quot;-1&quot;</code></td>
+<td style="text-align:center">//对应枪模的Z轴位置</td>
+</tr>
+<tr>
+<td style="text-align:center"><code>viewmodel_presetpos &quot;0&quot;</code></td>
+<td style="text-align:center">//持枪视角预设&lt;1.默认 2.写实 3.经典&gt; 一般来说为了少挡屏幕，大家多数选择 <strong>3</strong></td>
+</tr>
+<tr>
+<td style="text-align:center"><code>cl_viewmodel_shift_left_amt &quot;1.5&quot;</code> <code>cl_viewmodel_shift_right_amt &quot;0.75&quot;</code></td>
+<td style="text-align:center">//(需要放到autoexec)在下蹲动作时动画量的多少，这一项并不能改为0，这里为是最小值(摘自<cite>NIKO CFG</cite>)</td>
+</tr>
+<tr>
+<td style="text-align:center"><code>cl_bobcycle &quot;0&quot;</code>  <code>cl_bob_lower_amt &quot;0&quot;</code> <code>cl_bobamt_lat &quot;0&quot;</code> <code>cl_bobamt_vert &quot;0&quot;</code></td>
+<td style="text-align:center">//(需要放到autoexec)玩家移动时枪模随移动一起摇摆的程度，最好的设置当然是调整为0</td>
+</tr>
+<tr>
+<td style="text-align:center"><code>viewmodel_recoil &quot;0&quot;</code></td>
+<td style="text-align:center">//枪模随后坐力上扬，当然要关闭</td>
+</tr>
+<tr>
+<td style="text-align:center"><code>cl_crosshairgap</code></td>
+<td style="text-align:center">//准星的空隙大小</td>
+</tr>
+<tr>
+<td style="text-align:center"><code>cl_crosshairsize</code></td>
+<td style="text-align:center">//准星长度</td>
+</tr>
+<tr>
+<td style="text-align:center"><code>cl_crosshairstyle</code></td>
+<td style="text-align:center">//准星风格 0为CSGO动态十字准星，1默认狮子的静态变体，2 经典静态准星但是每侧有动态圆点，3 经典动态十字 4 经典静态十字(一般大多数人使用的) 5 走路时不动，开枪时动</td>
+</tr>
+<tr>
+<td style="text-align:center"><code>cl_crosshairthickness</code></td>
+<td style="text-align:center">//准星粗细</td>
+</tr>
+<tr>
+<td style="text-align:center"><code>cl_crosshair_drawoutline</code></td>
+<td style="text-align:center">//决定准星是否有勾边(0/1)</td>
+</tr>
+<tr>
+<td style="text-align:center"><code>cl_crosshaircolor</code></td>
+<td style="text-align:center">//准星颜色(0-4)</td>
+</tr>
+<tr>
+<td style="text-align:center"><code>cl_crosshairalpha</code></td>
+<td style="text-align:center">//准星透明度 默认200，一般改为255完全不透明</td>
+</tr>
+<tr>
+<td style="text-align:center"><code>cl_crosshairdot</code></td>
+<td style="text-align:center">//开关准星中心原点(0/1)</td>
+</tr>
+</tbody>
+</table>
+<p>当然，同样可以用创意工坊地图对枪模进行调整<br>
+<a target="_blank" rel="noopener" href="https://steamcommunity.com/sharedfiles/filedetails/?id=365126929">crashz’ Viewmodel Generator</a></p>
+<h3 id="准星调整">准星调整</h3>
+<p><a target="_blank" rel="noopener" href="https://steamcommunity.com/sharedfiles/filedetails/?id=308490450">crashz’ CROSSHAIR GENERATOR V3</a></p>
+<p>对HUD进行调整(这张地图也可以对其他设置进行调整，但是因为更新不及时并<strong>不建议使用里面的大多数其他设置</strong>)</p>
+<p><a target="_blank" rel="noopener" href="https://steamcommunity.com/sharedfiles/filedetails/?id=1325659427">Config Generator ✮ crashz &amp; Misterio</a></p>
+<h2 id="性能提升">性能提升</h2>
+<p>以下的命令皆可提升FPS或减少掉帧，下面不做赘述</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:center"></th>
+<th style="text-align:center"></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center"><code>r_drawtracers_firstperson &quot;0&quot;</code></td>
+<td style="text-align:center">//关闭曳光弹的显示；这条指令是在2018年4月的更新后开始流行的，那次修改改变了曳光弹的轨迹，导致前7发左右的发射位置并不准确，如果可以适应目前的轨迹那么可以考虑开启，同时关闭曳光弹也会减轻开火时的掉帧情况，低配电脑建议选择0.</td>
+</tr>
+<tr>
+<td style="text-align:center"><code>cl_autohelp 0</code></td>
+<td style="text-align:center">//禁用游戏提示</td>
+</tr>
+<tr>
+<td style="text-align:center"><code>cl_showhelp 0</code></td>
+<td style="text-align:center">//禁用游戏提示</td>
+</tr>
+<tr>
+<td style="text-align:center"><code>cl_teamid_overhead_always 2</code></td>
+<td style="text-align:center">//隔墙显示队友位置	&lt;0.不显示 1.透视队友位置 2.透视队友位置与装备&gt; 开启显示队友位置会小幅度降低FPS但是很有助于对局势的判断，方便与队友配合，交流不是非常好的情况下这一项的打开非常有益。</td>
+</tr>
+<tr>
+<td style="text-align:center"><code>r_dynamic 0</code></td>
+<td style="text-align:center">//关闭动态光影，可以提升FPS</td>
+</tr>
+<tr>
+<td style="text-align:center"><code>gameinstructor_enable 0</code></td>
+<td style="text-align:center">//关闭游戏教学</td>
+</tr>
+<tr>
+<td style="text-align:center"><code>spec_replay_autostart 0</code></td>
+<td style="text-align:center">//关闭被击杀回放</td>
+</tr>
+<tr>
+<td style="text-align:center"><code>r_eyegloss &quot;0&quot;</code>  <code>r_eyemove &quot;0&quot;</code> <code>r_eyeshift_x &quot;0&quot;</code> <code>r_eyeshift_y &quot;0 r_eyeshift_z 0&quot;</code> <code>r_eyeshift_z &quot;0&quot;</code> <code>r_eyesize &quot;0&quot;</code></td>
+<td style="text-align:center">//取消人物模型的眼球转动，不知为何对5E尤其有效</td>
+</tr>
+<tr>
+<td style="text-align:center"><code>cl_forcepreload 0</code></td>
+<td style="text-align:center">//这一项在先前的版本中用1的话可以提升FPS，但是在大约3月份的更新中，官方证明失效了，如果用1只会带来负面效果(增加input lag)</td>
+</tr>
+</tbody>
+</table>
+<h2 id="网络参数-v2">网络参数</h2>
+<table>
+<thead>
+<tr>
+<th style="text-align:center"></th>
+<th style="text-align:center"></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center"><code>net_graph 1</code></td>
+<td style="text-align:center">//打开网络信息 里面有很多有用的信息，可以显示上传下载情况，ping值，服务器质量</td>
+</tr>
+<tr>
+<td style="text-align:center"><code>net_graphpos 1/2/3</code></td>
+<td style="text-align:center">//1在右下角，2在中间，3在左下角</td>
+</tr>
+<tr>
+<td style="text-align:center"><code>net_graphproportionalfont</code></td>
+<td style="text-align:center">//0为让字体变细，1为默认</td>
+</tr>
+<tr>
+<td style="text-align:center"><code>net_graphheight 0</code></td>
+<td style="text-align:center">//竖直方向高度</td>
+</tr>
+<tr>
+<td style="text-align:center"><code>cl_cmdrate &quot;128&quot;</code></td>
+<td style="text-align:center">//下载128tick</td>
+</tr>
+<tr>
+<td style="text-align:center"><code>cl_updaterate &quot;128&quot;</code></td>
+<td style="text-align:center">//上传128tick</td>
+</tr>
+<tr>
+<td style="text-align:center"><code>rate &quot;786432&quot;</code></td>
+<td style="text-align:center">//游戏带宽限制rate [1]</td>
+</tr>
+<tr>
+<td style="text-align:center"><code>cl_interp/cl_Interp_ratio</code></td>
+<td style="text-align:center">//HITBOX 与人物模型的贴合度 [2]</td>
+</tr>
+</tbody>
+</table>
+<p>[1] rate 是你给服务器传输数据的最大带宽值(bit)，如果过低或者过高都会导致你莫名其妙打不死人或者是跳CHOKE，一般来说在稳定连接的服务器(比如在国内玩国内的平台)你的网络没有问题，可以直接 rate 786432 这样就是无限制网络带宽这是最好的。<br>
+如果你的宽带没有 10M 或者你在打海外服务器，可以尽量降低这个值，参照这个表</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">带宽大小</th>
+<th style="text-align:center">rate 值</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">0.5 Mbps</td>
+<td style="text-align:center">rate 62500</td>
+</tr>
+<tr>
+<td style="text-align:center">1.0 Mbps</td>
+<td style="text-align:center">rate 125000</td>
+</tr>
+<tr>
+<td style="text-align:center">1.5 Mbps</td>
+<td style="text-align:center">rate 187500</td>
+</tr>
+<tr>
+<td style="text-align:center">1.57 Mbps</td>
+<td style="text-align:center">rate 196608 (default rate)</td>
+</tr>
+<tr>
+<td style="text-align:center">2.0 Mbps</td>
+<td style="text-align:center">rate 250000</td>
+</tr>
+<tr>
+<td style="text-align:center">2.5 Mbps</td>
+<td style="text-align:center">rate 312500</td>
+</tr>
+<tr>
+<td style="text-align:center">3.0 Mbps</td>
+<td style="text-align:center">rate 375000</td>
+</tr>
+<tr>
+<td style="text-align:center">3.5 Mbps</td>
+<td style="text-align:center">rate 437500</td>
+</tr>
+<tr>
+<td style="text-align:center">4.0 Mbps</td>
+<td style="text-align:center">rate 500000</td>
+</tr>
+<tr>
+<td style="text-align:center">4.5 Mbps</td>
+<td style="text-align:center">rate 562500</td>
+</tr>
+<tr>
+<td style="text-align:center">5.0 Mbps</td>
+<td style="text-align:center">rate 625000</td>
+</tr>
+<tr>
+<td style="text-align:center">5.5 Mbps</td>
+<td style="text-align:center">rate 687500</td>
+</tr>
+<tr>
+<td style="text-align:center">6.0 Mbps</td>
+<td style="text-align:center">rate 750000</td>
+</tr>
+<tr>
+<td style="text-align:center">6.2 Mbps and above</td>
+<td style="text-align:center">rate 786432 (max rate)</td>
+</tr>
+</tbody>
+</table>
+<p>[2] <code>cl_interp/cl_Interp_ratio</code>(需要放到<code>autoexec</code>，或者在没进入服务器时进行修改再链接到服务器)<br>
+这个参数的意义是 HITBOX 与人物模型的贴合度，在你的延迟，网络状况很好的情况下(ping&lt;45,loss 0,choke 0)可以选择 <code>cl_interp 0</code>/<code>cl_interp_ratio 1</code> (这两个参数是配套的)为搭配，他可以很大程度得提升你的单发准度，提高你的上限。<br>
+但是当你的的网络状况没有这么好的情况下，建议你的 <code>interp</code> 用默认也就是 <code>cl_interp 0.031000</code>-<code>cl_interp_ratio 2</code> 这样的情况下，你的压枪感觉会更容易找到，更加稳定。(<code>interp</code>后面的0代表的是在目前<code>interp</code>值情况下的最小值，反之1为最大值)<br>
+当然也有部分选手选择一套并不符合规范的<code>interp</code>套餐，使用<code>interp 0.031000</code>，<code>ratio 1</code> 比如国内的somebody,国外的hunter(NIKO大表哥)这样的<code>interp</code>设置在5E的恶劣服务器上尤为好用，虽然有时会莫名其妙失误，但是使用CZ那种短连发武器或者AK的短连发时尤为好用，经常可以莫名其妙打头，想要仔细去了解这个参数可以参考CSGO逗逼君在知乎的文章 <sup class="footnote-ref"><a href="#fn2" id="fnref2">[2]</a></sup></p>
+<h2 id="其他杂项设置">其他杂项设置</h2>
+<table>
+<thead>
+<tr>
+<th style="text-align:center"></th>
+<th style="text-align:center"></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center"><code>cl_autowepswitch &quot;0&quot;</code></td>
+<td style="text-align:center">//关闭自动切换拾起的武器</td>
+</tr>
+<tr>
+<td style="text-align:center"><code>cl_dm_buyrandomweapons 0</code></td>
+<td style="text-align:center">//关闭死斗随机买枪</td>
+</tr>
+<tr>
+<td style="text-align:center"><code>cl_use_opens_buy_menu 0</code></td>
+<td style="text-align:center">//关闭E键打开购买菜单</td>
+</tr>
+<tr>
+<td style="text-align:center"><code>fps_max &quot;999&quot;</code></td>
+<td style="text-align:center">//调整FPS上限</td>
+</tr>
+</tbody>
+</table>
+<p>FPS上限 要看具体电脑性能，如果可以稳定在300那么尝试更高的上限是一个好的选择这会降低输入延迟，但是如果不能超过太多的话选择更高的上线会造成CPU不能进行短暂休息导致FPS不稳定。(如果想要不限制FPS，建议使用999而不是0，因为莫名原因使用999会比0时的FPS高一些)。</p>
+<p>接下来就保存好文件，畅快体验吧</p>
+<h1 id="参考链接">参考链接</h1>
+<ul>
+<li><a target="_blank" rel="noopener" href="https://totalcsgo.com/">CS:GO FOV and Viewmodel Commands</a></li>
+</ul>
+<hr class="footnotes-sep">
+<section class="footnotes">
+<ol class="footnotes-list">
+<li id="fn1"  class="footnote-item"><p><a target="_blank" rel="noopener" href="https://space.bilibili.com/73115492">B站链接</a> <a href="#fnref1" class="footnote-backref">↩</a></p>
+</li>
+<li id="fn2"  class="footnote-item"><p><a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/47497932">CSGO深度教学7——从wNv被“黑”掉的世界冠军，到CS的Netcodes与客户端参数</a> – <cite>Kryp</cite> <a href="#fnref2" class="footnote-backref">↩</a></p>
+</li>
+</ol>
+</section>
+
+                    </article>
+                    
+    <blockquote class="post-license">
+        <p>
+            <strong>本文作者&nbsp;:&nbsp;Edison Jwa</strong>
+            <br>
+            <strong>
+            
+                本文使用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">署名-非商业性使用-相同方式共享 4.0 国际 (CC BY-NC-SA 4.0)</a> 协议
+            </strong>
+            <br>
+            <strong>本文链接&nbsp;:&nbsp;</strong><a href="https://www.wevg.org/archives/csgo-config-guide/">https://www.wevg.org/archives/csgo-config-guide/</a>
+        </p>
+    </blockquote>
+
+
+
+    <blockquote id="date-expire-notification" class="post-expired-notify">本文最后更新于 <span id="date-expire-num"></span> 天前，文中所描述的信息可能已发生改变</blockquote>
+    <script>
+    (function() {
+        var dateUpdate = Date.parse("2019-06-13");
+        var nowDate = new Date();
+        var a = nowDate.getTime();
+        var b = a - dateUpdate;
+        var daysUpdateExpire = Math.floor(b/(24*3600*1000));
+        if (daysUpdateExpire >= 120) {
+            document.getElementById('date-expire-num').innerHTML = daysUpdateExpire;
+        } else {
+            document.getElementById('date-expire-notification').style.display = 'none';
+        }
+    })();
+    </script>
+
+
+<p class="post-footer-info mb-0 pt-0">本文发表于&nbsp;<time datetime="2019-06-11T10:45:33.000Z" itemprop="datePublished">2019-06-11</time>
+
+    , 最后修改于&nbsp;<time datetime="2019-06-13T10:03:33.000Z" itemprop="dateModified">2019-06-13</time>
+
+</p>
+<p class="post-footer-info mb-0 pt-2">
+
+<span class="post-categories-list mt-2">
+
+<a class="post-categories-list-item" href='/categories/Gaming/'>Gaming</a>
+
+<a class="post-categories-list-item" href='/categories/Gaming/CS-GO/'>CS:GO</a>
+
+</span>
+
+
+
+<span class="post-tags-list mt-2">
+
+<a class="post-tags-list-item" href="/tags/%E4%BC%98%E5%8C%96/" rel="tag">#&nbsp;优化</a>
+
+<a class="post-tags-list-item" href="/tags/%E8%AE%BE%E7%BD%AE/" rel="tag">#&nbsp;设置</a>
+
+<a class="post-tags-list-item" href="/tags/%E9%85%8D%E7%BD%AE/" rel="tag">#&nbsp;配置</a>
+
+<a class="post-tags-list-item" href="/tags/fps/" rel="tag">#&nbsp;fps</a>
+
+<a class="post-tags-list-item" href="/tags/%E5%90%AF%E5%8A%A8%E9%A1%B9/" rel="tag">#&nbsp;启动项</a>
+
+<a class="post-tags-list-item" href="/tags/config/" rel="tag">#&nbsp;config</a>
+
+</span>
+
+
+</p>
+
+                </div>
+                <div class="post-nav px-2 bg-gray">
+<ul class="pagination">
+    <!-- Prev Nav -->
+    
+        <li class="page-item page-prev">
+            <a href="/archives/pair-locking-your-iphone/" rel="prev">
+                <div class="page-item-title"><i class="icon icon-back" aria-hidden="true"></i></div>
+                <div class="page-item-subtitle">利用 Pair Locking 保证 iOS 设备数据安全</div>
+            </a>
+        </li>
+    
+
+    <!-- Next Nav -->
+    
+        <li class="page-item page-next">
+            <a href="/archives/nginx-http-basic-auth/" rel="next">
+                <div class="page-item-title"><i class="icon icon-forward" aria-hidden="true"></i></div>
+                <div class="page-item-subtitle">为网站启用 HTTP Basic Auth</div>
+            </a>
+        </li>
+    
+</ul>
+</div>
+
+                
+                    <!-- # Comment # -->
+                    
+                        <div class="card-footer post-comment">
+                            <div id="disqus_thread"></div>
+
+<script id="js-disqusjs" src="https://cdn.jsdelivr.net/npm/disqusjs@1.2.5/dist/disqus.js" async></script>
+<script>
+document.getElementById('js-disqusjs').addEventListener('load', function () {
+    function loadDisqusJS() {
+        new DisqusJS({
+            shortname: 'edisonj',
+            
+            siteName: 'Vigorous Pro',
+            
+            identifier: 'https://www.wevg.org/archives/csgo-config-guide/',
+            url: 'https://www.wevg.org/archives/csgo-config-guide/',
+            api: 'https://disqus.uv.uy/api/',
+            apikey: 'vBTqc5gYirQfuj9STIAANtQCArVi9MN8UZ72UUucwnhus4AhpgpbVJMIn3Ojl4O7',
+            
+            
+        })
+    }
+    if (document.readyState === 'complete') {
+        loadDisqusJS();
+    } else {
+        window.addEventListener('load', loadDisqusJS);
+    }
+});
+</script>
+
+                        </div>
+                    
+                
+            </div>
+        </div>
+    </div>
+</div>
+
+            <!-- ### Footer ### -->
+            <footer class="text-center">
+    <!-- footer copyright -->
+    
+        <p class="footer-copyright mb-0">Copyright&nbsp;©&nbsp;<span id="copyright-year"></span>
+            <a class="footer-copyright-a" href="https://www.wevg.org">Vigorous Pro</a>
+        </p>
+
+    <!-- footer custom text -->
+    <p class="footer-text mb-0">
+    <a href="/atom.xml" target="_blank" class="footer-develop-a" rel="nofollow noopener noreferrer">RSS</a><span class="footer-develop-divider"></span><a href="https://donate.edison.do" target="_blank" class="footer-develop-a" rel="nofollow noopener noreferrer">Donate</a><span class="footer-develop-divider"></span><a href="/privacy-policy" target="_blank" class="footer-develop-a" rel="nofollow noopener noreferrer">Privacy Policy</a>
+    </p>
+    <!-- footer develop info -->
+    <p class="footer-develop mb-0">
+        
+
+        
+        Powered by&nbsp;<!--
+         --><a href="https://hexo.io" target="_blank" class="footer-develop-a" rel="external nofollow noopener noreferrer">Hexo</a><span class="footer-develop-divider"></span>Theme&nbsp;-&nbsp;<!--
+         --><a href="https://github.com/SukkaW/hexo-theme-suka" target="_blank" class="footer-develop-a" rel="external noopener">Suka</a>
+    </p>
+</footer>
+
+
+        <!-- ### Import File ### -->
+        <!-- ### Footer JS Import ### -->
+
+<script>
+
+    
+window.lazyLoadOptions = {
+    elements_selector: ".lazyload",
+    threshold: 50
+};
+
+(function() {
+    var copyrightNow = new Date().getFullYear();
+    var copyrightContent = document.getElementById('copyright-year');
+    var copyrightSince = 2015;
+    if (copyrightSince === copyrightNow) {
+        copyrightContent.textContent = copyrightNow;
+    } else {
+        copyrightContent.textContent = copyrightSince + ' - ' + copyrightNow;
+    }
+})();
+console.log('\n %c Suka Theme (hexo-theme-suka) | © SukkaW | Verision 1.3.3 %c https://github.com/SukkaW/hexo-theme-suka \n', 'color: #fff; background: #444; padding:5px 0;', 'background: #bbb; padding:5px 0;');
+
+</script>
+
+<script src="https://cdn.jsdelivr.net/npm/vanilla-lazyload@12.3.0" async></script>
+
+
+
+<!-- Comment -->
+
+    
+        <!-- No need for DisqusJS -->
+    
+
+
+<!-- ### Custom Footer ### -->
+<script> if ('serviceWorker' in navigator) { window.addEventListener('load', () => { navigator.serviceWorker.register('/sw.js'); }) } </script><script>window.ga_tid = "UA-106121780-1";window.ga_api = "https://ga.cdn.uv.uy/jquery.js"; </script><script src="https://cdn.jsdelivr.net/gh/EdisonJwa/Blog@master/js/main.js" async></script>
+    </body>
+
+</html>

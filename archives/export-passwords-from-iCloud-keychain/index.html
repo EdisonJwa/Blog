@@ -1,0 +1,640 @@
+<!DOCTYPE html>
+
+<html lang="zh-CN">
+    <head>
+    <meta charset="utf-8">
+    <!--
+        hexo-theme-suka © SukkaW
+        GitHub: https://github.com/SukkaW/hexo-theme-suka
+    -->
+
+    <!-- ### Resource Hint ### -->
+
+    <!-- ## DNS Prefetch ## -->
+    <meta http-equiv="x-dns-prefetch-control" content="on">
+
+<!-- busuanzi -->
+
+
+<!-- comment -->
+
+
+
+
+
+
+
+<!-- analytics -->
+
+
+
+
+
+
+
+    <!-- ## Preload ## -->
+    
+
+
+
+
+    <!-- ### Meta & Title & Info ### -->
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, minimum-scale=1, initial-scale=1, maximum-scale=5, viewport-fit=cover">
+    <meta name="renderer" content="webkit">
+
+    <!-- Title -->
+    <title>导出 iCloud Keychain 中的密码 | Vigorous Pro</title>
+
+    <!-- Favicons -->
+    <link rel="icon" type="image&#x2F;ico" href="/favicon.ico"><link rel="apple-touch-icon" sizes="180x180" href="/source/favicon/apple-touch-icon.png"><link rel="icon" typt="image&#x2F;png" sizes="192x192" href="/source/favicon/android-chrome-192x192.png"><link rel="icon" typt="image&#x2F;png" sizes="32x32" href="/source/favicon/favicon-32x32.png"><link rel="icon" typt="image&#x2F;png" sizes="16x16" href="/source/favicon/favicon-16x16.png"><link rel="mask-icon" href="/safari-pinned-tab.svg" color="">
+
+    <!-- ### Import File ### -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/spectre.css@0.5.3"><style>
+    body {
+        background-color: #f8f9fa;
+    }
+
+    a, a:visited {
+        color: #0070ff;
+    }
+
+    a:active, a:focus, a:hover {
+        color: #0070ff;
+        opacity: .75;
+    }
+
+    #post-content a,
+    #post-content a:hover,
+    #post-content a:focus,
+    #post-content a:visited {
+        color: #005eb9;
+        opacity: 1;
+    }
+
+    
+
+    .post-entry .card-body a {
+        color: #0070ff;
+    }
+
+    .avatar {
+        background: #444;
+    }
+
+    .navbar-link,
+    .navbar-link:visited,
+    .timeline .timeline-item .timeline-icon.icon-lg {
+        color: #0070ff;
+    }
+
+    .navbar-link:hover {
+        color: #0070ff;
+        opacity: .8;
+    }
+
+    #search-input .btn,
+    #disqus_click_btn,
+    #disqus-switch-to-direct,
+    #disqus-loadmore-button {
+        background: #727e96;
+        border-color: #727e96;
+        color: #fff;
+    }
+
+    #post-toc a.post-toc-link,
+    #post-toc a.post-toc-link:visited,
+    .share-menu.menu .menu-item>a {
+        color: #727e96;
+    }
+
+    .share-menu.menu .menu-item>a:hover,
+    .share-menu.menu .menu-item>a:focus,
+    .share-menu.menu .menu-item>a:visited {
+        color: #50596c;
+        background: #f8f9fa;
+        opacity: .85;
+    }
+</style><link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/sukkaw/hexo-theme-suka@latest/source/css/style.min.css">
+
+
+    
+        <!-- Import DisqusJS Default Theme -->
+        <link rel="preload" href="https://cdn.jsdelivr.net/npm/disqusjs@1.2.5/dist/disqusjs.css" as="style" onload="this.onload=null;this.rel='stylesheet'"><noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/disqusjs@1.2.5/dist/disqusjs.css"></noscript>
+
+    
+
+
+
+
+
+
+
+    <!-- Prettify Theme -->
+    
+    <link rel="preload" href="https://cdn.jsdelivr.net/gh/sukkaw/hexo-theme-suka@latest/source/css/highlight/tomorrow-night-eighties.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'"><noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/sukkaw/hexo-theme-suka@latest/source/css/highlight/tomorrow-night-eighties.min.css"></noscript>
+
+
+
+
+
+<script>
+/*! loadCSS. [c]2017 Filament Group, Inc. MIT License */
+!function(t){"use strict";t.loadCSS||(t.loadCSS=function(){});var e=loadCSS.relpreload={};if(e.support=function(){var e;try{e=t.document.createElement("link").relList.supports("preload")}catch(t){e=!1}return function(){return e}}(),e.bindMediaToggle=function(t){var e=t.media||"all";function a(){t.addEventListener?t.removeEventListener("load",a):t.attachEvent&&t.detachEvent("onload",a),t.setAttribute("onload",null),t.media=e}t.addEventListener?t.addEventListener("load",a):t.attachEvent&&t.attachEvent("onload",a),setTimeout(function(){t.rel="stylesheet",t.media="only x"}),setTimeout(a,3e3)},e.poly=function(){if(!e.support())for(var a=t.document.getElementsByTagName("link"),n=0;n<a.length;n++){var o=a[n];"preload"!==o.rel||"style"!==o.getAttribute("as")||o.getAttribute("data-loadcss")||(o.setAttribute("data-loadcss",!0),e.bindMediaToggle(o))}},!e.support()){e.poly();var a=t.setInterval(e.poly,500);t.addEventListener?t.addEventListener("load",function(){e.poly(),t.clearInterval(a)}):t.attachEvent&&t.attachEvent("onload",function(){e.poly(),t.clearInterval(a)})}"undefined"!=typeof exports?exports.loadCSS=loadCSS:t.loadCSS=loadCSS}("undefined"!=typeof global?global:this);
+</script>
+
+    <!-- ### Site Verification ### -->
+    
+
+
+    <link rel="alternate" type="application/atom+xml" href="/atom.xml"><meta name="mobile-web-app-capable" content="yes"><meta name="application-name" content="Vigorous Pro"><meta name="msapplication-starturl" content="https://www.wevg.org"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-title" content="Vigorous Pro"><meta name="apple-mobile-web-app-status-bar-style" content="black-translucent"><link rel="manifest" href="/manifest.json"><link rel="search" type="application/opensearchdescription+xml" href="/opensearch.xml" title="Vigorous Pro">
+
+    <!-- ### The Open Graph & Twitter Card Protocol ### -->
+    <meta property="og:title" content="导出 iCloud Keychain 中的密码 | Vigorous Pro"><meta property="og:site_name" content="Vigorous Pro"><meta property="og:type" content="article"><meta property="og:url" content="https://www.wevg.org/archives/export-passwords-from-iCloud-keychain/"><meta property="og:locale" content="zh-CN"><meta name="description" content="因为在使用 1Password， 便一直在想有没有办法将 iCloud Keychain 中储存的密码导出来，直到前几天，终于找到了解决办法。 - Edison Jwa - Vigorous Pro"><meta name="keywords" content="Secure, Tools, MacOS, iOS, Password, edisonjwa,game,blog,Web,Html,edison"><meta property="og:image" content="https://i.yecdn.com/images/2019/12/28/c1ba93a690f0ca59cd4ff2bc8cd88aa6.jpg"><meta property="og:image" content="https://i.yecdn.com/images/2019/12/28/5f71765d32e45ca47d013c7228f4680e.png"><meta property="og:image" content="https://i.yecdn.com/images/2019/12/28/262179be4ab267a751e24efe1696105e.png"><meta property="og:image" content="https://i.yecdn.com/images/2019/12/28/aab014740ed161a63d889601ec5a0225.png"><meta property="og:image" content="https://i.yecdn.com/images/2019/12/28/71defd4349c5b22c317ff41736e178ef.png"><meta property="og:image" content="https://i.yecdn.com/images/2019/12/28/6875452e9057287c214fc4acca0dac84.png"><meta property="og:image" content="https://i.yecdn.com/images/2019/12/28/67ad70aeee4d29f4a43d7ae0b487cde1.png"><meta property="og:image" content="https://i.yecdn.com/images/2019/12/28/49d1e41d5b998b678304a2723a687da2.png"><meta property="og:image" content="https://i.yecdn.com/images/2019/12/28/5682c606920f92cb881866fb9103a765.png"><meta property="og:image" content="https://i.yecdn.com/images/2019/12/28/d68cf9ec7c9e2cc205a9edd256ba8a9c.png"><meta property="og:image" content="https://i.yecdn.com/images/2019/12/28/e4f5cdb6da72f38cfa10b8f20b65d757.png"><meta property="article:published_time" content="2019-12-28T23:56:49.000Z"><meta property="article:modified_time" content="2019-12-28T23:56:50.000Z"><meta property="og:updated_time" content="2019-12-28T23:56:50.000Z"><meta property="article:author" content="Edison Jwa"><meta property="article:tag" content="Secure, Tools, MacOS, iOS, Password, edisonjwa,game,blog,Web,Html,edison"><meta name="twitter:card" content="summary_large_image"><meta name="twitter:image" content="https://i.yecdn.com/images/2019/12/28/c1ba93a690f0ca59cd4ff2bc8cd88aa6.jpg">
+
+    
+
+    <!-- ### Canonical link ### -->
+    <link rel="canonical" href="https://www.wevg.org/archives/export-passwords-from-iCloud-keychain/">
+
+    <meta name="generator" content="Hexo 5.4.0">
+
+    <!-- ### Analytics ### -->
+    
+
+
+
+
+
+
+
+    <!-- ### Structured Data ### -->
+    
+
+
+
+<script type="application/ld+json">
+{
+    "@context": "http://schema.org",
+    "url": "https://www.wevg.org/archives/export-passwords-from-iCloud-keychain/",
+    "@type": "BlogPosting",
+    "logo": "https://www.wevg.org/source/favicon/android-chrome-192x192.png",
+    "mainEntityOfPage": {
+        "@type": "WebPage",
+        "@id": "https://www.wevg.org/archives/export-passwords-from-iCloud-keychain/"
+    },
+    "headline": "导出 iCloud Keychain 中的密码 | Vigorous Pro",
+    
+    "image": {
+        "@type": "ImageObject",
+        "url": "https://i.yecdn.com/images/2019/12/28/c1ba93a690f0ca59cd4ff2bc8cd88aa6.jpg"
+    },
+    
+    "datePublished": "2019-12-28T23:56:49.000Z",
+    "dateModified": "2019-12-28T23:56:50.000Z",
+    "author": {
+        "@type": "Person",
+        "name": "Edison Jwa",
+        "image": {
+            "@type": "ImageObject",
+            "url": "https://cdn.jsdelivr.net/gh/EdisonJwa/Blog@master/source/image/avatar.jpg"
+        },
+        "description": "The world can always use more heroes."
+    },
+    "publisher": {
+        "@type": "Organization",
+        "name": "Vigorous Pro",
+        "logo": {
+            "@type": "ImageObject",
+            "url": "https://www.wevg.org/source/favicon/android-chrome-192x192.png"
+        }
+    },
+    
+    "potentialAction": {
+        "@type": "SearchAction",
+        "target": "https://www.wevg.org/search?s={search_term_string}",
+        "query-input": "required name=search_term_string"
+    },
+    
+    "keywords": "Secure, Tools, MacOS, iOS, Password, edisonjwa,game,blog,Web,Html,edison",
+    "description": "因为在使用 1Password， 便一直在想有没有办法将 iCloud Keychain 中储存的密码导出来，直到前几天，终于找到了解决办法。 - Edison Jwa - Vigorous Pro"
+}
+</script>
+
+
+
+    <!-- ### Custom Head ### -->
+    <!-- EdisonJwas Blog --><script data-ad-client="ca-pub-2345785306567671" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script><link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/EdisonJwa/Blog@latest/css/darkmode.min.css"><script src="https://cdn.jsdelivr.net/gh/EdisonJwa/Blog@master/js/edison-main.min.js"></script><script type="module" async="" src="https://cdn.jsdelivr.net/npm/instant.page@3.0.0/instantpage.min.js"></script><link rel="manifest" href="/site.webmanifest"><meta name="msapplication-TileColor" content="#d43d3d"><meta name="msapplication-TileImage" content="/source/favicon/mstile-144x144.png"><meta name="theme-color" content="#ffffff"><script type="text/javascript">function downloadJSAtOnload(){var d=document.createElement("script");d.src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js",document.body.appendChild(d)}window.addEventListener?window.addEventListener("load",downloadJSAtOnload,!1):window.attachEvent?window.attachEvent("onload",downloadJSAtOnload):window.onload=downloadJSAtOnload;</script><!-- Global site tag (gtag.js) - Google Analytics --><script async src="https://www.googletagmanager.com/gtag/js?id=G-S2SFLD81VT"></script><script>window.dataLayer = window.dataLayer || [];function gtag(){dataLayer.push(arguments);} gtag('js', new Date()); gtag('config', 'G-S2SFLD81VT');</script><!-- Cloudflare Web Analytics --><script defer src=https://static.cloudflareinsights.com/beacon.min.js ; data-cf-beacon="{&quot;token&quot;: 1ebb36a2c023408484ff114c409377b8}"></script><!-- End Cloudflare Web Analytics -->
+<style type="text/css">
+.spoiler {
+  display: inline-flex;
+}
+p.spoiler {
+  display: flex;
+}
+.spoiler a {
+  pointer-events: none;
+}
+.spoiler-blur, .spoiler-blur > * {
+  transition: text-shadow .5s ease;
+}
+.spoiler .spoiler-blur, .spoiler .spoiler-blur > * {
+  color: rgba(0, 0, 0, 0);
+  background-color: rgba(0, 0, 0, 0);
+  text-shadow: 0 0 10px grey;
+  cursor: pointer;
+}
+.spoiler .spoiler-blur:hover, .spoiler .spoiler-blur:hover > * {
+  text-shadow: 0 0 5px grey;
+}
+.spoiler-box, .spoiler-box > * {
+  transition: color .5s ease,
+  background-color .5s ease;
+}
+.spoiler .spoiler-box, .spoiler .spoiler-box > * {
+  color: black;
+  background-color: black;
+  text-shadow: none;
+}</style></head>
+
+    <body>
+            
+
+            <!-- ### Main content ### -->
+            <!-- ## Header ##-->
+<header>
+    <h1 class="header-title text-center"><a href="/">Vigorous Pro</a></h1>
+
+    <p class="text-center header-slogan">
+        
+            
+                The world can always use more heroes.
+            
+        
+    </p>
+
+    <nav class="navbar-section text-center">
+    
+        <a href="/" class="navbar-link">首页</a>
+    
+    
+        <a href="/archives/" class="navbar-link">归档</a>
+    
+    
+        <a href="/search" class="navbar-link">搜索</a>
+    
+    
+        <a target="_blank" rel="noopener" href="https://uv.uy" class="navbar-link">关于</a>
+    
+        <a href="/friends/" class="navbar-link">友链</a>
+    
+    
+    
+</nav>
+</header>
+
+            
+    <!-- ## Post ## -->
+    <div class="post-container">
+    <div id="post-card" class="card">
+        
+            <div class="card-image lazyload" data-bg="url('https://i.yecdn.com/images/2019/12/28/c1ba93a690f0ca59cd4ff2bc8cd88aa6.jpg')"></div>
+        
+        <div class="card-item-container">
+            <div class="card-inner-cell">
+                <!-- # Post Header Info # -->
+                <div class="card-header">
+                    
+    <h1 class="card-title h3 mb-2">导出 iCloud Keychain 中的密码</h1>
+
+
+
+
+<div class="post-header-info">
+    <p class="post-header-info-left text-gray">
+        <img class="author-thumb lazyload" data-src="https://cdn.jsdelivr.net/gh/EdisonJwa/Blog@master/source/image/avatar.jpg" src="https://cdn.jsdelivr.net/gh/sukkaw/hexo-theme-suka@latest/source/img/suka-lazyload.gif" alt="Edison Jwa's Avatar">
+        <span>2019-12-29</span>
+        
+            <span class="suka-devide-dot"></span>
+            <a class="category-link" href="/categories/Tech/">Tech</a>
+        
+        
+        
+    </p>
+    <div class="post-header-info-right">
+        
+            <div class="dropdown dropdown-right">
+<a class="dropdown-toggle" tabindex="0">分享本文</a>
+<ul class="menu share-menu">
+    <!-- Share Weibo -->
+    
+    <li class="menu-item">
+        <a href="http://service.weibo.com/share/share.php?appkey=&title=导出 iCloud Keychain 中的密码&url=https://www.wevg.org/archives/export-passwords-from-iCloud-keychain/&pic=https://i.yecdn.com/images/2019/12/28/c1ba93a690f0ca59cd4ff2bc8cd88aa6.jpg&searchPic=false&style=simple" target="_blank" rel="external noopener noreferrer nofollow">分享到微博</a>
+    </li>
+    
+
+    <!-- Share Twitter -->
+    
+    <li class="menu-item">
+        <a href="https://twitter.com/intent/tweet?text=导出 iCloud Keychain 中的密码&url=https://www.wevg.org/archives/export-passwords-from-iCloud-keychain/&via=Edison Jwa" target="_blank" rel="external noopener noreferrer nofollow">分享到 Twitter</a>
+    </li>
+    
+
+    <!-- Share Facebook -->
+    
+    <li class="menu-item">
+        <a href="https://www.facebook.com/sharer/sharer.php?u=https://www.wevg.org/archives/export-passwords-from-iCloud-keychain/" target="_blank" rel="external noopener noreferrer nofollow">分享到 Facebook</a>
+    </li>
+    
+
+    <!-- Share Google+ -->
+    
+    <li class="menu-item">
+        <a href="https://plus.google.com/share?url=https://www.wevg.org/archives/export-passwords-from-iCloud-keychain/" target="_blank" rel="external noopener noreferrer nofollow">分享到 Google+</a>
+    </li>
+    
+
+    <!-- Share LinkedIn -->
+    
+    <li class="menu-item">
+        <a href="https://www.linkedin.com/shareArticle?mini=true&url=https://www.wevg.org/archives/export-passwords-from-iCloud-keychain/&title=Vigorous Pro" target="_blank" rel="external noopener noreferrer nofollow">分享到 LinkedIn</a>
+    </li>
+    
+
+    <!-- Share QQ -->
+    
+    <li class="menu-item">
+        <a href="http://connect.qq.com/widget/shareqq/index.html?site=Vigorous Pro&title=Vigorous Pro&summary=The world can always use more heroes.&pics=https://i.yecdn.com/images/2019/12/28/c1ba93a690f0ca59cd4ff2bc8cd88aa6.jpg&url=https://www.wevg.org/archives/export-passwords-from-iCloud-keychain/" target="_blank" rel="external noopener noreferrer nofollow"> 分享到 QQ</a>
+    </li>
+    
+
+    <!-- Share Telegram -->
+    
+    <li class="menu-item">
+        <a href="https://t.me/share/url?url=https://www.wevg.org/archives/export-passwords-from-iCloud-keychain/&text=Vigorous Pro" target="_blank" rel="external noopener noreferrer nofollow">分享到 Telegram</a>
+    </li>
+    
+
+    <!-- QRCode -->
+    
+    <li class="menu-item">
+        <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAKQAAACkCAAAAAA83tqdAAACOElEQVR42u2awW7DMAxD8/8/3Z0GFEEkkp6HddbzpVvmOa9FpFKUrtc/WBeQQAIJ5AdAXs16+vv3tffX+1n3Per60z2AnA35+NDeDqsgOmjn/O46kLMh1QN+/7n6vTor2QskkGqzG1jVm+q+CIAEciVw1F4nQQMJZAqpBECVoFVQVde2qiAgj4NUhdhvvW6tFoE8BtI2j4pgSE0FJVx+5KoBeQSke9NKMDiGQgWtRAuQsyGVkFXGVfVmu7M7eCDnQnbJOzWaXCPAOR/IuZDdA56aoMpkVR+EVOZAjoDsYKsknQjYMigScwDIUZCJ8dQl587cUsm7vD+QIyG7gswNLqc4SwwGIGdDdgNISgRXhZtrLsgABHIkpCNEOyCnKFPCRRpWQI6CVMMhSmQ4g3TLZwA5FnI1cTvB4BRlS5MDQB4NqcwAtVRjwDH4gQRSNTWVeHAbRo7pGpkDQI6BdIz9TjA4ZoEzOAokkJ1xr4wpZ2DE/RBsFQTkCEgnANIGvGu6tsYWkOMhlQBQyVk22cMGKpBzIVUSdgSyAlLXbMMKyBGQ6UBwZDpd+fA8kEA6ZlJSVCX7WsMMyNGQ6p87IbFSyDkiBsiZkGop498JvqSxbw2KAHk0ZPQgLzSauoCSTVIgx0Luag45gyFJox7I2ZBOo6kLlmS/I1CABDJpBDmDHpVgdptcQALpils1oOQYA9scDCCPhlRGqFOAOWLDSfJAAukUYm6ArXw5bKsWgTwC8pMXkEACCeQfri82B7aVDSc2VwAAAABJRU5ErkJggg==" alt="QRCode">
+    </li>
+    
+
+</ul>
+</div>
+        
+    </div>
+</div>
+                </div>
+                <div class="card-body">
+                    
+                        
+                        
+                            <div id="post-toc"><ol class="post-toc"><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#%E5%BF%85%E8%A6%81%E6%9D%A1%E4%BB%B6"><span class="post-toc-number">1.</span> <span class="post-toc-text">必要条件</span></a></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#%E5%AF%BC%E5%87%BA%E8%BF%87%E7%A8%8B"><span class="post-toc-number">2.</span> <span class="post-toc-text">导出过程</span></a></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#%E5%AF%BC%E5%85%A5%E8%87%B3-1password"><span class="post-toc-number">3.</span> <span class="post-toc-text">导入至 1Password</span></a></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#%E5%8F%82%E8%80%83%E9%93%BE%E6%8E%A5"><span class="post-toc-number">4.</span> <span class="post-toc-text">参考链接</span></a></li></ol></div>
+                        
+                    
+                    <article id="post-content">
+                        <p>因为在使用 1Password， 便一直在想有没有办法将 iCloud Keychain 中储存的密码导出来，直到前几天，终于找到了解决办法。<span id="more"></span></p>
+<h1 id="必要条件">必要条件</h1>
+<ul>
+<li>一个能正常运行的 macOS 系统</li>
+</ul>
+<h1 id="导出过程">导出过程</h1>
+<ol>
+<li>
+<p><a target="_blank" rel="noopener" href="https://www.dropbox.com/sh/a3skeey2zqimdlv/AAD87q6N_EJZ1YoPe5SA35a1a?dl=0">点击此处</a>下载 <code>mrc-converter-suite</code> 压缩包</p>
+</li>
+<li>
+<p>解压，并将 <code>mrc-converter-suite</code> 目录移动至桌面</p>
+</li>
+<li>
+<p>打开 <code>Preference</code> -&gt; <code>Security &amp; Privacy</code> -&gt; <code>Privacy</code> -&gt; <code>Acceessibility</code> ，点击左下角的 🔒 <code>Unlock</code> 解锁后 ，在右侧添加并勾选 <code>Script Editor</code></p>
+<p><img src="https://i.yecdn.com/images/2019/12/28/5f71765d32e45ca47d013c7228f4680e.png" alt="5f71765d32e45ca47d013c7228f4680e.png"></p>
+</li>
+<li>
+<p>双击运行 <code>mrc-converter-suite</code> 目录下的 <code>Get_Safari12_Passwords.applescript</code> 点击 <code>开始按钮</code></p>
+<p><img src="https://i.yecdn.com/images/2019/12/28/262179be4ab267a751e24efe1696105e.png" alt="262179be4ab267a751e24efe1696105e.png"></p>
+</li>
+<li>
+<p>如果没有问题的话，这时会弹出对话框要求<strong>输入密码</strong>解锁 Keychain</p>
+<p><img src="https://i.yecdn.com/images/2019/12/28/aab014740ed161a63d889601ec5a0225.png" alt="aab014740ed161a63d889601ec5a0225.png"></p>
+<p>输入密码后，点击 <code>Continue</code> ，你会发现已经开始导出了 （＞ｙ＜）</p>
+<p><img src="https://i.yecdn.com/images/2019/12/28/71defd4349c5b22c317ff41736e178ef.png" alt="71defd4349c5b22c317ff41736e178ef.png"></p>
+</li>
+<li>
+<p>等他跑完之后，会弹出提示框，并在桌面生成一个 <code>pm_export.csv</code> 文件<br>
+<img src="https://i.yecdn.com/images/2019/12/28/6875452e9057287c214fc4acca0dac84.png" alt="6875452e9057287c214fc4acca0dac84.png"></p>
+</li>
+</ol>
+<h1 id="导入至-1password">导入至 1Password</h1>
+<p>将 <code>pm_export.csv</code> 文件 拖动至 <code>mrc-converter-suite</code> 目录下 <code>macOSConvertHelper</code> 上，点击弹出对话框上的 <code>Run</code><br>
+<img src="https://i.yecdn.com/images/2019/12/28/67ad70aeee4d29f4a43d7ae0b487cde1.png" alt="67ad70aeee4d29f4a43d7ae0b487cde1.png"><br>
+并在接下来的页面上选择 <code>CSV</code><br>
+<img src="https://i.yecdn.com/images/2019/12/28/49d1e41d5b998b678304a2723a687da2.png" alt="49d1e41d5b998b678304a2723a687da2.png"><br>
+接下来直接点击 <code>Convert</code> 即可<br>
+<img src="https://i.yecdn.com/images/2019/12/28/5682c606920f92cb881866fb9103a765.png" alt="5682c606920f92cb881866fb9103a765.png"></p>
+<p>正常情况下，会输出如下图所示的信息<br>
+<img src="https://i.yecdn.com/images/2019/12/28/d68cf9ec7c9e2cc205a9edd256ba8a9c.png" alt="d68cf9ec7c9e2cc205a9edd256ba8a9c.png"></p>
+<p>这时，我们打开并解锁 1Password 客户端后，双击桌面上的 <code>1P_import.1pif</code> 文件 会弹出如下消息，点击 <code>Import</code> 之后就导入成功辣～ (<em>´▽`</em>)</p>
+<p><img src="https://i.yecdn.com/images/2019/12/28/e4f5cdb6da72f38cfa10b8f20b65d757.png" alt="e4f5cdb6da72f38cfa10b8f20b65d757.png"></p>
+<h1 id="参考链接">参考链接</h1>
+<ul>
+<li><a target="_blank" rel="noopener" href="https://discussions.agilebits.com/discussion/30286/mrcs-convert-to-1password-utility/p1">MrC’s Convert to 1Password Utility (mrc-converter-suite)</a></li>
+</ul>
+<p>Image Source: <a target="_blank" rel="noopener" href="https://unsplash.com/photos/4pPzKfd6BEg">Patryk Grądys</a></p>
+
+                    </article>
+                    
+    <blockquote class="post-license">
+        <p>
+            <strong>本文作者&nbsp;:&nbsp;Edison Jwa</strong>
+            <br>
+            <strong>
+            
+                本文使用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">署名-非商业性使用-相同方式共享 4.0 国际 (CC BY-NC-SA 4.0)</a> 协议
+            </strong>
+            <br>
+            <strong>本文链接&nbsp;:&nbsp;</strong><a href="https://www.wevg.org/archives/export-passwords-from-iCloud-keychain/">https://www.wevg.org/archives/export-passwords-from-iCloud-keychain/</a>
+        </p>
+    </blockquote>
+
+
+
+    <blockquote id="date-expire-notification" class="post-expired-notify">本文最后更新于 <span id="date-expire-num"></span> 天前，文中所描述的信息可能已发生改变</blockquote>
+    <script>
+    (function() {
+        var dateUpdate = Date.parse("2019-12-29");
+        var nowDate = new Date();
+        var a = nowDate.getTime();
+        var b = a - dateUpdate;
+        var daysUpdateExpire = Math.floor(b/(24*3600*1000));
+        if (daysUpdateExpire >= 120) {
+            document.getElementById('date-expire-num').innerHTML = daysUpdateExpire;
+        } else {
+            document.getElementById('date-expire-notification').style.display = 'none';
+        }
+    })();
+    </script>
+
+
+<p class="post-footer-info mb-0 pt-0">本文发表于&nbsp;<time datetime="2019-12-28T23:56:49.000Z" itemprop="datePublished">2019-12-29</time>
+
+</p>
+<p class="post-footer-info mb-0 pt-2">
+
+<span class="post-categories-list mt-2">
+
+<a class="post-categories-list-item" href='/categories/Tech/'>Tech</a>
+
+</span>
+
+
+
+<span class="post-tags-list mt-2">
+
+<a class="post-tags-list-item" href="/tags/Secure/" rel="tag">#&nbsp;Secure</a>
+
+<a class="post-tags-list-item" href="/tags/Tools/" rel="tag">#&nbsp;Tools</a>
+
+<a class="post-tags-list-item" href="/tags/MacOS/" rel="tag">#&nbsp;MacOS</a>
+
+<a class="post-tags-list-item" href="/tags/iOS/" rel="tag">#&nbsp;iOS</a>
+
+<a class="post-tags-list-item" href="/tags/Password/" rel="tag">#&nbsp;Password</a>
+
+</span>
+
+
+</p>
+
+                </div>
+                <div class="post-nav px-2 bg-gray">
+<ul class="pagination">
+    <!-- Prev Nav -->
+    
+        <li class="page-item page-prev">
+            <a href="/archives/gpg-sign-via-yubikey/" rel="prev">
+                <div class="page-item-title"><i class="icon icon-back" aria-hidden="true"></i></div>
+                <div class="page-item-subtitle">使用 Yubikey 进行 GPG 签名</div>
+            </a>
+        </li>
+    
+
+    <!-- Next Nav -->
+    
+        <li class="page-item page-next">
+            <a href="/archives/fix-gpg-sign-error/" rel="next">
+                <div class="page-item-title"><i class="icon icon-forward" aria-hidden="true"></i></div>
+                <div class="page-item-subtitle">解决 GPG 签名失败的问题</div>
+            </a>
+        </li>
+    
+</ul>
+</div>
+
+                
+                    <!-- # Comment # -->
+                    
+                        <div class="card-footer post-comment">
+                            <div id="disqus_thread"></div>
+
+<script id="js-disqusjs" src="https://cdn.jsdelivr.net/npm/disqusjs@1.2.5/dist/disqus.js" async></script>
+<script>
+document.getElementById('js-disqusjs').addEventListener('load', function () {
+    function loadDisqusJS() {
+        new DisqusJS({
+            shortname: 'edisonj',
+            
+            siteName: 'Vigorous Pro',
+            
+            identifier: 'https://www.wevg.org/archives/export-passwords-from-iCloud-keychain/',
+            url: 'https://www.wevg.org/archives/export-passwords-from-iCloud-keychain/',
+            api: 'https://disqus.uv.uy/api/',
+            apikey: 'vBTqc5gYirQfuj9STIAANtQCArVi9MN8UZ72UUucwnhus4AhpgpbVJMIn3Ojl4O7',
+            
+            
+        })
+    }
+    if (document.readyState === 'complete') {
+        loadDisqusJS();
+    } else {
+        window.addEventListener('load', loadDisqusJS);
+    }
+});
+</script>
+
+                        </div>
+                    
+                
+            </div>
+        </div>
+    </div>
+</div>
+
+            <!-- ### Footer ### -->
+            <footer class="text-center">
+    <!-- footer copyright -->
+    
+        <p class="footer-copyright mb-0">Copyright&nbsp;©&nbsp;<span id="copyright-year"></span>
+            <a class="footer-copyright-a" href="https://www.wevg.org">Vigorous Pro</a>
+        </p>
+
+    <!-- footer custom text -->
+    <p class="footer-text mb-0">
+    <a href="/atom.xml" target="_blank" class="footer-develop-a" rel="nofollow noopener noreferrer">RSS</a><span class="footer-develop-divider"></span><a href="https://donate.edison.do" target="_blank" class="footer-develop-a" rel="nofollow noopener noreferrer">Donate</a><span class="footer-develop-divider"></span><a href="/privacy-policy" target="_blank" class="footer-develop-a" rel="nofollow noopener noreferrer">Privacy Policy</a>
+    </p>
+    <!-- footer develop info -->
+    <p class="footer-develop mb-0">
+        
+
+        
+        Powered by&nbsp;<!--
+         --><a href="https://hexo.io" target="_blank" class="footer-develop-a" rel="external nofollow noopener noreferrer">Hexo</a><span class="footer-develop-divider"></span>Theme&nbsp;-&nbsp;<!--
+         --><a href="https://github.com/SukkaW/hexo-theme-suka" target="_blank" class="footer-develop-a" rel="external noopener">Suka</a>
+    </p>
+</footer>
+
+
+        <!-- ### Import File ### -->
+        <!-- ### Footer JS Import ### -->
+
+<script>
+
+    
+window.lazyLoadOptions = {
+    elements_selector: ".lazyload",
+    threshold: 50
+};
+
+(function() {
+    var copyrightNow = new Date().getFullYear();
+    var copyrightContent = document.getElementById('copyright-year');
+    var copyrightSince = 2015;
+    if (copyrightSince === copyrightNow) {
+        copyrightContent.textContent = copyrightNow;
+    } else {
+        copyrightContent.textContent = copyrightSince + ' - ' + copyrightNow;
+    }
+})();
+console.log('\n %c Suka Theme (hexo-theme-suka) | © SukkaW | Verision 1.3.3 %c https://github.com/SukkaW/hexo-theme-suka \n', 'color: #fff; background: #444; padding:5px 0;', 'background: #bbb; padding:5px 0;');
+
+</script>
+
+<script src="https://cdn.jsdelivr.net/npm/vanilla-lazyload@12.3.0" async></script>
+
+
+
+<!-- Comment -->
+
+    
+        <!-- No need for DisqusJS -->
+    
+
+
+<!-- ### Custom Footer ### -->
+<script> if ('serviceWorker' in navigator) { window.addEventListener('load', () => { navigator.serviceWorker.register('/sw.js'); }) } </script><script>window.ga_tid = "UA-106121780-1";window.ga_api = "https://ga.cdn.uv.uy/jquery.js"; </script><script src="https://cdn.jsdelivr.net/gh/EdisonJwa/Blog@master/js/main.js" async></script>
+    </body>
+
+</html>

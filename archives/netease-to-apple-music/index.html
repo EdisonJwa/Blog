@@ -1,0 +1,721 @@
+<!DOCTYPE html>
+
+<html lang="zh-CN">
+    <head>
+    <meta charset="utf-8">
+    <!--
+        hexo-theme-suka © SukkaW
+        GitHub: https://github.com/SukkaW/hexo-theme-suka
+    -->
+
+    <!-- ### Resource Hint ### -->
+
+    <!-- ## DNS Prefetch ## -->
+    <meta http-equiv="x-dns-prefetch-control" content="on">
+
+<!-- busuanzi -->
+
+
+<!-- comment -->
+
+
+
+
+
+
+
+<!-- analytics -->
+
+
+
+
+
+
+
+    <!-- ## Preload ## -->
+    
+
+
+
+
+    <!-- ### Meta & Title & Info ### -->
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, minimum-scale=1, initial-scale=1, maximum-scale=5, viewport-fit=cover">
+    <meta name="renderer" content="webkit">
+
+    <!-- Title -->
+    <title>导入网易云音乐歌单到 Apple Music | Vigorous Pro</title>
+
+    <!-- Favicons -->
+    <link rel="icon" type="image&#x2F;ico" href="/favicon.ico"><link rel="apple-touch-icon" sizes="180x180" href="/source/favicon/apple-touch-icon.png"><link rel="icon" typt="image&#x2F;png" sizes="192x192" href="/source/favicon/android-chrome-192x192.png"><link rel="icon" typt="image&#x2F;png" sizes="32x32" href="/source/favicon/favicon-32x32.png"><link rel="icon" typt="image&#x2F;png" sizes="16x16" href="/source/favicon/favicon-16x16.png"><link rel="mask-icon" href="/safari-pinned-tab.svg" color="">
+
+    <!-- ### Import File ### -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/spectre.css@0.5.3"><style>
+    body {
+        background-color: #f8f9fa;
+    }
+
+    a, a:visited {
+        color: #0070ff;
+    }
+
+    a:active, a:focus, a:hover {
+        color: #0070ff;
+        opacity: .75;
+    }
+
+    #post-content a,
+    #post-content a:hover,
+    #post-content a:focus,
+    #post-content a:visited {
+        color: #005eb9;
+        opacity: 1;
+    }
+
+    
+
+    .post-entry .card-body a {
+        color: #0070ff;
+    }
+
+    .avatar {
+        background: #444;
+    }
+
+    .navbar-link,
+    .navbar-link:visited,
+    .timeline .timeline-item .timeline-icon.icon-lg {
+        color: #0070ff;
+    }
+
+    .navbar-link:hover {
+        color: #0070ff;
+        opacity: .8;
+    }
+
+    #search-input .btn,
+    #disqus_click_btn,
+    #disqus-switch-to-direct,
+    #disqus-loadmore-button {
+        background: #727e96;
+        border-color: #727e96;
+        color: #fff;
+    }
+
+    #post-toc a.post-toc-link,
+    #post-toc a.post-toc-link:visited,
+    .share-menu.menu .menu-item>a {
+        color: #727e96;
+    }
+
+    .share-menu.menu .menu-item>a:hover,
+    .share-menu.menu .menu-item>a:focus,
+    .share-menu.menu .menu-item>a:visited {
+        color: #50596c;
+        background: #f8f9fa;
+        opacity: .85;
+    }
+</style><link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/sukkaw/hexo-theme-suka@latest/source/css/style.min.css">
+
+
+    
+        <!-- Import DisqusJS Default Theme -->
+        <link rel="preload" href="https://cdn.jsdelivr.net/npm/disqusjs@1.2.5/dist/disqusjs.css" as="style" onload="this.onload=null;this.rel='stylesheet'"><noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/disqusjs@1.2.5/dist/disqusjs.css"></noscript>
+
+    
+
+
+
+
+
+
+
+    <!-- Prettify Theme -->
+    
+    <link rel="preload" href="https://cdn.jsdelivr.net/gh/sukkaw/hexo-theme-suka@latest/source/css/highlight/tomorrow-night-eighties.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'"><noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/sukkaw/hexo-theme-suka@latest/source/css/highlight/tomorrow-night-eighties.min.css"></noscript>
+
+
+
+
+
+<script>
+/*! loadCSS. [c]2017 Filament Group, Inc. MIT License */
+!function(t){"use strict";t.loadCSS||(t.loadCSS=function(){});var e=loadCSS.relpreload={};if(e.support=function(){var e;try{e=t.document.createElement("link").relList.supports("preload")}catch(t){e=!1}return function(){return e}}(),e.bindMediaToggle=function(t){var e=t.media||"all";function a(){t.addEventListener?t.removeEventListener("load",a):t.attachEvent&&t.detachEvent("onload",a),t.setAttribute("onload",null),t.media=e}t.addEventListener?t.addEventListener("load",a):t.attachEvent&&t.attachEvent("onload",a),setTimeout(function(){t.rel="stylesheet",t.media="only x"}),setTimeout(a,3e3)},e.poly=function(){if(!e.support())for(var a=t.document.getElementsByTagName("link"),n=0;n<a.length;n++){var o=a[n];"preload"!==o.rel||"style"!==o.getAttribute("as")||o.getAttribute("data-loadcss")||(o.setAttribute("data-loadcss",!0),e.bindMediaToggle(o))}},!e.support()){e.poly();var a=t.setInterval(e.poly,500);t.addEventListener?t.addEventListener("load",function(){e.poly(),t.clearInterval(a)}):t.attachEvent&&t.attachEvent("onload",function(){e.poly(),t.clearInterval(a)})}"undefined"!=typeof exports?exports.loadCSS=loadCSS:t.loadCSS=loadCSS}("undefined"!=typeof global?global:this);
+</script>
+
+    <!-- ### Site Verification ### -->
+    
+
+
+    <link rel="alternate" type="application/atom+xml" href="/atom.xml"><meta name="mobile-web-app-capable" content="yes"><meta name="application-name" content="Vigorous Pro"><meta name="msapplication-starturl" content="https://www.wevg.org"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-title" content="Vigorous Pro"><meta name="apple-mobile-web-app-status-bar-style" content="black-translucent"><link rel="manifest" href="/manifest.json"><link rel="search" type="application/opensearchdescription+xml" href="/opensearch.xml" title="Vigorous Pro">
+
+    <!-- ### The Open Graph & Twitter Card Protocol ### -->
+    <meta property="og:title" content="导入网易云音乐歌单到 Apple Music | Vigorous Pro"><meta property="og:site_name" content="Vigorous Pro"><meta property="og:type" content="article"><meta property="og:url" content="https://www.wevg.org/archives/netease-to-apple-music/"><meta property="og:locale" content="zh-CN"><meta name="description" content="虽然我换到Apple Music 已经快一年多了，不过一直有一些歌单没导过来，前一阵因为之前使用的代理方式失效，自己也突然感觉是时候该把网易云上面的歌单转过来了，便搜集到了一些方法，也算是成功的把歌单给导出来了。 - Edison Jwa - Vigorous Pro"><meta name="keywords" content="Music, Apple Music, Netease Music, Workflow, Tampermonkey, Excel, Bat, edisonjwa,game,blog,Web,Html,edison"><meta property="og:image" content="https://cdn.jsdelivr.net/gh/EdisonJwa/Blog@master/source/thumbnail/ed5625b0c4d9dde8bbd750377c0c4c12.jpg"><meta property="og:image" content="https://i.yecdn.com/images/2019/11/15/5b4201f23d6ea58f2d1acce9a493df1c.png"><meta property="og:image" content="https://i.yecdn.com/images/2019/01/05/c2fef1211087f3d8c6f94f9a7eda2086.png"><meta property="og:image" content="https://i.yecdn.com/images/2019/01/05/6851f96024b99a5cb6fbc819bb549f30.png"><meta property="og:image" content="https://i.yecdn.com/images/2019/06/04/52d14da6add859ab755466bb33b7af78.png"><meta property="og:image" content="https://i.yecdn.com/images/2019/01/05/c2fef1211087f3d8c6f94f9a7eda2086.png"><meta property="og:image" content="https://i.yecdn.com/images/2019/01/05/f407d11b0ef4c83e35cf0b35d4c25563.png"><meta property="og:image" content="https://i.yecdn.com/images/2019/01/05/e4fcb3f65cf292ced003a46429c89b50.png"><meta property="og:image" content="https://i.yecdn.com/images/2018/12/29/1723eb3f470733283176c4a2f6156860.gif"><meta property="og:image" content="https://i.yecdn.com/images/2018/12/25/2fffb4237d8ac49196409b200bb2eff7.gif"><meta property="article:published_time" content="2018-12-25T10:55:53.000Z"><meta property="article:modified_time" content="2020-04-25T12:35:19.000Z"><meta property="og:updated_time" content="2020-04-25T12:35:19.000Z"><meta property="article:author" content="Edison Jwa"><meta property="article:tag" content="Music, Apple Music, Netease Music, Workflow, Tampermonkey, Excel, Bat, edisonjwa,game,blog,Web,Html,edison"><meta name="twitter:card" content="summary_large_image"><meta name="twitter:image" content="https://cdn.jsdelivr.net/gh/EdisonJwa/Blog@master/source/thumbnail/ed5625b0c4d9dde8bbd750377c0c4c12.jpg">
+
+    
+
+    <!-- ### Canonical link ### -->
+    <link rel="canonical" href="https://www.wevg.org/archives/netease-to-apple-music/">
+
+    <meta name="generator" content="Hexo 5.4.0">
+
+    <!-- ### Analytics ### -->
+    
+
+
+
+
+
+
+
+    <!-- ### Structured Data ### -->
+    
+
+
+
+<script type="application/ld+json">
+{
+    "@context": "http://schema.org",
+    "url": "https://www.wevg.org/archives/netease-to-apple-music/",
+    "@type": "BlogPosting",
+    "logo": "https://www.wevg.org/source/favicon/android-chrome-192x192.png",
+    "mainEntityOfPage": {
+        "@type": "WebPage",
+        "@id": "https://www.wevg.org/archives/netease-to-apple-music/"
+    },
+    "headline": "导入网易云音乐歌单到 Apple Music | Vigorous Pro",
+    
+    "image": {
+        "@type": "ImageObject",
+        "url": "https://cdn.jsdelivr.net/gh/EdisonJwa/Blog@master/source/thumbnail/ed5625b0c4d9dde8bbd750377c0c4c12.jpg"
+    },
+    
+    "datePublished": "2018-12-25T10:55:53.000Z",
+    "dateModified": "2020-04-25T12:35:19.000Z",
+    "author": {
+        "@type": "Person",
+        "name": "Edison Jwa",
+        "image": {
+            "@type": "ImageObject",
+            "url": "https://cdn.jsdelivr.net/gh/EdisonJwa/Blog@master/source/image/avatar.jpg"
+        },
+        "description": "The world can always use more heroes."
+    },
+    "publisher": {
+        "@type": "Organization",
+        "name": "Vigorous Pro",
+        "logo": {
+            "@type": "ImageObject",
+            "url": "https://www.wevg.org/source/favicon/android-chrome-192x192.png"
+        }
+    },
+    
+    "potentialAction": {
+        "@type": "SearchAction",
+        "target": "https://www.wevg.org/search?s={search_term_string}",
+        "query-input": "required name=search_term_string"
+    },
+    
+    "keywords": "Music, Apple Music, Netease Music, Workflow, Tampermonkey, Excel, Bat, edisonjwa,game,blog,Web,Html,edison",
+    "description": "虽然我换到Apple Music 已经快一年多了，不过一直有一些歌单没导过来，前一阵因为之前使用的代理方式失效，自己也突然感觉是时候该把网易云上面的歌单转过来了，便搜集到了一些方法，也算是成功的把歌单给导出来了。 - Edison Jwa - Vigorous Pro"
+}
+</script>
+
+
+
+    <!-- ### Custom Head ### -->
+    <!-- EdisonJwas Blog --><script data-ad-client="ca-pub-2345785306567671" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script><link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/EdisonJwa/Blog@latest/css/darkmode.min.css"><script src="https://cdn.jsdelivr.net/gh/EdisonJwa/Blog@master/js/edison-main.min.js"></script><script type="module" async="" src="https://cdn.jsdelivr.net/npm/instant.page@3.0.0/instantpage.min.js"></script><link rel="manifest" href="/site.webmanifest"><meta name="msapplication-TileColor" content="#d43d3d"><meta name="msapplication-TileImage" content="/source/favicon/mstile-144x144.png"><meta name="theme-color" content="#ffffff"><script type="text/javascript">function downloadJSAtOnload(){var d=document.createElement("script");d.src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js",document.body.appendChild(d)}window.addEventListener?window.addEventListener("load",downloadJSAtOnload,!1):window.attachEvent?window.attachEvent("onload",downloadJSAtOnload):window.onload=downloadJSAtOnload;</script><!-- Global site tag (gtag.js) - Google Analytics --><script async src="https://www.googletagmanager.com/gtag/js?id=G-S2SFLD81VT"></script><script>window.dataLayer = window.dataLayer || [];function gtag(){dataLayer.push(arguments);} gtag('js', new Date()); gtag('config', 'G-S2SFLD81VT');</script><!-- Cloudflare Web Analytics --><script defer src=https://static.cloudflareinsights.com/beacon.min.js ; data-cf-beacon="{&quot;token&quot;: 1ebb36a2c023408484ff114c409377b8}"></script><!-- End Cloudflare Web Analytics -->
+<style type="text/css">
+.spoiler {
+  display: inline-flex;
+}
+p.spoiler {
+  display: flex;
+}
+.spoiler a {
+  pointer-events: none;
+}
+.spoiler-blur, .spoiler-blur > * {
+  transition: text-shadow .5s ease;
+}
+.spoiler .spoiler-blur, .spoiler .spoiler-blur > * {
+  color: rgba(0, 0, 0, 0);
+  background-color: rgba(0, 0, 0, 0);
+  text-shadow: 0 0 10px grey;
+  cursor: pointer;
+}
+.spoiler .spoiler-blur:hover, .spoiler .spoiler-blur:hover > * {
+  text-shadow: 0 0 5px grey;
+}
+.spoiler-box, .spoiler-box > * {
+  transition: color .5s ease,
+  background-color .5s ease;
+}
+.spoiler .spoiler-box, .spoiler .spoiler-box > * {
+  color: black;
+  background-color: black;
+  text-shadow: none;
+}</style></head>
+
+    <body>
+            
+
+            <!-- ### Main content ### -->
+            <!-- ## Header ##-->
+<header>
+    <h1 class="header-title text-center"><a href="/">Vigorous Pro</a></h1>
+
+    <p class="text-center header-slogan">
+        
+            
+                The world can always use more heroes.
+            
+        
+    </p>
+
+    <nav class="navbar-section text-center">
+    
+        <a href="/" class="navbar-link">首页</a>
+    
+    
+        <a href="/archives/" class="navbar-link">归档</a>
+    
+    
+        <a href="/search" class="navbar-link">搜索</a>
+    
+    
+        <a target="_blank" rel="noopener" href="https://uv.uy" class="navbar-link">关于</a>
+    
+        <a href="/friends/" class="navbar-link">友链</a>
+    
+    
+    
+</nav>
+</header>
+
+            
+    <!-- ## Post ## -->
+    <div class="post-container">
+    <div id="post-card" class="card">
+        
+            <div class="card-image lazyload" data-bg="url('https://cdn.jsdelivr.net/gh/EdisonJwa/Blog@master/source/thumbnail/ed5625b0c4d9dde8bbd750377c0c4c12.jpg')"></div>
+        
+        <div class="card-item-container">
+            <div class="card-inner-cell">
+                <!-- # Post Header Info # -->
+                <div class="card-header">
+                    
+    <h1 class="card-title h3 mb-2">导入网易云音乐歌单到 Apple Music</h1>
+
+
+
+
+<div class="post-header-info">
+    <p class="post-header-info-left text-gray">
+        <img class="author-thumb lazyload" data-src="https://cdn.jsdelivr.net/gh/EdisonJwa/Blog@master/source/image/avatar.jpg" src="https://cdn.jsdelivr.net/gh/sukkaw/hexo-theme-suka@latest/source/img/suka-lazyload.gif" alt="Edison Jwa's Avatar">
+        <span>2018-12-25</span>
+        
+            <span class="suka-devide-dot"></span>
+            <a class="category-link" href="/categories/Tech/">Tech</a>
+        
+        
+        
+    </p>
+    <div class="post-header-info-right">
+        
+            <div class="dropdown dropdown-right">
+<a class="dropdown-toggle" tabindex="0">分享本文</a>
+<ul class="menu share-menu">
+    <!-- Share Weibo -->
+    
+    <li class="menu-item">
+        <a href="http://service.weibo.com/share/share.php?appkey=&title=导入网易云音乐歌单到 Apple Music&url=https://www.wevg.org/archives/netease-to-apple-music/&pic=https://cdn.jsdelivr.net/gh/EdisonJwa/Blog@master/source/thumbnail/ed5625b0c4d9dde8bbd750377c0c4c12.jpg&searchPic=false&style=simple" target="_blank" rel="external noopener noreferrer nofollow">分享到微博</a>
+    </li>
+    
+
+    <!-- Share Twitter -->
+    
+    <li class="menu-item">
+        <a href="https://twitter.com/intent/tweet?text=导入网易云音乐歌单到 Apple Music&url=https://www.wevg.org/archives/netease-to-apple-music/&via=Edison Jwa" target="_blank" rel="external noopener noreferrer nofollow">分享到 Twitter</a>
+    </li>
+    
+
+    <!-- Share Facebook -->
+    
+    <li class="menu-item">
+        <a href="https://www.facebook.com/sharer/sharer.php?u=https://www.wevg.org/archives/netease-to-apple-music/" target="_blank" rel="external noopener noreferrer nofollow">分享到 Facebook</a>
+    </li>
+    
+
+    <!-- Share Google+ -->
+    
+    <li class="menu-item">
+        <a href="https://plus.google.com/share?url=https://www.wevg.org/archives/netease-to-apple-music/" target="_blank" rel="external noopener noreferrer nofollow">分享到 Google+</a>
+    </li>
+    
+
+    <!-- Share LinkedIn -->
+    
+    <li class="menu-item">
+        <a href="https://www.linkedin.com/shareArticle?mini=true&url=https://www.wevg.org/archives/netease-to-apple-music/&title=Vigorous Pro" target="_blank" rel="external noopener noreferrer nofollow">分享到 LinkedIn</a>
+    </li>
+    
+
+    <!-- Share QQ -->
+    
+    <li class="menu-item">
+        <a href="http://connect.qq.com/widget/shareqq/index.html?site=Vigorous Pro&title=Vigorous Pro&summary=The world can always use more heroes.&pics=https://cdn.jsdelivr.net/gh/EdisonJwa/Blog@master/source/thumbnail/ed5625b0c4d9dde8bbd750377c0c4c12.jpg&url=https://www.wevg.org/archives/netease-to-apple-music/" target="_blank" rel="external noopener noreferrer nofollow"> 分享到 QQ</a>
+    </li>
+    
+
+    <!-- Share Telegram -->
+    
+    <li class="menu-item">
+        <a href="https://t.me/share/url?url=https://www.wevg.org/archives/netease-to-apple-music/&text=Vigorous Pro" target="_blank" rel="external noopener noreferrer nofollow">分享到 Telegram</a>
+    </li>
+    
+
+    <!-- QRCode -->
+    
+    <li class="menu-item">
+        <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAJQAAACUCAAAAABQV18IAAAB40lEQVR42u3aSW7DMBBEUd3/0snWsNVVv00vyFZpE8DQ8BRQJHu4/jY8rqCCCiqoG9Qljuqcj5uJ61rPCWoM6nbQFQ+vMOo3+pygZqHeb/b++93AVQO+Ol+eE9TjUApWnVfdL6hno8iCqq4N6pmoaqFUiy45/+7hy7uEoLZHuQH8q78/i2aC2hplkw4iAHUTpBrgS1mXoLZGqYGoNnDVJpAEruU1QY1AkYHrAgkXHKgXkZNnUEeiVELCPZAkzVSQ+vExBDUGVW7kwWLrDpdYC2omSiUs3ASoNnHqA7r9hwQ1BuU2ZvRDIMl9WbQMagTKFX9okoIm82WhMqhRKJekXy0kkUk3qBmozgaNQMmmcDm5H9TWKBKUUpBrBqsm4aBmoVwitpvYV4k1O+iDGoGiN+wEB25gt3eeQR2F6ibqySbvm0bCoOahOgsvDTI7jYRBzUS5iZAswG6xRgmOoEag6AaNJDZokSCoZ6BowdtNiuSlgpqJ+qZR0AUFpOCEuoKCOhKFA0VTPCKJsnZXUFDHokijAy0CkZdDjYJBHY+ijYE0AUsaC1vJ/aBGomjDIClAtQtGQY1CrSbVSBEqqHmoakGmAYVriGg34AR1NIoumiRBT5tRbdYlqGNROx1BBRVUUC/HP1BzMnEl934xAAAAAElFTkSuQmCC" alt="QRCode">
+    </li>
+    
+
+</ul>
+</div>
+        
+    </div>
+</div>
+                </div>
+                <div class="card-body">
+                    
+                        
+                        
+                            <div id="post-toc"><ol class="post-toc"><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#%E4%BD%BF%E7%94%A8-workflow-%E5%90%8C%E6%AD%A5"><span class="post-toc-number">1.</span> <span class="post-toc-text">使用 Workflow 同步</span></a></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#%E4%BD%BF%E7%94%A8-tunemymusic-%E5%AF%BC%E5%85%A5-%E6%8E%A8%E8%8D%90"><span class="post-toc-number">2.</span> <span class="post-toc-text">使用 TuneMyMusic 导入 (推荐)</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#%E5%88%A9%E7%94%A8%E6%B2%B9%E7%8C%B4%E8%84%9A%E6%9C%AC%E8%BF%81%E7%A7%BB"><span class="post-toc-number">2.1.</span> <span class="post-toc-text">利用油猴脚本迁移</span></a></li></ol></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#%E5%88%A9%E7%94%A8-itunes-%E6%9D%A5%E5%AF%BC%E5%85%A5%E7%BD%91%E6%98%93%E4%BA%91%E9%9F%B3%E4%B9%90%E6%AD%8C%E5%8D%95%E5%88%B0-apple-music"><span class="post-toc-number">3.</span> <span class="post-toc-text">利用 iTunes 来导入网易云音乐歌单到 Apple Music</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#itunes-%E5%AF%BC%E5%85%A5%E5%AF%BC%E5%87%BA%E6%92%AD%E6%94%BE%E5%88%97%E8%A1%A8"><span class="post-toc-number">3.1.</span> <span class="post-toc-text">iTunes 导入导出播放列表</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#%E8%87%AA%E5%8A%A8%E7%94%9F%E6%88%90%E4%B8%8A%E6%96%87%E6%89%80%E8%BF%B0%E7%9A%84-txt"><span class="post-toc-number">3.2.</span> <span class="post-toc-text">自动生成上文所述的 txt</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#%E7%BD%91%E6%98%93%E4%BA%91%E9%9F%B3%E4%B9%90%E8%BF%99%E8%BE%B9%E7%9A%84%E4%BA%8B"><span class="post-toc-number">3.3.</span> <span class="post-toc-text">网易云音乐这边的事</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#%E6%9D%A5%E7%9C%8B%E4%B8%80%E4%B8%AA%E5%AE%9E%E9%99%85%E6%93%8D%E4%BD%9C%E7%9A%84%E4%BE%8B%E5%AD%90"><span class="post-toc-number">3.4.</span> <span class="post-toc-text">来看一个实际操作的例子</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#%E5%A2%9E%E9%87%8F%E5%AF%BC%E5%85%A5"><span class="post-toc-number">3.5.</span> <span class="post-toc-text">增量导入</span></a></li></ol></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#%E5%8F%82%E8%80%83%E6%96%87%E7%AB%A0"><span class="post-toc-number">4.</span> <span class="post-toc-text">参考文章</span></a></li></ol></div>
+                        
+                    
+                    <article id="post-content">
+                        <p>虽然我换到Apple Music 已经快一年多了，不过一直有一些歌单没导过来，前一阵因为之前使用的代理方式失效，自己也突然感觉是时候该把网易云上面的歌单转过来了，便搜集到了一些方法，也算是成功的把歌单给导出来了。<span id="more"></span></p>
+<p>我现在在使用的美区的 Apple Music 直接有使用国大概一年多的国区 Apple Music 但是因为曲库不在一个数量级，前不久转到了美区，据之前的官方数据，美区是5000万，国区是300万，现在页面改版后，没有歌曲数量的介绍了，所以记忆可能有所偏差（报道出现偏差将来要负责的！ ）</p>
+<p>总之，就是在使用的时候总是感觉想听的歌没有，再加上国区归云上贵州了，就在前一阵转到美区了</p>
+<blockquote>
+<p>2019-11-16 更新使用 TuneMyMusic 导入方式</p>
+</blockquote>
+<p>下面是我使用过的三种方法：</p>
+<h1 id="使用-workflow-同步">使用 Workflow 同步</h1>
+<p>这个是我最早使用的方法，这个办法因为年久失修，匹配精度低或者匹配不到、无法增量同步、无法双向同步。<strong>但是</strong>，不可否认的是这个方法<strong>操作简单</strong>，在某些场景下，还是有用的。</p>
+<ul>
+<li>上手难度 ★☆☆☆☆</li>
+<li>同步速度 ★★★☆☆</li>
+<li>匹配精度 ★★★☆☆</li>
+</ul>
+<p>先将 Workflow 链接放到这里： <a target="_blank" rel="noopener" href="https://workflow.is/workflows/30843bb380f84db8be3c46f5ff00f407">网易云音乐➡️ Apple Music</a>。</p>
+<ol>
+<li>使用时在网易云音乐客户端里复制歌单分享链接，然后运行这个 Workflow。</li>
+</ol>
+<h1 id="使用-tunemymusic-导入-推荐">使用 TuneMyMusic 导入 (推荐)</h1>
+<p>这个方法是一个大佬在我的博客上评论的，但因为当时操作失误，丢失了评论，最近找到了评论但是在想办法恢复之前的评论。相对于我之前<strong>使用油猴脚本迁移</strong>的方式，更加简洁</p>
+<p>打开 <a target="_blank" rel="noopener" href="https://yyrcd.com/2018/11/14/n2s-zh/">https://yyrcd.com/2018/11/14/n2s-zh/</a>， 填入 网易云歌单的 ID。假如歌单地址是 <code>https://music.163.com/#/playlist?id=2651036663</code> ，那么便填写 <code>2651036663</code></p>
+<p>接下来点击 <kbd>Search</kbd> ，会显示歌单列表，然后复制生成的文字版歌单</p>
+<p><img src="https://i.yecdn.com/images/2019/11/15/5b4201f23d6ea58f2d1acce9a493df1c.png" alt="5b4201f23d6ea58f2d1acce9a493df1c.png"></p>
+<p>导出歌单后，打开 TuneMyMusic 网站 <a target="_blank" rel="noopener" href="https://www.tunemymusic.com/zh-cn/">https://www.tunemymusic.com/zh-cn/</a></p>
+<p>导入来源选择 <strong>从文本</strong> ，目的地选择 <strong>Apple Music</strong> 即可<img src="https://i.yecdn.com/images/2019/01/05/c2fef1211087f3d8c6f94f9a7eda2086.png" alt=""></p>
+<p>接下来,按照网页的提示进行操作即可. 此方法支援的平台有 Spotify, Apple Music, Youtube, Youtube Music, Deezer, Tidal, SoundCloud, KKbox, napster 和 SoundMachine</p>
+<blockquote>
+<p><strong>请注意,每次最多可导入1000首歌曲</strong></p>
+</blockquote>
+<h2 id="利用油猴脚本迁移">利用油猴脚本迁移</h2>
+<blockquote>
+<p>使用前一种方式更为便捷(<a href="/archives/netease-to-apple-music/#%E4%BD%BF%E7%94%A8-tunemymusic-%E5%AF%BC%E5%85%A5">使用 TuneMyMusic 导入</a>)</p>
+</blockquote>
+<p>这个是我无意在B站上发现的文章，现在不知为何，此文章连接打开自动跳转error，这个方法和后面的方法相比提高导入速度，降低了上手难度，而且支持的平台很多，包括 Apple Music, Spotify, Youtube, Deezer, Tidal, Pandora, Napster，但是不可避免的仍然会有部分歌曲导入失败，或者说匹配精度不足。</p>
+<ul>
+<li>上手难度 ★★☆☆☆</li>
+<li>同步速度 ★★★★☆</li>
+<li>匹配精度 ★★★★☆</li>
+</ul>
+<p>需要的程序：</p>
+<ul>
+<li>浏览器（Chrome，Firefox，Edge，Safari等）</li>
+<li>Tampermonkey 插件 （下文简称油猴）</li>
+</ul>
+<p>第一步，安装 油猴脚本 <a target="_blank" rel="noopener" href="https://go.uv.uy/Eud9p">https://go.uv.uy/Eud9p</a></p>
+<blockquote>
+<p>进行此步骤前,请确保已安装 Tampermonkey 插件</p>
+</blockquote>
+<blockquote>
+<p>请注意，现在该脚本已停止维护。</p>
+</blockquote>
+<p><img src="https://i.yecdn.com/images/2019/01/05/6851f96024b99a5cb6fbc819bb549f30.png" alt=""></p>
+<p>在浏览器中打开歌单的分享链接,会看到一个 <strong>导出歌单</strong> 的按钮, 点击后便可以获得当前歌单的txt列表</p>
+<p><img src="https://i.yecdn.com/images/2019/06/04/52d14da6add859ab755466bb33b7af78.png" alt=""></p>
+<p>如果 <strong>导出歌单</strong> 的按钮没有显示，有可能有插件或脚本与之<strong>发生冲突</strong>，也可以尝试<strong>重启插件</strong></p>
+<p>导出歌单后，打开 TuneMyMusic 网站 <a target="_blank" rel="noopener" href="https://www.tunemymusic.com/zh-cn/">https://www.tunemymusic.com/zh-cn/</a></p>
+<p>导入来源选择 <strong>从文本</strong> ，目的地选择 <strong>Apple Music</strong> 即可<img src="https://i.yecdn.com/images/2019/01/05/c2fef1211087f3d8c6f94f9a7eda2086.png" alt=""></p>
+<p>接下来,按照网页的提示进行操作即可.</p>
+<blockquote>
+<p><strong>请注意,每次最多可导入1000首歌曲</strong></p>
+</blockquote>
+<h1 id="利用-itunes-来导入网易云音乐歌单到-apple-music">利用 iTunes 来导入网易云音乐歌单到 Apple Music</h1>
+<p>这个是我使用过的第二个迁移方式，优点是这个方法<strong>不存在</strong>匹配精度低或者匹配不到的问题，并且算是提供了一种增量同步的方法。缺点是相对前两种方式，更为耗时且无法迁移仅会员可以下载的歌曲。</p>
+<ul>
+<li>上手难度 ★★★★☆</li>
+<li>同步速度 ★★☆☆☆</li>
+<li>匹配精度 ★★★★★</li>
+</ul>
+<p>因为此步骤比较复杂 （个人认为），所以直接把主要部分摘了过来</p>
+<p>此部分的环境是 Windows 10 + iTunes 12.7 for PC + 网易云音乐 2.2.3 for PC。某些功能需要 Windows 环境，但有移植到其它平台的潜力，未测试其它版本的 iTunes 与网易云音乐客户端。</p>
+<h2 id="itunes-导入导出播放列表">iTunes 导入导出播放列表</h2>
+<p>这俩功能是 iTunes 自带的，选中某播放列表，点击 文件 - 资料库 就能看到这两个功能。</p>
+<p><img src="https://i.yecdn.com/images/2019/01/05/f407d11b0ef4c83e35cf0b35d4c25563.png" alt="导入导出播放列表"></p>
+<p>打开导出的 txt 文件，是一堆格式化的信息。txt 看起来会比较杂乱，你可以全选内容，复制，打开一个空的 Excel 表格，直接粘贴，这样方便查看格式化的内容。</p>
+<p><img src="https://i.yecdn.com/images/2019/01/05/e4fcb3f65cf292ced003a46429c89b50.png" alt="导出的内容"></p>
+<p>很明白了，第一行是表头，可见数据非常详细。下面就是播放列表中每首曲子的具体信息。用这些数据可以做不少文章，不过目前关注最后一项：「位置」，展示了本首曲子的音乐文件在磁盘上的路径（如果你有下载到本地的话）。</p>
+<p>导入播放列表只是一个反过来的过程。首先你要有一个类似于上面 txt 的导出文档，然后在 文件-资料库 选择导入播放列表即可。这个 txt 是可以由我们自己制作的，所以我们可以看到很多可能性。</p>
+<p>重点在这里：这个 txt 的构成需要类似于你导出的那些 txt，即第一行是表头；从第二行开始是每首曲子的信息。表头<strong>不能缺项</strong>，但是顺序不重要。不同的项之间用 tab 隔开。没有信息的项用 tab 留空即可。并不是所有的信息都是必要的，但是：如果你要添加的音乐来自本地磁盘，你需要在「位置」这一项指明文件路径；如果你要添加 Apple Music 里的音乐，那么位置这里可以保持空白，但你需要在「种类」这里指明是 <code>Apple Music AAC 音频文件</code>，并保证「名称」这一项正确。</p>
+<h2 id="自动生成上文所述的-txt">自动生成上文所述的 txt</h2>
+<p>假设你有一个文件夹，里面包含了你喜欢的一大堆音乐，这些音乐你想要把它们作为一个播放列表添加进 iTunes 里，应该怎么做？</p>
+<p>（当然可以直接添加文件/文件夹到资料库，但这里说的是用 txt 文件来导入的方法，看到后面你会知道为什么要这样）</p>
+<p>像上面说的，你只需要创建一个 txt，第一行是表头，然后在下面每一行填上歌曲信息，然后在 iTunes 里导入就完事了。一首两首问题倒是不大，歌曲多起来呢？</p>
+<p>注意，我上面说了，并不是每个信息都是必要的，事实上，如果你要从本地磁盘导入音乐，<strong>只需要歌曲文件路径就够了</strong> 。OK，这种重复性的工作在 Windows 上一个批处理脚本就完事了，在 Mac 上我相信有更多的工具可以完成，比如 Automator 啥的。</p>
+<p>新建一个文本文件，在里面键入：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-built_in">echo</span> 位置 名称  艺人  作曲  专辑  归类  作品  乐章编号    乐章  乐章名称    类型  大小  时间  光盘编号    光盘统计    音轨编号    音轨统计    年份  修改日期    添加日期    比特  采样速率    音量调整    种类  均衡  注释  播放次数    上次播放时间  跳过次数    上次跳过时间  我的评分  &gt; PlayList.txt<br><span class="hljs-keyword">for</span> %%s <span class="hljs-keyword">in</span> (*.mp3 *.aac) <span class="hljs-keyword">do</span> (<span class="hljs-built_in">echo</span> %<span class="hljs-built_in">cd</span>%\%%s&gt;&gt;PlayList.TXT)<br></code></pre></td></tr></table></figure>
+<p>另存为 <code>GenPlayList.bat</code> 。把这个文件放在存储了音乐的文件夹里，双击运行，就会生成一个叫 <code>PlayList.txt</code> 的文件，把这个文件名改成 <code>你要的播放列表名.txt</code>，去 iTunes 里选择这个文件导入就好了。在导入的播放列表里全选右键就能全部上传到 iCloud 音乐资料库。</p>
+<h2 id="网易云音乐这边的事">网易云音乐这边的事</h2>
+<p>到此之前都没有说到网易云，但其实整个思路已经很明显了：我们只需要从网易云里面把对应的播放列表里的歌全部下载下来，然后做一个 txt 往 iTunes 里面一导入就完事了，再借助 iCloud 音乐资料库即可把音乐传到云端，那么在哪里都能听。</p>
+<p>其实网易云只扮演了下载工具这个角色。但是我发现网易云音乐（我在用的版本）有一个比较好的点：当你下载了音乐之后，如果把音乐文件移动到了下载目录的子目录里，那么网易云音乐仍然能够找到下载文件的位置。这为我们手动管理音乐创造了条件。</p>
+<h2 id="来看一个实际操作的例子">来看一个实际操作的例子</h2>
+<p>设想这么一个场景：目前你的电脑上网易云音乐没有下载任何音乐（也就是目前你的网易云音乐下载目录空空如也），你突然对一个歌单（名字叫「简直是为我而建的歌单」）很感兴趣，决定把它导进 Apple Music，但是你发现你听的歌都很小众，Apple Music 完全不能理解，所以不能用我之前介绍的 Workflow 来做，该怎么办？我描述一下解决过程。</p>
+<ol>
+<li>首先在网易云音乐中播放列表页点击 下载全部，然后一首一首的歌就出现在了你的网易云音乐下载目录里。</li>
+<li>把上文提到的那个 <code>GenPlayList.bat</code> 文件也放在下载目录里，双击运行。</li>
+<li>把生成的 <code>PlayList.txt</code> 改名为 <code>简直是为我而建的歌单.txt</code> 。</li>
+<li>在 iTunes 中选择导入播放列表，使用上面的 <code>简直是为我而建的歌单.txt</code> 。</li>
+<li>iTunes 里出现了这个歌单！全选这个歌单里的歌曲，右键点击「添加到 iCloud 音乐资料库」。</li>
+<li>然后去网易云音乐下载目录里创建一个文件夹，名字叫「 简直是为我而建的歌单」。</li>
+<li>把你下载的音乐剪切-粘贴到第 6 步创建的文件夹里。</li>
+<li>检查一下网易云音乐里这个歌单的下载情况，仍然显示的已下载。这时候你的网易云音乐下载目录里除了有一个名字叫「 简直是为我而建的歌单」的文件夹外别无他物，非常整洁。</li>
+<li>Perfect！</li>
+</ol>
+<p><img src="https://i.yecdn.com/images/2018/12/29/1723eb3f470733283176c4a2f6156860.gif" alt="导入过程演示"></p>
+<p>等等，如果后来网易云音乐歌单里又添加了一些歌曲进去呢？我要如何 <strong>增量地导入这些歌曲</strong>？</p>
+<p>OK，其实与上面的步骤大同小异。</p>
+<h2 id="增量导入">增量导入</h2>
+<ol>
+<li>
+<p>在网易云音乐中点击全部下载。你会发现后来你添加的歌曲出现在了网易云音乐下载目录中。</p>
+</li>
+<li>
+<p>执行上面的 1-5 步，你会发现 iTunes 里出现了一个重复的播放列表，其中一个里面包含了你新添加的歌曲。全选这些新添加的歌曲，右键添加到播放列表，OK，这些歌曲就出现在了你上次创建的播放列表里。这时候 iTunes 里的播放列表又与网易云里一样了，嗯嗯不错。</p>
+</li>
+<li>
+<p>去把你网易云音乐下载目录里的音乐文件扔进上次创建的「 简直是为我而建的歌单」文件夹里。Done！</p>
+</li>
+</ol>
+<p><img src="https://i.yecdn.com/images/2018/12/25/2fffb4237d8ac49196409b200bb2eff7.gif" alt="增量导入"></p>
+<h1 id="参考文章">参考文章</h1>
+<p><a target="_blank" rel="noopener" href="https://sspai.com/post/36548">用 Workflow 从网易云音乐迁移数据至 Apple Music 或 Spotify | Matrix 精选</a></p>
+<p><a target="_blank" rel="noopener" href="https://sspai.com/post/44085">利用 iTunes 来导入网易云音乐歌单到 Apple Music</a></p>
+<p><a target="_blank" rel="noopener" href="https://www.bilibili.com/read/cv1424685/">【干货】如何将网易云歌单导入 Apple music</a></p>
+<p>PS: 最后这个链接现在打开会直接跳转 error ，可以通过 Google Cache 或 <a target="_blank" rel="noopener" href="https://archive.org/web/">Internet Archive</a> 来访问此链接</p>
+
+                    </article>
+                    
+    <blockquote class="post-license">
+        <p>
+            <strong>本文作者&nbsp;:&nbsp;Edison Jwa</strong>
+            <br>
+            <strong>
+            
+                本文使用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">署名-非商业性使用-相同方式共享 4.0 国际 (CC BY-NC-SA 4.0)</a> 协议
+            </strong>
+            <br>
+            <strong>本文链接&nbsp;:&nbsp;</strong><a href="https://www.wevg.org/archives/netease-to-apple-music/">https://www.wevg.org/archives/netease-to-apple-music/</a>
+        </p>
+    </blockquote>
+
+
+
+    <blockquote id="date-expire-notification" class="post-expired-notify">本文最后更新于 <span id="date-expire-num"></span> 天前，文中所描述的信息可能已发生改变</blockquote>
+    <script>
+    (function() {
+        var dateUpdate = Date.parse("2020-04-25");
+        var nowDate = new Date();
+        var a = nowDate.getTime();
+        var b = a - dateUpdate;
+        var daysUpdateExpire = Math.floor(b/(24*3600*1000));
+        if (daysUpdateExpire >= 120) {
+            document.getElementById('date-expire-num').innerHTML = daysUpdateExpire;
+        } else {
+            document.getElementById('date-expire-notification').style.display = 'none';
+        }
+    })();
+    </script>
+
+
+<p class="post-footer-info mb-0 pt-0">本文发表于&nbsp;<time datetime="2018-12-25T10:55:53.000Z" itemprop="datePublished">2018-12-25</time>
+
+    , 最后修改于&nbsp;<time datetime="2020-04-25T12:35:19.000Z" itemprop="dateModified">2020-04-25</time>
+
+</p>
+<p class="post-footer-info mb-0 pt-2">
+
+<span class="post-categories-list mt-2">
+
+<a class="post-categories-list-item" href='/categories/Tech/'>Tech</a>
+
+</span>
+
+
+
+<span class="post-tags-list mt-2">
+
+<a class="post-tags-list-item" href="/tags/Music/" rel="tag">#&nbsp;Music</a>
+
+<a class="post-tags-list-item" href="/tags/Apple-Music/" rel="tag">#&nbsp;Apple Music</a>
+
+<a class="post-tags-list-item" href="/tags/Netease-Music/" rel="tag">#&nbsp;Netease Music</a>
+
+<a class="post-tags-list-item" href="/tags/Workflow/" rel="tag">#&nbsp;Workflow</a>
+
+<a class="post-tags-list-item" href="/tags/Tampermonkey/" rel="tag">#&nbsp;Tampermonkey</a>
+
+<a class="post-tags-list-item" href="/tags/Excel/" rel="tag">#&nbsp;Excel</a>
+
+<a class="post-tags-list-item" href="/tags/Bat/" rel="tag">#&nbsp;Bat</a>
+
+</span>
+
+
+</p>
+
+                </div>
+                <div class="post-nav px-2 bg-gray">
+<ul class="pagination">
+    <!-- Prev Nav -->
+    
+        <li class="page-item page-prev">
+            <a href="/archives/thanks-2018/" rel="prev">
+                <div class="page-item-title"><i class="icon icon-back" aria-hidden="true"></i></div>
+                <div class="page-item-subtitle">2018 年终总结(重制版)</div>
+            </a>
+        </li>
+    
+
+    <!-- Next Nav -->
+    
+        <li class="page-item page-next">
+            <a href="/archives/enable-windows-sandbox/" rel="next">
+                <div class="page-item-title"><i class="icon icon-forward" aria-hidden="true"></i></div>
+                <div class="page-item-subtitle">启用 Windows Sandbox</div>
+            </a>
+        </li>
+    
+</ul>
+</div>
+
+                
+                    <!-- # Comment # -->
+                    
+                        <div class="card-footer post-comment">
+                            <div id="disqus_thread"></div>
+
+<script id="js-disqusjs" src="https://cdn.jsdelivr.net/npm/disqusjs@1.2.5/dist/disqus.js" async></script>
+<script>
+document.getElementById('js-disqusjs').addEventListener('load', function () {
+    function loadDisqusJS() {
+        new DisqusJS({
+            shortname: 'edisonj',
+            
+            siteName: 'Vigorous Pro',
+            
+            identifier: 'https://www.wevg.org/archives/netease-to-apple-music/',
+            url: 'https://www.wevg.org/archives/netease-to-apple-music/',
+            api: 'https://disqus.uv.uy/api/',
+            apikey: 'vBTqc5gYirQfuj9STIAANtQCArVi9MN8UZ72UUucwnhus4AhpgpbVJMIn3Ojl4O7',
+            
+            
+        })
+    }
+    if (document.readyState === 'complete') {
+        loadDisqusJS();
+    } else {
+        window.addEventListener('load', loadDisqusJS);
+    }
+});
+</script>
+
+                        </div>
+                    
+                
+            </div>
+        </div>
+    </div>
+</div>
+
+            <!-- ### Footer ### -->
+            <footer class="text-center">
+    <!-- footer copyright -->
+    
+        <p class="footer-copyright mb-0">Copyright&nbsp;©&nbsp;<span id="copyright-year"></span>
+            <a class="footer-copyright-a" href="https://www.wevg.org">Vigorous Pro</a>
+        </p>
+
+    <!-- footer custom text -->
+    <p class="footer-text mb-0">
+    <a href="/atom.xml" target="_blank" class="footer-develop-a" rel="nofollow noopener noreferrer">RSS</a><span class="footer-develop-divider"></span><a href="https://donate.edison.do" target="_blank" class="footer-develop-a" rel="nofollow noopener noreferrer">Donate</a><span class="footer-develop-divider"></span><a href="/privacy-policy" target="_blank" class="footer-develop-a" rel="nofollow noopener noreferrer">Privacy Policy</a>
+    </p>
+    <!-- footer develop info -->
+    <p class="footer-develop mb-0">
+        
+
+        
+        Powered by&nbsp;<!--
+         --><a href="https://hexo.io" target="_blank" class="footer-develop-a" rel="external nofollow noopener noreferrer">Hexo</a><span class="footer-develop-divider"></span>Theme&nbsp;-&nbsp;<!--
+         --><a href="https://github.com/SukkaW/hexo-theme-suka" target="_blank" class="footer-develop-a" rel="external noopener">Suka</a>
+    </p>
+</footer>
+
+
+        <!-- ### Import File ### -->
+        <!-- ### Footer JS Import ### -->
+
+<script>
+
+    
+window.lazyLoadOptions = {
+    elements_selector: ".lazyload",
+    threshold: 50
+};
+
+(function() {
+    var copyrightNow = new Date().getFullYear();
+    var copyrightContent = document.getElementById('copyright-year');
+    var copyrightSince = 2015;
+    if (copyrightSince === copyrightNow) {
+        copyrightContent.textContent = copyrightNow;
+    } else {
+        copyrightContent.textContent = copyrightSince + ' - ' + copyrightNow;
+    }
+})();
+console.log('\n %c Suka Theme (hexo-theme-suka) | © SukkaW | Verision 1.3.3 %c https://github.com/SukkaW/hexo-theme-suka \n', 'color: #fff; background: #444; padding:5px 0;', 'background: #bbb; padding:5px 0;');
+
+</script>
+
+<script src="https://cdn.jsdelivr.net/npm/vanilla-lazyload@12.3.0" async></script>
+
+
+
+<!-- Comment -->
+
+    
+        <!-- No need for DisqusJS -->
+    
+
+
+<!-- ### Custom Footer ### -->
+<script> if ('serviceWorker' in navigator) { window.addEventListener('load', () => { navigator.serviceWorker.register('/sw.js'); }) } </script><script>window.ga_tid = "UA-106121780-1";window.ga_api = "https://ga.cdn.uv.uy/jquery.js"; </script><script src="https://cdn.jsdelivr.net/gh/EdisonJwa/Blog@master/js/main.js" async></script>
+    </body>
+
+</html>

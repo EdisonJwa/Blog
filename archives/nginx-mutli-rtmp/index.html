@@ -1,0 +1,642 @@
+<!DOCTYPE html>
+
+<html lang="zh-CN">
+    <head>
+    <meta charset="utf-8">
+    <!--
+        hexo-theme-suka © SukkaW
+        GitHub: https://github.com/SukkaW/hexo-theme-suka
+    -->
+
+    <!-- ### Resource Hint ### -->
+
+    <!-- ## DNS Prefetch ## -->
+    <meta http-equiv="x-dns-prefetch-control" content="on">
+
+<!-- busuanzi -->
+
+
+<!-- comment -->
+
+
+
+
+
+
+
+<!-- analytics -->
+
+
+
+
+
+
+
+    <!-- ## Preload ## -->
+    
+
+
+
+
+    <!-- ### Meta & Title & Info ### -->
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, minimum-scale=1, initial-scale=1, maximum-scale=5, viewport-fit=cover">
+    <meta name="renderer" content="webkit">
+
+    <!-- Title -->
+    <title>使用 Nginx 多平台同步直播 | Vigorous Pro</title>
+
+    <!-- Favicons -->
+    <link rel="icon" type="image&#x2F;ico" href="/favicon.ico"><link rel="apple-touch-icon" sizes="180x180" href="/source/favicon/apple-touch-icon.png"><link rel="icon" typt="image&#x2F;png" sizes="192x192" href="/source/favicon/android-chrome-192x192.png"><link rel="icon" typt="image&#x2F;png" sizes="32x32" href="/source/favicon/favicon-32x32.png"><link rel="icon" typt="image&#x2F;png" sizes="16x16" href="/source/favicon/favicon-16x16.png"><link rel="mask-icon" href="/safari-pinned-tab.svg" color="">
+
+    <!-- ### Import File ### -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/spectre.css@0.5.3"><style>
+    body {
+        background-color: #f8f9fa;
+    }
+
+    a, a:visited {
+        color: #0070ff;
+    }
+
+    a:active, a:focus, a:hover {
+        color: #0070ff;
+        opacity: .75;
+    }
+
+    #post-content a,
+    #post-content a:hover,
+    #post-content a:focus,
+    #post-content a:visited {
+        color: #005eb9;
+        opacity: 1;
+    }
+
+    
+
+    .post-entry .card-body a {
+        color: #0070ff;
+    }
+
+    .avatar {
+        background: #444;
+    }
+
+    .navbar-link,
+    .navbar-link:visited,
+    .timeline .timeline-item .timeline-icon.icon-lg {
+        color: #0070ff;
+    }
+
+    .navbar-link:hover {
+        color: #0070ff;
+        opacity: .8;
+    }
+
+    #search-input .btn,
+    #disqus_click_btn,
+    #disqus-switch-to-direct,
+    #disqus-loadmore-button {
+        background: #727e96;
+        border-color: #727e96;
+        color: #fff;
+    }
+
+    #post-toc a.post-toc-link,
+    #post-toc a.post-toc-link:visited,
+    .share-menu.menu .menu-item>a {
+        color: #727e96;
+    }
+
+    .share-menu.menu .menu-item>a:hover,
+    .share-menu.menu .menu-item>a:focus,
+    .share-menu.menu .menu-item>a:visited {
+        color: #50596c;
+        background: #f8f9fa;
+        opacity: .85;
+    }
+</style><link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/sukkaw/hexo-theme-suka@latest/source/css/style.min.css">
+
+
+    
+        <!-- Import DisqusJS Default Theme -->
+        <link rel="preload" href="https://cdn.jsdelivr.net/npm/disqusjs@1.2.5/dist/disqusjs.css" as="style" onload="this.onload=null;this.rel='stylesheet'"><noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/disqusjs@1.2.5/dist/disqusjs.css"></noscript>
+
+    
+
+
+
+
+
+
+
+    <!-- Prettify Theme -->
+    
+    <link rel="preload" href="https://cdn.jsdelivr.net/gh/sukkaw/hexo-theme-suka@latest/source/css/highlight/tomorrow-night-eighties.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'"><noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/sukkaw/hexo-theme-suka@latest/source/css/highlight/tomorrow-night-eighties.min.css"></noscript>
+
+
+
+
+
+<script>
+/*! loadCSS. [c]2017 Filament Group, Inc. MIT License */
+!function(t){"use strict";t.loadCSS||(t.loadCSS=function(){});var e=loadCSS.relpreload={};if(e.support=function(){var e;try{e=t.document.createElement("link").relList.supports("preload")}catch(t){e=!1}return function(){return e}}(),e.bindMediaToggle=function(t){var e=t.media||"all";function a(){t.addEventListener?t.removeEventListener("load",a):t.attachEvent&&t.detachEvent("onload",a),t.setAttribute("onload",null),t.media=e}t.addEventListener?t.addEventListener("load",a):t.attachEvent&&t.attachEvent("onload",a),setTimeout(function(){t.rel="stylesheet",t.media="only x"}),setTimeout(a,3e3)},e.poly=function(){if(!e.support())for(var a=t.document.getElementsByTagName("link"),n=0;n<a.length;n++){var o=a[n];"preload"!==o.rel||"style"!==o.getAttribute("as")||o.getAttribute("data-loadcss")||(o.setAttribute("data-loadcss",!0),e.bindMediaToggle(o))}},!e.support()){e.poly();var a=t.setInterval(e.poly,500);t.addEventListener?t.addEventListener("load",function(){e.poly(),t.clearInterval(a)}):t.attachEvent&&t.attachEvent("onload",function(){e.poly(),t.clearInterval(a)})}"undefined"!=typeof exports?exports.loadCSS=loadCSS:t.loadCSS=loadCSS}("undefined"!=typeof global?global:this);
+</script>
+
+    <!-- ### Site Verification ### -->
+    
+
+
+    <link rel="alternate" type="application/atom+xml" href="/atom.xml"><meta name="mobile-web-app-capable" content="yes"><meta name="application-name" content="Vigorous Pro"><meta name="msapplication-starturl" content="https://www.wevg.org"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-title" content="Vigorous Pro"><meta name="apple-mobile-web-app-status-bar-style" content="black-translucent"><link rel="manifest" href="/manifest.json"><link rel="search" type="application/opensearchdescription+xml" href="/opensearch.xml" title="Vigorous Pro">
+
+    <!-- ### The Open Graph & Twitter Card Protocol ### -->
+    <meta property="og:title" content="使用 Nginx 多平台同步直播 | Vigorous Pro"><meta property="og:site_name" content="Vigorous Pro"><meta property="og:type" content="article"><meta property="og:url" content="https://www.wevg.org/archives/nginx-mutli-rtmp/"><meta property="og:locale" content="zh-CN"><meta name="description" content="前一阵，在一位大佬的博客上曾看到过一篇类似的文章，最近突然有朋友想要多平台直播，又找不到之前的，便在网上搜集了一番，整理了一下。这样做的好处是，节省本地带宽，分发给多平台的步骤交给远端的服务器进行处理。 - Edison Jwa - Vigorous Pro"><meta name="keywords" content="Nginx, Debian, rtmp, Live, edisonjwa,game,blog,Web,Html,edison"><meta property="og:image" content="https://cdn.jsdelivr.net/gh/EdisonJwa/Blog@master/source/thumbnail/nginx-mutli-rtmp.png"><meta property="article:published_time" content="2018-12-23T03:42:44.000Z"><meta property="article:modified_time" content="2019-06-02T15:04:13.000Z"><meta property="og:updated_time" content="2019-06-02T15:04:13.000Z"><meta property="article:author" content="Edison Jwa"><meta property="article:tag" content="Nginx, Debian, rtmp, Live, edisonjwa,game,blog,Web,Html,edison"><meta name="twitter:card" content="summary_large_image"><meta name="twitter:image" content="https://cdn.jsdelivr.net/gh/EdisonJwa/Blog@master/source/thumbnail/nginx-mutli-rtmp.png">
+
+    
+
+    <!-- ### Canonical link ### -->
+    <link rel="canonical" href="https://www.wevg.org/archives/nginx-mutli-rtmp/">
+
+    <meta name="generator" content="Hexo 5.4.0">
+
+    <!-- ### Analytics ### -->
+    
+
+
+
+
+
+
+
+    <!-- ### Structured Data ### -->
+    
+
+
+
+<script type="application/ld+json">
+{
+    "@context": "http://schema.org",
+    "url": "https://www.wevg.org/archives/nginx-mutli-rtmp/",
+    "@type": "BlogPosting",
+    "logo": "https://www.wevg.org/source/favicon/android-chrome-192x192.png",
+    "mainEntityOfPage": {
+        "@type": "WebPage",
+        "@id": "https://www.wevg.org/archives/nginx-mutli-rtmp/"
+    },
+    "headline": "使用 Nginx 多平台同步直播 | Vigorous Pro",
+    
+    "image": {
+        "@type": "ImageObject",
+        "url": "https://cdn.jsdelivr.net/gh/EdisonJwa/Blog@master/source/thumbnail/nginx-mutli-rtmp.png"
+    },
+    
+    "datePublished": "2018-12-23T03:42:44.000Z",
+    "dateModified": "2019-06-02T15:04:13.000Z",
+    "author": {
+        "@type": "Person",
+        "name": "Edison Jwa",
+        "image": {
+            "@type": "ImageObject",
+            "url": "https://cdn.jsdelivr.net/gh/EdisonJwa/Blog@master/source/image/avatar.jpg"
+        },
+        "description": "The world can always use more heroes."
+    },
+    "publisher": {
+        "@type": "Organization",
+        "name": "Vigorous Pro",
+        "logo": {
+            "@type": "ImageObject",
+            "url": "https://www.wevg.org/source/favicon/android-chrome-192x192.png"
+        }
+    },
+    
+    "potentialAction": {
+        "@type": "SearchAction",
+        "target": "https://www.wevg.org/search?s={search_term_string}",
+        "query-input": "required name=search_term_string"
+    },
+    
+    "keywords": "Nginx, Debian, rtmp, Live, edisonjwa,game,blog,Web,Html,edison",
+    "description": "前一阵，在一位大佬的博客上曾看到过一篇类似的文章，最近突然有朋友想要多平台直播，又找不到之前的，便在网上搜集了一番，整理了一下。这样做的好处是，节省本地带宽，分发给多平台的步骤交给远端的服务器进行处理。 - Edison Jwa - Vigorous Pro"
+}
+</script>
+
+
+
+    <!-- ### Custom Head ### -->
+    <!-- EdisonJwas Blog --><script data-ad-client="ca-pub-2345785306567671" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script><link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/EdisonJwa/Blog@latest/css/darkmode.min.css"><script src="https://cdn.jsdelivr.net/gh/EdisonJwa/Blog@master/js/edison-main.min.js"></script><script type="module" async="" src="https://cdn.jsdelivr.net/npm/instant.page@3.0.0/instantpage.min.js"></script><link rel="manifest" href="/site.webmanifest"><meta name="msapplication-TileColor" content="#d43d3d"><meta name="msapplication-TileImage" content="/source/favicon/mstile-144x144.png"><meta name="theme-color" content="#ffffff"><script type="text/javascript">function downloadJSAtOnload(){var d=document.createElement("script");d.src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js",document.body.appendChild(d)}window.addEventListener?window.addEventListener("load",downloadJSAtOnload,!1):window.attachEvent?window.attachEvent("onload",downloadJSAtOnload):window.onload=downloadJSAtOnload;</script><!-- Global site tag (gtag.js) - Google Analytics --><script async src="https://www.googletagmanager.com/gtag/js?id=G-S2SFLD81VT"></script><script>window.dataLayer = window.dataLayer || [];function gtag(){dataLayer.push(arguments);} gtag('js', new Date()); gtag('config', 'G-S2SFLD81VT');</script><!-- Cloudflare Web Analytics --><script defer src=https://static.cloudflareinsights.com/beacon.min.js ; data-cf-beacon="{&quot;token&quot;: 1ebb36a2c023408484ff114c409377b8}"></script><!-- End Cloudflare Web Analytics -->
+<style type="text/css">
+.spoiler {
+  display: inline-flex;
+}
+p.spoiler {
+  display: flex;
+}
+.spoiler a {
+  pointer-events: none;
+}
+.spoiler-blur, .spoiler-blur > * {
+  transition: text-shadow .5s ease;
+}
+.spoiler .spoiler-blur, .spoiler .spoiler-blur > * {
+  color: rgba(0, 0, 0, 0);
+  background-color: rgba(0, 0, 0, 0);
+  text-shadow: 0 0 10px grey;
+  cursor: pointer;
+}
+.spoiler .spoiler-blur:hover, .spoiler .spoiler-blur:hover > * {
+  text-shadow: 0 0 5px grey;
+}
+.spoiler-box, .spoiler-box > * {
+  transition: color .5s ease,
+  background-color .5s ease;
+}
+.spoiler .spoiler-box, .spoiler .spoiler-box > * {
+  color: black;
+  background-color: black;
+  text-shadow: none;
+}</style></head>
+
+    <body>
+            
+
+            <!-- ### Main content ### -->
+            <!-- ## Header ##-->
+<header>
+    <h1 class="header-title text-center"><a href="/">Vigorous Pro</a></h1>
+
+    <p class="text-center header-slogan">
+        
+            
+                The world can always use more heroes.
+            
+        
+    </p>
+
+    <nav class="navbar-section text-center">
+    
+        <a href="/" class="navbar-link">首页</a>
+    
+    
+        <a href="/archives/" class="navbar-link">归档</a>
+    
+    
+        <a href="/search" class="navbar-link">搜索</a>
+    
+    
+        <a target="_blank" rel="noopener" href="https://uv.uy" class="navbar-link">关于</a>
+    
+        <a href="/friends/" class="navbar-link">友链</a>
+    
+    
+    
+</nav>
+</header>
+
+            
+    <!-- ## Post ## -->
+    <div class="post-container">
+    <div id="post-card" class="card">
+        
+            <div class="card-image lazyload" data-bg="url('https://cdn.jsdelivr.net/gh/EdisonJwa/Blog@master/source/thumbnail/nginx-mutli-rtmp.png')"></div>
+        
+        <div class="card-item-container">
+            <div class="card-inner-cell">
+                <!-- # Post Header Info # -->
+                <div class="card-header">
+                    
+    <h1 class="card-title h3 mb-2">使用 Nginx 多平台同步直播</h1>
+
+
+
+
+<div class="post-header-info">
+    <p class="post-header-info-left text-gray">
+        <img class="author-thumb lazyload" data-src="https://cdn.jsdelivr.net/gh/EdisonJwa/Blog@master/source/image/avatar.jpg" src="https://cdn.jsdelivr.net/gh/sukkaw/hexo-theme-suka@latest/source/img/suka-lazyload.gif" alt="Edison Jwa's Avatar">
+        <span>2018-12-23</span>
+        
+            <span class="suka-devide-dot"></span>
+            <a class="category-link" href="/categories/Tech/">Tech</a><span class="suka-devide-dot"></span><a class="category-link" href="/categories/Tech/Linux/">Linux</a>
+        
+        
+        
+    </p>
+    <div class="post-header-info-right">
+        
+            <div class="dropdown dropdown-right">
+<a class="dropdown-toggle" tabindex="0">分享本文</a>
+<ul class="menu share-menu">
+    <!-- Share Weibo -->
+    
+    <li class="menu-item">
+        <a href="http://service.weibo.com/share/share.php?appkey=&title=使用 Nginx 多平台同步直播&url=https://www.wevg.org/archives/nginx-mutli-rtmp/&pic=https://cdn.jsdelivr.net/gh/EdisonJwa/Blog@master/source/thumbnail/nginx-mutli-rtmp.png&searchPic=false&style=simple" target="_blank" rel="external noopener noreferrer nofollow">分享到微博</a>
+    </li>
+    
+
+    <!-- Share Twitter -->
+    
+    <li class="menu-item">
+        <a href="https://twitter.com/intent/tweet?text=使用 Nginx 多平台同步直播&url=https://www.wevg.org/archives/nginx-mutli-rtmp/&via=Edison Jwa" target="_blank" rel="external noopener noreferrer nofollow">分享到 Twitter</a>
+    </li>
+    
+
+    <!-- Share Facebook -->
+    
+    <li class="menu-item">
+        <a href="https://www.facebook.com/sharer/sharer.php?u=https://www.wevg.org/archives/nginx-mutli-rtmp/" target="_blank" rel="external noopener noreferrer nofollow">分享到 Facebook</a>
+    </li>
+    
+
+    <!-- Share Google+ -->
+    
+    <li class="menu-item">
+        <a href="https://plus.google.com/share?url=https://www.wevg.org/archives/nginx-mutli-rtmp/" target="_blank" rel="external noopener noreferrer nofollow">分享到 Google+</a>
+    </li>
+    
+
+    <!-- Share LinkedIn -->
+    
+    <li class="menu-item">
+        <a href="https://www.linkedin.com/shareArticle?mini=true&url=https://www.wevg.org/archives/nginx-mutli-rtmp/&title=Vigorous Pro" target="_blank" rel="external noopener noreferrer nofollow">分享到 LinkedIn</a>
+    </li>
+    
+
+    <!-- Share QQ -->
+    
+    <li class="menu-item">
+        <a href="http://connect.qq.com/widget/shareqq/index.html?site=Vigorous Pro&title=Vigorous Pro&summary=The world can always use more heroes.&pics=https://cdn.jsdelivr.net/gh/EdisonJwa/Blog@master/source/thumbnail/nginx-mutli-rtmp.png&url=https://www.wevg.org/archives/nginx-mutli-rtmp/" target="_blank" rel="external noopener noreferrer nofollow"> 分享到 QQ</a>
+    </li>
+    
+
+    <!-- Share Telegram -->
+    
+    <li class="menu-item">
+        <a href="https://t.me/share/url?url=https://www.wevg.org/archives/nginx-mutli-rtmp/&text=Vigorous Pro" target="_blank" rel="external noopener noreferrer nofollow">分享到 Telegram</a>
+    </li>
+    
+
+    <!-- QRCode -->
+    
+    <li class="menu-item">
+        <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAJQAAACUCAAAAABQV18IAAAB2klEQVR42u3bQZLDIAxEUd//0sk2RUDdcljgzvcmU84MPFdhQBJzvQ68LlCgQIGaoK7iGr+f/f5nO+PP472qH1BZqOmgKzoZkeO9WbtWP6CiULMBPf7xCloO3gV++jKA+gvU6tN9kM7DgwK16th9MUBlo1YL5dh4Z9GuHuanXQKo41EqcNj1uTWaAXUsSiYdmgvzLHDdnnUBdTRqtcC6iYzZ99W9sj1QcahOg07wqQLbr/ugolCrTb8ThKoXpHqZQOWi7gSk1QBWAQOoXFQnmFwNetWG/QKAikCphpzJ1JlQrWQHqAiUu8C6jTttyE0eqEej3A5UAkwVLK0FGlQkShWiu0kRd2EHlYVSSS034eEWm6zJE9RjUd2DDyrRUQWncqMIKhrlTqTyAISYdMsiJKhHoqrDo52CYnfQWwUjUDEotcFzBnX3QBioHJTbmXtowpmQt+wSQB2PqhJfq6TXzuI3qBxUNWnePvRg/lNGmTQD9ViUPLwnFurOQJbfgYpAdQ80d+5tT8SCegzKWZSdANUtgC/7ARWFqgZ4Z3L8ZVEG9R+obgFIBbTtyiioSJRKqFZJDnXoBlQu6m6SQxWQnIM3oPJQKnBQA7VzAKd8eFARqJMuUKBAgfq43qc8gD+kUwycAAAAAElFTkSuQmCC" alt="QRCode">
+    </li>
+    
+
+</ul>
+</div>
+        
+    </div>
+</div>
+                </div>
+                <div class="card-body">
+                    
+                        
+                        
+                            <div id="post-toc"><ol class="post-toc"><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#%E5%87%86%E5%A4%87%E5%B7%A5%E4%BD%9C"><span class="post-toc-number">1.</span> <span class="post-toc-text">准备工作</span></a></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#%E4%BD%BF%E7%94%A8%E5%8C%85%E7%AE%A1%E7%90%86%E5%AE%89%E8%A3%85%E7%9A%84-nginx"><span class="post-toc-number">2.</span> <span class="post-toc-text">使用包管理安装的 Nginx</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#ond%C5%99ej-sur%C3%BD-%E7%9A%84-ppa"><span class="post-toc-number">2.1.</span> <span class="post-toc-text">Ondřej Surý 的 PPA</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E5%AF%B9%E4%BA%8E-ubuntu-%E7%B3%BB%E5%88%97%EF%BC%9A"><span class="post-toc-number">2.1.1.</span> <span class="post-toc-text">对于 Ubuntu 系列：</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E5%AF%B9%E4%BA%8E-debian-%E7%B3%BB%E5%88%97%EF%BC%9A"><span class="post-toc-number">2.1.2.</span> <span class="post-toc-text">对于 Debian 系列：</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#%E7%83%A7%E9%A5%BC%E5%8D%9A%E5%AE%A2%E5%A4%A7%E4%BD%AC%E6%89%93%E5%8C%85%E7%9A%84-nginx"><span class="post-toc-number">2.2.</span> <span class="post-toc-text">烧饼博客大佬打包的 Nginx</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#%E4%BD%BF%E7%94%A8%E6%96%B9%E6%B3%95"><span class="post-toc-number">2.2.1.</span> <span class="post-toc-text">使用方法</span></a></li></ol></li></ol></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#%E5%AE%89%E8%A3%85-rtmp-%E6%A8%A1%E5%9D%97"><span class="post-toc-number">3.</span> <span class="post-toc-text">安装 rtmp 模块</span></a></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#%E9%85%8D%E7%BD%AE-nginx"><span class="post-toc-number">4.</span> <span class="post-toc-text">配置 Nginx</span></a></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#%E6%B5%8B%E8%AF%95-rtmp-%E6%9C%8D%E5%8A%A1%E5%99%A8%E9%85%8D%E7%BD%AE"><span class="post-toc-number">5.</span> <span class="post-toc-text">测试 RTMP 服务器配置</span></a></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#%E9%85%8D%E7%BD%AE-obs-%E6%8E%A8%E6%B5%81"><span class="post-toc-number">6.</span> <span class="post-toc-text">配置 OBS 推流</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#%E5%8F%82%E8%80%83%E6%96%87%E7%AB%A0"><span class="post-toc-number">6.1.</span> <span class="post-toc-text">参考文章</span></a></li></ol></li></ol></div>
+                        
+                    
+                    <article id="post-content">
+                        <p>前一阵，在一位大佬的博客上曾看到过一篇类似的文章，最近突然有朋友想要多平台直播，又找不到之前的，便在网上搜集了一番，整理了一下。这样做的好处是，节省本地带宽，分发给多平台的步骤交给远端的服务器进行处理。<span id="more"></span></p>
+<h1 id="准备工作">准备工作</h1>
+<p><em>如果您已经安装好 Nginx 和 nginx-rtmp-module 可以跳过此部分</em></p>
+<h1 id="使用包管理安装的-nginx">使用包管理安装的 Nginx</h1>
+<p>因为我已经安装过 Nginx，使用的是<strong>使用包管理安装的 Nginx</strong>，您也可以选择<strong>编译安装</strong>的方式进行，因为本人太菜，每次进行编译都会出错，所以此处不在阐述。Nginx 官方有打包好的 Nginx 可以直接通过 <code>apt-get install nginx -y</code> 完成安装，但是这样做的后果是你安装的是一个可能非常老旧和充满隐患的 Nginx （此部分摘自 <a target="_blank" rel="noopener" href="https://dcc.cat">DCC大佬</a> 的博客）</p>
+<h2 id="ondřej-surý-的-ppa">Ondřej Surý 的 PPA</h2>
+<p>更新非常快速，而且做的质量也非常好。</p>
+<h3 id="对于-ubuntu-系列："><strong>对于 Ubuntu 系列：</strong></h3>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">add-apt-repository ppa:ondrej/nginx-mainline -y<br></code></pre></td></tr></table></figure>
+<h3 id="对于-debian-系列："><strong>对于 Debian 系列：</strong></h3>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs bash">wget -O /etc/apt/trusted.gpg.d/nginx-mainline.gpg https://packages.sury.xyz/nginx-mainline/apt.gpg<br><br>cat &gt;&gt; /etc/apt/sources.list.d/nginx.list &lt;&lt; <span class="hljs-string">EOF</span><br><span class="hljs-string">deb https://packages.sury.xyz/nginx-mainline/ $(lsb_release -sc) main</span><br><span class="hljs-string">EOF</span><br></code></pre></td></tr></table></figure>
+<p>然后我们更新系统、安装必要组件和 Nginx 本身：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">apt update &amp;&amp; apt install nginx-extras -y<br></code></pre></td></tr></table></figure>
+<p>查看 Nginx 版本和参数和安装目录</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs bash">nginx -V<br>whereis nginx<br></code></pre></td></tr></table></figure>
+<h2 id="烧饼博客大佬打包的-nginx">烧饼博客大佬打包的 Nginx</h2>
+<p>使用最新 OpenSSL 编译，支持 TLS 1.3, GeoIP2, brotli 压缩等</p>
+<h3 id="使用方法">使用方法</h3>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs bash">curl https://mirror.xtom.com/sb/nginx/public.key | apt-key add -<br><span class="hljs-built_in">echo</span> <span class="hljs-string">&quot;deb http://mirror.xtom.com/sb/nginx stretch main&quot;</span> &gt; /etc/apt/sources.list.d/sb-nginx.list<br>apt update<br>apt install nginx-extras<br></code></pre></td></tr></table></figure>
+<p>安装成功后使用 <code>nginx -V</code> 查看信息</p>
+<p>完成 Nginx 的安装后，接下来安装 rtmp 模块</p>
+<h1 id="安装-rtmp-模块">安装 rtmp 模块</h1>
+<p>debian 9 用户可以直接使用 apt 安装，需<strong>启用 stretch-backports 源</strong>:</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">apt install libnginx-mod-rtmp libnginx-mod-http-lua -t stretch-backports<br></code></pre></td></tr></table></figure>
+<p>安装完成后，准备阶段就结束了，下面开始配置 Nginx。</p>
+<h1 id="配置-nginx">配置 Nginx</h1>
+<p>打开 nginx.conf 在文件中添加以下部分</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><code class="hljs conf">rtmp &#123;							#RTMP服务<br>    server&#123;<br>        listen 1935;			#服务端口<br>        chunk_size 10240;		#数据传输块的大小<br><br>        application live &#123;		#直播<br>            live on;<br>            record off;<br>            on_publish http:&#x2F;&#x2F;YOUR_SERVERNAME:2080&#x2F;auth;<br>            push rtmp:&#x2F;&#x2F;live.twitch.tv&#x2F;app&#x2F;YOUR_LIVE_API;	#RTMP直播地址1<br>            push rtmp:&#x2F;&#x2F;a.rtmp.youtube.com&#x2F;YOUR_LIVE_API;	#RTMP直播地址2<br>         <br>        &#125;<br>    &#125;<br>&#125;  <br></code></pre></td></tr></table></figure>
+<p>替换上方的 RTMP直播地址需要自己进行替换，现在我们完成了服务器上的分流部分</p>
+<p>接下来，我们配置一个 http 服务器，此部分与平时配置网站 conf 的过程比较类似</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><code class="hljs conf">server &#123;<br>        listen 2080; #此处可自定义<br>        <br>        server_name YOUR_SERVERNAME;<br>        location &#x2F;auth &#123;<br>            rewrite_by_lua &#39;<br>                ngx.req.read_body()<br>                local name &#x3D; ngx.req.get_post_args().name<br>                if (name &#x3D;&#x3D; &quot;xxxYOUR_UUID&quot;) then<br>                    ngx.status &#x3D; 200<br>                    ngx.say(&quot;OK&quot;)<br>                    ngx.exit(200)<br>                else<br>                    ngx.status &#x3D; 403<br>                    ngx.say(&quot;Forbidden&quot;)<br>                    ngx.exit(403)<br>                end<br>            &#39;;<br>        &#125;<br>    &#125;<br></code></pre></td></tr></table></figure>
+<p>此处的 <code>xxxYOUR_UUID</code> 是我们使用 OBS 推流时候的&quot;流名称&quot;，可以使用 <a target="_blank" rel="noopener" href="https://www.uuidgenerator.net/">UUID Generator</a> 进行生成。</p>
+<p><strong>经测试不能加 TLS</strong></p>
+<h1 id="测试-rtmp-服务器配置">测试 RTMP 服务器配置</h1>
+<p>启动 Nginx 服务后，在服务器上执行下面的命令：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">curl -0 http://127.0.0.1:2080/auth -d <span class="hljs-string">&quot;name=xxxYOUR_UUID&quot;</span><br></code></pre></td></tr></table></figure>
+<p><code>xxxYOUR_UUID</code> 替换成前面生成的 UUID，应该输出 OK，再把 <code>xxxYOUR_UUID</code> 换成一个错误的，应该输出 Forbidden。</p>
+<h1 id="配置-obs-推流">配置 OBS 推流</h1>
+<p>如果身份验证没有问题，我们就可以使用 OBS 来推流了。</p>
+<p>在 OBS 设置中选择“<strong>自定义流媒体服务器</strong>”，URL 填入 <code>rtmp://YOUR_SERVERNAME/live</code> (<code>YOUR_SERVERNAME</code> 是推流服务器的 IP或域名), 流名称填入我们前面生成的 UUID。</p>
+<p>设置好后单击 OBS上的“<strong>开始推流</strong>”，不出意外的话就可以同时向我们设置的平台推流了。</p>
+<h2 id="参考文章">参考文章</h2>
+<p><a target="_blank" rel="noopener" href="https://dcc.cat/lemp/">Debian / Ubuntu 环境下 LEMP 建站解析</a></p>
+<p><a target="_blank" rel="noopener" href="https://github.com/arut/nginx-rtmp-module">arut/nginx-rtmp-module</a></p>
+<p><a target="_blank" rel="noopener" href="https://github.com/illuspas/nginx-rtmp-win32">illuspas/nginx-rtmp-win32</a></p>
+<p><a target="_blank" rel="noopener" href="https://blog.nanpuyue.com/2018/047.html">借助 Nginx 搭建带简单认证的直播推流服务器，实现多平台同步直播</a></p>
+<p><a target="_blank" rel="noopener" href="https://blog.52itstyle.com/archives/2254/">Nginx学习之配置RTMP模块搭建推流服务</a></p>
+<p><a target="_blank" rel="noopener" href="https://www.jianshu.com/p/3224341a205f">直播推流nginx-rtmp-module集成</a></p>
+
+                    </article>
+                    
+    <blockquote class="post-license">
+        <p>
+            <strong>本文作者&nbsp;:&nbsp;Edison Jwa</strong>
+            <br>
+            <strong>
+            
+                本文使用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">署名-非商业性使用-相同方式共享 4.0 国际 (CC BY-NC-SA 4.0)</a> 协议
+            </strong>
+            <br>
+            <strong>本文链接&nbsp;:&nbsp;</strong><a href="https://www.wevg.org/archives/nginx-mutli-rtmp/">https://www.wevg.org/archives/nginx-mutli-rtmp/</a>
+        </p>
+    </blockquote>
+
+
+
+    <blockquote id="date-expire-notification" class="post-expired-notify">本文最后更新于 <span id="date-expire-num"></span> 天前，文中所描述的信息可能已发生改变</blockquote>
+    <script>
+    (function() {
+        var dateUpdate = Date.parse("2019-06-03");
+        var nowDate = new Date();
+        var a = nowDate.getTime();
+        var b = a - dateUpdate;
+        var daysUpdateExpire = Math.floor(b/(24*3600*1000));
+        if (daysUpdateExpire >= 120) {
+            document.getElementById('date-expire-num').innerHTML = daysUpdateExpire;
+        } else {
+            document.getElementById('date-expire-notification').style.display = 'none';
+        }
+    })();
+    </script>
+
+
+<p class="post-footer-info mb-0 pt-0">本文发表于&nbsp;<time datetime="2018-12-23T03:42:44.000Z" itemprop="datePublished">2018-12-23</time>
+
+    , 最后修改于&nbsp;<time datetime="2019-06-02T15:04:13.000Z" itemprop="dateModified">2019-06-03</time>
+
+</p>
+<p class="post-footer-info mb-0 pt-2">
+
+<span class="post-categories-list mt-2">
+
+<a class="post-categories-list-item" href='/categories/Tech/'>Tech</a>
+
+<a class="post-categories-list-item" href='/categories/Tech/Linux/'>Linux</a>
+
+</span>
+
+
+
+<span class="post-tags-list mt-2">
+
+<a class="post-tags-list-item" href="/tags/Nginx/" rel="tag">#&nbsp;Nginx</a>
+
+<a class="post-tags-list-item" href="/tags/Debian/" rel="tag">#&nbsp;Debian</a>
+
+<a class="post-tags-list-item" href="/tags/rtmp/" rel="tag">#&nbsp;rtmp</a>
+
+<a class="post-tags-list-item" href="/tags/Live/" rel="tag">#&nbsp;Live</a>
+
+</span>
+
+
+</p>
+
+                </div>
+                <div class="post-nav px-2 bg-gray">
+<ul class="pagination">
+    <!-- Prev Nav -->
+    
+        <li class="page-item page-prev">
+            <a href="/archives/magic-word/" rel="prev">
+                <div class="page-item-title"><i class="icon icon-back" aria-hidden="true"></i></div>
+                <div class="page-item-subtitle">魔法咒语大全 (整合版)</div>
+            </a>
+        </li>
+    
+
+    <!-- Next Nav -->
+    
+        <li class="page-item page-next">
+            <a href="/archives/ssh-add-mfa/" rel="next">
+                <div class="page-item-title"><i class="icon icon-forward" aria-hidden="true"></i></div>
+                <div class="page-item-subtitle">为 SSH 连接添加两步认证</div>
+            </a>
+        </li>
+    
+</ul>
+</div>
+
+                
+                    <!-- # Comment # -->
+                    
+                        <div class="card-footer post-comment">
+                            <div id="disqus_thread"></div>
+
+<script id="js-disqusjs" src="https://cdn.jsdelivr.net/npm/disqusjs@1.2.5/dist/disqus.js" async></script>
+<script>
+document.getElementById('js-disqusjs').addEventListener('load', function () {
+    function loadDisqusJS() {
+        new DisqusJS({
+            shortname: 'edisonj',
+            
+            siteName: 'Vigorous Pro',
+            
+            identifier: 'https://www.wevg.org/archives/nginx-mutli-rtmp/',
+            url: 'https://www.wevg.org/archives/nginx-mutli-rtmp/',
+            api: 'https://disqus.uv.uy/api/',
+            apikey: 'vBTqc5gYirQfuj9STIAANtQCArVi9MN8UZ72UUucwnhus4AhpgpbVJMIn3Ojl4O7',
+            
+            
+        })
+    }
+    if (document.readyState === 'complete') {
+        loadDisqusJS();
+    } else {
+        window.addEventListener('load', loadDisqusJS);
+    }
+});
+</script>
+
+                        </div>
+                    
+                
+            </div>
+        </div>
+    </div>
+</div>
+
+            <!-- ### Footer ### -->
+            <footer class="text-center">
+    <!-- footer copyright -->
+    
+        <p class="footer-copyright mb-0">Copyright&nbsp;©&nbsp;<span id="copyright-year"></span>
+            <a class="footer-copyright-a" href="https://www.wevg.org">Vigorous Pro</a>
+        </p>
+
+    <!-- footer custom text -->
+    <p class="footer-text mb-0">
+    <a href="/atom.xml" target="_blank" class="footer-develop-a" rel="nofollow noopener noreferrer">RSS</a><span class="footer-develop-divider"></span><a href="https://donate.edison.do" target="_blank" class="footer-develop-a" rel="nofollow noopener noreferrer">Donate</a><span class="footer-develop-divider"></span><a href="/privacy-policy" target="_blank" class="footer-develop-a" rel="nofollow noopener noreferrer">Privacy Policy</a>
+    </p>
+    <!-- footer develop info -->
+    <p class="footer-develop mb-0">
+        
+
+        
+        Powered by&nbsp;<!--
+         --><a href="https://hexo.io" target="_blank" class="footer-develop-a" rel="external nofollow noopener noreferrer">Hexo</a><span class="footer-develop-divider"></span>Theme&nbsp;-&nbsp;<!--
+         --><a href="https://github.com/SukkaW/hexo-theme-suka" target="_blank" class="footer-develop-a" rel="external noopener">Suka</a>
+    </p>
+</footer>
+
+
+        <!-- ### Import File ### -->
+        <!-- ### Footer JS Import ### -->
+
+<script>
+
+    
+window.lazyLoadOptions = {
+    elements_selector: ".lazyload",
+    threshold: 50
+};
+
+(function() {
+    var copyrightNow = new Date().getFullYear();
+    var copyrightContent = document.getElementById('copyright-year');
+    var copyrightSince = 2015;
+    if (copyrightSince === copyrightNow) {
+        copyrightContent.textContent = copyrightNow;
+    } else {
+        copyrightContent.textContent = copyrightSince + ' - ' + copyrightNow;
+    }
+})();
+console.log('\n %c Suka Theme (hexo-theme-suka) | © SukkaW | Verision 1.3.3 %c https://github.com/SukkaW/hexo-theme-suka \n', 'color: #fff; background: #444; padding:5px 0;', 'background: #bbb; padding:5px 0;');
+
+</script>
+
+<script src="https://cdn.jsdelivr.net/npm/vanilla-lazyload@12.3.0" async></script>
+
+
+
+<!-- Comment -->
+
+    
+        <!-- No need for DisqusJS -->
+    
+
+
+<!-- ### Custom Footer ### -->
+<script> if ('serviceWorker' in navigator) { window.addEventListener('load', () => { navigator.serviceWorker.register('/sw.js'); }) } </script><script>window.ga_tid = "UA-106121780-1";window.ga_api = "https://ga.cdn.uv.uy/jquery.js"; </script><script src="https://cdn.jsdelivr.net/gh/EdisonJwa/Blog@master/js/main.js" async></script>
+    </body>
+
+</html>
