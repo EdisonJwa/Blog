@@ -1,0 +1,18 @@
+span.bb_spoiler {
+	color: #000000;
+	background-color: #000000;
+
+	padding: 0px 8px;
+}
+
+span.bb_spoiler:hover {
+	color: #ffffff;
+}
+
+span.bb_spoiler > span {
+	visibility: hidden;
+}
+
+span.bb_spoiler:hover > span {
+	visibility: visible;
+}
