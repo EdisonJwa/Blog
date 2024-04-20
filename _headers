@@ -1,0 +1,8 @@
+/*
+	Strict-Transport-Security: max-age=63072000; includeSubDomains; preload
+	Cache-Control: public,max-age=60,s-max-age=4800,stale-while-revalidate=180,stale-if-error=60
+	Access-Control-Allow-Origin: no-cors
+ 	X-XSS-Protection: 1; mode=block
+	Referrer-Policy: no-referrer-when-downgrade
+	X-Frame-Options: SAMEORIGIN
+	X-Content-Type-Option: nosniff
