@@ -1,0 +1,697 @@
+<!DOCTYPE html>
+
+<html lang="zh-CN">
+    <head>
+    <meta charset="utf-8">
+    <!--
+        hexo-theme-suka © SukkaW
+        GitHub: https://github.com/SukkaW/hexo-theme-suka
+    -->
+
+    <!-- ### Resource Hint ### -->
+
+    <!-- ## DNS Prefetch ## -->
+    <meta http-equiv="x-dns-prefetch-control" content="on">
+
+<!-- busuanzi -->
+
+
+<!-- comment -->
+
+
+
+
+
+
+
+<!-- analytics -->
+
+
+
+
+
+
+
+    <!-- ## Preload ## -->
+    
+
+
+
+
+    <!-- ### Meta & Title & Info ### -->
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, minimum-scale=1, initial-scale=1, maximum-scale=5, viewport-fit=cover">
+    <meta name="renderer" content="webkit">
+
+    <!-- Title -->
+    <title>在 Windows 下使用监管模式保护 iOS 设备数据安全 | Vigorous Pro</title>
+
+    <!-- Favicons -->
+    <link rel="icon" type="image&#x2F;ico" href="/favicon.ico"><link rel="apple-touch-icon" sizes="180x180" href="/source/favicon/apple-touch-icon.png"><link rel="icon" typt="image&#x2F;png" sizes="192x192" href="/source/favicon/android-chrome-192x192.png"><link rel="icon" typt="image&#x2F;png" sizes="32x32" href="/source/favicon/favicon-32x32.png"><link rel="icon" typt="image&#x2F;png" sizes="16x16" href="/source/favicon/favicon-16x16.png"><link rel="mask-icon" href="/safari-pinned-tab.svg" color="">
+
+    <!-- ### Import File ### -->
+    <link rel="stylesheet" href="https://static.hit.moe/blog/css/spectre.min.css"><style>
+    body {
+        background-color: #f8f9fa;
+    }
+
+    a, a:visited {
+        color: #0070ff;
+    }
+
+    a:active, a:focus, a:hover {
+        color: #0070ff;
+        opacity: .75;
+    }
+
+    #post-content a,
+    #post-content a:hover,
+    #post-content a:focus,
+    #post-content a:visited {
+        color: #005eb9;
+        opacity: 1;
+    }
+
+    
+
+    .post-entry .card-body a {
+        color: #0070ff;
+    }
+
+    .avatar {
+        background: #444;
+    }
+
+    .navbar-link,
+    .navbar-link:visited,
+    .timeline .timeline-item .timeline-icon.icon-lg {
+        color: #0070ff;
+    }
+
+    .navbar-link:hover {
+        color: #0070ff;
+        opacity: .8;
+    }
+
+    #search-input .btn,
+    #disqus_click_btn,
+    #disqus-switch-to-direct,
+    #disqus-loadmore-button {
+        background: #727e96;
+        border-color: #727e96;
+        color: #fff;
+    }
+
+    #post-toc a.post-toc-link,
+    #post-toc a.post-toc-link:visited,
+    .share-menu.menu .menu-item>a {
+        color: #727e96;
+    }
+
+    .share-menu.menu .menu-item>a:hover,
+    .share-menu.menu .menu-item>a:focus,
+    .share-menu.menu .menu-item>a:visited {
+        color: #50596c;
+        background: #f8f9fa;
+        opacity: .85;
+    }
+</style><link rel="stylesheet" href="https://static.hit.moe/blog/css/style.min.css">
+
+
+    
+        <!-- Import DisqusJS Default Theme -->
+        <link rel="preload" href="https://cdn.jsdelivr.net/npm/disqusjs@1.2.5/dist/disqusjs.css" as="style" onload="this.onload=null;this.rel='stylesheet'"><noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/disqusjs@1.2.5/dist/disqusjs.css"></noscript>
+
+    
+
+
+
+
+
+
+
+    <!-- Prettify Theme -->
+    
+    <link rel="preload" href="https://static.hit.moe/blog/css/highlight/tomorrow-night-eighties.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'"><noscript><link rel="stylesheet" href="https://static.hit.moe/blog/css/highlight/tomorrow-night-eighties.min.css"></noscript>
+
+
+
+
+
+<script>
+/*! loadCSS. [c]2017 Filament Group, Inc. MIT License */
+!function(t){"use strict";t.loadCSS||(t.loadCSS=function(){});var e=loadCSS.relpreload={};if(e.support=function(){var e;try{e=t.document.createElement("link").relList.supports("preload")}catch(t){e=!1}return function(){return e}}(),e.bindMediaToggle=function(t){var e=t.media||"all";function a(){t.addEventListener?t.removeEventListener("load",a):t.attachEvent&&t.detachEvent("onload",a),t.setAttribute("onload",null),t.media=e}t.addEventListener?t.addEventListener("load",a):t.attachEvent&&t.attachEvent("onload",a),setTimeout(function(){t.rel="stylesheet",t.media="only x"}),setTimeout(a,3e3)},e.poly=function(){if(!e.support())for(var a=t.document.getElementsByTagName("link"),n=0;n<a.length;n++){var o=a[n];"preload"!==o.rel||"style"!==o.getAttribute("as")||o.getAttribute("data-loadcss")||(o.setAttribute("data-loadcss",!0),e.bindMediaToggle(o))}},!e.support()){e.poly();var a=t.setInterval(e.poly,500);t.addEventListener?t.addEventListener("load",function(){e.poly(),t.clearInterval(a)}):t.attachEvent&&t.attachEvent("onload",function(){e.poly(),t.clearInterval(a)})}"undefined"!=typeof exports?exports.loadCSS=loadCSS:t.loadCSS=loadCSS}("undefined"!=typeof global?global:this);
+</script>
+
+    <!-- ### Site Verification ### -->
+    
+
+
+    <link rel="alternate" type="application/atom+xml" href="/atom.xml"><meta name="mobile-web-app-capable" content="yes"><meta name="application-name" content="Vigorous Pro"><meta name="msapplication-starturl" content="https://www.wevg.org"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-title" content="Vigorous Pro"><meta name="apple-mobile-web-app-status-bar-style" content="black-translucent"><link rel="manifest" href="/manifest.json"><link rel="search" type="application/opensearchdescription+xml" href="/opensearch.xml" title="Vigorous Pro">
+
+    <!-- ### The Open Graph & Twitter Card Protocol ### -->
+    <meta property="og:title" content="在 Windows 下使用监管模式保护 iOS 设备数据安全 | Vigorous Pro"><meta property="og:site_name" content="Vigorous Pro"><meta property="og:type" content="article"><meta property="og:url" content="https://www.wevg.org/archives/protect-my-iphone-on-windows/"><meta property="og:locale" content="zh-CN"><meta name="description" content="本文将帮助您在 Windows 系统环境下，使用监管模式保护您的设备隐私安全，防止执法人员对您的设备进行取证。 - Edison Jwa - Vigorous Pro"><meta name="keywords" content="Windows, Secure, iPhone, Exploit, Apple, 配置, edisonjwa,game,blog,Web,Html,edison"><meta property="og:image" content="/source/thumbnail/7OELw0iUxa4.jpg"><meta property="og:image" content="https://www.wevg.org/source/pair-locking-windows/imazing-mainpage.png"><meta property="og:image" content="https://www.wevg.org/source/pair-locking-windows/select-org.png"><meta property="og:image" content="https://www.wevg.org/source/pair-locking-windows/create-new-org.png"><meta property="og:image" content="https://www.wevg.org/source/pair-locking-windows/new-org-info.png"><meta property="og:image" content="https://www.wevg.org/source/pair-locking-windows/phone-org-info-example.jpg"><meta property="og:image" content="https://www.wevg.org/source/pair-locking-windows/supervise-settings.png"><meta property="og:image" content="https://www.wevg.org/source/pair-locking-windows/content-removal-warning.png"><meta property="og:image" content="https://www.wevg.org/source/pair-locking-windows/removal-password.png"><meta property="og:image" content="https://www.wevg.org/source/pair-locking-windows/removal-password-example.jpg"><meta property="og:image" content="https://www.wevg.org/source/pair-locking-windows/allow-host-pairing.png"><meta property="og:image" content="https://www.wevg.org/source/pair-locking-windows/complete.png"><meta property="article:published_time" content="2022-11-27T10:48:16.000Z"><meta property="article:modified_time" content="2024-11-20T15:02:15.283Z"><meta property="og:updated_time" content="2024-11-20T15:02:15.283Z"><meta property="article:author" content="Edison Jwa"><meta property="article:tag" content="Windows, Secure, iPhone, Exploit, Apple, 配置, edisonjwa,game,blog,Web,Html,edison"><meta name="twitter:card" content="summary_large_image"><meta name="twitter:image" content="/source/thumbnail/7OELw0iUxa4.jpg">
+
+    
+
+    <!-- ### Canonical link ### -->
+    <link rel="canonical" href="https://www.wevg.org/archives/protect-my-iphone-on-windows/">
+
+    <meta name="generator" content="Hexo 6.0.0">
+
+    <!-- ### Analytics ### -->
+    
+
+
+
+
+
+
+
+    <!-- ### Structured Data ### -->
+    
+
+
+
+<script type="application/ld+json">
+{
+    "@context": "http://schema.org",
+    "url": "https://www.wevg.org/archives/protect-my-iphone-on-windows/",
+    "@type": "BlogPosting",
+    "logo": "https://www.wevg.org/source/favicon/android-chrome-192x192.png",
+    "mainEntityOfPage": {
+        "@type": "WebPage",
+        "@id": "https://www.wevg.org/archives/protect-my-iphone-on-windows/"
+    },
+    "headline": "在 Windows 下使用监管模式保护 iOS 设备数据安全 | Vigorous Pro",
+    
+    "image": {
+        "@type": "ImageObject",
+        "url": "https://www.wevg.org/source/thumbnail/7OELw0iUxa4.jpg"
+    },
+    
+    "datePublished": "2022-11-27T10:48:16.000Z",
+    "dateModified": "2024-11-20T15:02:15.283Z",
+    "author": {
+        "@type": "Person",
+        "name": "Edison Jwa",
+        "image": {
+            "@type": "ImageObject",
+            "url": "https://static.hit.moe/blog/source/image/avatar.jpg"
+        },
+        "description": "The world can always use more heroes."
+    },
+    "publisher": {
+        "@type": "Organization",
+        "name": "Vigorous Pro",
+        "logo": {
+            "@type": "ImageObject",
+            "url": "https://www.wevg.org/source/favicon/android-chrome-192x192.png"
+        }
+    },
+    
+    "potentialAction": {
+        "@type": "SearchAction",
+        "target": "https://www.wevg.org/search?s={search_term_string}",
+        "query-input": "required name=search_term_string"
+    },
+    
+    "keywords": "Windows, Secure, iPhone, Exploit, Apple, 配置, edisonjwa,game,blog,Web,Html,edison",
+    "description": "本文将帮助您在 Windows 系统环境下，使用监管模式保护您的设备隐私安全，防止执法人员对您的设备进行取证。 - Edison Jwa - Vigorous Pro"
+}
+</script>
+
+
+
+    <!-- ### Custom Head ### -->
+    <link rel="stylesheet" href="https://static.hit.moe/blog/css/darkmode.min.css"><script src="https://static.hit.moe/blog/js/edison-main.min.js"></script><script type="module" async="" src="https://static.hit.moe/blog/js/instantpage.min.js"></script><link rel="manifest" href="/site.webmanifest"><meta name="msapplication-TileColor" content="#d43d3d"><meta name="msapplication-TileImage" content="/source/favicon/mstile-144x144.png"><meta name="theme-color" content="#ffffff"><script type="text/javascript">(function(c,l,a,r,i,t,y){c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);})(window, document, "clarity", "script", "g2p0n3weie");</script><script defer data-domain="wevg.org" src="https://data.hit.moe/data.js"></script><script defer src="https://analytics.hit.moe/script/health_check.js" data-website-id="9c740ad2-1a86-47dc-8910-c31c1ce9d6cd"></script>
+<style type="text/css">
+.spoiler {
+  display: inline-flex;
+}
+p.spoiler {
+  display: flex;
+}
+.spoiler a {
+  pointer-events: none;
+}
+.spoiler-blur, .spoiler-blur > * {
+  transition: text-shadow .5s ease;
+}
+.spoiler .spoiler-blur, .spoiler .spoiler-blur > * {
+  color: rgba(0, 0, 0, 0);
+  background-color: rgba(0, 0, 0, 0);
+  text-shadow: 0 0 10px grey;
+  cursor: pointer;
+}
+.spoiler .spoiler-blur:hover, .spoiler .spoiler-blur:hover > * {
+  text-shadow: 0 0 5px grey;
+}
+.spoiler-box, .spoiler-box > * {
+  transition: color .5s ease,
+  background-color .5s ease;
+}
+.spoiler .spoiler-box, .spoiler .spoiler-box > * {
+  color: black;
+  background-color: black;
+  text-shadow: none;
+}</style></head>
+
+    <body>
+            
+
+            <!-- ### Main content ### -->
+            <!-- ## Header ##-->
+<header>
+    <h1 class="header-title text-center"><a href="/">Vigorous Pro</a></h1>
+
+    <p class="text-center header-slogan">
+        
+            
+                The world can always use more heroes.
+            
+        
+    </p>
+
+    <nav class="navbar-section text-center">
+    
+        <a href="/" class="navbar-link">首页</a>
+    
+    
+        <a href="/archives/" class="navbar-link">归档</a>
+    
+    
+        <a href="/search" class="navbar-link">搜索</a>
+    
+    
+        <a target="_blank" rel="noopener" href="https://uv.uy" class="navbar-link">关于</a>
+    
+        <a href="/friends/" class="navbar-link">友链</a>
+    
+    
+    
+</nav>
+</header>
+
+            
+    <!-- ## Post ## -->
+    <div class="post-container">
+    <div id="post-card" class="card">
+        
+            <div class="card-image lazyload" data-bg="/source/thumbnail/7OELw0iUxa4.jpg"></div>
+        
+        <div class="card-item-container">
+            <div class="card-inner-cell">
+                <!-- # Post Header Info # -->
+                <div class="card-header">
+                    
+    <h1 class="card-title h3 mb-2">在 Windows 下使用监管模式保护 iOS 设备数据安全</h1>
+
+
+
+
+<div class="post-header-info">
+    <p class="post-header-info-left text-gray">
+        <img class="author-thumb lazyload" data-src="https://static.hit.moe/blog/source/image/avatar.jpg" src="https://static.hit.moe/blog/img/suka-lazyload.gif" alt="Edison Jwa's Avatar">
+        <span>2022-11-27</span>
+        
+            <span class="suka-devide-dot"></span>
+            <a class="category-link" href="/categories/Tech/">Tech</a><span class="suka-devide-dot"></span><a class="category-link" href="/categories/Tech/Apple/">Apple</a>
+        
+        
+        
+    </p>
+    <div class="post-header-info-right">
+        
+            <div class="dropdown dropdown-right">
+<a class="dropdown-toggle" tabindex="0">分享本文</a>
+<ul class="menu share-menu">
+    <!-- Share Weibo -->
+    
+    <li class="menu-item">
+        <a href="http://service.weibo.com/share/share.php?appkey=&title=在 Windows 下使用监管模式保护 iOS 设备数据安全&url=https://www.wevg.org/archives/protect-my-iphone-on-windows/&pic=/source/thumbnail/7OELw0iUxa4.jpg&searchPic=false&style=simple" target="_blank" rel="external noopener noreferrer nofollow">分享到微博</a>
+    </li>
+    
+
+    <!-- Share Twitter -->
+    
+    <li class="menu-item">
+        <a href="https://twitter.com/intent/tweet?text=在 Windows 下使用监管模式保护 iOS 设备数据安全&url=https://www.wevg.org/archives/protect-my-iphone-on-windows/&via=Edison Jwa" target="_blank" rel="external noopener noreferrer nofollow">分享到 Twitter</a>
+    </li>
+    
+
+    <!-- Share Facebook -->
+    
+    <li class="menu-item">
+        <a href="https://www.facebook.com/sharer/sharer.php?u=https://www.wevg.org/archives/protect-my-iphone-on-windows/" target="_blank" rel="external noopener noreferrer nofollow">分享到 Facebook</a>
+    </li>
+    
+
+    <!-- Share Google+ -->
+    
+    <li class="menu-item">
+        <a href="https://plus.google.com/share?url=https://www.wevg.org/archives/protect-my-iphone-on-windows/" target="_blank" rel="external noopener noreferrer nofollow">分享到 Google+</a>
+    </li>
+    
+
+    <!-- Share LinkedIn -->
+    
+    <li class="menu-item">
+        <a href="https://www.linkedin.com/shareArticle?mini=true&url=https://www.wevg.org/archives/protect-my-iphone-on-windows/&title=Vigorous Pro" target="_blank" rel="external noopener noreferrer nofollow">分享到 LinkedIn</a>
+    </li>
+    
+
+    <!-- Share QQ -->
+    
+    <li class="menu-item">
+        <a href="http://connect.qq.com/widget/shareqq/index.html?site=Vigorous Pro&title=Vigorous Pro&summary=The world can always use more heroes.&pics=/source/thumbnail/7OELw0iUxa4.jpg&url=https://www.wevg.org/archives/protect-my-iphone-on-windows/" target="_blank" rel="external noopener noreferrer nofollow"> 分享到 QQ</a>
+    </li>
+    
+
+    <!-- Share Telegram -->
+    
+    <li class="menu-item">
+        <a href="https://t.me/share/url?url=https://www.wevg.org/archives/protect-my-iphone-on-windows/&text=Vigorous Pro" target="_blank" rel="external noopener noreferrer nofollow">分享到 Telegram</a>
+    </li>
+    
+
+    <!-- QRCode -->
+    
+    <li class="menu-item">
+        <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAJQAAACUCAAAAABQV18IAAAB4klEQVR42u3by46DMAxAUf7/p5kt6mD7mlIpmMuGaoYmhyrk4ZhtX/DYRIkSJeoEtSXH8Zrj+V9hxfdwPaLGoKKKSKWf4OgGUD2iRqE+Kz07n/0/a/DRwxKVI+o9qLNKqsZ95eZEvQtVDcDR337a0EUtjYoGymgQzhp91gnfMksQtTwqm9Dfeb5tNSNqaVQZdICVkg70tqiLqKVRWUM8G4Szz9H1pHxRc1CksKhBR0GODJUGTESNQH0ziSNB29aCRNRYVBaQjQomE8QysCZqDIpM+DudJgmCnP4gokagqk2drGOli4ZqwidqFqq7+UwCstmAHHXaouahskUleRBo4PbSClnUo1BkwUmurQbmbPNJ1ExUFjCli4NqY7KcIIoaheomaZHEwWjwLgdkUY9GXU3kosEO+qCImofqNswrG43lQkTUGBT5Apn8kQAsGpBFjUHRwATdCKebSKLmokjS8t58qSd7YQPtOIh6NCorhCYVksAuzogV9UhUd2LWSdbqJD6LmoNCicaNl3w6idFlgEPUY1GdRGa6gKWLXFFzUZ2Evip420ksFPVOVHVdNljv8OVDUe9CVRO1vfFCWNphixqFogmCFJEFab+eJYhaHkUaJd1k7N6IqHmolQ5RokSJOhx//DIycUO0IS0AAAAASUVORK5CYII=" alt="QRCode">
+    </li>
+    
+
+</ul>
+</div>
+        
+    </div>
+</div>
+                </div>
+                <div class="card-body">
+                    
+                        
+                        
+                            <div id="post-toc"><ol class="post-toc"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#%E5%89%8D%E8%A8%80"><span class="post-toc-number">1.</span> <span class="post-toc-text">前言</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#span-style-color-db4d6d-%E9%9C%80%E8%A6%81%E6%B3%A8%E6%84%8F%E7%9A%84%E6%98%AF%EF%BC%9A-span"><span class="post-toc-number">2.</span> <span class="post-toc-text">需要注意的是：</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#%E7%9B%91%E7%AE%A1%E6%82%A8%E7%9A%84-iphone"><span class="post-toc-number">3.</span> <span class="post-toc-text">监管您的 iPhone</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#%E6%80%BB%E7%BB%93"><span class="post-toc-number">4.</span> <span class="post-toc-text">总结</span></a></li></ol></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#%E5%8F%82%E8%80%83%E9%93%BE%E6%8E%A5"><span class="post-toc-number"></span> <span class="post-toc-text">参考链接</span></a></div>
+                        
+                    
+                    <article id="post-content">
+                        <p>本文将帮助您在 Windows 系统环境下，使用监管模式保护您的设备隐私安全，防止执法人员对您的设备进行取证。</p>
+<span id="more"></span>
+<h2 id="前言">前言</h2>
+<p>如果您想要理解监管模式的工作原理，了解这个方式的优缺点，以及如何在 macOS 系统下使用监管模式，请参考我之前的文章 <a href="https://www.wevg.org/archives/pair-locking-your-iphone/">利用 Pair Locking 保证 iOS 设备数据安全</a></p>
+<p>因为 checkm8 漏洞的存在，在实际的保护隐私的意义上，能也仅能保护 iPhone XR 及其以上的设备。</p>
+<h2 id="span-style-color-db4d6d-需要注意的是：-span"><span style="color:#DB4D6D;">需要注意的是：</span></h2>
+<ul>
+<li>建议在执行前，先完整阅读一遍此文章，再决定是否进行此操作。</li>
+<li>将手机设置成受监管状态会 <span style="color:#DB4D6D;"><strong>完全擦除手机</strong></span>，尽管擦除之后，您可以重新登录到您的 iCloud，所有同步过的设置，应用程序等项目都会再次出现。<br>
+<span style="color:#DB4D6D;"><strong>但是，不能先对手机进行备份，再将手机设置成受监管状态，然后再恢复备份！！！(因为恢复备份的同时也会将设备还原到不受监管的状态)</strong></span><br>
+<span style="color:#DB4D6D;">即便如此，仍然建议在备份后执行此操作！！！</span></li>
+<li>任何能够使用您的笔记本电脑的人都可以通过配对获取您的数据，并且可以完全访问您手机上的所有内容（在通过有线的方式连接到笔记本电脑之后）。</li>
+<li><span style="color:#DB4D6D;">如果您无法访问笔记本电脑或丢失配对信息，那么您也将无法连接手机。</span></li>
+</ul>
+<h2 id="监管您的-iphone">监管您的 iPhone</h2>
+<ol>
+<li>下载并安装 <a target="_blank" rel="noopener" href="https://imazing.com/">iMazing 2</a>
+<blockquote>
+<p>使用<strong>监管</strong>功能需要在购买并激活 iMazing 2 后使用</p>
+</blockquote>
+</li>
+<li>将您的设备与电脑通过 USB 连接</li>
+<li>选择设备后，点击界面右侧的<strong>监管</strong>按钮后，点击 <code>下一步</code> 进入监督页面</li>
+</ol>
+<p><img src="/source/pair-locking-windows/imazing-mainpage.png" alt="Main Page"></p>
+<ol start="4">
+<li>
+<p>接下来，配置一个组织，来监管设备</p>
+<ul>
+<li>
+<p>点击 <strong>组织</strong> - <strong>选择</strong></p>
+<p><img src="/source/pair-locking-windows/select-org.png" alt="Select Org"></p>
+</li>
+<li>
+<p>在弹出的页面中，点击左下角的 <strong>+</strong> 来新建一个组织</p>
+<p><img src="/source/pair-locking-windows/create-new-org.png" alt="Create New Org"></p>
+</li>
+<li>
+<p>组织信息中，只有 <strong>名称</strong> 是必填项目，此处设置的名称将会在设备上显示，其他信息可以不填写<br>
+<img src="/source/pair-locking-windows/new-org-info.png" alt="New Org Info"></p>
+<p><img src="/source/pair-locking-windows/phone-org-info-example.jpg" alt="Phone Org Info Example"></p>
+</li>
+<li>
+<p>保存之后，选择刚刚创建的组织</p>
+</li>
+</ul>
+</li>
+<li>
+<p>配置监管设置</p>
+<ul>
+<li>
+<p>勾选 <strong>允许在没有监管组织的情况下配对</strong></p>
+</li>
+<li>
+<p>取消勾选 <strong>禁用 USB 限制模式</strong></p>
+</li>
+<li>
+<p>勾选 <strong>允许被监管时使用激活锁（允许使用查找我的）</strong></p>
+<p><img src="/source/pair-locking-windows/supervise-settings.png" alt="Supervise Settings"></p>
+</li>
+<li>
+<p>点击<strong>下一步</strong>，此时会提示<strong>抹掉所有内容和设置</strong>, 此处会弹出多次确认提醒</p>
+<p><img src="/source/pair-locking-windows/content-removal-warning.png" alt="Content Remove Warning"></p>
+</li>
+</ul>
+</li>
+<li>
+<p>在 iMazing 的主界面点击 <code>工具</code> - <code>iMazing Profile Editor</code>，打开配置文件编辑工具</p>
+<ul>
+<li>首先，在 General 页面下，找到 <code>Prevent users from removing this profile</code> 和  <code>Has removal passcode</code>，根据自己的喜好进行选择</li>
+</ul>
+<blockquote>
+<p><code>Prevent users from removing this profile</code> 即无法在设备中删除此配置文件<br>
+<code>Has removal passcode</code> 则会在移除时要求输入正确的密码后才能删除<br>
+建议两项二选一（因为我也没测试过同时开启会发生什么）</p>
+</blockquote>
+<ul>
+<li>如选择 <code>Has removal passcode</code> 时，则需要在左侧列表中找到 <strong>Profile Removal</strong> 页面中，点击 <code>Add Configuration Payload</code> 后，在 <code>Removal Password</code> 项目中设置密码</li>
+</ul>
+<p><img src="/source/pair-locking-windows/removal-password.png" alt="Remove Password"></p>
+<p>效果如下：<br>
+<img src="/source/pair-locking-windows/removal-password-example.jpg" alt="Remove Password Example"></p>
+<ul>
+<li>接下来，在左侧列表中找到 <strong>Restrictions</strong> 点击 <code>Add Configuration Payload</code> 后，找到并取消勾选 <code>Allow host pairing</code></li>
+</ul>
+<p><img src="/source/pair-locking-windows/allow-host-pairing.png" alt="Allow host pairing"></p>
+<ul>
+<li>继续做一些喜欢的设置后，继续下一步的操作即可</li>
+</ul>
+</li>
+<li>
+<p>点击左上角 <code>File</code> - <code>Save to iMazing Library</code>，保存配置文件到 iMazing 库中</p>
+</li>
+<li>
+<p>返回 iMazing 主界面，在设备的应用列表中找到 <code>描述文件</code>，点击 <code>从资料库安装</code>，选择刚刚保存的配置文件后，点击 <code>选择</code> 即可</p>
+<p><img src="/source/pair-locking-windows/complete.png" alt="Install Complete"></p>
+</li>
+</ol>
+<h2 id="总结">总结</h2>
+<p>禁止与新设备的配对可以一定程度上的提升身边的安全性，但一直以来安全与便利就是一个两难的选择。比如外出时，除非移除配置文件，否则将无法与其他设备通过有线方式进行数据传输以及备份。</p>
+<h1 id="参考链接">参考链接</h1>
+<ul>
+<li><a href="https://www.wevg.org/archives/pair-locking-your-iphone/">利用 Pair Locking 保证 iOS 设备数据安全</a></li>
+<li><a target="_blank" rel="noopener" href="https://imazing.com/guides/how-to-supervise-iphone-ipad">Supervise iPhone, iPad and iPod touch</a></li>
+<li><a target="_blank" rel="noopener" href="https://imazing.com/guides/ios-configuration-profiles-intro#restrictions">Getting started with iOS configuration profiles</a></li>
+</ul>
+
+                    </article>
+                    
+    <blockquote class="post-license">
+        <p>
+            <strong>本文作者&nbsp;:&nbsp;Edison Jwa</strong>
+            <br>
+            <strong>
+            
+                本文使用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">署名-非商业性使用-相同方式共享 4.0 国际 (CC BY-NC-SA 4.0)</a> 协议
+            </strong>
+            <br>
+            <strong>本文链接&nbsp;:&nbsp;</strong><a href="https://www.wevg.org/archives/protect-my-iphone-on-windows/">https://www.wevg.org/archives/protect-my-iphone-on-windows/</a>
+        </p>
+    </blockquote>
+
+
+
+    <blockquote id="date-expire-notification" class="post-expired-notify">本文最后更新于 <span id="date-expire-num"></span> 天前，文中所描述的信息可能已发生改变</blockquote>
+    <script>
+    (function() {
+        var dateUpdate = Date.parse("2024-11-21");
+        var nowDate = new Date();
+        var a = nowDate.getTime();
+        var b = a - dateUpdate;
+        var daysUpdateExpire = Math.floor(b/(24*3600*1000));
+        if (daysUpdateExpire >= 120) {
+            document.getElementById('date-expire-num').innerHTML = daysUpdateExpire;
+        } else {
+            document.getElementById('date-expire-notification').style.display = 'none';
+        }
+    })();
+    </script>
+
+
+<p class="post-footer-info mb-0 pt-0">本文发表于&nbsp;<time datetime="2022-11-27T10:48:16.000Z" itemprop="datePublished">2022-11-27</time>
+
+    , 最后修改于&nbsp;<time datetime="2024-11-20T15:02:15.283Z" itemprop="dateModified">2024-11-21</time>
+
+</p>
+<p class="post-footer-info mb-0 pt-2">
+
+<span class="post-categories-list mt-2">
+
+<a class="post-categories-list-item" href='/categories/Tech/'>Tech</a>
+
+<a class="post-categories-list-item" href='/categories/Tech/Apple/'>Apple</a>
+
+</span>
+
+
+
+<span class="post-tags-list mt-2">
+
+<a class="post-tags-list-item" href="/tags/Windows/" rel="tag">#&nbsp;Windows</a>
+
+<a class="post-tags-list-item" href="/tags/Secure/" rel="tag">#&nbsp;Secure</a>
+
+<a class="post-tags-list-item" href="/tags/iPhone/" rel="tag">#&nbsp;iPhone</a>
+
+<a class="post-tags-list-item" href="/tags/Exploit/" rel="tag">#&nbsp;Exploit</a>
+
+<a class="post-tags-list-item" href="/tags/Apple/" rel="tag">#&nbsp;Apple</a>
+
+<a class="post-tags-list-item" href="/tags/%E9%85%8D%E7%BD%AE/" rel="tag">#&nbsp;配置</a>
+
+</span>
+
+
+</p>
+
+                </div>
+                <div class="post-nav px-2 bg-gray">
+<ul class="pagination">
+    <!-- Prev Nav -->
+    
+
+    <!-- Next Nav -->
+    
+        <li class="page-item page-next">
+            <a href="/archives/bye-2021/" rel="next">
+                <div class="page-item-title"><i class="icon icon-forward" aria-hidden="true"></i></div>
+                <div class="page-item-subtitle">2021 年终总结</div>
+            </a>
+        </li>
+    
+</ul>
+</div>
+
+                
+                    <!-- # Comment # -->
+                    
+                        <div class="card-footer post-comment">
+                            <div id="disqus_thread"></div>
+
+<script id="js-disqusjs" src="https://cdn.jsdelivr.net/npm/disqusjs@1.2.5/dist/disqus.js" async></script>
+<script>
+document.getElementById('js-disqusjs').addEventListener('load', function () {
+    function loadDisqusJS() {
+        new DisqusJS({
+            shortname: 'edisonj',
+            
+            siteName: 'Vigorous Pro',
+            
+            identifier: 'https://www.wevg.org/archives/protect-my-iphone-on-windows/',
+            url: 'https://www.wevg.org/archives/protect-my-iphone-on-windows/',
+            api: 'https://disqus.uv.uy/api/',
+            apikey: 'vBTqc5gYirQfuj9STIAANtQCArVi9MN8UZ72UUucwnhus4AhpgpbVJMIn3Ojl4O7',
+            
+            
+        })
+    }
+    if (document.readyState === 'complete') {
+        loadDisqusJS();
+    } else {
+        window.addEventListener('load', loadDisqusJS);
+    }
+});
+</script>
+
+                        </div>
+                    
+                
+            </div>
+        </div>
+    </div>
+</div>
+
+            <!-- ### Footer ### -->
+            <footer class="text-center">
+    <!-- footer copyright -->
+    
+        <p class="footer-copyright mb-0">Copyright&nbsp;©&nbsp;<span id="copyright-year"></span>
+            <a class="footer-copyright-a" href="https://www.wevg.org">Vigorous Pro</a>
+        </p>
+
+    <!-- footer custom text -->
+    <p class="footer-text mb-0">
+    <a href="/atom.xml" target="_blank" class="footer-develop-a" rel="nofollow noopener noreferrer">RSS</a><span class="footer-develop-divider"></span><a href="https://donate.edison.do" target="_blank" class="footer-develop-a" rel="nofollow noopener noreferrer">Donate</a><span class="footer-develop-divider"></span><a href="/privacy-policy" target="_blank" class="footer-develop-a" rel="nofollow noopener noreferrer">Privacy Policy</a>
+    </p>
+    <!-- footer develop info -->
+    <p class="footer-develop mb-0">
+        
+
+        
+        Powered by&nbsp;<!--
+         --><a href="https://hexo.io" target="_blank" class="footer-develop-a" rel="external nofollow noopener noreferrer">Hexo</a><span class="footer-develop-divider"></span>Theme&nbsp;-&nbsp;<!--
+         --><a href="https://github.com/SukkaW/hexo-theme-suka" target="_blank" class="footer-develop-a" rel="external noopener">Suka</a>
+    </p>
+</footer>
+
+
+        <!-- ### Import File ### -->
+        <!-- ### Footer JS Import ### -->
+
+<script>
+
+    
+window.lazyLoadOptions = {
+    elements_selector: ".lazyload",
+    threshold: 50
+};
+
+(function() {
+    var copyrightNow = new Date().getFullYear();
+    var copyrightContent = document.getElementById('copyright-year');
+    var copyrightSince = 2015;
+    if (copyrightSince === copyrightNow) {
+        copyrightContent.textContent = copyrightNow;
+    } else {
+        copyrightContent.textContent = copyrightSince + ' - ' + copyrightNow;
+    }
+})();
+console.log('\n %c Suka Theme (hexo-theme-suka) | © SukkaW | Verision 1.3.3 %c https://github.com/SukkaW/hexo-theme-suka \n', 'color: #fff; background: #444; padding:5px 0;', 'background: #bbb; padding:5px 0;');
+
+</script>
+
+<script src="https://static.hit.moe/blog/js/lazyload.min.js" async></script>
+
+
+
+<!-- Comment -->
+
+    
+        <!-- No need for DisqusJS -->
+    
+
+
+<!-- ### Custom Footer ### -->
+<script> if ('serviceWorker' in navigator) { window.addEventListener('load', () => { navigator.serviceWorker.register('/sw.js'); }) } </script><script>window.ga_tid = "UA-106121780-1";window.ga_api = "https://ga.cdn.uv.uy/jquery.js"; </script><script src="https://static.hit.moe/blog/js/main.js" async></script><!--- 93f83f11-28be-4c0e-bfcc-067cf93f7d8b --->
+    </body>
+
+</html>
